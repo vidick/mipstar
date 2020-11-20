@@ -1,0 +1,21 @@
+<article class="env-proof">
+<p>
+<strong>Proof.</strong>
+      For the CHSH game we can write 
+    <p>
+<div class="equation">
+  \begin{align*}  \text{SDP}(G) &amp; = \sup _{\substack {\vec{u}_ i,\vec{v}_ j\in \ensuremath{\mathbb {R}}^{d^2}\\ \begin{bgroup}  \| \vec{u}_ i\| =\| \vec{v}_ j\| =1
+
+\end{bgroup}}} \frac{1}{4} \big (\vec{u}_0 \cdot \vec{v}_0 + \vec{u}_1 \cdot \vec{v}_0 + \vec{u}_0 \cdot \vec{v}_1 - \vec{u}_1 \cdot \vec{v}_1\big )\\ &amp; = \sup _{\substack {\vec{u}_ i,\vec{v}_ j\in \ensuremath{\mathbb {R}}^{d^2}\\ \begin{bgroup}  \| \vec{u}_ i\| =\| \vec{v}_ j\| =1
+
+\end{bgroup}}} \frac{1}{4} \big (\vec{u}_0 \cdot (\vec{v}_0 + \vec{v}_1) + \vec{u}_1 \cdot (\vec{v}_0 -\vec{v}_1)\big )\\ &amp;  = \sup _{\substack {\vec{v}_ j\in \ensuremath{\mathbb {R}}^{d^2}\\ \begin{bgroup}  \| \vec{v}_ j\| =1
+
+\end{bgroup}}} \frac{1}{4} \big (\| \vec{v}_0 + \vec{v}_1\|  + \| \vec{v}_0 -\vec{v}_1\|  \big )\\ &amp;  \leq \sup _{\substack {\vec{v}_ j\in \ensuremath{\mathbb {R}}^{d^2}\\ \begin{bgroup}  \| \vec{v}_ j\| =1
+
+\end{bgroup}}} \frac{\sqrt{2}}{4} \big ( \| \vec{v}_0 + \vec{v}_1\| ^2 + \| \vec{v}_0 -\vec{v}_1\| ^2\big )^{1/2} \\ &amp; = 2\frac{\sqrt{2}}{4} \; . \end{align*}
+</div>
+<p>
+       Here for the third line we used that for any nonzero $\vec{v}$ the supremum over unit $\vec{u}$ of $\vec{u}\cdot \vec{v}$ is $\| \vec{v}\| $, achieved at $\vec{u} = \vec{v}/\| \vec{v}\| $; the fourth line is the Cauchy-Schwarz inequality; the last expands the squares and uses that $\vec{v}_0$ and $\vec{v}_1$ are unit vectors. 
+      <span class="qed">$\square$</span>
+</p>
+</p></p></article>

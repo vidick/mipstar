@@ -1,0 +1,1 @@
+This fact holds for XOR games. However, in general it can be a very hard problem to determine the maximum success probability of quantum players in a two-payer game: Slofstra&#160;<span class="cite">[<a href="/bibliography/slofstra2017set">slofstra2017set</a>]</span> recently showed that the problem is undecidable.

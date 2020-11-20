@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/stacks/stacks-project/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/stacks/stacks-project/commits/master.atom"/>
+  <title>Recent Commits to stacks-project:master</title>
+  <updated>2020-11-15T03:50:11Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7e9af8d9c03f258ec349c11422ba16e84eed9a0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/c7e9af8d9c03f258ec349c11422ba16e84eed9a0"/>
+    <title>
+        Generalize a lemma
+    </title>
+    <updated>2020-11-15T03:50:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Generalize a lemma
+
+Thanks to Dat Pham
+https://stacks.math.columbia.edu/tag/0B3E#comment-5468&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f887a0f1d32e5b49571094f81989ade716c6b11e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/f887a0f1d32e5b49571094f81989ade716c6b11e"/>
+    <title>
+        Fix typo in algebra
+    </title>
+    <updated>2020-11-15T03:28:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix typo in algebra
+
+Thanks to Yoav
+https://stacks.math.columbia.edu/tag/00I2#comment-5466&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dacf5041c1991704e5c4635a810d00c2c5c2405b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/dacf5041c1991704e5c4635a810d00c2c5c2405b"/>
+    <title>
+        Check flatness in flat base change
+    </title>
+    <updated>2020-11-15T03:10:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Check flatness in flat base change
+
+Thanks to Du
+https://stacks.math.columbia.edu/tag/02KH#comment-5458&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cd769e951d4b4df31dd3bc983dde0bc00ea12d88</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/cd769e951d4b4df31dd3bc983dde0bc00ea12d88"/>
+    <title>
+        Fix missing parenthesis
+    </title>
+    <updated>2020-11-15T02:51:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix missing parenthesis
+
+Thanks to Matt Larson
+https://stacks.math.columbia.edu/tag/0FD7#comment-5454&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1510bacba8251c99767bebe4f3310fa3570d79b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/c1510bacba8251c99767bebe4f3310fa3570d79b"/>
+    <title>
+        assignes -&gt; assigns
+    </title>
+    <updated>2020-11-15T02:48:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;assignes -&amp;gt; assigns
+
+Thanks to R
+https://stacks.math.columbia.edu/tag/0B7H#comment-5453&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/36df0d356522a23c887ae20417b1949b230fb7ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/36df0d356522a23c887ae20417b1949b230fb7ab"/>
+    <title>
+        Missing a
+    </title>
+    <updated>2020-11-15T02:46:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Missing a
+
+Thanks to Pieter Belmans
+https://stacks.math.columbia.edu/tag/08WC#comment-5452&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a30e28828afbe197bc0697fe20330c2a3b98da70</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/a30e28828afbe197bc0697fe20330c2a3b98da70"/>
+    <title>
+        Typo in quot
+    </title>
+    <updated>2020-11-15T02:45:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Typo in quot
+
+Thanks to Pieter Belmans
+https://stacks.math.columbia.edu/tag/0D03#comment-5451&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/037b1c3e97f325c695dbc182e67bf92e4d6655dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/037b1c3e97f325c695dbc182e67bf92e4d6655dd"/>
+    <title>
+        Fix typos in Enriques-Severi-Zariski
+    </title>
+    <updated>2020-11-15T02:43:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix typos in Enriques-Severi-Zariski
+
+Thanks to Johan and Laurent Moret-Bailly
+https://stacks.math.columbia.edu/tag/0FD9#comment-5449
+https://stacks.math.columbia.edu/tag/0FD9#comment-5450&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f706591971e6ecc773192898b45534ceb3a430c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/7f706591971e6ecc773192898b45534ceb3a430c"/>
+    <title>
+        Fix wording in proof
+    </title>
+    <updated>2020-11-14T23:49:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix wording in proof
+
+Thanks to Hao
+https://stacks.math.columbia.edu/tag/07JM#comment-5445&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5506e4ceb2ea89fb086637fe9d6af9fe9db541a0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/5506e4ceb2ea89fb086637fe9d6af9fe9db541a0"/>
+    <title>
+        Typo and add pointer to notation
+    </title>
+    <updated>2020-11-14T23:34:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Typo and add pointer to notation
+
+Thanks to R
+https://stacks.math.columbia.edu/tag/0DNE#comment-5443&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/14a864985fe816b9d2236e854877b8d7d067affa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/14a864985fe816b9d2236e854877b8d7d067affa"/>
+    <title>
+        Clarify which spot x_i is in
+    </title>
+    <updated>2020-11-14T23:27:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Clarify which spot x_i is in
+
+Thanks to Hao
+https://stacks.math.columbia.edu/tag/07L2#comment-5442
+https://stacks.math.columbia.edu/tag/07L2#comment-5444&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a09846377be1829b33134e4cab3e0d19ab44e7b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/5a09846377be1829b33134e4cab3e0d19ab44e7b"/>
+    <title>
+        I should be mathcal
+    </title>
+    <updated>2020-11-14T23:15:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;I should be mathcal
+
+Thanks to Pieter Belmans
+https://stacks.math.columbia.edu/tag/0DPJ#comment-5441&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2930482881fecd2d002a6bfdc397e7a52dc9ec80</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/2930482881fecd2d002a6bfdc397e7a52dc9ec80"/>
+    <title>
+        Fix statement lemma
+    </title>
+    <updated>2020-11-14T22:50:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix statement lemma
+
+Thanks to Aron
+https://stacks.math.columbia.edu/tag/0ECH#comment-5439&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79fa63067034510e64ece66662498ee657752ff6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/79fa63067034510e64ece66662498ee657752ff6"/>
+    <title>
+        Fix statement lemma
+    </title>
+    <updated>2020-11-14T22:45:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix statement lemma
+
+Thanks to Shogōki
+https://stacks.math.columbia.edu/tag/0FLC#comment-5436&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5cb5614c3da0e6b27662df2ef4c87e7390212fea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/5cb5614c3da0e6b27662df2ef4c87e7390212fea"/>
+    <title>
+        Fix reversal source and arrow
+    </title>
+    <updated>2020-11-14T22:33:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix reversal source and arrow
+
+Thanks to Hao
+https://stacks.math.columbia.edu/tag/07IN#comment-5434&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e20bc844c1d72bbeff226ca782d8942379dc482</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/0e20bc844c1d72bbeff226ca782d8942379dc482"/>
+    <title>
+        Fix typo in etale-cohomology
+    </title>
+    <updated>2020-11-14T22:30:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix typo in etale-cohomology
+
+Thanks to Hao
+https://stacks.math.columbia.edu/tag/03RI#comment-5433&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/430c9fa13d13253700e58e1ad3163775654bffa3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/430c9fa13d13253700e58e1ad3163775654bffa3"/>
+    <title>
+        Fix statement lemma
+    </title>
+    <updated>2020-11-14T22:27:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix statement lemma
+
+Thanks to P. Licht
+https://stacks.math.columbia.edu/tag/025U#comment-5432&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72fb634868960c9c73b4ef3b493049f76334d229</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/72fb634868960c9c73b4ef3b493049f76334d229"/>
+    <title>
+        Add a slogan in morphisms
+    </title>
+    <updated>2020-11-14T22:21:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a slogan in morphisms
+
+Thanks to slogan_bot
+https://stacks.math.columbia.edu/tag/01TI#comment-5429&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d086a173821969af00bf45f32ffec267467f2cf0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/d086a173821969af00bf45f32ffec267467f2cf0"/>
+    <title>
+        Improve a proof
+    </title>
+    <updated>2020-11-14T22:07:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Improve a proof
+
+Thanks to minsom
+https://stacks.math.columbia.edu/tag/0564#comment-5425&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7bc368d232a3184ce89d4602289edbd3c7ddc479</id>
+    <link type="text/html" rel="alternate" href="https://github.com/stacks/stacks-project/commit/7bc368d232a3184ce89d4602289edbd3c7ddc479"/>
+    <title>
+        esthablished -&gt; established
+    </title>
+    <updated>2020-11-14T21:43:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/4593307?s=30&amp;v=4"/>
+    <author>
+      <name>aisejohan</name>
+      <uri>https://github.com/aisejohan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;esthablished -&amp;gt; established
+
+Thanks to Will Chen
+https://stacks.math.columbia.edu/tag/0DNZ#comment-5424&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

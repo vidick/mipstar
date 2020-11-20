@@ -1,0 +1,3 @@
+<article class="env-exercise" id="000B">
+<p><a class="environment-identifier" href="/tag/000B">Exercise <span data-tag="000B">2.0.9</span>.</a> Show that given a vector solution to SDP($G$) it is always possible to find a quantum strategy that achieves exactly the same value. <em>[Hint: Consider Hermitian matrices $C_1,\ldots ,C_ d \in \ensuremath{\mathbb {C}}^{D\times D}$ that square to identity and pairwise anti-commute. For any vector $u$, consider $u\mapsto C(u) = \sum _ i u_ i C_ i$. What can you say about $C(u)$? And about $\langle \phi _{D}| C(u) \otimes C(v)|\phi _ D\rangle $? ]</em> </p>
+</article>

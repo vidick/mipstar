@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Stacks Project Blog</title>
+	<atom:link href="https://www.math.columbia.edu/~dejong/wordpress/?feed=rss2" rel="self" type="application/rss+xml" />
+	<link>https://www.math.columbia.edu/~dejong/wordpress</link>
+	<description>Algebraic stacks and open source algebraic geometry</description>
+	<lastBuildDate>Sat, 20 Jun 2020 00:31:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.5.1</generator>
+	<item>
+		<title>Update</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4579</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Sat, 20 Jun 2020 00:31:25 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4579</guid>
+
+					<description><![CDATA[OK, I worked through all the comments once more. Thanks to everybody for contributing!]]></description>
+										<content:encoded><![CDATA[<p>OK, I worked through all the comments once more. Thanks to everybody for contributing!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>7000 pages</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4573</link>
+					<comments>https://www.math.columbia.edu/~dejong/wordpress/?p=4573#comments</comments>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Mon, 25 May 2020 19:15:53 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4573</guid>
+
+					<description><![CDATA[OK, this time there won&#8217;t be a party. Sad, but you know why. The main new addition that got us over the hump was the chapter on derived categories of varieties. I hope you enjoy it. The previous posts of &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4573">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>OK, this time there won&#8217;t be a party. Sad, but you know why. The main new addition that got us over the hump was the <a href="https://stacks.math.columbia.edu/tag/0FY0">chapter on derived categories of varieties</a>. I hope you enjoy it.</p>
+<p>The previous posts of this nature are <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4181">6000 pages</a>, <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4079">5000 Pages</a>, <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=3552">4000 pages</a>, <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=2107">3000 pages</a>, and <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=635">2000 pages</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~dejong/wordpress/?feed=rss2&#038;p=4573</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Purity (Part 3)</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4559</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2020 20:15:50 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4559</guid>
+
+					<description><![CDATA[This is a continuation of the post Purity (part 2). Thanks to an email from J&#225;nos Koll&#225;r we now know that the answer to the question is no for relative dimension &#8805; 2 as I will explain in this post. &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4559">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>This is a continuation of the post <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4456">Purity (part 2)</a>. Thanks to an email from J&aacute;nos Koll&aacute;r we now know that the answer to the question is no for relative dimension &ge; 2 as I will explain in this post. All mistakes in this post are mine (of course).</p>
+<p>Take a large integer n. The minimal versal deformation space (Y, y) of the rank 2 locally free module O + O(n) on P^1 has dimension n &#8211; 1 and is smooth. Let X&#8217; be the projectivization of the universal deformation over Y x P^1. Then X&#8217; &rarr; Y is a smooth projective family of Hirzebruch families. The fibre &Sigma; = X&#8217;_y is the Hirzebruch surface &Sigma; &rarr; P^1 which has a section &sigma; with self-intersection -n. Recall that the Picard group of &Sigma; is generated by &sigma; and a fibre F. Consider the invertible module L on X&#8217; whose restriction to &Sigma; is D = -K + (n &#8211; 2)F. A computation shows that</p>
+<ol>
+<li>D &sigma; = 0</li>
+<li>H^1(O_&Sigma;(D)) = H^2(O_&Sigma;(D)) = 0</li>
+<li>H^0(O_&Sigma;(D)) has dimension 3n + 3 and gives an embedding of the contraction of &sigma; in &Sigma; into P^{3n + 2}</li>
+</ol>
+<p>However, every other fibre of X&#8217; &rarr; Y is a Hirzebruch surface whose directrix has self-intersection &gt; -n. Hence -K + (n &#8211; 2)F will not contract the directrix on any other fibre. We conclude that L defines a factorization X&#8217; &rarr; X &rarr; Y where we are constracting &sigma; on &Sigma; to a point x in X and nothing else. Thus f : X &rarr; Y is a morphism of varieties, Y is smooth, X is a normal variety, and f is smooth at all points except at x. Thus we see</p>
+<p>codim Sing(f) = n &#8211; 1 + 2 = n + 1</p>
+<p>Since the question was whether codim Sing(f) &le; 1 + 2 we see the answer is very much no in the case of relative dimension 2.</p>
+<p>For relative dimension d &ge; 2 we take the morphism X x A^{d &#8211; 2} &rarr; Y which has a singular locus still of codimension n + 1 and hence this shows the answer is no as soon as n > d.</p>
+<p>As far as I know the question remains unanswered for relative dimension 1 (besides the one subcase of relative discussed in the previous post on this topic). Please let me know if you have an idea or an example.</p>
+<p>PS: As J&aacute;nos points out the morphism f constructed above is even flat and the fibres of f have rational singularities. Thus it seems unlikely there is a class of singularities strictly bigger than the lci ones (see previous post) for which purity holds.</p>
+<p>PPS: Another question is whether examples like this can help us find examples of other purity statements gone wrong.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Talk by Will Sawin TODAY</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4550</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Fri, 27 Mar 2020 16:18:55 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4550</guid>
+
+					<description><![CDATA[I would like to advertise this talk in the Stanford AG Seminar. Will Sawin &#8211; The Shafarevich Conjecture for Hypersurfaces in Abelian Varieties Time: Mar 27, 2020 07:00 PM Eastern Time (US and Canada) To join the zoom meeting please &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4550">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>I would like to advertise this talk in the <b>Stanford AG Seminar</b>.</p>
+<p>Will Sawin &#8211; The Shafarevich Conjecture for Hypersurfaces in Abelian Varieties</p>
+<p>Time: Mar 27, 2020 07:00 PM Eastern Time (US and Canada)</p>
+<p>To join the zoom meeting please email me and I will send you the link.</p>
+<p>Abstract: Faltings proved the statement, previously conjectured by Shafarevich, that there are finitely many abelian varieties of dimension n, defined over the rational numbers (or another fixed number field), with good reduction outside a fixed finite set of primes, up to isomorphism. In joint work with Brian Lawrence, we prove an analogous finiteness statement for hypersurfaces in a fixed abelian variety with good reduction outside a finite set of primes. I will give a broad, intuitive introduction to some of the ideas in the proof, which combines tools from different areas in algebraic geometry, arithmetic geometry, and number theory, and builds heavily on recent work of Lawrence and Venkatesh.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Minimal Cech coverings</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4529</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Sun, 22 Mar 2020 19:13:17 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4529</guid>
+
+					<description><![CDATA[Please don&#8217;t read this unless you want to be distracted in these difficult times and you enjoy thinking about elementary problems in etale cohomology. I am going to pose a challenge computing etale cohomology by Cech coverings. The setting. We &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4529">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Please don&#8217;t read this unless you want to be distracted in these difficult times and you enjoy thinking about elementary problems in etale cohomology. I am going to pose a challenge computing etale cohomology by Cech coverings.</p>
+<p>The setting. We have a quasi-projective scheme X over an algebraically closed field k, a prime number &ell; different from the characteristic of k and a constructible sheaf F of Z/&ell; Z vector spaces. Next we have a cohomology class &xi; in the etale cohomology group H^i(X, F). By a result of Artin, the cohomology of F over X is the same as the Cech cohomology with respect to etale coverings, but (of course) you have to take the colimit of all etale coverings. Thus we know there exists an etale covering cU = {U_i &#8212;> X} and a degree i Cech cohomology class &xi;&#8217; for cU and F which maps to &xi; in H^i(X, F).</p>
+<p>The problem I want to think about is this: is there a notion of minimal etale covers cU such that you can represent &xi; by a Cech cohomology class for that covering.</p>
+<p>Let&#8217;s do an example. Take X = P^1 the projective line and take F the constant sheaf Z/ &ell; Z. Then there is a nonzero class &xi; in H^2(X, F). Then we can try and minimize (one at a time) the following numerical invariants of Cech coverings \cU = {U_i &#8212;> X}_{i = 1, &#8230;, n} such that &xi; can be represented as a Cech cohomology class on them:</p>
+<ol>
+<li>the sum of the number of connected components of U_i,</li>
+<li>the sum of the geometric genera of the components of the U_i,</li>
+<li>the sum of all the betti numbers of the U_i, or</li>
+<li>the sum of the degrees of the morphisms U_i &#8212;> X.</li>
+</ol>
+<p>I will edit this and put other suggestions here in the future</p>
+<p>Rmk: Observe that if cU = {U_i &#8212;> X}_{i =1, &#8230;, n} is an etale covering, then so is {U &#8212;> X} where U is the disjoint union of the U_i  and these covering have identical Cech complexes. Hence whatever invariant we use, it shouldn&#8217;t distinguish between these coverings, for example we shouldn&#8217;t use &#8220;n&#8221; as an invariant.</p>
+<p>Rmk: for etale cohomology we have to use &#8220;regular&#8221; Cech cohomology, not alternating Cech cohomology.</p>
+<p>Rmk: It might be better to work with etale hypercoverings and define numerical invariants for those.</p>
+<p>Back to the example, here is a covering that works. Let t be a coordinate on P^1. Let U_0 = G_m with coordinate x mapping to t = x^&ell; in P^1. Let U_1 = G_m with coordinate y mapping to t = y^&ell; + 1. Let U_2 = G_m with coordinate z mapping to t = z^&ell; / (z^&ell; &#8211; 1). The (double) fibre product of U_0 and U_1 over P^1 is connected and similarly for U_0 and U_2 and for U_1 and U_2. However, the (triple) fibre product of U_0 and U_1 and U_2 over P^1 is disconnected because a computation shows that (x^{-1}yz)^&ell; = 1 and hence x^{-1}yz has to be an &ell;th root of 1. This suggests that we can write down an interesting Cech cohomology class in degree 2 for this etale Cech covering and indeed this is true. To actually prove that &xi; can be represented by a Cech cohomology class for this covering, you can proceed as follows: first compute the obstruction to representing &xi; by a Cech cohomology class for the open covering P^1 = (P^1 &#8211; {0}) cup (P^1 &#8211; {&infin;}). This is an element of H^1(P^1 &#8211; {0, &infin;}, F). Then show this obstruction dies when passing to the covering {U_0 &#8211;> P^1, U_1 &#8212;> P^1, U_2 &#8212;> P^1} which refines the two part open covering because the H^1 element dies on U_i \times_{P^1} U_j for all i, j. Anyway, my solution gives the invariants as in list above:</p>
+<ol>
+<li>For this invariant I get 3 because U_0, U_1, U_2 are connected</li>
+<li>For this invariant I get 0 because U_0, U_1, U_2 are rational</li>
+<li>For this invariant I get 6 because U_0, U_1, U_2 are G_m</li>
+<li>For this invariant I get 3&ell; because the maps U_i &#8212;> P^1 have degree &ell;</li>
+</ol>
+<p>Challenge: Can you improve for any of these invariants on the numbers I get? I&#8217;ve tried to improve on the first invariant without success so far.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Artwork for a T-shirt</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4516</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Mon, 16 Mar 2020 13:02:31 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4516</guid>
+
+					<description><![CDATA[OK, we are still planning to have the Stacks project workshop this summer. I am slowly trying to work on having a new t-shirt or sweat shirt. I asked my youngest and middle son to make some artwork. Here is &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4516">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>OK, we are still planning to have the <a href="https://stacks.github.io/">Stacks project workshop</a> this summer. I am slowly trying to work on having a new t-shirt or sweat shirt. I asked my youngest and middle son to make some artwork. Here is what they came up with for the front and back of the shirt.</p>
+<p><a href="https://www.math.columbia.edu/~dejong/wordpress/?attachment_id=4521" rel="attachment wp-att-4521"><img loading="lazy" src="https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690.png" alt="" width="2400" height="1600" class="aligncenter size-full wp-image-4521" srcset="https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690.png 2400w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-300x200.png 300w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-1024x683.png 1024w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-768x512.png 768w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-1536x1024.png 1536w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-2048x1365.png 2048w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/sketch1580433750690-450x300.png 450w" sizes="(max-width: 2400px) 100vw, 2400px" /></a></p>
+<p><a href="https://www.math.columbia.edu/~dejong/wordpress/?attachment_id=4520" rel="attachment wp-att-4520"><img loading="lazy" src="https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design.png" alt="" width="1920" height="1080" class="aligncenter size-full wp-image-4520" srcset="https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design.png 1920w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design-300x169.png 300w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design-1024x576.png 1024w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design-768x432.png 768w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design-1536x864.png 1536w, https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2020/03/shirt-design-500x281.png 500w" sizes="(max-width: 1920px) 100vw, 1920px" /></a></p>
+<p>I&#8217;ve ordered 3 shirts with these pictures on it for me and my sons; I will post a picture here when we get them. But a question I have is what text (if any) to put with these pictures. What I came up with was</p>
+<ul>
+<li>Front: Climbing mathematics&#8230;</li>
+<li>Back: You can keep going</li>
+</ul>
+<p>This doesn&#8217;t really work very well. Instead what one of my sons came up with was</p>
+<ul>
+<li>On the stack</li>
+<li>No looking back</li>
+</ul>
+<p>and I think it&#8217;s better. What do you think? Do you have a suggestion?</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Determinants of perfect complexes</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4474</link>
+					<comments>https://www.math.columbia.edu/~dejong/wordpress/?p=4474#comments</comments>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Fri, 13 Mar 2020 16:57:58 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4474</guid>
+
+					<description><![CDATA[There is an interesting question on mathoverflow by Damian Rössler. His question reminds me of an approach to constructing determinants of perfect complexes that I&#8217;ve been meaning to think about. The goal is to do a minimum of computation. For &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4474">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>There is an interesting <a href="https://mathoverflow.net/questions/354214/determinantal-identities-for-perfect-complexes">question</a> on mathoverflow by Damian Rössler.</p>
+<p>His question reminds me of an approach to constructing determinants of perfect complexes that I&#8217;ve been meaning to think about. The goal is to do a minimum of computation. For the impatient: the outcome of the discussion below is that you can probably construct determinants in this manner, but that it is of very limited use &#8212; in particular it wouldn&#8217;t answer Damian&#8217;s question and related questions.</p>
+<p>Aside: Currently, the Stacks project discusses determinants of perfect complexes only when they have tor amplitude in [-1, 0], see <a href="https://stacks.math.columbia.edu/tag/0FJI">here</a> and <a href="https://stacks.math.columbia.edu/tag/0FJW">here</a>.</p>
+<p>Let S be a scheme. Denote Pic(S) the category whose objects are invertible O_S-modules and whose morphisms are isomorphisms of invertible modules. An object E of the derived category D(O_S) is called perfect if it is locally on S quasi-isomorphic to a bounded complex of finite free O_S-modules. Denote Perf-Iso(S) the category whose objects are perfect objects of D(O_S) and whose morphisms are isomorphisms E &rarr; E&#8217; of perfect objects of D(O_S). If s &in; S is a point we denote E &otimes; &kappa;(s) the derived pullback of E to s viewed as the spectrum of its residue field. We often think of E &otimes; &kappa;(s) as an object of D(&kappa;(s)), i.e., as a complex of &kappa;(s) vector spaces.</p>
+<p>Let E be an object of D(O_S). We will say E is <em>mighty fine</em> if (a) E is perfect, (b) the cohomology sheaves of E are finite locally free, and (c) for any point s &in; S the restriction E &otimes; &kappa;(s) of E to s has no two consecutive nonzero cohomology spaces. In other words, if H^n(E &otimes; &kappa;(s)) is nonzero, then both H^{n &#8211; 1}(E &otimes; &kappa;(s)) and H^{n + 1}(E &otimes; &kappa;(s)) are zero. Conditions (a) and (c) actually imply condition (b) as follows from the following lemma.</p>
+<p><strong>Lemma:</strong> Let E be a perfect object of D(O_S). Let s &in; S be a point such that E &otimes; &kappa;(s) of E to s has no two consecutive nonzero cohomology spaces. Then there is an open neighbourhood U of s in S such that E|_U is mighty fine.</p>
+<p>To prove the lemma you can use <a href="https://stacks.math.columbia.edu/tag/068U">Lemma 068U</a> to split the complex into a direct sum of vector bundles in a neighbourhood of s in S. (The lemma applies because a perfect complex is pseudo-coherent, see <a href="https://stacks.math.columbia.edu/tag/0658">Lemma 0658</a>.)</p>
+<p>If E is mighty fine, then we define det(E) as the alternating tensor product of the determinants of the cohomology sheaves of E. This makes sense because these sheaves are finite locally free. The construction is clearly a functor on the category of mighty fine complexes and isomorphisms in D(O_S) between these. Also, it is compatible with pullbacks.</p>
+<p>Having made these definitions we impose the following requirements on our determinant: A <em>determinant</em> is a rule that to every scheme S assigns a functor det : Perf-Iso(S) &rarr; Pic(S) satisfying the following requirements</p>
+<ol>
+<li>det is compatible with pullbacks,</li>
+<li>if E is mighty fine, then det(E) is as above,</li>
+<li>if a : E &rarr; E&#8217; is an isomorphism of mighty fine objects, then det(a) is as above.</li>
+</ol>
+<p>We claim that this already almost completely pins down the determinant. To explain this we need another definition.</p>
+<p>Let E be an object of D(O_S). We will say E is <em>workable</em> if there exists a quasi-compact open immersion j : U &rarr; S which is dense and schematically dense such that E|_U is mighty fine. Observe that by the first axiom of determinants above there always is a canonical map</p>
+<blockquote><p>det(E) &xrarr; j_*det(E|_U)</p></blockquote>
+<p>and by our assumptions on j we find that this map is injective! Since we have already constructed the right hand side, we conclude, for example, that if a : E &rarr; E&#8217; is an isomorphism in D(O_S), then there is absolutely no choice for the map det(a) : det(E) &rarr; det(E&#8217;). It must be the unique map det(a) : det(E) &rarr; det(E&#8217;) compatible with the aready defined map det(a|_U) provided it exists. Moreover, still in the workable case, we&#8217;re going to define det(E) as a submodule of j_*det(E|_U) constructed affine locally (see below).</p>
+<p>Thus it is useful to have many workable perfect complexes.</p>
+<p><strong>Lemma:</strong> Let E be a perfect object of D(O_S). For every s &in; S there exists an open neighbourhood U of s in S and a morphism f : U &rarr; V and a workable perfect object E&#8217; in D(O_V) and an isomorphism a : E|_U &rarr; f^*E&#8217;.</p>
+<p><strong>Proof.</strong> Locally on S the object E is given by a bounded complex of finite free O_S-modules. Thus locally on S the object E is the pullback of the universal complex on the variety of complexes V = V(r). Here r = (r_i) is a sequence of nonnegative integers almost all zero and V(r) is the scheme parametrizing sequences of size r_{i + 1} &times; r_i matrices M_i with M_i M_{i &#8211; 1} = 0 for all i. The variety of complexes V is a finite type scheme over Z which is reduced by Theorem 10.2 in a paper by Musili and Sheshadri of 1983. The irreducible components of the variety of complexes V are known to be Cohen-Macaulay and normal (although this doesn&#8217;t seem to be particularly helpful for us) and moreover these components are distinguished by the ranks of the maps in the complex at their generic points. Finally, it is easy to see that at each generic point one obtains a mighty fine complex &#8212; because it is easy to show that over a field any bounded complex of finite dimensional vector spaces which has two consecutive nonzero cohomology spaces can be deformed to a complex with different (smaller) betti numbers for its cohomology. <strong>EndProof</strong></p>
+<p><strong>Lemma.</strong> Let U be a scheme. Consider morphisms f_i : U &rarr; V_i, i = 1, 2 where V_i is a variety of complexes with universal complex E_i and an isomorphism a : f_1^*E_1 &rarr; f_2^*E_2 in D(O_S). Then, Zariski locally on U, there exists a morphism of schemes g : U &rarr; W and smooth morphisms g_i : W &rarr; V_i, i = 1, 2 and a map of complexes b : g_1^*E_1 &rarr; g_2^*E_2 which is a quasi-isomorphism such that f_i = g_i o g and a = g^*b. (In particular the complexes g_i^*E_i are workable as the pullback of a workable complex by a flat morphism of schemes.)</p>
+<p><strong>Proof sketch.</strong> Say V_1 = V(r1) and V_2 = V(r2) for some rank vectors r1, r2. Zariski locally on U the isomorphism a is given by a map of complexes between the pullbacks of the universal complexes. Thus we can let W be the scheme of finite type over Z parametrizing maps of complexes with rank vectors r1 and r2 which are moreover quasi-isomorphisms. Then deformation theory of complexes shows that both forgetful maps W &rarr; V_1 and W &rarr; V_2 are smooth (this uses that we are versally deforming E_1 on V_1 and E_2 on V_2). <strong>EndProof</strong></p>
+<p>These lemmas show that it suffices to produce a sufficiently canonical determinant for the pullback of the universal complexes over the varieties of complexes by smooth morphisms. I think this reduces us to the algebra problem formulated below. The main point I am trying to make with this post is that now we&#8217;re looking for the existence of certain lattices in modules and we are not checking any diagrams commute!</p>
+<p><strong>Algebra problem:</strong> Given a ring A, a nonzerodivisor f in A, a bounded complex of finite free A-modules M such that M_f is mighty fine, construct a rank 1 locally free A-submodule det(M) &subset; det(M_f) where det(M_f) is the alternating tensor product of the determinants of the cohomology modules of M_f over A_f which is compatible with pullbacks and with quasi-isomorphisms between such complexes.</p>
+<p>For example, if A is a dvr and f is a power of the uniformizer, then we have the lattices H^i(M)/torsion &subset; H^i(M_f) and we can take the corresponding lattice in the determinant. A similar construction works if A is a valuation ring. If the varieties of complexes are semi-normal (I don&#8217;t know if this is true, do you?), then we&#8217;d only have to look at Noetherian semi-normal rings A and our choice for dvrs would be enough.</p>
+<p><strong>Drawback of this method:</strong> One of the properties you want is that given an object (E, F) of the filtered derived category of S such that E and gr E are perfect, then we have a canonical isomorphism det(E) = &otimes; det(gr_i E). However, I do not think it is true that a &#8220;versally deformed&#8221; pair (E, F) has E and gr E workable. (I think I have a counter example.) Thus the method fails to produce the desired isomorphism in a sort of straightforward manner. Similarly, this method also wouldn&#8217;t answer Damian Rössler question&#8230; Sigh!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~dejong/wordpress/?feed=rss2&#038;p=4474</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Purity (part 2)</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4456</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Mon, 09 Mar 2020 14:23:36 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4456</guid>
+
+					<description><![CDATA[Please read Purity (part 1) first. Let f : X &#8594; Y be a dominant, finite type morphism of integral Noetherian schemes. We assume X is normal and Y regular. Let Sing(f) be the closed set of points of X &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4456">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Please read <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4440">Purity (part 1)</a> first.</p>
+<p>Let f : X &rarr; Y be a dominant, finite type morphism of integral Noetherian schemes. We assume X is normal and Y regular. Let Sing(f) be the closed set of points of X where f isn&#8217;t smooth.</p>
+<p><b>Question:</b> Is codim Sing(f) &leq; 1 + dimension of generic fibre of f?</p>
+<p>The discussion in the previous post shows that the answer is yes when f is a morphism between smooth varieties over a field all of whose fibres have the same dimension and that the bound given is best possible.</p>
+<p>Dolgachev proved the answer to the question is yes in case X is a local complete intersection over Y (which happens for example if both X and Y are smooth over a common base scheme). There is a <a href="https://doi.org/10.1016/j.jalgebra.2013.01.006">paper of Rolf k\&#8221;allstr\&#8221;om</a> which has this result and much more.</p>
+<p>As we&#8217;ve seen in the previous post, the answer to the question is &#8220;yes&#8221; when f is generically finite, i.e., when the dimension of the generic fibre is 0.</p>
+<p>In the rest of this post we discuss the case where the generic fibre has dimension 1.</p>
+<p>Let f : X &rarr; Y be as above with generic fibre of dimension 1. Let x be a generic point of an irreducible component of Sing(f) with image y in Y. We want to show that dim O_{X, x} is at most 2. To get a contradiction, assume this is not the case.</p>
+<ol>
+<li> dim O_{X, x} = dim O_{Y, y} + 1 &#8211; trdeg &kappa;(x)/&kappa;(y) by the dimension formula.</li>
+<li> If dim O_{X, x} > 3, then dim O_{Y, y} > 2 and we can find a regular divisor Y_0 in Y passing through y = f(x) and thereby reduce the dimension (lots of details missing, but I think this probably can be made to work).</li>
+<li> Assume dim O_{X, x} = 3 so dim O_{Y, y} = 2 + t where t is the transcendence degree of &kappa;(x) over &kappa;(y).</li>
+</ol>
+<p>At the moment I have nothing intelligent to say in the case t &gt; 0; suggestions are welcome. Assume t = 0.</p>
+<p>In this case x is a closed point of the fibre. In particular, we see that, after shrinking X we may assume x is the only singular point of the fibre X_y. An argument similar to the one in miracle flatness shows that O_{Y, y} &rarr; O_{X, x} must be flat (here we use X is assumed to be normal).</p>
+<p>Thus we see that we have to show something like this: given the formal germ C of an isolated reduced curve singularity over an algebraically closed field k there cannot be a flat deformation D/A of C over a 2-dimensional complete regular local ring A with residue field k which smooths out the singularity in all directions (no singular fibres except for the central one).</p>
+<p>By an argument, which I think is due to Deligne, such a deformation can be globalized. In other words, given D/A we can find a proper flat family of geometrically connected curves X over Spec(A) and a closed point x of the closed fibre of X such that the completion of X at x is D and such that X is smooth over Spec(A) everywhere except at x. Essentially the way I think about this is that you first &#8220;attach&#8221; smooth projective curves to the germ C over k and then you use that deformations of curves always are smooth over the deformations of their singularities. In this construction we may and do assume the genera of the irreducible components of the closed fibre are > 1 and a fortiori that the genus of the generic fibre is > 1.</p>
+<p>Thus we reduce to showing: there cannot be a flat proper family X of geometrically connected curves over a 2 dimensional complete local regular Noetherian ring A which is smooth except at finitely many points of the special fibre such that all irreducible components of the special fibre have genus > 1.</p>
+<p>By a result of Moret-Bailly, given such an X there exists a different family X&#8217; over A which agrees with X over the punctured spectrum and whose special fibre is proper smooth over k. A simple argument (using the genera of components being > 1) shows that X and X&#8217; are isomorphic as schemes over A as desired.</p>
+<p><strong>Edit 4-28-2020</strong> The answer is no, see <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4559">Purity (Part 3)</a></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Purity (part 1)</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4440</link>
+					<comments>https://www.math.columbia.edu/~dejong/wordpress/?p=4440#comments</comments>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Sat, 07 Mar 2020 02:19:21 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4440</guid>
+
+					<description><![CDATA[Let f : X &#8594; Y be a dominant, finite type morphism of integral Noetherian schemes. We assume X is normal and Y regular. In this and the next blog post we define Sing(f) to be the closed set of &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4440">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Let f : X &rarr; Y be a dominant, finite type morphism of integral Noetherian schemes. We assume X is normal and Y regular. In this and the next blog post we define Sing(f) to be the closed set of points of X where f isn&#8217;t smooth and we define Disc(f) to be the image of Sing(f) in Y.</p>
+<p>In this setting a purity result is one that gives an upper bound on the codimension of Sing(f) in X or a lower bound on the codimension of Disc(f) in Y.</p>
+<p>When the relative dimension of f is 0, then the Stacks project has <a href="https://stacks.math.columbia.edu/tag/0BJE">Zariski-Nagata purity of branch locus</a>. If f is generically finite, then the Stacks project has <a href="https://stacks.math.columbia.edu/tag/0EA1">purity of ramification locus</a> and over fields we even have that the complement of Sing(f) is affine in X (<a href="https://stacks.math.columbia.edu/tag/0ECA">Tag 0ECA</a>).</p>
+<p>But what if the relative dimension is &gt; 0?</p>
+<p>For the rest of this blog post, let&#8217;s say f has relative dimension m &ge; 0 in the sense that every irreducible component of every fibre has dimension m.</p>
+<p>The simplest case is when Y and X are smooth over a field k with Y of dimension n and X of dimension n + m. In fact, let&#8217;s assume Y and X are both affine spaces over k. Picking coordinates x_1, &#8230;, x_{n + m} on X and coordinates y_1, &#8230;, y_n on Y and say f = (f_1, &#8230;, f_n) is given in coordinates by y_i = f_i(x_1, &#8230;, x_{n + m}) for some polynomials f_i. Then of course the locus Sing(f) is the set of points of X where the n &times; (n + m) matrix of partial derivatives (d f_i / d x_j) does not have maximal rank. We conclude immediately that codim Sing(f) &le; m + 1. Taking the image in Y we find codim Disc(f) &leq; m + 1.</p>
+<p>In fact, this is all you can say! Here are some examples to show this is true. (We assume the characteristic of k is not 2.)</p>
+<p>Relative dimension m = 0.</p>
+<p>(A) For n &ge; 1 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_n^2). Then Sing(f) = V(x_n) and Disc(f) = V(y_n).</p>
+<p>Relative dimension m = 1.</p>
+<p>(A) For n &ge; 1 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_nx_{n + 1}). Then Sing(f) = V(x_n, x_{n + 1}) and Disc(f) = V(y_n). Here Disc(f) is a divisor in Y and the map Sing(f) &rarr; Disc(f) is an isomorphism. This is the usual example of a family of nodal curves.</p>
+<p>(B) For n &ge; 2 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_1x_n + x_{n + 1}^2). Then Sing(f) = V(x_1, x_{n + 1}) and Disc(f) = V(y_1, y_n). Here Disc(f) has codimension 2 in Y, the fibres over points of Disc(f) are nonreduced, and the map Sing(f) &rarr; Disc(f) has fibres of dimension 1. Thanks to Will Sawin for finding this example.</p>
+<p>Relative dimension m = 2.</p>
+<p>(A) For n &ge; 1 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_n^2 + x_{n + 1}^2 + x_{n + 2}^2). Here Sing(f) = V(x_n, x_{n + 1}, x_{n + 2}) and Disc(f) = V(y_n). Here Disc(f) is a divisor in Y and the map Sing(f) &rarr; Disc(f) is an isomorphism. This is the usual example of a family of nodal surfaces.</p>
+<p>(B) For n &ge; 2 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_1 x_n + x_{n + 1}^2 + x_{n + 2}^2). Here Sing(f) = V(x_1, x_{n + 1}, x_{n + 2}) and Disc(f) = V(y_1, y_n). Here Disc(f) has codimension 2 in Y, the fibres of f over points of Disc(f) are planes meeting in lines, and the nap Sing(f) &rarr; Disc(f) has fibres of dimension 1.</p>
+<p>(C) For n &ge; 3 we have the example (f_1, &#8230;, f_n) = (x_1, &#8230;, x_{n &#8211; 1}, x_1 x_n + x_2 x_{n + 1} + x_{n + 2}^2). Here Sing(f) = V(x_1, x_2, x_{n + 2}) and Disc(f) = V(y_1, y_2, y_n). Here Disc(f) has codimension 3 in Y, the fibres of f over points of Disc(f) are nonreduced, and the map Sing(f) &rarr; Disc(f) has fibres of dimension 2.</p>
+<p>It seems pretty clear that we can keep going in this manner for arbitrary m. Enjoy!</p>
+<p><b>Edit 3/8/2020</b> Will Sawin gives this general example: the map from A^{2n+m} with coordinates (x_1,&#8230;,x_n, y_1,&#8230;,y_n,z_1,&#8230;.z_m) to A^{n+1} given by (x_1,&#8230;,x_n , x_1y_1+ &#8230;. + x_ny_n + z_1^2 + &#8230;. + z_m^2) is a map with (n+m-1)-dimensional fibers which has a codimension n+1 locus on the base where the codimension of the singularities of the fiber is exactly m-1 (the locus where the x_i and z_i all vanish), showing that all such pairs appear sharply.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~dejong/wordpress/?feed=rss2&#038;p=4440</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Applications to Stacks project workshop</title>
+		<link>https://www.math.columbia.edu/~dejong/wordpress/?p=4436</link>
+		
+		<dc:creator><![CDATA[Johan]]></dc:creator>
+		<pubDate>Sat, 11 Jan 2020 20:22:06 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~dejong/wordpress/?p=4436</guid>
+
+					<description><![CDATA[The deadline for applications to the Stacks project workshop is January 31st. Don&#8217;t miss out. You can sign up by filling out a form on the website. Email me if you have any questions about how it works. You can &#8230; <a href="https://www.math.columbia.edu/~dejong/wordpress/?p=4436">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>The deadline for applications to the Stacks project workshop is January 31st. Don&#8217;t miss out. You can sign up by filling out a form <a href="https://stacks.github.io/">on the website</a>. Email me if you have any questions about how it works. You can also read more about what happened during the previous workshop <a href="https://stacks.github.io/2017">here</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
