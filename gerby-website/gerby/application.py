@@ -183,3 +183,6 @@ import gerby.views.tag
 
 # Stacks project specific pages
 import gerby.views.stacks
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
