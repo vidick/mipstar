@@ -15,6 +15,7 @@ from playhouse.sqlite_ext import *
 from gerby.configuration import *
 from gerby.database import *
 
+print(os.path.isfile(DATABASE))
 db.init(DATABASE)
 
 # Flask setup code
