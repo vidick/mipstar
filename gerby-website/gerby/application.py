@@ -6,6 +6,7 @@ import socket
 import feedparser
 import re
 from flask import Flask, render_template, request, send_from_directory
+from dotenv import load_dotenv
 #import flask_profiler
 
 from peewee import *
@@ -185,4 +186,5 @@ import gerby.views.tag
 import gerby.views.stacks
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+  load_dotenv('.flaskenv')
+  app.run(host='0.0.0.0')
