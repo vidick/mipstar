@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from peewee import *
 from playhouse.sqlite_ext import *
 
+from configuration import *
 from gerby.configuration import *
 from gerby.database import *
 
