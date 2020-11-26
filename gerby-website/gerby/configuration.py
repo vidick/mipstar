@@ -1,6 +1,6 @@
 # configuration for the website
-COMMENTS = "../comments.sqlite"
-DATABASE = "../hello-world.sqlite"
+COMMENTS = "comments.sqlite"
+DATABASE = "hello-world.sqlite"
 UNIT = "section"
 DEPTH = 0
 
