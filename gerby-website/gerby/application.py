@@ -16,6 +16,7 @@ from gerby.configuration import *
 from gerby.database import *
 
 db.init(DATABASE)
+print(db)
 
 # Flask setup code
 app = Flask(__name__)
