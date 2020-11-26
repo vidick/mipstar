@@ -1,6 +1,6 @@
 # configuration for the website
-COMMENTS = "/root/mipstar/gerby-website/comments.sqlite"
-DATABASE = "/root/mipstar/gerby-website/hello-world.sqlite"
+COMMENTS = "../comments.sqlite"
+DATABASE = "../hello-world.sqlite"
 UNIT = "section"
 DEPTH = 0
 
