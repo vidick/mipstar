@@ -17,7 +17,6 @@ from gerby.database import *
 
 print(os.path.isfile(DATABASE))
 print(os.getcwd())
-print(os.path.isfile(os.path.join(os.getcwd(), DATABASE)))
 db.init(DATABASE)
 
 # Flask setup code
@@ -107,6 +106,10 @@ def show_index():
       update["entries"].append(entry)
 
     updates.append(update)
+
+  print(os.path.isfile(DATABASE))
+  print(os.path.isfile(COMMENTS))
+  print(os.getcwd())
 
   comments = []
   if Comment.table_exists():
