@@ -17,6 +17,7 @@ from gerby.database import *
 
 print(os.path.isfile(DATABASE))
 print(os.getcwd())
+print(os.path.isfile(os.path.join(os.getcwd(), DATABASE)))
 db.init(DATABASE)
 
 # Flask setup code
