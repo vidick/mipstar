@@ -168,7 +168,7 @@ def show_robots():
 
 @app.route("/payload", methods=['POST'])
 def post_payload():
-  req_body = str(request.json)
+  req_body = str(request.get_data())
   output = open('test.txt', 'w')
   print(req_body, file=output)
   output.close()
