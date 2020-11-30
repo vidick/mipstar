@@ -168,12 +168,12 @@ def show_robots():
 
 @app.route("/payload", methods=['POST'])
 def post_payload():
-  req_body = str(request.get_data())
+  req_body = request.data
   output = open('test.txt', 'w')
   print(req_body, file=output)
   output.close()
 
-  signature = 'sha256=' + hmac.new(bytes(SECRET_TOKEN, 'utf-8'), msg=bytes(req_body, 'utf-8'), digestmod=hashlib.sha256).hexdigest()
+  signature = 'sha256=' + hmac.HMAC(key=SECRET_TOKEN.encode(), msg=req_body, digestmod=hashlib.sha256).hexdigest()
   print(signature)
   print(request.headers['X-Hub-Signature-256'])
   print("Do signatures match?", hmac.compare_digest(bytes(signature, 'utf-8'), bytes(request.headers['X-Hub-Signature-256'], 'utf-8')))
