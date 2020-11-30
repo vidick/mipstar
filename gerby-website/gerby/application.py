@@ -24,7 +24,7 @@ app.config.from_object(__name__)
 
 # load secret token
 load_dotenv('.env')
-SECRECT_TOKEN = os.getenv('SECRET_TOKEN')
+SECRECT_TOKEN = str(os.getenv('SECRET_TOKEN'))
 
 feeds = {
   "github": {
