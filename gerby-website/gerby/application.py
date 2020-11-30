@@ -22,7 +22,7 @@ db.init(DATABASE)
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-# load token from .env
+# load secret token
 load_dotenv('.env')
 SECRECT_TOKEN = os.getenv('SECRET_TOKEN')
 
