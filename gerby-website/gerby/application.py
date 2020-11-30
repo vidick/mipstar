@@ -183,8 +183,6 @@ import gerby.views.search
 import gerby.views.tag
 
 
-#flask_profiler.init_app(app)
-
 # Stacks project specific pages
 import gerby.views.stacks
 
