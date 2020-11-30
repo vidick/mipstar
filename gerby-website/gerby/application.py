@@ -169,7 +169,9 @@ def show_robots():
 @app.route("/payload", methods=['POST'])
 def post_payload():
   req_body = request.json
-  print(req_body)
+  output = open('test.txt', 'w')
+  print(req_body, file=output)
+  output.close()
 
   signature = hmac.new(SECRECT_TOKEN, msg=req_body, digestmod=hashlib.sha256).hexdigest()
   print(request.headers['X-Hub-Signature-256'])
