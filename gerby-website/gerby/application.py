@@ -7,6 +7,8 @@ import feedparser
 import re
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
+import hmac
+import hashlib
 #import flask_profiler
 
 from peewee import *
@@ -21,16 +23,8 @@ db.init(DATABASE)
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-#app.config["flask_profiler"] = {
-#    "enabled": "true",
-#    "storage": {
-#        "engine": "sqlite"
-#    },
-#    "basicAuth": {
-#        "enabled": False,
-#    },
-#    "ignore": ["^/static/.*"]
-#}
+load_dotenv()
+SECRECT_TOKEN = os.getenv('SECRET_TOKEN')
 
 feeds = {
   "github": {
@@ -94,16 +88,16 @@ def show_index():
   update_feeds()
 
   updates = []
-  for label, feed in feeds.items():
-    update = {"title": "<a href='" + feed["link"] + "'>" + feed["title"] + "</a>", "entries": []}
+  # for label, feed in feeds.items():
+  #   update = {"title": "<a href='" + feed["link"] + "'>" + feed["title"] + "</a>", "entries": []}
 
-    d = feedparser.parse(feedsDirectory + "/" + label + ".feed")
-    for i in range(min(5, len(d.entries))):
-      entry = "<span class='date'>" + time.strftime("%d %b %Y", d.entries[i].updated_parsed) + "</span>: "
-      entry = entry + "<a href='" + d.entries[i].link + "'>" + d.entries[i].title + "</a>"
-      update["entries"].append(entry)
+  #   d = feedparser.parse(feedsDirectory + "/" + label + ".feed")
+  #   for i in range(min(5, len(d.entries))):
+  #     entry = "<span class='date'>" + time.strftime("%d %b %Y", d.entries[i].updated_parsed) + "</span>: "
+  #     entry = entry + "<a href='" + d.entries[i].link + "'>" + d.entries[i].title + "</a>"
+  #     update["entries"].append(entry)
 
-    updates.append(update)
+  #   updates.append(update)
 
   comments = []
   if Comment.table_exists():
@@ -171,6 +165,15 @@ def show_chapters():
 def show_robots():
   return send_from_directory(app.static_folder, request.path[1:])
 
+
+@app.route("/payload", methods=['POST'])
+def post_payload():
+  req_body = request.json
+  print(req_body)
+
+  signature = hmac.new(SECRECT_TOKEN, msg=req_body, digestmod=hashlib.sha256).hexdigest()
+  print(request.headers['X-Hub-Signature-256'])
+  print("Do signatures match?", hmac.compare_digest(signature, request.headers['X-Hub-Signature-256']))
 
 app.jinja_env.add_extension('jinja2.ext.do')
 
