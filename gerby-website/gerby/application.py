@@ -9,7 +9,6 @@ from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
 import hmac
 import hashlib
-#import flask_profiler
 
 from peewee import *
 from playhouse.sqlite_ext import *
