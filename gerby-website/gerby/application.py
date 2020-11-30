@@ -173,9 +173,9 @@ def post_payload():
   print(req_body, file=output)
   output.close()
 
-  signature = hmac.new(bytes(SECRECT_TOKEN, 'utf-8'), msg=bytes(req_body, 'utf-8'), digestmod=hashlib.sha256).hexdigest()
+  signature = 'sha256=' + hmac.new(bytes(SECRECT_TOKEN, 'utf-8'), msg=bytes(req_body, 'utf-8'), digestmod=hashlib.sha256).hexdigest()
   print(request.headers['X-Hub-Signature-256'])
-  print("Do signatures match?", hmac.compare_digest(bytes(signature, 'utf-8'), request.headers['X-Hub-Signature-256']))
+  print("Do signatures match?", hmac.compare_digest(bytes(signature, 'utf-8'), bytes(request.headers['X-Hub-Signature-256'], 'utf-8')))
 
 app.jinja_env.add_extension('jinja2.ext.do')
 
