@@ -169,16 +169,14 @@ def show_robots():
 @app.route("/payload", methods=['POST'])
 def post_payload():
   req_body = request.data
-  output = open('test.txt', 'w')
-  print(req_body, file=output)
-  output.close()
 
   signature = 'sha256=' + hmac.HMAC(key=SECRET_TOKEN.encode(), msg=req_body, digestmod=hashlib.sha256).hexdigest()
-  print(signature)
-  print(request.headers['X-Hub-Signature-256'])
-  print("Do signatures match?", hmac.compare_digest(bytes(signature, 'utf-8'), bytes(request.headers['X-Hub-Signature-256'], 'utf-8')))
+  verified = hmac.compare_digest(bytes(signature, 'utf-8'), bytes(request.headers['X-Hub-Signature-256'], 'utf-8'))
+  print("Do signatures match?", verified)
 
-  return jsonify(message='Success', statusCode=200), 200
+  if verified:
+    return 'Success', 200
+  return 'Forbidden', 403
 
 app.jinja_env.add_extension('jinja2.ext.do')
 
