@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, send_from_directory, jsonify
 from dotenv import load_dotenv
 import hmac
 import hashlib
+import subprocess
 
 from peewee import *
 from playhouse.sqlite_ext import *
@@ -175,6 +176,7 @@ def post_payload():
   print("Do signatures match?", verified)
 
   if verified:
+    update = subprocess.call(['python3', 'update.py'])
     return 'Success', 200
   return 'Forbidden', 403
 
