@@ -25,6 +25,16 @@ if not err:
     log.error(e)
 
     if out:
+        gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
+        o, e = gen_tags.communicate()
+        log.info(o)
+        log.error(e)
+
+        gen_doc = subprocess.Popen(['plastex', '--renderer=Gerby', './document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
+        o, e = gen_doc.communicate()
+        log.info(o)
+        log.error(e)
+
         update = subprocess.Popen(['python3', 'update.py'], cwd='/root/mipstar/gerby-website/gerby/', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         o, e = update.communicate()
         log.info(o)
