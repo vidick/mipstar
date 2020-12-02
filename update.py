@@ -40,6 +40,7 @@ if not err:
     if e:
         log.error('\n' + ''.join(e))
 
+    print(out)
     if out:
         # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
         # o, e = gen_tags.communicate()
