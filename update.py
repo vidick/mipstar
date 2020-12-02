@@ -20,7 +20,7 @@ log.setLevel(logging.INFO)
 # diff = subprocess.Popen(['git', 'diff', 'master:document.tex', '--', 'document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
 # out, err = diff.communicate()
 log.info('  Checking diff between local and remote document.tex')
-stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git diff master:document.tex -- document.tex')
+stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git fetch --prune && git diff origin/master:document.tex -- document.tex')
 out = stdout.readlines()
 err = stderr.readlines()
 if out:
@@ -31,8 +31,8 @@ if err:
 if not err:
     # pull = subprocess.Popen(['git', 'pull', 'origin', 'master'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = pull.communicate()
-    log.info('  Pulling from remote master branch')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git pull origin master')
+    log.info('  Merging from remote master branch')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git merge origin/master')
     o = stdout.readlines()
     e = stderr.readlines()
     if o:
