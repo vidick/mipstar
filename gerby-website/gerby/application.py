@@ -176,7 +176,7 @@ def post_payload():
   print("Do signatures match?", verified)
 
   if verified:
-    subprocess.call(['python3', 'update.py'])
+    subprocess.call(['sh', './update.sh'])
     return 'Success', 200
   return 'Forbidden', 403
 
