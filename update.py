@@ -14,7 +14,7 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect('134.122.114.22', username='root', password=AUTH)
 
 logging.basicConfig(stream=sys.stdout)
-log = logging.getLogger(__name__)
+log = logging.getLogger('Boostrapper')
 log.setLevel(logging.INFO)
 
 # diff = subprocess.Popen(['git', 'diff', 'master:document.tex', '--', 'document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
