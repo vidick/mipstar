@@ -4,6 +4,7 @@ import subprocess
 import logging
 from dotenv import load_dotenv
 import paramiko
+from progress.spinner import Spinner
 
 load_dotenv()
 AUTH = str(os.getenv('AUTH'))
@@ -57,6 +58,12 @@ if out:
     log.info('  Rendering document.tex using plastex')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && plastex --renderer=Gerby ./document.tex')
     stdin.write('y\n')
+
+    spinner = Spinner('Working ')
+    while not stdout.channel.exit_status_ready():
+        spinner.next()
+    spinner.finish()
+
     o = stdout.readlines()
     e = stderr.readlines()
     if o:
@@ -68,6 +75,12 @@ if out:
     # o, e = update.communicate()
     log.info('  Updating database with new tags')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && python3 update.py')
+
+    spinner = Spinner('Working ')
+    while not stdout.channel.exit_status_ready():
+        spinner.next()
+    spinner.finish()
+
     o = stdout.readlines()
     e = stderr.readlines()
     if o:
@@ -87,3 +100,5 @@ if o:
     log.info(''.join(o))
 if e:
     log.error(''.join(e))
+
+ssh.close()
