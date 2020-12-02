@@ -176,7 +176,7 @@ def post_payload():
   print("Do signatures match?", verified)
 
   if verified:
-    subprocess.Popen(['update.sh'])
+    subprocess.Popen(['/root/mipstar/update.sh'])
     return 'Success', 200
   return 'Forbidden', 403
 
