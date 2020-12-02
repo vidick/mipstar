@@ -56,6 +56,7 @@ if out:
     # o, e = gen_doc.communicate()
     log.info('  Rendering document.tex using plastex')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && plastex --renderer=Gerby ./document.tex')
+    stdin.write('y\n')
     o = stdout.readlines()
     e = stderr.readlines()
     if o:
