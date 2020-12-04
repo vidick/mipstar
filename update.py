@@ -71,6 +71,15 @@ if out:
     if e:
         log.error(''.join(e))
 
+    log.info('  Deleting old database file')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && rm hello-world.sqlite')
+    o = stdout.readlines()
+    e = stderr.readlines()
+    if o:
+        log.info(''.join(o))
+    if e:
+        log.error(''.join(e))
+
     # update = subprocess.Popen(['python3', 'update.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/gerby-website/gerby/')
     # o, e = update.communicate()
     log.info('  Updating database with new tags')
