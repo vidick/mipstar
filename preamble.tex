@@ -1,0 +1,48 @@
+
+\documentclass{amsart}
+
+% For dealing with references we use the comment environment
+\usepackage{verbatim}
+\newenvironment{reference}{\comment}{\endcomment}
+%\newenvironment{reference}{}{}
+\newenvironment{slogan}{\comment}{\endcomment}
+\newenvironment{history}{\comment}{\endcomment}
+
+
+% We use multicol for the list of chapters between chapters
+\usepackage{multicol}
+
+% This is generall recommended for better output
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+% For cross-file-references
+\usepackage{xr-hyper}
+
+% Package for hypertext links:
+\usepackage{hyperref}
+
+% For any local file, say "hello.tex" you want to link to please
+% use \externaldocument[hello-]{hello}
+\externaldocument[introduction-]{introduction}
+\externaldocument[paulibraiding-]{paulibraiding}
+
+
+% Theorem environments.
+%
+\theoremstyle{plain}
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{lemma}[subsection]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{example}[subsection]{Example}
+\newtheorem{exercise}[subsection]{Exercise}
+\newtheorem{situation}[subsection]{Situation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsection]{Remark}
+\newtheorem{remarks}[subsection]{Remarks}
+
+\numberwithin{equation}{subsection}
