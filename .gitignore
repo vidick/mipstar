@@ -16,3 +16,9 @@ document.pdf
 *.synctex
 
 *.toc
+
+*.blg
+
+*.out
+
+*.pdf
