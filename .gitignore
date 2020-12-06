@@ -1,3 +1,16 @@
 *.sqlite
 *.env
 *.vscode
+*.aux
+
+*.bbl
+
+*.log
+
+document.blg
+
+document.out
+
+document.pdf
+
+*.synctex
