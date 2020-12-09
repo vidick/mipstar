@@ -1,12 +1,11 @@
 
 %\documentclass{stacks-project-book}
-\documentclass{book}
+\documentclass{amsart}
 \usepackage{amsmath}
 
 % For dealing with references we use the comment environment
 \usepackage{verbatim}
 \newenvironment{reference}{\comment}{\endcomment}
-%\newenvironment{reference}{}{}
 \newenvironment{slogan}{\comment}{\endcomment}
 \newenvironment{history}{\comment}{\endcomment}
 
@@ -27,6 +26,11 @@
 % For any local file, say "hello.tex" you want to link to please
 % use \externaldocument[hello-]{hello}
 \externaldocument[introduction-]{introduction}
+\externaldocument[-]{}
+\externaldocument[nonlocalgames-]{}
+\externaldocument[complexitytheory-]{}
+\externaldocument[operatoralgebras-]{}
+
 \externaldocument[paulibraiding-]{paulibraiding}
 
 
