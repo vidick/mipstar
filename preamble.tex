@@ -40,6 +40,8 @@
 \newtheorem{theorem}[subsection]{Theorem}
 \newtheorem{proposition}[subsection]{Proposition}
 \newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{fact}[subsection]{Fact}
+
 
 \theoremstyle{definition}
 \newtheorem{definition}[subsection]{Definition}
@@ -57,6 +59,17 @@
 %%%%%%%%%%
 %% Macros
 
+% Notation
+
+\newcommand{\cal}[1]{\mathcal{#1}}
+\newcommand{\mH}{\mathcal{H}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mX}{\mathcal{X}}
+\newcommand{\mY}{\mathcal{Y}}
+\newcommand{\mR}{\mathcal{R}}
+\newcommand{\mG}{\mathcal{G}}
+
 
 % Complexity classes
 \newcommand{\NP}{\textsc{NP}}
@@ -64,15 +77,38 @@
 % Probability
 
 \newcommand{\Es}[1]{\textsc{E}_{#1}}
+\newcommand{\E}{\mathop{\mathbb{E}}\displaylimits} % Expectation
 
-% Linear algebra
+
+% Math
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
 
 \newcommand{\Tr}{\mbox{\rm Tr}}
 \newcommand{\Id}{\ensuremath{\mathop{\rm Id}\nolimits}}
+
+\newcommand{\norm}[1]{\left\| {#1} \right\|}
+
+\newcommand{\eval}{\mathrm{eval}}
+\newcommand{\poly}{\mathrm{poly}}
+
+
 
 % Quantum notation
 
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\bra}[1]{\langle#1|}
+\newcommand{\ketbra}[2]{\ket{#1}\!\bra{#2}}
 \newcommand{\proj}[1]{\ket{#1}\!\bra{#1}}
 
+% Games
+
+\newcommand{\game}{\mathfrak{G}}
+\newcommand{\strategy}{{S}}
+\newcommand{\val}{\ensuremath{\mathrm{val}}}
+\newcommand{\Ent}{\mathcal{E}}
+\newcommand{\alice}{A}
+\newcommand{\bob}{B}
+
+\newcommand{\abc}[1][\delta]{\otimes I_\bob \simeq_{#1} I_\alice \otimes}
