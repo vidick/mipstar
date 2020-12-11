@@ -5,8 +5,8 @@ UNIT = "section"
 DEPTH = 0
 
 # configuration for the import
-PATH = "document"
-PAUX = "document.paux"
+PATH = "make_doc"
+PAUX = "make_doc.paux"
 TAGS = "tags"
 PDF = ""
 
