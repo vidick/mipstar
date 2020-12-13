@@ -37,7 +37,7 @@ out = []
 err = []
 for chapter in chapters:
     chapter = chapter.rstrip()
-    stdin, stdout, stderr = ssh.exec_command(f'git diff origin/master:{chapter} -- {chapter}')
+    stdin, stdout, stderr = ssh.exec_command(f'cd /root/mipstar && git diff origin/master:{chapter} -- {chapter}')
     out += stdout.readlines()
     err += stderr.readlines()
 if out:
