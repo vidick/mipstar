@@ -45,7 +45,6 @@ with open('make_doc.tex', 'w') as doc:
                     continue
                 if line.find('\\title{') == 0:
                     line = line.replace('\\title{', '\\chapter{')
-                    print(line)
                 if line.find('\\maketitle') == 0:
                     continue
                 if line.find('\\tableofcontents') == 0:

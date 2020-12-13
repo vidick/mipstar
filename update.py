@@ -61,7 +61,7 @@ if out:
     # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_tags.communicate()
     log.info('  Updating document tags')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 tagger.py make_doc.tex > tags')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_doc.py && python3 tagger.py make_doc.tex > tags')
     o = stdout.readlines()
     e = stderr.readlines()
     if o:
