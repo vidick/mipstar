@@ -22,6 +22,9 @@ with open('make_doc.tex', 'w') as doc:
                 continue
             if line.find('xr-hyper') >= 0:
                 continue
+            if line.find('\\ensuremath{') >= 0:
+                line = line.replace('\\ensuremath{', '{')
+
             print(line, end='', file=doc)
 
     print('\\begin{document}', file=doc)
@@ -55,8 +58,6 @@ with open('make_doc.tex', 'w') as doc:
                     continue
                 if line.find('\\end{document}') == 0:
                     continue
-                if line.find('\\ensuremath{') >= 0:
-                    line = line.replace('\\ensuremath{', '{')
                 print(line, end='', file=doc)
 
     print('\\bibliography{my}', file=doc)
