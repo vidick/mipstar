@@ -3,6 +3,10 @@ with open('make_doc.tex', 'w') as doc:
     print('\\usepackage{amsmath}', file=doc)
     
     with open('preamble.tex', 'r') as preamble:
+        next(preamble)
+        next(preamble)
+        next(preamble)
+
         for line in preamble:
             if line.find('%') == 0:
                 continue
