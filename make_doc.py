@@ -24,6 +24,8 @@ with open('make_doc.tex', 'w') as doc:
                 continue
             if line.find('\\ensuremath{') >= 0:
                 line = line.replace('\\ensuremath{', '{')
+            if line.find('\\displaylimits') >= 0:
+                line = line.replace('\\displaylimits', '')
 
             print(line, end='', file=doc)
 
