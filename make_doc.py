@@ -1,6 +1,7 @@
 with open('make_doc.tex', 'w') as doc:
-    print('\\documentclass{book}', file=doc)
+    # print('\\documentclass{book}', file=doc)
     print('\\usepackage{amsmath}', file=doc)
+    print('\\usepackage{amsbook}', file=doc)
     
     with open('preamble.tex', 'r') as preamble:
         next(preamble)
