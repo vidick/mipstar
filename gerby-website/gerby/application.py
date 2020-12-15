@@ -172,6 +172,7 @@ def test():
 def send_pdf(filename):
   print('hi')
   print(os.path.join(app.static_folder, 'pdfs'))
+  print(filename)
   return 'Hi', 200 #send_from_directory(os.path.join(app.static_folder, 'pdfs'), filename)
 
 

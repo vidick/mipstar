@@ -25,7 +25,7 @@ chapter_names, chapters = get_chapters()
 for i, chapter in enumerate(chapters):
     chapname = chapter_names[i]
 
-    with open(os.path.join('pdfs', chapter), 'w') as tex_file:
+    with open(os.path.join('./gerby-website/gerby/static/pdfs', chapter), 'w') as tex_file:
         with open(chapter) as texfile:
             for line in texfile:
                 # add marginnote package first
