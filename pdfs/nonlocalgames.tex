@@ -1,146 +1,36 @@
-\documentclass{book}
-\usepackage{amsmath}
+\input{preamble}
 
-\usepackage{verbatim}
-
-
-
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-
-
-\usepackage{hyperref}
-
-
-
-
-\theoremstyle{plain}
-\newtheorem{theorem}[subsection]{Theorem}
-\newtheorem{proposition}[subsection]{Proposition}
-\newtheorem{lemma}[subsection]{Lemma}
-\newtheorem{fact}[subsection]{Fact}
-
-
-\theoremstyle{definition}
-\newtheorem{definition}[subsection]{Definition}
-\newtheorem{example}[subsection]{Example}
-\newtheorem{exercise}[subsection]{Exercise}
-\newtheorem{situation}[subsection]{Situation}
-
-\theoremstyle{remark}
-\newtheorem{remark}[subsection]{Remark}
-\newtheorem{remarks}[subsection]{Remarks}
-
-\numberwithin{equation}{subsection}
-
-
-
-
-\newcommand{\cal}[1]{\mathcal{#1}}
-\newcommand{\mH}{\mathcal{H}}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\mA}{\mathcal{A}}
-\newcommand{\mX}{\mathcal{X}}
-\newcommand{\mY}{\mathcal{Y}}
-\newcommand{\mR}{\mathcal{R}}
-\newcommand{\mG}{\mathcal{G}}
-
-
-\newcommand{\NP}{{NP}}
-
-
-\newcommand{\Es}[1]{{E}_{#1}}
-\newcommand{\E}{\mathop{\mathbb{E}}} % Expectation
-
-
-
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\N}{\mathbb{N}}
-
-\newcommand{\Tr}{\mbox{\rm Tr}}
-\newcommand{\Id}{{\mathop{\rm Id}\nolimits}}
-
-\newcommand{\norm}[1]{\left\| {#1} \right\|}
-
-\newcommand{\eval}{\mathrm{eval}}
-\newcommand{\poly}{\mathrm{poly}}
-
-
-
-
-\newcommand{\ket}[1]{|#1\rangle}
-\newcommand{\bra}[1]{\langle#1|}
-\newcommand{\ketbra}[2]{\ket{#1}\!\bra{#2}}
-\newcommand{\proj}[1]{\ket{#1}\!\bra{#1}}
-
-
-\newcommand{\game}{\mathfrak{G}}
-\newcommand{\strategy}{{S}}
-\newcommand{\val}{{\mathrm{val}}}
-\newcommand{\Ent}{\mathcal{E}}
-\newcommand{\alice}{A}
-\newcommand{\bob}{B}
-
-\newcommand{\abc}[1][\delta]{\otimes I_\bob \simeq_{#1} I_\alice \otimes}
+\usepackage{marginnote}
 \begin{document}
-% chapter-introduction
-
-% OK, start here.
-%
-
-\chapter{Introduction}
-\label{introduction}
-
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-\part{Preliminaries}
-\label{book-part-preliminaries}
-
-\section{Introduction}
-\label{section:introduction}
-
-In this chapter we give an introduction. [edit test 14]
-
-\section{Notation}
-\label{section-notation}
-
-This is an equation:
-\begin{equation}
-\label{eq:me-state}
- \ket{\phi_d} \,=\,\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}\;.
-\end{equation}
-
-
-
-
-
-% chapter-nonlocalgames
-
 
 \part{Background}
 \label{book-part-background}
 
 
-\chapter{Nonlocal games}
+\title{Nonlocal games}
+\hypertarget{0006}{}
+\reversemarginpar\marginnote{\textnormal{0006}}
 \label{nonlocalgames}
 
+\maketitle
 
 % \phantomsection
 % \label{section-phantom}
 
+\tableofcontents
 
 
 We introduce definitions associated with nonlocal games and strategies that will
 be used throughout.
 
+\hypertarget{0007}{}
+\reversemarginpar\marginnote{\textnormal{0007}}
 \section{Games and strategies}
 \label{sec:strat}
 
 \begin{definition}[Two-player one-round games]
+\hypertarget{0008}{}
+\reversemarginpar\marginnote{\textnormal{0008}}
   \label{def:game}
   A \emph{two-player one-round game} $\game$ is specified by a tuple
   $(\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ where
@@ -157,6 +47,8 @@ be used throughout.
 \end{definition}
 
 \begin{definition}[Tensor product strategies]
+\hypertarget{0009}{}
+\reversemarginpar\marginnote{\textnormal{0009}}
   \label{def:tensor-product-strategy}
   A \emph{tensor product strategy} $\strategy$ for a game $\game = (\cal{X},
   \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\ket{\psi}, A, B)$ where
@@ -171,6 +63,8 @@ be used throughout.
 \end{definition}
 
 \begin{definition}[Tensor product value]
+\hypertarget{000A}{}
+\reversemarginpar\marginnote{\textnormal{000A}}
   \label{def:tensor-product-value}
 	The \emph{tensor product value} of a tensor product strategy $\strategy =
   (\ket{\psi}, A, B)$  with respect to a game $\game=(\cal{X}, \cal{Y}, \cal{A},
@@ -199,12 +93,16 @@ be used throughout.
 
 
 \begin{definition}[Projective strategies]
+\hypertarget{000B}{}
+\reversemarginpar\marginnote{\textnormal{000B}}
   \label{def:projective-strategy}
   We say that a strategy $\strategy = (\ket{\psi}, A, B)$ is \emph{projective} if
   all the measurements $\{A^x_a\}_a$ and $\{B^y_b\}_b$ are projective.
 \end{definition}
 
 \begin{remark}
+\hypertarget{000C}{}
+\reversemarginpar\marginnote{\textnormal{000C}}
   \label{rem:symmetric-games}
 	A game $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is
   \emph{symmetric} if the question and answer alphabets are the same for both
@@ -224,6 +122,8 @@ be used throughout.
 \end{remark}
 
 \begin{lemma}
+\hypertarget{000D}{}
+\reversemarginpar\marginnote{\textnormal{000D}}
   \label{lem:symmetric-strat}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a symmetric game
   such that $\val^*(\game) = 1-\eps$ for some $\eps\geq 0$.
@@ -269,6 +169,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{proof}
 
 \begin{definition}
+\hypertarget{000E}{}
+\reversemarginpar\marginnote{\textnormal{000E}}
   \label{def:comm-strategy}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a game, and let
   $\strategy = (\ket{\psi}, A, B)$ be a strategy for $\game$ such that the
@@ -282,6 +184,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}[Consistent measurements]
+\hypertarget{000F}{}
+\reversemarginpar\marginnote{\textnormal{000F}}
   \label{def:consistent-measurement}
   Let $\cal{A}$ be a finite set, let $\ket{\psi} \in \mH \otimes \mH$ a
   state, and $\{ M_a \}_{a \in \cal{A}}$ a projective measurement on
@@ -295,6 +199,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}[Consistent strategies]
+\hypertarget{000G}{}
+\reversemarginpar\marginnote{\textnormal{000G}}
   \label{def:consistent-strategy}
 	Let $\strategy = (\ket{\psi}, A, B)$ be a projective strategy with state
   $\ket{\psi} \in \mH \otimes \mH$, for some Hilbert space~$\mH$, which is
@@ -307,6 +213,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}
+\hypertarget{000H}{}
+\reversemarginpar\marginnote{\textnormal{000H}}
   \label{def:spcc}
   We say that a strategy $\strategy$ for a game $\game$ is \emph{PCC} if it is projective, consistent, and commuting for $\game$.
   Additionally, we say that a PCC strategy $\strategy$ is \emph{SPCC} if it is furthermore symmetric.
@@ -329,6 +237,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{remark}
 
 \begin{definition}[Entanglement requirements of a game]
+\hypertarget{000J}{}
+\reversemarginpar\marginnote{\textnormal{000J}}
   \label{def:ent}
 	For all games $\game$ and $\nu \in [0, 1]$, let $\Ent(\game, \nu)$ denote the
   minimum integer $d$ such that there exists a finite dimensional tensor product
@@ -343,6 +253,8 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 We introduce several distance measures that are used throughout.
 
 \begin{definition}[Distance between states]
+\hypertarget{000K}{}
+\reversemarginpar\marginnote{\textnormal{000K}}
   \label{def:state-distance}
 
 	Let $\{\ket{\psi_n}\}_{n\in \N}$ and $\{\ket{\psi'_n}\}_{n\in \N}$ be two
@@ -356,6 +268,8 @@ We introduce several distance measures that are used throughout.
 \end{definition}
 
 \begin{definition}[Consistency between POVMs]
+\hypertarget{000L}{}
+\reversemarginpar\marginnote{\textnormal{000L}}
   \label{def:consistency}
 	Let $\mX$ be a finite set and $\mu$ a distribution on $\mX$.
   Let $\ket{\psi} \in \cal{H}_A \otimes \cal{H}_B$ be a quantum state, and for
@@ -379,6 +293,8 @@ the singleton distribution, according to Definition~\ref{def:consistency} (and
 vice-versa).
 
 \begin{definition}[Distance between POVMs]
+\hypertarget{000M}{}
+\reversemarginpar\marginnote{\textnormal{000M}}
   \label{def:povm-distance}
 	Let $\mX$ be a finite set and $\mu$ a distribution on $\mX$. 
   Let $\ket{\psi} \in \cal{H}$ be a quantum state, and for all $x\in \mX$,
@@ -394,6 +310,8 @@ vice-versa).
 \end{definition}
 
 \begin{definition}[Distance between strategies]
+\hypertarget{000N}{}
+\reversemarginpar\marginnote{\textnormal{000N}}
   \label{def:strategy-distance}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a nonlocal game
   and let $\strategy = (\psi, A, B)$, $\strategy' = (\psi', A', B')$ be 
@@ -416,24 +334,34 @@ Readers are referred to Sections 4.4 and 4.5 in~\cite{NW19} for additional
 discussion and proofs.
 
 \begin{fact}[Fact 4.13 and Fact 4.14 in~\cite{NW19}]
+\hypertarget{000P}{}
+\reversemarginpar\marginnote{\textnormal{000P}}
   \label{fact:agreement}
   For POVMs $\{A^x_a\}$ and $\{B^x_a\}$, the following hold.
   \begin{enumerate}
   \item If $A^x_a \otimes I_\bob \simeq_\delta I_\alice \otimes B^x_a$ then
     $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$.
+\hypertarget{000Q}{}
+\reversemarginpar\marginnote{\textnormal{000Q}}
     \label{item:consistency-implies-approx}
   \item If $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$
     \emph{and} $\{A^x_a\}$ and $\{B^x_a\}$ are projective measurements, then
     $A^x_a \otimes I_\bob \simeq_\delta I_\alice \otimes B^x_a$.
+\hypertarget{000R}{}
+\reversemarginpar\marginnote{\textnormal{000R}}
     \label{item:both-projectors-implies-consistency}
   \item If $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$ and
     either $\{A^x_a\}$ or $\{B^x_a\}$ is a projective measurement, then
     $A^x_a \otimes I_\bob \simeq_{\delta^{1/2}} I_\alice \otimes B^x_a$.
+\hypertarget{000S}{}
+\reversemarginpar\marginnote{\textnormal{000S}}
     \label{item:one-projector-implies-consistency}
   \end{enumerate}
 \end{fact}
 
 \begin{fact}[Fact 4.20 in~\cite{NW19}]
+\hypertarget{000T}{}
+\reversemarginpar\marginnote{\textnormal{000T}}
   \label{fact:add-a-proj}
   Let $\cal{A},\cal{B},\cal{C}$ be finite sets, and let $D$ be a distribution
   over question pairs $(x,y)$.
@@ -468,6 +396,8 @@ discussion and proofs.
 
 
 \begin{fact}
+\hypertarget{000U}{}
+\reversemarginpar\marginnote{\textnormal{000U}}
 \label{fact:add-a-proj2}
 Let $\mathcal{X},\mathcal{A}$ denote finite sets, and let $\mathcal{G}$ denote a set of functions $g: \mathcal{X} \to \mathcal{A}$. Let $\{A^x_a \}$, $\{B^x_a\}$ be POVMs indexed by $\mathcal{X}$ and outcomes in $\mathcal{A}$. Let $\{ S_g^x \}$ denote a set of operators such that for all $x \in \mathcal{X}$, $\sum_g (S_g^x)^\dagger S_g^x \leq \Id$. 
 If $A^x_a \approx_\delta B^x_a$ on average over $x$, then $S_g^x A^x_{g(x)} \approx_\delta S_g^x B^x_{g(x)}$. 
@@ -485,6 +415,8 @@ If $A^x_a \approx_\delta B^x_a$ on average over $x$, then $S_g^x A^x_{g(x)} \app
 
 
 \begin{lemma}
+\hypertarget{000V}{}
+\reversemarginpar\marginnote{\textnormal{000V}}
 \label{lem:cool-closeness-fact}
 Let $\mathcal{A}$ be a finite set. Let $\{A^x_a\}_{a \in \mathcal{A}}$ be a projective measurement and let $\{B^x_a\}_{a \in \mathcal{A}}$ be a set of matrices. If $A^x_a \approx_\delta B^x_a$, then for all subsets $S \subseteq \mathcal{A}$, we have
 \[
@@ -503,12 +435,16 @@ In the second line we used the projectivity of $\{ A^x_a \}$, and in the third l
 
 
 \begin{fact}[Triangle inequality, Fact 4.28 in~\cite{NW19}]
+\hypertarget{000W}{}
+\reversemarginpar\marginnote{\textnormal{000W}}
   \label{fact:triangle}
   If $A_a^x \approx_\delta B_a^x$ and $B_a^x \approx_\epsilon C_a^x$, then
   $A_a^x \approx_{\delta + \epsilon} C_a^x$.
 \end{fact}
 
 \begin{fact}[Triangle inequality for ``$\simeq$", Proposition 4.29 in~\cite{ML20}]
+\hypertarget{000X}{}
+\reversemarginpar\marginnote{\textnormal{000X}}
  \label{fact:triangle-for-simeq}
  If $A_a^x \otimes I_\bob \simeq_\eps I_\alice \otimes B_a^x$,
  $C_a^x \otimes I_\bob \simeq_\delta I_\alice \otimes  B_a^x$,
@@ -517,6 +453,8 @@ In the second line we used the projectivity of $\{ A^x_a \}$, and in the third l
 \end{fact}
 
 \begin{fact}[Data processing, Fact 4.26 in~\cite{NW19}]
+\hypertarget{000Y}{}
+\reversemarginpar\marginnote{\textnormal{000Y}}
   \label{fact:data-processing}
   Suppose $A^x_a \abc B^x_a$.
   Then $A^x_{[f(\cdot) = b]} \abc B^x_{[f(\cdot) = b]}$.
@@ -530,6 +468,8 @@ state, changing from one family of measurement to the other only introduces
 a small error to the value of the strategy.
 
 \begin{lemma}
+\hypertarget{000Z}{}
+\reversemarginpar\marginnote{\textnormal{000Z}}
   \label{lem:commutation-analysis}
   Let $\{A^x_{a,\, b}\}$, $\{B^x_{a,\, b,\, c}\}$, $\{C^x_{a,\, c}\}$ be POVMs.
   Suppose $\{B^x_{a,\, b,\, c}\}$ is projective, and
@@ -548,6 +488,8 @@ a small error to the value of the strategy.
   \approx_\delta \Id_\alice \otimes B^x_{a,\, c}$ and $\{A^x_{a,b} \otimes
   \Id_\bob \}$, we have
   \begin{equation}
+\hypertarget{0010}{}
+\reversemarginpar\marginnote{\textnormal{0010}}
     \label{eq:commutation-analysis-1}
     A^x_{a,\, b} C^x_{a,\, c} \otimes \Id_\bob
     \approx_\delta A^x_{a,\, b} \otimes B^x_{a,\, c}\,.
@@ -557,6 +499,8 @@ a small error to the value of the strategy.
   \otimes B^x_{a,c}\}$, and using the fact that $\{B^x_{a,b,c}\}$ is projective,
   we have
   \begin{equation}
+\hypertarget{0011}{}
+\reversemarginpar\marginnote{\textnormal{0011}}
     \label{eq:commutation-analysis-2}
     \begin{split}
       A^x_{a,\, b} \otimes B^x_{a,\, c}
@@ -567,12 +511,16 @@ a small error to the value of the strategy.
   Combining Equations~\eqref{eq:commutation-analysis-1}
   and~\eqref{eq:commutation-analysis-2}, we have
   \begin{equation}
+\hypertarget{0012}{}
+\reversemarginpar\marginnote{\textnormal{0012}}
     \label{eq:commutation-analysis-3}
     A^x_{a,\, b} C^x_{a,\, c} \otimes \Id_\bob \approx_\delta
     \Id_\alice \otimes B^x_{a,\, b,\, c}\,.
   \end{equation}
   A similar argument gives
   \begin{equation}
+\hypertarget{0013}{}
+\reversemarginpar\marginnote{\textnormal{0013}}
     \label{eq:commutation-analysis-4}
     C^x_{a,\, c} A^x_{a,\, b} \otimes \Id_\bob \approx_\delta
     \Id_\alice \otimes B^x_{a,\, b,\, c}\,.
@@ -619,6 +567,8 @@ a small error to the value of the strategy.
 
 The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
 \begin{lemma}
+\hypertarget{0014}{}
+\reversemarginpar\marginnote{\textnormal{0014}}
   \label{lem:ld-sandwich}
   Let $k \geq 0$ be an integer and let $\eps>0$.
   Let $\mX$ be a finite set and $\mu$ a distribution over $\mX$.
@@ -635,6 +585,8 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
   For each $1 \leq i \leq k$, suppose that on average over $x \sim \mu$ and
   $y\in \mY$ sampled uniformly at random,
   \begin{equation}
+\hypertarget{0015}{}
+\reversemarginpar\marginnote{\textnormal{0015}}
     \label{eq:ld-sandwich-1}
     A^{x}_{[\eval_y(\cdot)_i = a_i]} \abc G^{i,\, x}_{[\eval_y(\cdot)=a_i]}\;.
   \end{equation}
@@ -646,6 +598,8 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
   \end{equation*}
   Then on average over $x\sim \mu$ and $y\in \mY$ sampled uniformly at random,
   \begin{equation}
+\hypertarget{0016}{}
+\reversemarginpar\marginnote{\textnormal{0016}}
     \label{eq:ld-sandwich-2}
     A^x_{[\eval_y(\cdot) = (a_1,\, a_2,\, \ldots,\, a_k)]} \abc[k(\delta+\eps)^{1/2}]
     C^x_{[\eval_y(\cdot) = (a_1,\, a_2,\, \ldots,\, a_k)]}\;.
@@ -660,29 +614,41 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
 
 
 \begin{lemma}[Fact 4.35 in~\cite{NW19}]
+\hypertarget{0017}{}
+\reversemarginpar\marginnote{\textnormal{0017}}
   \label{lem:pasting}
 Let $\mathcal{D}$ be a distribution on $(x,y_1,y_2)\in \mathcal{X}\times \mathcal{Y}_1\times \mathcal{Y}_2$. For $i\in \{1,2\}$ let $\mathcal{G}_i$ be a collection of functions $g_i: \mathcal{Y}_i \to \mathcal{R}_i$ and let $\{(G_i)^{x}_{g}\}_{g\in \mathcal{G}_i}$ be families of measurements such that $\{(G_2)^x_g\}_g$ is projective for every $x$. Suppose further that for every $(x,y_1)$ it holds that for $g_2\neq g'_2 \in \mathcal{G}_2$ the probability, on average over $y_2$ chosen from $\mathcal{D}$ conditioned on $(x,y_1)$, that $g_2(y_2)=g'_2(y_2)$  is at most $\eta$. 
 Let $\{A^{x,y_1,y_2}_{a_1,a_2}\}$ be a family of projective measurements with outcomes $(a_1,a_2)\in \mathcal{R}_1 \times \mathcal{R}_2$ such that for $i\in \{1,2\}$,
 \begin{equation}
+\hypertarget{0018}{}
+\reversemarginpar\marginnote{\textnormal{0018}}
   \label{eq:pasting-1}
  A^{x,y_1,y_2}_{a_i} \otimes \Id \simeq_\delta \Id \otimes (G_i)^x_{[\eval_{y_i}(\cdot)=a_i]}
 \end{equation}
 and 
 \begin{equation}
+\hypertarget{0019}{}
+\reversemarginpar\marginnote{\textnormal{0019}}
   \label{eq:pasting-2}
  A^{x,y_1,y_2}_{a_1,a_2} \otimes \Id \simeq_\delta \Id \otimes  A^{x,y_1,y_2}_{a_1,a_2}\;.
 \end{equation}
 Define a family of measurements $\{J^x_{g_1,g_2}\}$ as
 \begin{equation}
+\hypertarget{001A}{}
+\reversemarginpar\marginnote{\textnormal{001A}}
   \label{eq:pasting-2a}
  J^x_{g_1,g_2} \,=\, (G_2)^x_{g_2} (G_1)^x_{g_1} (G_2)^x_{g_2}\;.
 \end{equation}
 Then there is a 
 \begin{equation}
+\hypertarget{001B}{}
+\reversemarginpar\marginnote{\textnormal{001B}}
   \label{eq:def-deltap}
 \delta_{pasting} \,=\, \delta_{pasting}(\eta,\delta)\,=\, \poly(\eta,\delta)
 \end{equation} such that 
 \begin{equation}
+\hypertarget{001C}{}
+\reversemarginpar\marginnote{\textnormal{001C}}
   \label{eq:pasting-3}
  A^{x,y_1,y_2}_{a_1,a_2} \otimes \Id \simeq_{\delta_p} \Id \otimes J^x_{[\eval_{y_1}(\cdot)=a_1,\eval_{y_2}(\cdot) = a_2]}\;.
 \end{equation}
@@ -750,191 +716,9 @@ Then there is a
 
 
 
-
-
-% chapter-complexitytheory
-
-
-\chapter{Complexity theory}
-\label{complexitytheory}
-
-
-\phantomsection
-\label{section-phantom}
-
-
-
-
-
-
-% chapter-operatoralgebras
-
-
-\chapter{Operator algebras}
-\label{operatoralgebras}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
-
-% chapter-paulibraiding
-
-
-\part{Warm-up}
-\label{book-part-warmup}
-
-\chapter{Pauli braiding}
-\label{paulibraiding}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-\section{Multiplayer games}
-\label{section:multigames}
-
-
-A multiplayer game is a single-round interaction between a \emph{referee} and multiple \emph{players}. The game specifies the actions of the referee: with what distribution she selects the questions to the players, and what tuples of answers are valid for each tuple of questions. The players, traditionally referred to as Alice, Bob, Charlie, etc., are always assumed to attempt to maximize their probability of winning (i.e. providing valid answers) in the game. The probability is over both the referee's and the players' randomness. This quantity, the players' maximum winning probability, is usually called the \emph{value} of the game.
-
-Multiplayer games play an important role in theoretical computer science. Their study ca be motivated from at least two vantage points: 
-\begin{itemize}
-\item \emph{Hardness of approximation for constraint satisfaction problems.} The most famous game in this context is the $3$SAT ``clause-vs-variable'' game. In this game there are two players, Alice and Bob. Both players and the referee are given access to the same $3$SAT formula $\varphi$. Moreover, the players can agree on a strategy after having seen the formula and before the game starts. Once the game starts, the referee selects a clause $C = x \vee y \vee z$ (some of the variables may be negated) uniformly at random, as well as a variable $w\in\{x,y,z\}$ appearing in $C$, again uniformly at random. She sends the triple $\{x,y,z\}$ to Alice, and the single variable $w$ to Bob. Each player is expected to return an assignment to the variables he or she was asked about. The players win if and only if Alice's assignment satisfies the clause $C$, and Bob's assignment is consistent with Alice's on the variable they were asked in common.\\
-It is not hard to verify that the maximum success probability in this game is directly related to the largest number of clauses of $\varphi$ that can be simultaneously satisfied by any assignment. Since $3$SAT is $\NP$-hard, it follows that the value of a game specified explicitly (in matrix form, i.e. a table specifying explicitly the distribution on questions and the truth table for valid answer tuples) is NP-hard to compute. \\
-In fact, it follows from the PCP theorem that the value is not only hard to compute exactly, but even to approximate within a sufficiently small constant factor. The language of games plays an important role in 
-Dinur's proof of the PCP theorem~\cite{dinur2007pcp}, and it has been instrumental in many reductions deriving hardness of approximation for combinatorial problems. It can also be a useful perspective when studying rounding techniques for linear programming (LP) or semidefinite programming (SDP) relaxations of constraint satisfaction problems. 
-
-\item \emph{Interactive protocols in cryptography.} In cryptography, games often play a role as building blocks in \emph{interactive protocols}, where the players are usually referred to as \emph{provers}. A famous game in this context is the two-prover commitment protocol by Ben-Or et al.~\cite{ben1988multi}. This protocol was introduced to show that all languages in NP have two-prover interactive proofs with perfect zero-knowledge. Technically the protocol gives rise to a two-round game: the referee first interacts with the first prover (commit phase), and then with the second prover (reveal phase). Many kinds of games arise in cryptography, with the players sometimes exchanging messages between themselves, some players being trusted (``oracles'') and others not, etc. 
-\end{itemize}
-
-Quantum information introduces an exciting twist in the theory of multiplayer games: what if the players are allowed to use entanglement? The game is the same, but the set of allowed strategies has been broadened. While entanglement does not allow the players to communicate,  it could in principle allow them to increase their odds of winning, and indeed this is the case: you already saw this in the example of the CHSH game, and we will see many more examples as we go. 
-
-\begin{remark}
-One can ask, why stop at quantum? The most general strategies that respect the no-communication assumption are aptly called \emph{non-signaling strategies}. We will not discuss them in this lecture, but aside from being a nice extension of quantum strategies they have recently become very relevant in designing efficient (single-prover) classical delegation protocols; see e.g.~\cite{kalai2014delegate}.
-\end{remark} 
-
-Interestingly, many games have the property that the optimal quantum strategy for the players is essentially unique. This property, called \emph{rigidity}, can be leveraged to devise classical tests that verify that arbitrary quantum devices (the players) perform very specific operations. This opens up a whole new world of possibilities, from the certification of information-theoretic randomness to ``device-independent'' security proofs in cryptography to protocols for delegated computation; we will touch on some of these topics in a subsequent lecture. 
-
-\paragraph{Resources.} A great introduction to complexity-theoretic questions about non-local games is the paper by Cleve et al.~\cite{cleve2004consequences}. The lecture notes by Ji (see module 5 \href{https://uwaterloo.ca/institute-for-quantum-computing/programs/graduate-studies/previous-courses/qic-890891-selected-advanced-topics-quantum-information}{here}) cover CHSH, the Magic Square game, linearity testing (using a slightly different analysis than the one we will give here), and graph-based games. 
-
-\paragraph{Notation.} In this lecture we use the non-standard notation 
-\begin{equation}\label{eq:me-state}
- \ket{\phi_d} \,=\,\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}
-\end{equation}
-for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}$ denotes an EPR pair. 
-
-
-
-
-
-
-
-% chapter-theargument
-
-
-\part{Overview}
-\label{book-part-overview}
-
-\chapter{The argument}
-\label{theargument}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
-
-% chapter-questionreduction
-
-
-
-
-\chapter{Question reduction}
-\label{questionreduction}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
-
-% chapter-answerreduction
-
-
-
-
-\chapter{Answer reduction}
-\label{chapter-answerreduction}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
-
-% chapter-recursivecompression
-
-
-
-
-\chapter{Recursive Compression}
-\label{recursivecompression}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
-
-% chapter-parallelrepetition
-
-
-\part{Related tools}
-\label{book-part-tools}
-
-\chapter{Parallel repetition}
-\label{parallelrepetition}
-
-
-% \phantomsection
-% \label{section-phantom}
-
-
-
-
-
-
-
+\input{chapters}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
+
 \end{document}

@@ -1,11 +1,10 @@
-"""Generate .tex file suitable for plasTeX parsing/importing into gerby"""
+"""Generate .tex file for entire book"""
 from utils import *
 
 
-with open('make_doc.tex', 'w') as doc:
+with open('make_book.tex', 'w') as doc:
     print('\\documentclass{book}', file=doc)
     print('\\usepackage{amsmath}', file=doc)
-    # print('\\usepackage{amsbook}', file=doc)
     
     with open('preamble.tex', 'r') as preamble:
         next(preamble)
@@ -17,22 +16,8 @@ with open('make_doc.tex', 'w') as doc:
                 continue
             if line.find('externaldocument') >= 0:
                 continue
-            if line.find('\\newenvironment{reference}') >= 0:
-                continue
-            if line.find('\\newenvironment{slogan}') >= 0:
-                continue
-            if line.find('\\newenvironment{history}') >= 0:
-                continue
-            if line.find('multicol') >= 0:
-                continue
             if line.find('xr-hyper') >= 0:
                 continue
-            if line.find('\\ensuremath{') >= 0:
-                line = line.replace('\\ensuremath{', '{')
-            if line.find('\\displaylimits') >= 0:
-                line = line.replace('\\displaylimits', '')
-            if line.find('\\textsc{') >= 0:
-                line = line.replace('\\textsc{', '{')
 
             print(line, end='', file=doc)
 
@@ -40,14 +25,14 @@ with open('make_doc.tex', 'w') as doc:
     # print('\\begin{titlepage}', file=doc)
     # print('\\pagestyle{empty}', file=doc)
     # print('\\setcounter{page}{1}', file=doc)
+    # print "\\centerline{\\LARGE\\bfseries MIP*}"
     # print('\\vskip1in', file=doc)
     # print('\\end{titlepage}', file=doc)
 
-    chapter_names, chapters = get_chapters()
+    _, chapters = get_chapters()
 
-    for i, chapter in enumerate(chapters):
+    for chapter in chapters:
         with open(chapter) as texfile:
-            print('% chapter-' + chapter_names[i], file=doc)
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:
                     continue

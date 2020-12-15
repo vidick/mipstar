@@ -162,6 +162,11 @@ def show_chapters():
     return render_template("toc.chapters.html", chapters=chapters)
 
 
+@app.route('/download/<path:filename>')
+def send_pdf(filename):
+  return send_from_directory(app.static_folder, filename)
+
+
 @app.route("/robots.txt")
 def show_robots():
   return send_from_directory(app.static_folder, request.path[1:])

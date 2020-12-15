@@ -2,8 +2,12 @@
 \usepackage{amsmath}
 
 \usepackage{verbatim}
+\newenvironment{reference}{\comment}{\endcomment}
+\newenvironment{slogan}{\comment}{\endcomment}
+\newenvironment{history}{\comment}{\endcomment}
 
 
+\usepackage{multicol}
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -46,11 +50,11 @@
 \newcommand{\mG}{\mathcal{G}}
 
 
-\newcommand{\NP}{{NP}}
+\newcommand{\NP}{\textsc{NP}}
 
 
-\newcommand{\Es}[1]{{E}_{#1}}
-\newcommand{\E}{\mathop{\mathbb{E}}} % Expectation
+\newcommand{\Es}[1]{\textsc{E}_{#1}}
+\newcommand{\E}{\mathop{\mathbb{E}}\displaylimits} % Expectation
 
 
 
@@ -58,7 +62,7 @@
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\Tr}{\mbox{\rm Tr}}
-\newcommand{\Id}{{\mathop{\rm Id}\nolimits}}
+\newcommand{\Id}{\ensuremath{\mathop{\rm Id}\nolimits}}
 
 \newcommand{\norm}[1]{\left\| {#1} \right\|}
 
@@ -76,14 +80,13 @@
 
 \newcommand{\game}{\mathfrak{G}}
 \newcommand{\strategy}{{S}}
-\newcommand{\val}{{\mathrm{val}}}
+\newcommand{\val}{\ensuremath{\mathrm{val}}}
 \newcommand{\Ent}{\mathcal{E}}
 \newcommand{\alice}{A}
 \newcommand{\bob}{B}
 
 \newcommand{\abc}[1][\delta]{\otimes I_\bob \simeq_{#1} I_\alice \otimes}
 \begin{document}
-% chapter-introduction
 
 % OK, start here.
 %
@@ -118,7 +121,6 @@ This is an equation:
 
 
 
-% chapter-nonlocalgames
 
 
 \part{Background}
@@ -752,7 +754,6 @@ Then there is a
 
 
 
-% chapter-complexitytheory
 
 
 \chapter{Complexity theory}
@@ -767,7 +768,6 @@ Then there is a
 
 
 
-% chapter-operatoralgebras
 
 
 \chapter{Operator algebras}
@@ -784,7 +784,6 @@ Then there is a
 
 
 
-% chapter-paulibraiding
 
 
 \part{Warm-up}
@@ -838,7 +837,6 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 
-% chapter-theargument
 
 
 \part{Overview}
@@ -858,7 +856,6 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 
-% chapter-questionreduction
 
 
 
@@ -877,7 +874,6 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 
-% chapter-answerreduction
 
 
 
@@ -896,7 +892,6 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 
-% chapter-recursivecompression
 
 
 
@@ -915,7 +910,6 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 
-% chapter-parallelrepetition
 
 
 \part{Related tools}

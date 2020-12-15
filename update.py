@@ -5,6 +5,7 @@ import logging
 from dotenv import load_dotenv
 import paramiko
 from progress.spinner import Spinner
+from utils import *
 
 load_dotenv()
 AUTH = str(os.getenv('AUTH'))
@@ -22,52 +23,31 @@ log.setLevel(logging.INFO)
 # out, err = diff.communicate()
 log.info('  Checking diff between local and remote tex files')
 stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git fetch --prune')
-o = stdout.readlines()
-e = stderr.readlines()
-if o:
-    log.info(''.join(o))
-if e:
-    log.info('\n' + ''.join(e))
+log_outputs(log, stdout.readlines(), stderr.readlines(), '', '\n')
 
-chapfiles = open('chapters', 'r')
-chapters = chapfiles.readlines()
-chapfiles.close()
+_, chapters = get_chapters()
 
 out = []
 err = []
 for chapter in chapters:
-    chapter = chapter.rstrip()
     stdin, stdout, stderr = ssh.exec_command(f'cd /root/mipstar && git diff origin/master:{chapter} -- {chapter}')
     out += stdout.readlines()
     err += stderr.readlines()
-if out:
-    log.info(''.join(out))
-if err:
-    log.info('\n' + ''.join(err))
+log_outputs(log, out, err, '', '\n')
 
 # if not err:
     # pull = subprocess.Popen(['git', 'pull', 'origin', 'master'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = pull.communicate()
 log.info('  Merging from remote master branch')
 stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git merge origin/master')
-o = stdout.readlines()
-e = stderr.readlines()
-if o:
-    log.info('\n' + ''.join(o))
-if e:
-    log.error('\n' + ''.join(e))
+log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
 
 if out or any('No such file or directory' in msg for msg in err):
     # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_tags.communicate()
     log.info('  Updating document tags')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_doc.py && python3 tagger.py make_doc.tex > tags')
-    o = stdout.readlines()
-    e = stderr.readlines()
-    if o:
-        log.info(''.join(o))
-    if e:
-        log.error(''.join(e))
+    log_outputs(log, stdout.readlines(), stderr.readlines())
 
     # gen_doc = subprocess.Popen(['plastex', '--renderer=Gerby', './document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_doc.communicate()
@@ -80,21 +60,11 @@ if out or any('No such file or directory' in msg for msg in err):
         spinner.next()
     spinner.finish()
 
-    o = stdout.readlines()
-    e = stderr.readlines()
-    if o:
-        log.info(''.join(o))
-    if e:
-        log.error(''.join(e))
+    log_outputs(log, stdout.readlines(), stderr.readlines())
 
     log.info('  Deleting old database file')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && rm hello-world.sqlite')
-    o = stdout.readlines()
-    e = stderr.readlines()
-    if o:
-        log.info(''.join(o))
-    if e:
-        log.error(''.join(e))
+    log_outputs(log, stdout.readlines(), stderr.readlines())
 
     # update = subprocess.Popen(['python3', 'update.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/gerby-website/gerby/')
     # o, e = update.communicate()
@@ -106,12 +76,7 @@ if out or any('No such file or directory' in msg for msg in err):
         spinner.next()
     spinner.finish()
 
-    o = stdout.readlines()
-    e = stderr.readlines()
-    if o:
-        log.info(''.join(o))
-    if e:
-        log.error(''.join(e))
+    log_outputs(log, stdout.readlines(), stderr.readlines())
 else:
     log.info('  No diff found')
 # restart = subprocess.Popen(['sudo', 'systemctl', 'restart', 'mipstar'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
@@ -119,11 +84,6 @@ else:
 log.info('  Requesting service restart')
 stdin, stdout, stderr = ssh.exec_command('sudo systemctl restart mipstar')
 stdin.write(AUTH + '\n')
-o = stdout.readlines()
-e = stderr.readlines()
-if o:
-    log.info(''.join(o))
-if e:
-    log.error(''.join(e))
+log_outputs(log, stdout.readlines(), stderr.readlines())
 
 ssh.close()
