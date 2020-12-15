@@ -164,6 +164,7 @@ def show_chapters():
 
 @app.route('/download/<path:filename>')
 def send_pdf(filename):
+  print('hi')
   return send_from_directory(os.path.join(app.static_folder, 'pdfs'), filename)
 
 
