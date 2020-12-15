@@ -57,7 +57,7 @@ if o:
 if e:
     log.error('\n' + ''.join(e))
 
-if out or 'No such file or directory' in err:
+if out or any('No such file or directory' in msg for msg in err):
     # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_tags.communicate()
     log.info('  Updating document tags')
