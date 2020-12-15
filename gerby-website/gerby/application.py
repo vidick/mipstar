@@ -164,7 +164,7 @@ def show_chapters():
 
 @app.route('/download/<path:filename>')
 def send_pdf(filename):
-  return send_from_directory(app.static_folder, filename)
+  return send_from_directory(os.path.join(app.static_folder, 'pdfs'), filename)
 
 
 @app.route("/robots.txt")
