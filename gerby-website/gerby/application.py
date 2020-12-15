@@ -162,7 +162,7 @@ def show_chapters():
     return render_template("toc.chapters.html", chapters=chapters)
 
 
-@app.route('/download/<path:filename>')
+@app.route('/download/<path:filename>', methods=['GET'])
 def send_pdf(filename):
   print('hi')
   return send_from_directory(os.path.join(app.static_folder, 'pdfs'), filename)
