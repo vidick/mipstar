@@ -171,7 +171,7 @@ def test():
 @app.route('/download/<filename>')
 def send_pdf(filename):
   print('hi')
-  print(os.path.join(app.static_folder, 'pdfs'), app.static_folder)
+  print(os.path.join(app.static_folder, 'pdfs'))
   return 'Hi', 200 #send_from_directory(os.path.join(app.static_folder, 'pdfs'), filename)
 
 
