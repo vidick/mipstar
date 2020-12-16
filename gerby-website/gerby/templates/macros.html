@@ -47,9 +47,9 @@
 
   <hr>
   {% if tag.type == "part" %}
-    {#<a href="http://134.122.114.22/download/{{ filename }}.pdf" target="_blank">View Part <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf</a>#}
+    {#<a href="/download/{{ filename }}.pdf" target="_blank">View Part <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf</a>#}
   {% else %}
-    <a href="http://134.122.114.22/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf</a>
+    <a href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf</a>
   {% endif %}
 
   {% if tag.type in ["definition", "example", "exercise", "lemma", "proposition", "remark", "remarks", "situation", "theorem"] %}
