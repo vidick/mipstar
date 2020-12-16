@@ -27,7 +27,7 @@ for i, chapter in enumerate(chapters):
                 if line.find('\\section{') >= 0:
                     # offset section numbering so correct ref numbers are displayed
                     if first_section:
-                        print('\\addtocounter{section}{' + str(i) + '}')
+                        print('\\addtocounter{section}{' + str(i) + '}', file=tagged_file)
                         first_section = False
                     nextline = next(tex_file)
                     if nextline.find('\\label{') >= 0:
