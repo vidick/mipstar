@@ -19,10 +19,6 @@ for i, chapter in enumerate(chapters):
     with open(os.path.join('pdfs', chapter), 'w') as tagged_file:
         with open(chapter) as tex_file:
             for line in tex_file:
-                if line.find('\\title{') == 0:
-                    line = line.replace('\\title{', '\\chapter{')
-                if line.find('\\maketitle') == 0:
-                    continue
                 # add marginnote package first
                 if line.find('\\begin{document}') == 0:
                     print('\\usepackage{marginnote}', file=tagged_file)
