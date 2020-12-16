@@ -23,6 +23,8 @@ document.pdf
 
 ./*.pdf
 
+./pdfs/*
+
 __pycache__/*
 
 make_doc.tex
