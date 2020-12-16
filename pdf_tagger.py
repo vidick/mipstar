@@ -91,7 +91,7 @@ with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
             if line.find('\\label{') >= 0:
                 label = extract_label(line, chapname)
 
-                if label in tags.keys() and 'book-part' not in label:
+                if label in tags.keys() and 'book-part' not in label and label != chapname:
                     print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
                     print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
             print(line, end='', file=tagged_file)
