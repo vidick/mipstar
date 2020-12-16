@@ -5,7 +5,7 @@
 0004,introduction-eq:me-state
 0005,book-part-background
 0006,nonlocalgames
-0007,nonlocalgames-sec:strat
+0007,nonlocalgames-section-strat
 0008,nonlocalgames-def:game
 0009,nonlocalgames-def:tensor-product-strategy
 000A,nonlocalgames-def:tensor-product-value
@@ -50,7 +50,7 @@
 001F,operatoralgebras
 001G,book-part-warmup
 001H,paulibraiding
-001J,paulibraiding-section:multigames
+001J,paulibraiding-section-multigames
 001K,paulibraiding-eq:me-state
 001L,book-part-overview
 001M,theargument
