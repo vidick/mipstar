@@ -62,14 +62,14 @@ for filename in filenames:
     with open(filename) as f:
         # do this line per line to deal with comments
         for line in f:
-            if line.find('% chapter-') == 0:
-                prefix = line[10:].rstrip()
+            # if line.find('% chapter-') == 0:
+            #     prefix = line[10:].rstrip()
             matches = re.findall("\\\\label{([^}]+)}", line.split("%")[0])
             for label in matches:
                 if not label in labels:
                     tag = tobase(i).rjust(4, "0")
-                    if 'book-part' in label or prefix == label:
-                        print("%s,%s" % (tag, label))
-                    else:
-                        print("%s,%s" % (tag, prefix + '-' + label))
+                    # if 'book-part' in label or prefix == label:
+                    print("%s,%s" % (tag, label))
+                    # else:
+                    #     print("%s,%s" % (tag, prefix + '-' + label))
                     i = i + 1
