@@ -38,11 +38,6 @@ log_outputs(log, out, err, '', '\n')
 # if not err:
     # pull = subprocess.Popen(['git', 'pull', 'origin', 'master'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = pull.communicate()
-if out or any('No such file or directory' in msg for msg in err):
-    log.info('  Updating PDFs')
-    subprocess.run(['python3', 'pdf_tagger.py'])
-    subprocess.run(['python3', 'make_pdfs.py'])
-
 
 log.info('  Merging from remote master branch')
 stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git merge origin/master')
