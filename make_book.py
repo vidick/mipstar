@@ -20,8 +20,8 @@ with open('make_book.tex', 'w') as doc:
                 continue
             if line.find('xr-hyper') >= 0:
                 continue
-            if line.find('\\newcommand{\cal}[1]{\mathcal{#1}}') == 0:
-                line = line.replace('\\newcommand{\cal}[1]{\mathcal{#1}}', '\\renewcommand{\cal}[1]{\mathcal{#1}}')
+            if line.find('\\newcommand{\\cal}[1]{\\mathcal{#1}}') == 0:
+                line = line.replace('\\newcommand{\\cal}[1]{\\mathcal{#1}}', '\\renewcommand{\\cal}[1]{\\mathcal{#1}}')
             print(line, end='', file=doc)
 
     print('\\begin{document}', file=doc)
@@ -37,6 +37,7 @@ with open('make_book.tex', 'w') as doc:
     for i, chapter in enumerate(chapters):
         chapname = chapter_names[i]
         with open(chapter) as texfile:
+            print('% chapter-' + chapname, file=doc)
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:
                     continue

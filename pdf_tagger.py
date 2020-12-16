@@ -65,6 +65,9 @@ for i, chapter in enumerate(chapters):
 with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
     with open('make_book.tex') as tex_file:
         for line in tex_file:
+            # retrieve chapter name
+            if line.find('% chapter-') == 0:
+                chapname = line[10:].rstrip()
             # add marginnote package first
             if line.find('\\begin{document}') == 0:
                 print('\\usepackage{marginnote}', file=tagged_file)

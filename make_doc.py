@@ -47,7 +47,7 @@ with open('make_doc.tex', 'w') as doc:
     for i, chapter in enumerate(chapters):
         chapname = chapter_names[i]
         with open(chapter) as texfile:
-            print('% chapter-' + chapter_names[i], file=doc)
+            print('% chapter-' + chapname, file=doc)
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:
                     continue
