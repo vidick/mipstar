@@ -25,7 +25,6 @@ for i, chapter in enumerate(chapters):
                     continue
                 # add marginnote package first
                 if line.find('\\begin{document}') == 0:
-                    print('\\documentclass{book}', file=tagged_file)
                     print('\\usepackage{marginnote}', file=tagged_file)
                 # if found section need to put margin note before \section
                 # otherwise note will not be visible
