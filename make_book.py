@@ -5,6 +5,8 @@ from utils import *
 with open('make_book.tex', 'w') as doc:
     print('\\documentclass{book}', file=doc)
     print('\\usepackage{amsmath}', file=doc)
+    print('\\usepackage{amsthm}', file=doc)
+    print('\\usepackage{amsfonts}', file=doc)
     
     with open('preamble.tex', 'r') as preamble:
         next(preamble)
@@ -18,7 +20,8 @@ with open('make_book.tex', 'w') as doc:
                 continue
             if line.find('xr-hyper') >= 0:
                 continue
-
+            if line.find('\\newcommand{\cal}[1]{\mathcal{#1}}') == 0:
+                line = line.replace('\\newcommand{\cal}[1]{\mathcal{#1}}', '\\renewcommand{\cal}[1]{\mathcal{#1}}')
             print(line, end='', file=doc)
 
     print('\\begin{document}', file=doc)
@@ -39,6 +42,8 @@ with open('make_book.tex', 'w') as doc:
                     continue
                 if line.find('\\begin{document}') == 0:
                     continue
+                if line.find('\\part{') == 0:
+                    next(texfile)
                 if line.find('\\title{') == 0:
                     line = line.replace('\\title{', '\\chapter{')
                 if line.find('\\maketitle') == 0:
@@ -46,7 +51,7 @@ with open('make_book.tex', 'w') as doc:
                 if line.find('\\label{') >= 0:
                     label = extract_label(line, chapname)
                     if label != chapname and 'book-part' not in label:
-                        line = line.replace('\\label{', '\\label{' + chapname + '-' + label)
+                        line = line.replace('\\label{', '\\label{' + chapname + '-')
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:

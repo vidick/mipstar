@@ -1,4 +1,4 @@
-"""Add tags and hypertargets to all chapter .tex files"""
+"""Add tags and hypertargets to all .tex files"""
 import os
 from utils import *
 
@@ -12,6 +12,7 @@ with open('tags', 'r') as tags_file:
 # get all chapters
 chapter_names, chapters = get_chapters()
 
+# add margin notes/tags to each chapter file
 for i, chapter in enumerate(chapters):
     chapname = chapter_names[i]
 
@@ -51,3 +52,37 @@ for i, chapter in enumerate(chapters):
                         print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
                         print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
                 print(line, end='', file=tex_file)
+
+# add margin notes/tags to book
+with open(os.path.join('pdfs', 'book.tex'), 'w') as tex_file:
+    with open('make_book.tex') as texfile:
+        for line in texfile:
+            # add marginnote package first
+            if line.find('\\begin{document}') == 0:
+                print('\\usepackage{marginnote}', file=tex_file)
+            # if found section need to put margin note before \section
+            # otherwise note will not be visible
+            if line.find('\\section{') == 0:
+                nextline = next(texfile)
+                if nextline.find('\\label{') >= 0:
+                    label = extract_label(nextline, chapname)
+
+                    if label in tags.keys():
+                        print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
+                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
+                        print(line, end='', file=tex_file)
+                        print(nextline, end='', file=tex_file)
+                        continue
+                # if no label, write lines as normal
+                else:
+                    print(line, end='', file=tex_file)
+                    print(nextline, end='', file=tex_file)
+                    continue
+            # if label present on line, add margin note to side and hypertarget
+            if line.find('\\label{') >= 0:
+                label = extract_label(line, chapname)
+
+                if label in tags.keys():
+                    print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
+                    print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
+            print(line, end='', file=tex_file)

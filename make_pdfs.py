@@ -6,7 +6,9 @@ from utils import *
 
 AUX = ['*.aux', '*.log', '*.out', '*.toc']
 
-chapter_names, chapters = get_chapters()
+_, chapters = get_chapters()
+chapters.append('book.tex')
+
 for chapter in chapters:
     # PDF recipe: pdflatex > bibtex > pdflatex x2
     pdflatex = subprocess.Popen(['pdflatex', chapter], cwd='./pdfs')
