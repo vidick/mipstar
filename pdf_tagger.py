@@ -15,7 +15,7 @@ chapter_names, chapters = get_chapters()
 # add margin notes/tags to each chapter file
 for i, chapter in enumerate(chapters):
     chapname = chapter_names[i]
-
+    first_section = True
     with open(os.path.join('pdfs', chapter), 'w') as tex_file:
         with open(chapter) as texfile:
             for line in texfile:
@@ -24,7 +24,11 @@ for i, chapter in enumerate(chapters):
                     print('\\usepackage{marginnote}', file=tex_file)
                 # if found section need to put margin note before \section
                 # otherwise note will not be visible
-                if line.find('\\section{') == 0:
+                if line.find('\\section{') >= 0:
+                    # offset section numbering so correct ref numbers are displayed
+                    if first_section:
+                        print('\\addtocounter{section}{' + str(i) + '}')
+                        first_section = False
                     nextline = next(texfile)
                     if nextline.find('\\label{') >= 0:
                         label = extract_label(nextline, chapname)
@@ -42,6 +46,10 @@ for i, chapter in enumerate(chapters):
                         print(line, end='', file=tex_file)
                         print(nextline, end='', file=tex_file)
                         continue
+                # skip part commands in individual chapters
+                if line.find('\\part{') >= 0:
+                    next(tex_file)
+                    continue
                 # if label present on line, add margin note to side and hypertarget
                 if line.find('\\label{') >= 0:
                     label = extract_label(line, chapname)
