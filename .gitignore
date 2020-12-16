@@ -29,3 +29,4 @@ __pycache__/*
 
 make_doc.tex
 tags
+*.pdf
