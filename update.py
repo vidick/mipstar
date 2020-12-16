@@ -22,6 +22,7 @@ log.setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(description='Pull changes from GitHub and update mipstar.net.')
 parser.add_argument('-np', '--nopdf', help='skip PDF generation step', action='store_true')
+parser.add_argument('-f', '--force', help='force tag, database, and PDF regeneration', action='store_true')
 args = parser.parse_args()
 
 # diff = subprocess.Popen(['git', 'diff', 'master:document.tex', '--', 'document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
@@ -44,7 +45,7 @@ log.info('  Merging from remote master branch')
 stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git merge origin/master')
 log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
 
-if out or any('No such file or directory' in msg for msg in err):
+if out or any('No such file or directory' in msg for msg in err) or args.force:
     # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_tags.communicate()
     log.info('  Updating document tags')
@@ -64,7 +65,7 @@ if out or any('No such file or directory' in msg for msg in err):
 
     log_outputs(log, stdout.readlines(), stderr.readlines())
 
-    if not args.nopdf:
+    if not args.nopdf or args.force:
         log.info('  Making book.tex')
         stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_book.py')
         log_outputs(log, stdout.readlines(), stderr.readlines())
