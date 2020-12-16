@@ -44,7 +44,6 @@ with open('make_doc.tex', 'w') as doc:
     # print('\\end{titlepage}', file=doc)
 
     chapter_names, chapters = get_chapters()
-    print(chapter_names)
     for i, chapter in enumerate(chapters):
         chapname = chapter_names[i]
         with open(chapter) as texfile:
