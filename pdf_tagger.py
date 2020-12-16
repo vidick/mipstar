@@ -16,12 +16,12 @@ chapter_names, chapters = get_chapters()
 for i, chapter in enumerate(chapters):
     chapname = chapter_names[i]
     first_section = True
-    with open(os.path.join('pdfs', chapter), 'w') as tex_file:
-        with open(chapter) as texfile:
-            for line in texfile:
+    with open(os.path.join('pdfs', chapter), 'w') as tagged_file:
+        with open(chapter) as tex_file:
+            for line in tex_file:
                 # add marginnote package first
                 if line.find('\\begin{document}') == 0:
-                    print('\\usepackage{marginnote}', file=tex_file)
+                    print('\\usepackage{marginnote}', file=tagged_file)
                 # if found section need to put margin note before \section
                 # otherwise note will not be visible
                 if line.find('\\section{') >= 0:
@@ -29,22 +29,22 @@ for i, chapter in enumerate(chapters):
                     if first_section:
                         print('\\addtocounter{section}{' + str(i) + '}')
                         first_section = False
-                    nextline = next(texfile)
+                    nextline = next(tex_file)
                     if nextline.find('\\label{') >= 0:
                         label = extract_label(nextline, chapname)
                         if label != chapname and 'book-part' not in label:
                             label = chapname + '-' + label
 
                         if label in tags.keys():
-                            print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
-                            print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
-                            print(line, end='', file=tex_file)
-                            print(nextline, end='', file=tex_file)
+                            print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
+                            print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+                            print(line, end='', file=tagged_file)
+                            print(nextline, end='', file=tagged_file)
                             continue
                     # if no label, write lines as normal
                     else:
-                        print(line, end='', file=tex_file)
-                        print(nextline, end='', file=tex_file)
+                        print(line, end='', file=tagged_file)
+                        print(nextline, end='', file=tagged_file)
                         continue
                 # skip part commands in individual chapters
                 if line.find('\\part{') >= 0:
@@ -57,40 +57,41 @@ for i, chapter in enumerate(chapters):
                         label = chapname + '-' + label
 
                     if label in tags.keys():
-                        print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
-                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
-                print(line, end='', file=tex_file)
+                        print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
+                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+                print(line, end='', file=tagged_file)
 
 # add margin notes/tags to book
-with open(os.path.join('pdfs', 'book.tex'), 'w') as tex_file:
-    with open('make_book.tex') as texfile:
-        for line in texfile:
+with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
+    with open('make_book.tex') as tex_file:
+        for line in tex_file:
             # add marginnote package first
             if line.find('\\begin{document}') == 0:
-                print('\\usepackage{marginnote}', file=tex_file)
+                print('\\usepackage{marginnote}', file=tagged_file)
             # if found section need to put margin note before \section
             # otherwise note will not be visible
             if line.find('\\section{') == 0:
-                nextline = next(texfile)
+                nextline = next(tex_file)
                 if nextline.find('\\label{') >= 0:
                     label = extract_label(nextline, chapname)
 
                     if label in tags.keys():
-                        print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
-                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
-                        print(line, end='', file=tex_file)
-                        print(nextline, end='', file=tex_file)
+                        print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
+                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+                        print(line, end='', file=tagged_file)
+                        print(nextline, end='', file=tagged_file)
                         continue
                 # if no label, write lines as normal
                 else:
-                    print(line, end='', file=tex_file)
-                    print(nextline, end='', file=tex_file)
+                    print(line, end='', file=tagged_file)
+                    print(nextline, end='', file=tagged_file)
                     continue
-            # if label present on line, add margin note to side and hypertarget
+            # if label present on line, add margin note to side and hypertarget;
+            # skip tagging parts
             if line.find('\\label{') >= 0:
                 label = extract_label(line, chapname)
 
-                if label in tags.keys():
-                    print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
-                    print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
-            print(line, end='', file=tex_file)
+                if label in tags.keys() and 'book-part' not in label:
+                    print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
+                    print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+            print(line, end='', file=tagged_file)
