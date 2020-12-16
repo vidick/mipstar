@@ -40,10 +40,6 @@ for chapter in chapters:
     err += stderr.readlines()
 log_outputs(log, out, err, '', '\n')
 
-# if not err:
-    # pull = subprocess.Popen(['git', 'pull', 'origin', 'master'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
-    # o, e = pull.communicate()
-
 log.info('  Merging from remote master branch')
 stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git merge origin/master')
 log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
