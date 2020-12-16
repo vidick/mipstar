@@ -24,3 +24,6 @@ document.pdf
 ./*.pdf
 
 __pycache__/*
+
+make_doc.tex
+tags
