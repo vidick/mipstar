@@ -1,6 +1,6 @@
 """Add tags and hypertargets to all .tex files"""
 import os
-from utils import *
+from utils import get_chapters, extract_label
 
 
 # retrieve all tags from tag file

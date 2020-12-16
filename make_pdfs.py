@@ -2,7 +2,7 @@
 import os
 import glob
 import subprocess
-from utils import *
+from utils import get_chapters
 
 AUX = ['*.aux', '*.log', '*.out', '*.toc']
 

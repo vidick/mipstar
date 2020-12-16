@@ -6,7 +6,7 @@ import logging
 from dotenv import load_dotenv
 import paramiko
 from progress.spinner import Spinner
-from utils import *
+from utils import get_chapters, log_outputs
 
 load_dotenv()
 AUTH = str(os.getenv('AUTH'))
@@ -20,7 +20,7 @@ logging.basicConfig(stream=sys.stdout)
 log = logging.getLogger('Boostrapper')
 log.setLevel(logging.INFO)
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Pull changes from GitHub and update mipstar.net.')
 parser.add_argument('-np', '--nopdf', help='skip PDF generation step', action='store_true')
 args = parser.parse_args()
 
