@@ -27,6 +27,9 @@ for i, chapter in enumerate(chapters):
                     nextline = next(texfile)
                     if nextline.find('\\label{') >= 0:
                         label = extract_label(nextline, chapname)
+                        if label != chapname and 'book-part' not in label:
+                            label = chapname + '-' + label
+
                         if label in tags.keys():
                             print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
                             print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
@@ -41,6 +44,9 @@ for i, chapter in enumerate(chapters):
                 # if label present on line, add margin note to side and hypertarget
                 if line.find('\\label{') >= 0:
                     label = extract_label(line, chapname)
+                    if label != chapname and 'book-part' not in label:
+                        label = chapname + '-' + label
+
                     if label in tags.keys():
                         print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
                         print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)

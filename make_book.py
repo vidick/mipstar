@@ -45,7 +45,7 @@ with open('make_book.tex', 'w') as doc:
                     continue
                 if line.find('\\label{') >= 0:
                     label = extract_label(line, chapname)
-                    if label != chapname:
+                    if label != chapname and 'book-part' not in label:
                         line = line.replace('\\label{', '\\label{' + chapname + '-' + label)
                 if line.find('\\tableofcontents') == 0:
                     continue
