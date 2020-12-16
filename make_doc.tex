@@ -94,23 +94,23 @@
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{introduction-section-phantom}
 
 
 \part{Preliminaries}
 \label{book-part-preliminaries}
 
 \section{Introduction}
-\label{section:introduction}
+\label{introduction-section:introduction}
 
 In this chapter we give an introduction. [edit test 14]
 
 \section{Notation}
-\label{section-notation}
+\label{introduction-section-notation}
 
 This is an equation:
 \begin{equation}
-\label{eq:me-state}
+\label{introduction-eq:me-state}
  \ket{\phi_d} \,=\,\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}\;.
 \end{equation}
 
@@ -130,7 +130,7 @@ This is an equation:
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{nonlocalgames-section-phantom}
 
 
 
@@ -138,10 +138,10 @@ We introduce definitions associated with nonlocal games and strategies that will
 be used throughout.
 
 \section{Games and strategies}
-\label{section-strat}
+\label{nonlocalgames-sec:strat}
 
 \begin{definition}[Two-player one-round games]
-  \label{def:game}
+  \label{nonlocalgames-def:game}
   A \emph{two-player one-round game} $\game$ is specified by a tuple
   $(\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ where
   \begin{enumerate}
@@ -157,7 +157,7 @@ be used throughout.
 \end{definition}
 
 \begin{definition}[Tensor product strategies]
-  \label{def:tensor-product-strategy}
+  \label{nonlocalgames-def:tensor-product-strategy}
   A \emph{tensor product strategy} $\strategy$ for a game $\game = (\cal{X},
   \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\ket{\psi}, A, B)$ where
   \begin{itemize}
@@ -171,7 +171,7 @@ be used throughout.
 \end{definition}
 
 \begin{definition}[Tensor product value]
-  \label{def:tensor-product-value}
+  \label{nonlocalgames-def:tensor-product-value}
 	The \emph{tensor product value} of a tensor product strategy $\strategy =
   (\ket{\psi}, A, B)$  with respect to a game $\game=(\cal{X}, \cal{Y}, \cal{A},
   \cal{B}, \mu, D)$ is defined as
@@ -199,13 +199,13 @@ be used throughout.
 
 
 \begin{definition}[Projective strategies]
-  \label{def:projective-strategy}
+  \label{nonlocalgames-def:projective-strategy}
   We say that a strategy $\strategy = (\ket{\psi}, A, B)$ is \emph{projective} if
   all the measurements $\{A^x_a\}_a$ and $\{B^y_b\}_b$ are projective.
 \end{definition}
 
 \begin{remark}
-  \label{rem:symmetric-games}
+  \label{nonlocalgames-rem:symmetric-games}
 	A game $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is
   \emph{symmetric} if the question and answer alphabets are the same for both
   players (i.e.\
@@ -224,7 +224,7 @@ be used throughout.
 \end{remark}
 
 \begin{lemma}
-  \label{lem:symmetric-strat}
+  \label{nonlocalgames-lem:symmetric-strat}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a symmetric game
   such that $\val^*(\game) = 1-\eps$ for some $\eps\geq 0$.
   Then there exists a symmetric and projective strategy
@@ -269,7 +269,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{proof}
 
 \begin{definition}
-  \label{def:comm-strategy}
+  \label{nonlocalgames-def:comm-strategy}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a game, and let
   $\strategy = (\ket{\psi}, A, B)$ be a strategy for $\game$ such that the
   spaces $\mH_A \simeq \mH_B$ canonically.
@@ -282,7 +282,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}[Consistent measurements]
-  \label{def:consistent-measurement}
+  \label{nonlocalgames-def:consistent-measurement}
   Let $\cal{A}$ be a finite set, let $\ket{\psi} \in \mH \otimes \mH$ a
   state, and $\{ M_a \}_{a \in \cal{A}}$ a projective measurement on
   $\mH$.
@@ -295,7 +295,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}[Consistent strategies]
-  \label{def:consistent-strategy}
+  \label{nonlocalgames-def:consistent-strategy}
 	Let $\strategy = (\ket{\psi}, A, B)$ be a projective strategy with state
   $\ket{\psi} \in \mH \otimes \mH$, for some Hilbert space~$\mH$, which is
   defined on question alphabets $\cal{X}$ and~$\cal{Y}$ and answer alphabets
@@ -307,7 +307,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \begin{definition}
-  \label{def:spcc}
+  \label{nonlocalgames-def:spcc}
   We say that a strategy $\strategy$ for a game $\game$ is \emph{PCC} if it is projective, consistent, and commuting for $\game$.
   Additionally, we say that a PCC strategy $\strategy$ is \emph{SPCC} if it is furthermore symmetric.
 \end{definition}
@@ -329,7 +329,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{remark}
 
 \begin{definition}[Entanglement requirements of a game]
-  \label{def:ent}
+  \label{nonlocalgames-def:ent}
 	For all games $\game$ and $\nu \in [0, 1]$, let $\Ent(\game, \nu)$ denote the
   minimum integer $d$ such that there exists a finite dimensional tensor product
   strategy $\strategy$ that achieves success probability at least $\nu$ in the
@@ -339,11 +339,12 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \end{definition}
 
 \section{Distance measures}
+\label{nonlocalgames-sec:distancemeasures}
 
 We introduce several distance measures that are used throughout.
 
 \begin{definition}[Distance between states]
-  \label{def:state-distance}
+  \label{nonlocalgames-def:state-distance}
 
 	Let $\{\ket{\psi_n}\}_{n\in \N}$ and $\{\ket{\psi'_n}\}_{n\in \N}$ be two
   families of states in the same space $\mH$.
@@ -356,7 +357,7 @@ We introduce several distance measures that are used throughout.
 \end{definition}
 
 \begin{definition}[Consistency between POVMs]
-  \label{def:consistency}
+  \label{nonlocalgames-def:consistency}
 	Let $\mX$ be a finite set and $\mu$ a distribution on $\mX$.
   Let $\ket{\psi} \in \cal{H}_A \otimes \cal{H}_B$ be a quantum state, and for
   all $x\in \mX$, $\{A^x_a\}$ and $\{B^x_a\}$ POVMs.
@@ -379,7 +380,7 @@ the singleton distribution, according to Definition~\ref{def:consistency} (and
 vice-versa).
 
 \begin{definition}[Distance between POVMs]
-  \label{def:povm-distance}
+  \label{nonlocalgames-def:povm-distance}
 	Let $\mX$ be a finite set and $\mu$ a distribution on $\mX$. 
   Let $\ket{\psi} \in \cal{H}$ be a quantum state, and for all $x\in \mX$,
   $\{M^x_a\}$ and $\{N^x_a\}$ two POVMs on $\mH$.
@@ -394,7 +395,7 @@ vice-versa).
 \end{definition}
 
 \begin{definition}[Distance between strategies]
-  \label{def:strategy-distance}
+  \label{nonlocalgames-def:strategy-distance}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a nonlocal game
   and let $\strategy = (\psi, A, B)$, $\strategy' = (\psi', A', B')$ be 
   strategies for $\game$.
@@ -416,25 +417,25 @@ Readers are referred to Sections 4.4 and 4.5 in~\cite{NW19} for additional
 discussion and proofs.
 
 \begin{fact}[Fact 4.13 and Fact 4.14 in~\cite{NW19}]
-  \label{fact:agreement}
+  \label{nonlocalgames-fact:agreement}
   For POVMs $\{A^x_a\}$ and $\{B^x_a\}$, the following hold.
   \begin{enumerate}
   \item If $A^x_a \otimes I_\bob \simeq_\delta I_\alice \otimes B^x_a$ then
     $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$.
-    \label{item:consistency-implies-approx}
+    \label{nonlocalgames-item:consistency-implies-approx}
   \item If $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$
     \emph{and} $\{A^x_a\}$ and $\{B^x_a\}$ are projective measurements, then
     $A^x_a \otimes I_\bob \simeq_\delta I_\alice \otimes B^x_a$.
-    \label{item:both-projectors-implies-consistency}
+    \label{nonlocalgames-item:both-projectors-implies-consistency}
   \item If $A^x_a \otimes I_\bob \approx_\delta I_\alice \otimes B^x_a$ and
     either $\{A^x_a\}$ or $\{B^x_a\}$ is a projective measurement, then
     $A^x_a \otimes I_\bob \simeq_{\delta^{1/2}} I_\alice \otimes B^x_a$.
-    \label{item:one-projector-implies-consistency}
+    \label{nonlocalgames-item:one-projector-implies-consistency}
   \end{enumerate}
 \end{fact}
 
 \begin{fact}[Fact 4.20 in~\cite{NW19}]
-  \label{fact:add-a-proj}
+  \label{nonlocalgames-fact:add-a-proj}
   Let $\cal{A},\cal{B},\cal{C}$ be finite sets, and let $D$ be a distribution
   over question pairs $(x,y)$.
   Let $\{A_{a,b}^x\}$ and $\{B_{a,b}^x\}$ be operators whose outcomes range over the
@@ -468,7 +469,7 @@ discussion and proofs.
 
 
 \begin{fact}
-\label{fact:add-a-proj2}
+\label{nonlocalgames-fact:add-a-proj2}
 Let $\mathcal{X},\mathcal{A}$ denote finite sets, and let $\mathcal{G}$ denote a set of functions $g: \mathcal{X} \to \mathcal{A}$. Let $\{A^x_a \}$, $\{B^x_a\}$ be POVMs indexed by $\mathcal{X}$ and outcomes in $\mathcal{A}$. Let $\{ S_g^x \}$ denote a set of operators such that for all $x \in \mathcal{X}$, $\sum_g (S_g^x)^\dagger S_g^x \leq \Id$. 
 If $A^x_a \approx_\delta B^x_a$ on average over $x$, then $S_g^x A^x_{g(x)} \approx_\delta S_g^x B^x_{g(x)}$. 
 \end{fact}
@@ -485,7 +486,7 @@ If $A^x_a \approx_\delta B^x_a$ on average over $x$, then $S_g^x A^x_{g(x)} \app
 
 
 \begin{lemma}
-\label{lem:cool-closeness-fact}
+\label{nonlocalgames-lem:cool-closeness-fact}
 Let $\mathcal{A}$ be a finite set. Let $\{A^x_a\}_{a \in \mathcal{A}}$ be a projective measurement and let $\{B^x_a\}_{a \in \mathcal{A}}$ be a set of matrices. If $A^x_a \approx_\delta B^x_a$, then for all subsets $S \subseteq \mathcal{A}$, we have
 \[
 	\sum_{a \in S} A^x_a \approx_\delta \sum_{a \in S} A^x_a \cdot B^x_a.
@@ -503,13 +504,13 @@ In the second line we used the projectivity of $\{ A^x_a \}$, and in the third l
 
 
 \begin{fact}[Triangle inequality, Fact 4.28 in~\cite{NW19}]
-  \label{fact:triangle}
+  \label{nonlocalgames-fact:triangle}
   If $A_a^x \approx_\delta B_a^x$ and $B_a^x \approx_\epsilon C_a^x$, then
   $A_a^x \approx_{\delta + \epsilon} C_a^x$.
 \end{fact}
 
 \begin{fact}[Triangle inequality for ``$\simeq$", Proposition 4.29 in~\cite{ML20}]
- \label{fact:triangle-for-simeq}
+ \label{nonlocalgames-fact:triangle-for-simeq}
  If $A_a^x \otimes I_\bob \simeq_\eps I_\alice \otimes B_a^x$,
  $C_a^x \otimes I_\bob \simeq_\delta I_\alice \otimes  B_a^x$,
  and $C_a^x \otimes I_\bob \simeq_\gamma I_\alice \otimes  D_a^x$,
@@ -517,7 +518,7 @@ In the second line we used the projectivity of $\{ A^x_a \}$, and in the third l
 \end{fact}
 
 \begin{fact}[Data processing, Fact 4.26 in~\cite{NW19}]
-  \label{fact:data-processing}
+  \label{nonlocalgames-fact:data-processing}
   Suppose $A^x_a \abc B^x_a$.
   Then $A^x_{[f(\cdot) = b]} \abc B^x_{[f(\cdot) = b]}$.
 \end{fact}
@@ -530,7 +531,7 @@ state, changing from one family of measurement to the other only introduces
 a small error to the value of the strategy.
 
 \begin{lemma}
-  \label{lem:commutation-analysis}
+  \label{nonlocalgames-lem:commutation-analysis}
   Let $\{A^x_{a,\, b}\}$, $\{B^x_{a,\, b,\, c}\}$, $\{C^x_{a,\, c}\}$ be POVMs.
   Suppose $\{B^x_{a,\, b,\, c}\}$ is projective, and
   \begin{align*}
@@ -548,7 +549,7 @@ a small error to the value of the strategy.
   \approx_\delta \Id_\alice \otimes B^x_{a,\, c}$ and $\{A^x_{a,b} \otimes
   \Id_\bob \}$, we have
   \begin{equation}
-    \label{eq:commutation-analysis-1}
+    \label{nonlocalgames-eq:commutation-analysis-1}
     A^x_{a,\, b} C^x_{a,\, c} \otimes \Id_\bob
     \approx_\delta A^x_{a,\, b} \otimes B^x_{a,\, c}\,.
   \end{equation}
@@ -557,7 +558,7 @@ a small error to the value of the strategy.
   \otimes B^x_{a,c}\}$, and using the fact that $\{B^x_{a,b,c}\}$ is projective,
   we have
   \begin{equation}
-    \label{eq:commutation-analysis-2}
+    \label{nonlocalgames-eq:commutation-analysis-2}
     \begin{split}
       A^x_{a,\, b} \otimes B^x_{a,\, c}
       & \approx_\delta \Id_\alice \otimes B^x_{a,\, c} B^x_{a,\, b}\\
@@ -567,13 +568,13 @@ a small error to the value of the strategy.
   Combining Equations~\eqref{eq:commutation-analysis-1}
   and~\eqref{eq:commutation-analysis-2}, we have
   \begin{equation}
-    \label{eq:commutation-analysis-3}
+    \label{nonlocalgames-eq:commutation-analysis-3}
     A^x_{a,\, b} C^x_{a,\, c} \otimes \Id_\bob \approx_\delta
     \Id_\alice \otimes B^x_{a,\, b,\, c}\,.
   \end{equation}
   A similar argument gives
   \begin{equation}
-    \label{eq:commutation-analysis-4}
+    \label{nonlocalgames-eq:commutation-analysis-4}
     C^x_{a,\, c} A^x_{a,\, b} \otimes \Id_\bob \approx_\delta
     \Id_\alice \otimes B^x_{a,\, b,\, c}\,.
   \end{equation}
@@ -583,7 +584,7 @@ a small error to the value of the strategy.
 
 %The following two lemmas relate the closeness between sets of operators and weighted sums of those operators. 
 %\begin{lemma}
-%\label{lem:avg-closeness}
+%\label{nonlocalgames-lem:avg-closeness}
 %Let $\{A^x \}$ and $\{B^x\}$ be operators indexed by some finite set $\mathcal{X}$, and let $\mu$ be a probability distribution over $\mathcal{X}$. Let $\{\alpha_x \}$ be a set of complex numbers such that $|\alpha_x| \leq 1$. Then if $A^x \approx_\delta B^x$ on average over $x$ drawn from $\mu$, then $\E_x \alpha_x A^x \approx_\delta \E_x \alpha_x B^x$.
 %\end{lemma}
 %\begin{proof}
@@ -597,7 +598,7 @@ a small error to the value of the strategy.
 %\end{proof}
 %
 %\begin{lemma}
-%\label{lem:povm-to-obs}
+%\label{nonlocalgames-lem:povm-to-obs}
 %Let $\mathcal{A}$ be a finite set. Let $\{A^x_a \}_{a \in \mathcal{A}}$ and $\{B^x_a\}_{a \in \mathcal{A}}$ be matrices and let $\{ \alpha_a \}_{a \in \mathcal{A}}$ be a collection of complex numbers on the unit circle. Let $A^x = \sum_a \alpha_a A^x_a$ and $B^x = \sum_a  \alpha_a B^x_a$. Then 
 %\[
 %	A^x_a \approx_\delta B^x_a \quad \text{implies} \quad A^x \approx_{\delta'} B^x
@@ -619,7 +620,7 @@ a small error to the value of the strategy.
 
 The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
 \begin{lemma}
-  \label{lem:ld-sandwich}
+  \label{nonlocalgames-lem:ld-sandwich}
   Let $k \geq 0$ be an integer and let $\eps>0$.
   Let $\mX$ be a finite set and $\mu$ a distribution over $\mX$.
   For each $1 \leq i \leq k$ let $\mG_i$ be a set of functions $g_i : \mY
@@ -635,7 +636,7 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
   For each $1 \leq i \leq k$, suppose that on average over $x \sim \mu$ and
   $y\in \mY$ sampled uniformly at random,
   \begin{equation}
-    \label{eq:ld-sandwich-1}
+    \label{nonlocalgames-eq:ld-sandwich-1}
     A^{x}_{[\eval_y(\cdot)_i = a_i]} \abc G^{i,\, x}_{[\eval_y(\cdot)=a_i]}\;.
   \end{equation}
   Define the POVM family $\{C^x_{g_1,\, g_2,\, \ldots\,,\, g_k}\}$, for $x\in \mX$, by
@@ -646,7 +647,7 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
   \end{equation*}
   Then on average over $x\sim \mu$ and $y\in \mY$ sampled uniformly at random,
   \begin{equation}
-    \label{eq:ld-sandwich-2}
+    \label{nonlocalgames-eq:ld-sandwich-2}
     A^x_{[\eval_y(\cdot) = (a_1,\, a_2,\, \ldots,\, a_k)]} \abc[k(\delta+\eps)^{1/2}]
     C^x_{[\eval_y(\cdot) = (a_1,\, a_2,\, \ldots,\, a_k)]}\;.
 \end{equation}
@@ -660,44 +661,44 @@ The following lemma is a slightly modified version of~\cite[Fact~4.34]{NW19}.
 
 
 \begin{lemma}[Fact 4.35 in~\cite{NW19}]
-  \label{lem:pasting}
+  \label{nonlocalgames-lem:pasting}
 Let $\mathcal{D}$ be a distribution on $(x,y_1,y_2)\in \mathcal{X}\times \mathcal{Y}_1\times \mathcal{Y}_2$. For $i\in \{1,2\}$ let $\mathcal{G}_i$ be a collection of functions $g_i: \mathcal{Y}_i \to \mathcal{R}_i$ and let $\{(G_i)^{x}_{g}\}_{g\in \mathcal{G}_i}$ be families of measurements such that $\{(G_2)^x_g\}_g$ is projective for every $x$. Suppose further that for every $(x,y_1)$ it holds that for $g_2\neq g'_2 \in \mathcal{G}_2$ the probability, on average over $y_2$ chosen from $\mathcal{D}$ conditioned on $(x,y_1)$, that $g_2(y_2)=g'_2(y_2)$  is at most $\eta$. 
 Let $\{A^{x,y_1,y_2}_{a_1,a_2}\}$ be a family of projective measurements with outcomes $(a_1,a_2)\in \mathcal{R}_1 \times \mathcal{R}_2$ such that for $i\in \{1,2\}$,
 \begin{equation}
-  \label{eq:pasting-1}
+  \label{nonlocalgames-eq:pasting-1}
  A^{x,y_1,y_2}_{a_i} \otimes \Id \simeq_\delta \Id \otimes (G_i)^x_{[\eval_{y_i}(\cdot)=a_i]}
 \end{equation}
 and 
 \begin{equation}
-  \label{eq:pasting-2}
+  \label{nonlocalgames-eq:pasting-2}
  A^{x,y_1,y_2}_{a_1,a_2} \otimes \Id \simeq_\delta \Id \otimes  A^{x,y_1,y_2}_{a_1,a_2}\;.
 \end{equation}
 Define a family of measurements $\{J^x_{g_1,g_2}\}$ as
 \begin{equation}
-  \label{eq:pasting-2a}
+  \label{nonlocalgames-eq:pasting-2a}
  J^x_{g_1,g_2} \,=\, (G_2)^x_{g_2} (G_1)^x_{g_1} (G_2)^x_{g_2}\;.
 \end{equation}
 Then there is a 
 \begin{equation}
-  \label{eq:def-deltap}
+  \label{nonlocalgames-eq:def-deltap}
 \delta_{pasting} \,=\, \delta_{pasting}(\eta,\delta)\,=\, \poly(\eta,\delta)
 \end{equation} such that 
 \begin{equation}
-  \label{eq:pasting-3}
+  \label{nonlocalgames-eq:pasting-3}
  A^{x,y_1,y_2}_{a_1,a_2} \otimes \Id \simeq_{\delta_p} \Id \otimes J^x_{[\eval_{y_1}(\cdot)=a_1,\eval_{y_2}(\cdot) = a_2]}\;.
 \end{equation}
 \end{lemma}
 %
 %The following lemma shows that POVMs that are approximately projective (in the sense of being self-consistent) are close to exact projective measurements. The lemma first appears in~\cite{KV11}; for a self-contained proof, see~\cite{ML20}.
 %
-%\begin{lemma}[Orthonormalization lemma]\label{lem:ortho}
+%\begin{lemma}[Orthonormalization lemma]\label{nonlocalgames-lem:ortho}
 %Let $0\leq \delta\leq 1$. There exists a function $\eta_{ortho}(\delta)\,=\, O\big(\delta^{1/4}\big)$ such that the following holds.  Let $\ket{\psi}$ be a bipartite state on $\mH_\alice \otimes \mH_\bob$ where $\mH_\alice,\mH_\bob$ are finite dimensional. Let $\{Q_a\}$ be a POVM and
-%\begin{equation}\label{eq:cons-cond} 
+%\begin{equation}\label{nonlocalgames-eq:cons-cond} 
 %Q_a \abc Q_a \,.
 %\end{equation}
 %Then there exists a projective measurement $\{P_a\}$ such that
 %%Then there exists orthogonal projections $P_1,\ldots, P_k$ in $\mH$ such that $\sum_i P_i = \Id$ and
-%\begin{equation}\label{eq:cons-ccl}
+%\begin{equation}\label{nonlocalgames-eq:cons-ccl}
 %  P_a \otimes \Id_\alice \,\approx_{\eta_{ortho}} Q_a \otimes \Id_\alice \;.
 %\end{equation}
 %\end{lemma}
@@ -759,8 +760,8 @@ Then there is a
 \label{complexitytheory}
 
 
-\phantomsection
-\label{section-phantom}
+% \phantomsection
+% \label{complexitytheory-section-phantom}
 
 
 
@@ -775,7 +776,7 @@ Then there is a
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{operatoralgebras-section-phantom}
 
 
 
@@ -795,13 +796,13 @@ Then there is a
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{paulibraiding-section-phantom}
 
 
 
 
 \section{Multiplayer games}
-\label{section-multigames}
+\label{paulibraiding-sec-multigames}
 
 
 A multiplayer game is a single-round interaction between a \emph{referee} and multiple \emph{players}. The game specifies the actions of the referee: with what distribution she selects the questions to the players, and what tuples of answers are valid for each tuple of questions. The players, traditionally referred to as Alice, Bob, Charlie, etc., are always assumed to attempt to maximize their probability of winning (i.e. providing valid answers) in the game. The probability is over both the referee's and the players' randomness. This quantity, the players' maximum winning probability, is usually called the \emph{value} of the game.
@@ -827,7 +828,7 @@ Interestingly, many games have the property that the optimal quantum strategy fo
 \paragraph{Resources.} A great introduction to complexity-theoretic questions about non-local games is the paper by Cleve et al.~\cite{cleve2004consequences}. The lecture notes by Ji (see module 5 \href{https://uwaterloo.ca/institute-for-quantum-computing/programs/graduate-studies/previous-courses/qic-890891-selected-advanced-topics-quantum-information}{here}) cover CHSH, the Magic Square game, linearity testing (using a slightly different analysis than the one we will give here), and graph-based games. 
 
 \paragraph{Notation.} In this lecture we use the non-standard notation 
-\begin{equation}\label{eq:me-state}
+\begin{equation}\label{paulibraiding-eq:me-state}
  \ket{\phi_d} \,=\,\frac{1}{\sqrt{d}} \sum_{i=1}^d \ket{i}\ket{i}
 \end{equation}
 for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}$ denotes an EPR pair. 
@@ -849,7 +850,7 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{theargument-section-phantom}
 
 
 
@@ -868,7 +869,7 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{questionreduction-section-phantom}
 
 
 
@@ -883,11 +884,11 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 \chapter{Answer reduction}
-\label{chapter-answerreduction}
+\label{answerreduction}
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{answerreduction-section-phantom}
 
 
 
@@ -906,7 +907,7 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{recursivecompression-section-phantom}
 
 
 
@@ -926,7 +927,7 @@ for the maximally entangled state in $d$ dimension. In particular, $\ket{\phi_2}
 
 
 % \phantomsection
-% \label{section-phantom}
+% \label{parallelrepetition-section-phantom}
 
 
 

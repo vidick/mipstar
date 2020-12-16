@@ -44,8 +44,9 @@ with open('make_doc.tex', 'w') as doc:
     # print('\\end{titlepage}', file=doc)
 
     chapter_names, chapters = get_chapters()
-
+    print(chapter_names)
     for i, chapter in enumerate(chapters):
+        chapname = chapter_names[i]
         with open(chapter) as texfile:
             print('% chapter-' + chapter_names[i], file=doc)
             for line in texfile:
@@ -57,6 +58,10 @@ with open('make_doc.tex', 'w') as doc:
                     line = line.replace('\\title{', '\\chapter{')
                 if line.find('\\maketitle') == 0:
                     continue
+                if line.find('\\label{') >= 0:
+                    label = extract_label(line, chapname)
+                    if label != chapname and 'book-part' not in label:
+                        line = line.replace('\\label{', '\\label{' + chapname + '-')
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:

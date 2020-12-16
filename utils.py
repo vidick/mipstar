@@ -1,4 +1,16 @@
 """Common functions used in scripts."""
+def extract_label(line, chapname):
+    """Return the \\label on the given line"""
+    start = line.find('\\label{')
+    for i in range(start, len(line)):
+        if line[i] == '}':
+            label = line[start + 7 : i]
+            break
+    # if label != chapname:
+    #     label = chapname + '-' + label
+    return label
+
+
 def get_chapters():
     """Retrieves all chapter names and their corresponding .tex files."""
     chapsfile = open('chapters', 'r')

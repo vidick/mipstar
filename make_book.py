@@ -29,9 +29,10 @@ with open('make_book.tex', 'w') as doc:
     # print('\\vskip1in', file=doc)
     # print('\\end{titlepage}', file=doc)
 
-    _, chapters = get_chapters()
+    chapter_names, chapters = get_chapters()
 
-    for chapter in chapters:
+    for i, chapter in enumerate(chapters):
+        chapname = chapter_names[i]
         with open(chapter) as texfile:
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:
@@ -42,6 +43,10 @@ with open('make_book.tex', 'w') as doc:
                     line = line.replace('\\title{', '\\chapter{')
                 if line.find('\\maketitle') == 0:
                     continue
+                if line.find('\\label{') >= 0:
+                    label = extract_label(line, chapname)
+                    if label != chapname:
+                        line = line.replace('\\label{', '\\label{' + chapname + '-' + label)
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:

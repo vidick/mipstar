@@ -2,16 +2,6 @@
 import os
 from utils import *
 
-def extract_label(line):
-    """Return the \\label on the given line"""
-    start = line.find('\\label{')
-    for i in range(start, len(line)):
-        if line[i] == '}':
-            label = line[start + 7 : i]
-            break
-    if label != chapname:
-        label = chapname + '-' + label
-    return label
 
 # retrieve all tags from tag file
 tags = {}
@@ -36,7 +26,7 @@ for i, chapter in enumerate(chapters):
                 if line.find('\\section{') == 0:
                     nextline = next(texfile)
                     if nextline.find('\\label{') >= 0:
-                        label = extract_label(nextline)
+                        label = extract_label(nextline, chapname)
                         if label in tags.keys():
                             print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
                             print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
@@ -50,7 +40,7 @@ for i, chapter in enumerate(chapters):
                         continue
                 # if label present on line, add margin note to side and hypertarget
                 if line.find('\\label{') >= 0:
-                    label = extract_label(line)
+                    label = extract_label(line, chapname)
                     if label in tags.keys():
                         print('\\hypertarget{' + tags[label] + '}{}', file=tex_file)
                         print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tex_file)
