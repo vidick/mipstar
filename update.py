@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import argparse
 import logging
 from dotenv import load_dotenv
 import paramiko
@@ -18,6 +19,10 @@ ssh.connect('134.122.114.22', username='root', password=AUTH)
 logging.basicConfig(stream=sys.stdout)
 log = logging.getLogger('Boostrapper')
 log.setLevel(logging.INFO)
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-np', '--nopdf', help='skip PDF generation step', action='store_true')
+args = parser.parse_args()
 
 # diff = subprocess.Popen(['git', 'diff', 'master:document.tex', '--', 'document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
 # out, err = diff.communicate()
@@ -63,23 +68,24 @@ if out or any('No such file or directory' in msg for msg in err):
 
     log_outputs(log, stdout.readlines(), stderr.readlines())
 
-    log.info('  Making book.tex')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_book.py')
-    log_outputs(log, stdout.readlines(), stderr.readlines())
+    if not args.nopdf:
+        log.info('  Making book.tex')
+        stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_book.py')
+        log_outputs(log, stdout.readlines(), stderr.readlines())
 
-    log.info('  Adding margin notes/tags to .tex files')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 pdf_tagger.py')
-    log_outputs(log, stdout.readlines(), stderr.readlines())
+        log.info('  Adding margin notes/tags to .tex files')
+        stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 pdf_tagger.py')
+        log_outputs(log, stdout.readlines(), stderr.readlines())
 
-    log.info('  Generating PDFs')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_pdfs.py')
+        log.info('  Generating PDFs')
+        stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_pdfs.py')
 
-    spinner = Spinner('Working ')
-    while not stdout.channel.exit_status_ready():
-        spinner.next()
-    spinner.finish()
+        spinner = Spinner('Working ')
+        while not stdout.channel.exit_status_ready():
+            spinner.next()
+        spinner.finish()
 
-    log_outputs(log, [], stderr.readlines())
+        log_outputs(log, [], stderr.readlines())
 
     log.info('  Deleting old database file')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && rm hello-world.sqlite')
