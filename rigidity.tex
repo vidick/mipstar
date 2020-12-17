@@ -146,7 +146,67 @@ This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approxi
 \section{Rigidity for the Magic Square game}
 \label{section-msrigid}
 
+Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game and showed that any perfect strategy must ``have a qubit''. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{thm:gh} we can extend our earlier result to the case of approximate strategies with very little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
 
+\begin{theorem}\label{thm:rigid-ms}
+Let $\eps>0$, and suppose that a strategy for the players  in the Magic Square game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $B_1,\ldots,B_9$ for Bob succeeds with probability $1-\eps$, for some $\eps \geq 0$. Then $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit. Moreover, there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+\begin{equation}\label{eq:chsh-state}
+\big\| V_A \otimes V_B \ket{\psi} - \ket{\phi^+} \otimes \ket{\psi'} \big\| = O(\sqrt{\eps}) \;,
+\end{equation}
+and 
+\begin{equation}\label{eq:chsh-alice}
+\big\|( V_A \otimes V_B)( \Id \otimes B_2 )\ket{\psi} - (\sigma_Z \otimes \Id) \ket{\phi^+} \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
+\end{equation}
+and a similar relation holds with $B_2$ replaced by $B_4$ and $\sigma_Z$ replaced by $\sigma_X$. 
+\end{theorem}
+
+Note that this is a slightly weaker variant of Theorem~\ref{thm:ms-robust} that we stated without proof, because it only characterizes a single qubit of the strategy, instead of two for the case of Theorem~\ref{thm:ms-robust}. This will suffice for our purposes. 
+
+\begin{proof}
+For the first step of the proof we follow the proof of Claim~\ref{claim:ms-ac}, except that all equalities must be made approximate equalities. 
+Assume without loss of generality that Alice's strategy is specified by six $4$-outcomes projective measurements $\{A^i_{a_1,a_2,a_3}\}$, where $a_1,a_2,a_3\in\{\pm 1\}$ range over the four possible assignments that satisfy the constraint associated with the $i$-th row $(i\in \{1,2,3\})$ or $(i-3)$-th column ($i\in \{4,5,6\}$). (We can assume that Alice always returns a valid assignment because she knows that she will lose if not, so we do not even need to include a symbol for such evidently wrong answers in the game.)
+
+For any $i\in\{1,\ldots,9\}$, in addition to Bob's observable $B_i$ associated with question $i$ we define two observables from Alice's strategy, obtained by recording her answer associated to entry $i$ when she is asked the unique row containing $i$ --- call this observable $C_i$ --- or the unique column containing $i$ --- call this observable $C'_i$. Formally, $C_1 = \sum_{a_1,a_2,a_3\in\{\pm 1\}}a_1 A^1_{a_1,a_2,a_3}$, and similar relations can be used to define each $C_i$ and $C'_i$. Due to the parity constraints enforced on Alice's answers it is always the case that $C_1C_2C_3=+\Id,\ldots,C_3C_6C_9=-\Id$.
+ 
+By definition, success of the strategy in the game implies $18$ equations of the form 
+\begin{equation}\label{eq:ms-bc-1}
+ \bra{\psi} C_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\qquad\text{and}\qquad \bra{\psi} C'_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\;,
+\end{equation}
+for all $i\in \{1,\ldots,9\}$. Indeed, each such equation represents the probability that the players return valid answers, conditioned on each of the $18$ possible pairs of questions in the game. These relations allow us to mimic the proof of Claim~\ref{claim:ms-ac}, as follows: 
+\begin{align*}
+B_2 B_4 \ket{\psi} & \approx C_4 \otimes B_2 \ket{\psi}\\
+&= C_5 C_6 \otimes B_2 \ket{\psi}\\
+&\approx C_5 C_6 C_2 \otimes \Id \ket{\psi}\\
+&= C_5 C_6 C_3 C_1 \otimes \Id \ket{\psi}\\
+&\approx C_5C_6C_3 \otimes B_1 \ket{\psi}\\
+&\approx C_5C_6\otimes B_1 B_3 \ket{\psi}\\
+&\approx C_5C'_6\otimes B_1 B_3 \ket{\psi}\\
+&\approx C_5C'_6 C'_3\otimes B_1  \ket{\psi}\\
+&=  C_5C'_9\otimes B_1  \ket{\psi}\;,
+\end{align*}
+where here we use the notation $\ket{u}\approx \ket{v}$ to mean $\|\ket{u} - \ket{v}\|^2 = O(\eps)$. Here, each of the approximations is obtained by bounding the squared norm of the difference using the Cauchy-Scharz inequality and the required relation; for example, for the first approximation we write
+\begin{align*}
+ \big\|(\Id \otimes B_2 B_4 - C_4 \otimes B_2)\ket{\psi}\big\|^2
+&= \big\|(\Id \otimes B_2)(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\
+&= \big\|(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\ 
+&= 2 - 2 \bra{\psi} B_4 \otimes C_4 \ket{\psi} \\
+& \leq 36\eps\;,
+\end{align*}
+where the derivation uses that $B_2,B_4$ and $C_4$ are Hermitian and square to identity. 
+Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, it follows that $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit.
+ 
+As already observed in Exercise~\ref{ex:wh-2}, it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
+$$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_Z)=\pm B_2,\quad\quad f(\pm\sigma_X)=\pm B_4,\quad f(\pm\sigma_X\sigma_Z) = \pm B_4B_2\;.$$
+Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
+
+Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{ex:wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eqref{eq:chsh-alice}. 
+
+To conclude~\eqref{eq:chsh-state} we observe that the relations~\eqref{eq:ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{thm:gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
+\[ \ket{\psi'} = V_\reg{A} \otimes V_\reg{B} \ket{\psi} \in (\C^2 \otimes \mH_\reg{A}')\otimes (\C^2 \otimes \mH_\reg{B}') \]
+we see from~\eqref{eq:ms-bc-1} and~\eqref{eq:chsh-alice} that 
+\[\big| \bra{\psi} \big(\sigma_X \otimes \sigma_X \otimes \Id_{\reg{A}'\reg{B}'} + \sigma_Z \otimes \sigma_Z \otimes \Id_{\reg{A}'\reg{B}'} \big) \ket{\psi}\big| \geq 1-O({\eps})\;.\]
+To conclude note that $\frac{1}{2}(\sigma_X \otimes \sigma_X + \sigma_Z \otimes \sigma_Z )$ is an observable with a single eigenvalue $1$, with associated eigenvector $\ket{\phi^+}$, and all other eigenvalues equal to $0$ or $-1$. 
+\end{proof}
 
 
 

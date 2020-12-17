@@ -576,68 +576,6 @@ Then there is a
  A^{x,y_1,y_2}_{a_1,a_2} \otimes \Id \simeq_{\delta_p} \Id \otimes J^x_{[\eval_{y_1}(\cdot)=a_1,\eval_{y_2}(\cdot) = a_2]}\;.
 \end{equation}
 \end{lemma}
-%
-%The following lemma shows that POVMs that are approximately projective (in the sense of being self-consistent) are close to exact projective measurements. The lemma first appears in~\cite{KV11}; for a self-contained proof, see~\cite{ML20}.
-%
-%\begin{lemma}[Orthonormalization lemma]\label{lem:ortho}
-%Let $0\leq \delta\leq 1$. There exists a function $\eta_{ortho}(\delta)\,=\, O\big(\delta^{1/4}\big)$ such that the following holds.  Let $\ket{\psi}$ be a bipartite state on $\mH_\alice \otimes \mH_\bob$ where $\mH_\alice,\mH_\bob$ are finite dimensional. Let $\{Q_a\}$ be a POVM and
-%\begin{equation}\label{eq:cons-cond} 
-%Q_a \abc Q_a \,.
-%\end{equation}
-%Then there exists a projective measurement $\{P_a\}$ such that
-%%Then there exists orthogonal projections $P_1,\ldots, P_k$ in $\mH$ such that $\sum_i P_i = \Id$ and
-%\begin{equation}\label{eq:cons-ccl}
-%  P_a \otimes \Id_\alice \,\approx_{\eta_{ortho}} Q_a \otimes \Id_\alice \;.
-%\end{equation}
-%\end{lemma}
-
-
-%
-%\subsection{Self-testing}
-%
-%\begin{definition}[Partial strategies]
-%  A strategy $\strategy = (\ket{\psi}, A, B)$ is a \emph{partial strategy} for a
-%  game $\game$ if $A$ and $B$ only specify POVM $A^x$ and $B^y$ for a subset of
-%  the questions $x, y$ in $\game$ (called the \emph{question set of the strategy
-%    $\strategy$}).
-%  A strategy $\strategy' = (\ket{\psi}, A', B')$ \emph{extends $\strategy$} if
-%  $(A')^x = A^x$ and $(B')^y = B^y$ for every $x, y$ in the question set of
-%  $\strategy$.
-%  A \emph{full strategy} $\strategy$ for a game $\game$ is one whose question
-%  set is the entire question alphabet of $\game$.
-%\end{definition}
-%
-%\begin{definition}[Self-testing]
-%  Let $\strategy = (\ket{\psi}, A, B)$ be a partial strategy for a game $\game =
-%  (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ and $\delta:[0,1]\to \R_+$.
-%  We say that $\game$ is a \emph{self-test for $\strategy$ with robustness
-%    $\delta(\eps)$} if the following hold:
-%  \begin{itemize}
-%	\item (Completeness)
-%    There exists a (full) strategy $\strategy_{\full}$ that extends $\strategy$
-%    such that $\val^*(\game, \strategy_{\full}) = 1$.
-%	\item (Soundness)
-%    Let $\hat{\strategy} = (\hat{\psi}, \hat{A}, \hat{B})$ be a strategy that
-%    wins $\game$ with probability $1 - \eps$, for some $\eps\geq 0$.
-%    Then there exists a local isometry $\phi = \phi_A \otimes \phi_B$ and a
-%    state $\ket{\aux}$ such that
-%    \begin{equation*}
-%      \| \phi (\ket{\hat{\psi}}) - \ket{\psi} \ket{\aux} \|^2 \leq \delta(\eps)\;.
-%    \end{equation*}
-%    Furthermore, letting $\tilde{A}^x_a = \phi_A\, \hat{A}^x_a\, \phi_A^*$ and
-%    $\tilde{B}^y_b = \phi_B\, \hat{B}^y_b\, \phi_B^*$ , we have
-%    \begin{equation*}
-%      \tilde{A}^x_a \otimes I_\bob \approx_{\delta(\eps)}
-%      (A^x_a \otimes \Id_\aux) \otimes I_\bob
-%    \end{equation*}
-%    on state $\ket{\psi} \ket{\aux}$, where $x$ is drawn from the
-%    marginal distribution of $\mu$ on one of the players.
-%    A similar relation holds for operators $\tilde{B}^y_b$ and $B^y_b$.
-%  \end{itemize}
-%\end{definition}
-%
-
-
 
 \input{chapters}
 
