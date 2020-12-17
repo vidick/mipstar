@@ -16,9 +16,7 @@
 
 \tableofcontents
 
-
-We introduce definitions associated with nonlocal games and strategies that will
-be used throughout.
+This chapter introduces the basics of nonlocal games. 
 
 \section{Games and strategies}
 \label{section-strat}
@@ -39,8 +37,15 @@ be used throughout.
   \end{enumerate}
 \end{definition}
 
+\begin{definition}[POVM]
+\label{definition-povm}
+A positive operator-valued measure (POVM) on $\mH$ is a finite collection $\{A_i\}$ of positive semidefinite operators on $\mH$ such that $\sum_i A_i = \Id$. 
+\end{definition}
+
+A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}. 
+
 \begin{definition}[Tensor product strategies]
-  \label{def:tensor-product-strategy}
+  \label{definition-tensorstrategy}
   A \emph{tensor product strategy} $\strategy$ for a game $\game = (\cal{X},
   \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\ket{\psi}, A, B)$ where
   \begin{itemize}
@@ -54,7 +59,7 @@ be used throughout.
 \end{definition}
 
 \begin{definition}[Tensor product value]
-  \label{def:tensor-product-value}
+  \label{definition-tensor-value}
 	The \emph{tensor product value} of a tensor product strategy $\strategy =
   (\ket{\psi}, A, B)$  with respect to a game $\game=(\cal{X}, \cal{Y}, \cal{A},
   \cal{B}, \mu, D)$ is defined as
@@ -74,7 +79,7 @@ be used throughout.
 
 
 \begin{remark}
-  Unless specified otherwise, all strategies considered in this paper are tensor
+  Unless specified otherwise, all strategies considered  are tensor
   product strategies, and we simply call them \emph{strategies}.
   Similarly, we refer to $\val^*(\game)$ as the \emph{value} of the game
   $\game$.
@@ -224,7 +229,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 \section{Distance measures}
 \label{section-distancemeasures}
 
-We introduce several distance measures that are used throughout.
+We introduce several distance measures on states and strategies.
 
 \begin{definition}[Distance between states]
   \label{def:state-distance}
