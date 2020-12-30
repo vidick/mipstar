@@ -36,7 +36,7 @@ _, chapters = get_chapters()
 out = []
 err = []
 for chapter in chapters:
-    stdin, stdout, stderr = ssh.exec_command(f'cd /root/mipstar && git diff origin/master:{chapter} -- {chapter}')
+    stdin, stdout, stderr = ssh.exec_command(f'cd /root/mipstar && git diff origin/master:latex/{chapter} -- latex/{chapter}')
     out += stdout.readlines()
     err += stderr.readlines()
 log_outputs(log, out, err, '', '\n')
@@ -49,13 +49,13 @@ if out or any('No such file or directory' in msg for msg in err) or args.force:
     # gen_tags = subprocess.Popen(['python3', 'tagger.py', 'document.tex', '>', 'tags'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_tags.communicate()
     log.info('  Updating document tags')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_doc.py && python3 tagger.py make_doc.tex > tags')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_doc.py && python3 tagger.py ./latex/make_doc.tex > tags')
     log_outputs(log, stdout.readlines(), stderr.readlines())
 
     # gen_doc = subprocess.Popen(['plastex', '--renderer=Gerby', './document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_doc.communicate()
     log.info('  Rendering make_doc.tex using plastex')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && plastex --renderer=Gerby ./make_doc.tex')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && plastex --renderer=Gerby ./latex/make_doc.tex')
     stdin.write('y\n')
 
     spinner = Spinner('Working ')

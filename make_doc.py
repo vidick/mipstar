@@ -2,12 +2,12 @@
 from utils import *
 
 
-with open('make_doc.tex', 'w') as doc:
+with open('latex/make_doc.tex', 'w') as doc:
     print('\\documentclass{book}', file=doc)
     print('\\usepackage{amsmath}', file=doc)
     # print('\\usepackage{amsbook}', file=doc)
     
-    with open('preamble.tex', 'r') as preamble:
+    with open('latex/preamble.tex', 'r') as preamble:
         next(preamble)
         next(preamble)
         next(preamble)
@@ -46,7 +46,7 @@ with open('make_doc.tex', 'w') as doc:
     chapter_names, chapters = get_chapters()
     for i, chapter in enumerate(chapters):
         chapname = chapter_names[i]
-        with open(chapter) as texfile:
+        with open('latex/' + chapter) as texfile:
             print('% chapter-' + chapname, file=doc)
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:

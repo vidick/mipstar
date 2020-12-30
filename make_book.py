@@ -2,13 +2,13 @@
 from utils import *
 
 
-with open('make_book.tex', 'w') as doc:
+with open('latex/make_book.tex', 'w') as doc:
     print('\\documentclass{book}', file=doc)
     print('\\usepackage{amsmath}', file=doc)
     print('\\usepackage{amsthm}', file=doc)
     print('\\usepackage{amsfonts}', file=doc)
     
-    with open('preamble.tex', 'r') as preamble:
+    with open('latex/preamble.tex', 'r') as preamble:
         next(preamble)
         next(preamble)
         next(preamble)
@@ -36,7 +36,7 @@ with open('make_book.tex', 'w') as doc:
 
     for i, chapter in enumerate(chapters):
         chapname = chapter_names[i]
-        with open(chapter) as texfile:
+        with open('latex/' + chapter) as texfile:
             print('% chapter-' + chapname, file=doc)
             for line in texfile:
                 if line.find('\\input{preamble}') == 0:

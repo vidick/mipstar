@@ -17,7 +17,7 @@ for i, chapter in enumerate(chapters):
     chapname = chapter_names[i]
     first_section = True
     with open(os.path.join('pdfs', chapter), 'w') as tagged_file:
-        with open(chapter) as tex_file:
+        with open('latex/' + chapter) as tex_file:
             for line in tex_file:
                 # add marginnote package first
                 if line.find('\\begin{document}') == 0:
@@ -63,7 +63,7 @@ for i, chapter in enumerate(chapters):
 
 # add margin notes/tags to book
 with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
-    with open('make_book.tex') as tex_file:
+    with open('latex/make_book.tex') as tex_file:
         for line in tex_file:
             # retrieve chapter name
             if line.find('% chapter-') == 0:
