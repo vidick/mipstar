@@ -59,6 +59,10 @@ for i, chapter in enumerate(chapters):
                     if label in tags.keys():
                         print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
                         print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+
+                    if label == chapname + '-section-phantom':
+                        print(line.replace('\\label{', '\\label{' + chapname), end='', file=tagged_file)
+                        continue
                 print(line, end='', file=tagged_file)
 
 # add margin notes/tags to book
