@@ -32,6 +32,7 @@ stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && git fetch --prune'
 log_outputs(log, stdout.readlines(), stderr.readlines(), '', '\n')
 
 _, chapters = get_chapters()
+chapters.append('preamble.tex')
 
 out = []
 err = []
