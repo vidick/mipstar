@@ -55,7 +55,7 @@ if out or any('No such file or directory' in msg for msg in err) or args.force:
     # gen_doc = subprocess.Popen(['plastex', '--renderer=Gerby', './document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
     # o, e = gen_doc.communicate()
     log.info('  Rendering make_doc.tex using plastex')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/latex && plastex --renderer=Gerby ./make_doc.tex -d=../make_doc/')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/latex && plastex --renderer=Gerby ./make_doc.tex -d=/root/mipstar/make_doc/')
     stdin.write('y\n')
 
     spinner = Spinner('Working ')
