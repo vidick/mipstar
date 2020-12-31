@@ -21,7 +21,7 @@ for chapter in chapters:
     pdflatex.communicate()
 
     # clean up auxiliary files
-    for ext in AUX:
-        files = glob.glob(os.path.join('./pdfs', ext))
-        for file in files:
-            os.remove(file)
+    # for ext in AUX:
+    #     files = glob.glob(os.path.join('./pdfs', ext))
+    #     for file in files:
+    #         os.remove(file)
