@@ -61,8 +61,6 @@ with open('latex/make_doc.tex', 'w') as doc:
                     label = extract_label(line, chapname)
                     if label != chapname and 'book-part' not in label:
                         line = line.replace('\\label{', '\\label{' + chapname + '-')
-                    # elif label == chapname:
-                    #     continue
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:
