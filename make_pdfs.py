@@ -25,5 +25,3 @@ for chapter in chapters:
         files = glob.glob(os.path.join('./pdfs', ext))
         for file in files:
             os.remove(file)
-
-    break
