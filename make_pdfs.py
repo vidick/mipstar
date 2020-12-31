@@ -4,7 +4,7 @@ import glob
 import subprocess
 from utils import get_chapters
 
-AUX = ['*.aux', '*.log', '*.out', '*.toc']
+AUX = ['*.log', '*.out', '*.toc']
 
 _, chapters = get_chapters()
 chapters.append('book.tex')
