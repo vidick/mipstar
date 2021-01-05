@@ -16,14 +16,14 @@
 
 \tableofcontents
 
-This chapter introduces the basics of nonlocal games. 
+A \emph{nonlocal game} is another name for a \emph{two-player one-round game}. The term ``nonlocal'' is used to emphasize that players in the game may make use of entanglement to coordinate. However the game itself does not depend on entanglement, and it would be more proper to call the player strategies ``nonlocal''.  
 
-\section{Games and strategies}
+\section{Basic definitions}
 \label{section-strat}
 
 \begin{definition}[Two-player one-round games]
   \label{definition-game}
-  A \emph{two-player one-round game} $\game$ is specified by a tuple
+  A \emph{two-player one-round game} $\game$ is a tuple
   $(\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ where
   \begin{enumerate}
   \item $\cal{X}$ and $\cal{Y}$ are finite sets (called the \emph{question
@@ -37,12 +37,8 @@ This chapter introduces the basics of nonlocal games.
   \end{enumerate}
 \end{definition}
 
-\begin{definition}[POVM]
-\label{definition-povm}
-A positive operator-valued measure (POVM) on $\mH$ is a finite collection $\{A_i\}$ of positive semidefinite operators on $\mH$ such that $\sum_i A_i = \Id$. 
-\end{definition}
+Given a game, one can consider different kinds of strategies for the players in the game. The most important type of strategy considered here is that of a ``tensor product strategy'', sometimes also referred to loosely as a ``quantum strategy''. (We use the former terminology to distinguish this class of strategies from the more general ``commuting strategies''.)
 
-A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}. 
 
 \begin{definition}[Tensor product strategies]
   \label{definition-tensorstrategy}
@@ -57,6 +53,8 @@ A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}.
     \{B^y_b \}_{b \in \cal{B}}$ is a POVM over $\mH_B$.
 \end{itemize}
 \end{definition}
+
+Given a game, the most important quantity associated to it is the game \emph{value}. Informally, this represents the maximum success probability of players employing a certain kind of strategy in the game.  
 
 \begin{definition}[Tensor product value]
   \label{definition-tensor-value}
@@ -87,13 +85,13 @@ A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}.
 
 
 \begin{definition}[Projective strategies]
-  \label{definifition-projective-strategy}
+  \label{definition-projective-strategy}
   We say that a strategy $\strategy = (\ket{\psi}, A, B)$ is \emph{projective} if
   all the measurements $\{A^x_a\}_a$ and $\{B^y_b\}_b$ are projective.
 \end{definition}
 
 \begin{remark}
-  \label{rem:symmetric-games}
+  \label{remark-symmetric-games}
 	A game $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is
   \emph{symmetric} if the question and answer alphabets are the same for both
   players (i.e.\
@@ -112,7 +110,7 @@ A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}.
 \end{remark}
 
 \begin{lemma}
-  \label{lem:symmetric-strat}
+  \label{lemma-symmetric-strat}
   Let $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ be a symmetric game
   such that $\val^*(\game) = 1-\eps$ for some $\eps\geq 0$.
   Then there exists a symmetric and projective strategy
@@ -232,7 +230,7 @@ without loss of generality that $\ket{\psi'}\in\C_{\alice'}^d\otimes \C_{\bob'}^
 We introduce several distance measures on states and strategies.
 
 \begin{definition}[Distance between states]
-  \label{def:state-distance}
+  \label{definition-state-distance}
 
 	Let $\{\ket{\psi_n}\}_{n\in \N}$ and $\{\ket{\psi'_n}\}_{n\in \N}$ be two
   families of states in the same space $\mH$.

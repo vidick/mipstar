@@ -21,10 +21,21 @@ We summarize notation used throughout. Notation local to a chapter is introduced
 \section{Mathematical notation}
 \label{section-mathnotation}
 
+We use $\mH$ to denote a separable Hilbert space. Unless explicitly specified otherwise, $\mH$ is assumed to be finite dimensional. We use $\Id_\mH$ to denote the identity operator on $\mH$, sometimes abbreviated as $\Id$. We use $\Tr(\cdot)$ to denote the standard trace on $\mH$. 
 
-\section{Nonlocal games}
-\label{section-gamesnotation}
+\section{Quantum information}
+\label{section-qinotation}
 
+We use standard notation as used in e.g. the book~\cite{nielsen2000quantum}. 
+
+A (pure) quantum state $\ket{\psi}$ is a unit vector in $\mH$. A density matrix on $\mH$ is a positive semidefinite operator $\rho$ on $\mH$ such that $\Tr(\rho)=1$. 
+
+\begin{definition}[POVM]
+\label{definition-povm}
+A positive operator-valued measure (POVM) on $\mH$ is a finite collection $\{A_i\}$ of positive semidefinite operators on $\mH$ such that $\sum_i A_i = \Id$. 
+\end{definition}
+
+A POVM $\{A_i\}$ is sometimes referred to as a \emph{measurement}. If all $A_i$ are projections then the measurement is called \emph{projective}. 
 
 
 
