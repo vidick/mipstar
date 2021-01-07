@@ -43,9 +43,9 @@ Given a game, one can consider different kinds of strategies for the players in 
 \begin{definition}[Tensor product strategies]
   \label{definition-tensorstrategy}
   A \emph{tensor product strategy} $\strategy$ for a game $\game = (\cal{X},
-  \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\ket{\psi}, A, B)$ where
+  \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\rho, A, B)$ where
   \begin{itemize}
-	\item $\ket{\psi}$ is a pure quantum state in $\mH_A \otimes \mH_B$ for finite
+	\item $\rho$ is a density matrix in $\mH_A \otimes \mH_B$ for finite
     dimensional complex Hilbert spaces $\mH_A, \mH_B$,
 	\item $A$ is a set $\{A^x\}$ such that for every $x \in \cal{X}$, $A^x =
     \{A^x_a \}_{a \in \cal{A}}$ is a POVM over $\mH_A$, and
@@ -53,6 +53,32 @@ Given a game, one can consider different kinds of strategies for the players in 
     \{B^y_b \}_{b \in \cal{B}}$ is a POVM over $\mH_B$.
 \end{itemize}
 \end{definition}
+
+Frequently we write a strategy as $(\ket{\psi}, A, B)$, indicating that $\rho = \proj{\psi}$ is taken to be a pure state. This is without loss of generality since any $\rho$ can be purified using an ancilla system that can be added to the space $\mH_A$ or $\mH_B$. 
+
+\begin{definition}[Projective strategies]
+  \label{definition-projective-strategy}
+  We say that a strategy $\strategy = (\ket{\psi}, A, B)$ is \emph{projective} if
+  all the measurements $\{A^x_a\}_a$ and $\{B^y_b\}_b$ are projective.
+\end{definition}
+
+\begin{remark}\label{remark-projective}
+Using Naimark's theorem one may always, at the cost of extending the spaces $\mH_A$ and $\mH_B$ and tensoring $\ket{\psi}$ with the state $\ket{0}$ on the extension, assume that a strategy is projective. See e.g.~\cite[Theorem 4.2]{NW19}.
+\end{remark}
+
+We obtain classical strategies by restricting the state to be separable. 
+
+\begin{definition}[Classical  strategies]
+  \label{definition-classicalstrategy}
+  A \emph{classical strategy} for a game $\game$ is a {tensor product strategy} $(\rho, A, B)$ such that furthermore the state $\rho$ is separable across $\mH_A$ and $\mH_B$. 
+\end{definition}
+
+\begin{remark}
+Classical strategies can equivalently be represented as a triple $(\nu,f,g)$ where $\nu$ is a probability measure on $\Omega$ and $f=\{f^x\}$, $g=\{g^y\}$ where $f^x:\Omega\times \cal{X}\to\cal{A}$, $g^y: \Omega\times \cal{Y}\to \cal{B}$ measurable functions. To see this, given $(\rho,A,B)$ where $A^x$ and $B^y$ are projective measurements (see Remark~\ref{remark-projective}) write $\rho = \sum_i p_i \rho^A_i \otimes \rho^B_i$ where $(p_i)_{i\in \cal{I}}$ is a distribution over a finite set $\cal{I}$. Let $\Omega = \cal{I} \times [0,1]$ and $\mu$ the product of $(p_i)$ with the Lebesgue measure on $[0,1]$. Finally, for all $x\in \cal{X}$, order the set $\cal{A}=(a_1,\ldots,a_{|\cal{A}|})$ in an arbitrary way and for $(i,t)\in\cal{I}\times [0,1]$ let $f^x(i,t)$ be the unique $a_k\in \cal{A}$ such that 
+\[ \sum_{1\leq j \leq k}  \Tr(A^x_{a_j} \rho_i^A) \leq t < \sum_{1\leq j \leq k+1}  \Tr(A^x_{a_j} \rho_i^A) \;.\]
+Proceeding similarly to define $g^y$ one can verify that for all $(a,b)$, 
+\[\Tr(A^x_a \otimes B^y_b \rho) = \int 1_{f^x(i,t)=a} 1_{g^y(i,t)=b}d(i,t)\;.\] 
+\end{remark}
 
 Given a game, the most important quantity associated to it is the game \emph{value}. Informally, this represents the maximum success probability of players employing a certain kind of strategy in the game.  
 
@@ -75,6 +101,16 @@ Given a game, the most important quantity associated to it is the game \emph{val
   $\game$.
 \end{definition}
 
+\begin{definition}[Classical value]
+  \label{definition-classical-value}
+	The \emph{classical value} of a game $\game$ is defined as
+  \begin{equation*}
+		\val^*(\game) = \sup_\strategy \val^*(\game, \strategy)\;,
+  \end{equation*}
+	where the supremum is taken over all classical strategies $\strategy = (\rho,A,B)$ for
+  $\game$.
+\end{definition}
+
 
 \begin{remark}
   Unless specified otherwise, all strategies considered  are tensor
@@ -84,14 +120,9 @@ Given a game, the most important quantity associated to it is the game \emph{val
 \end{remark}
 
 
-\begin{definition}[Projective strategies]
-  \label{definition-projective-strategy}
-  We say that a strategy $\strategy = (\ket{\psi}, A, B)$ is \emph{projective} if
-  all the measurements $\{A^x_a\}_a$ and $\{B^y_b\}_b$ are projective.
-\end{definition}
 
-\begin{remark}
-  \label{remark-symmetric-games}
+\begin{definition}
+  \label{definition-symmetric-games}
 	A game $\game = (\cal{X}, \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is
   \emph{symmetric} if the question and answer alphabets are the same for both
   players (i.e.\
@@ -99,15 +130,17 @@ Given a game, the most important quantity associated to it is the game \emph{val
   symmetric (i.e.\
   $\mu(x,y) = \mu(y,x)$), and the decision predicate $D$ treats both players
   symmetrically (i.e.\ for all $x,y,a,b$, $D(x,y,a,b) = D(y,x,b,a)$).
+	
   Furthermore, we call a strategy $\strategy = (\ket{\psi}, A, B)$
   \emph{symmetric} if $\ket{\psi}$ is a state in $\mH \otimes \mH$, for some
   Hilbert space $\mH$, that is invariant under permutation of the two factors,
   and the measurement operators of both players are identical.
+	
   We specify symmetric games $\game$ and symmetric strategies $\strategy$ using
   a more compact notation: we write $\game = (\cal{X}, \cal{A}, \mu, D)$ and
   $\strategy = (\ket{\psi}, M)$ where $M$ denotes the set of measurement
   operators for both players.
-\end{remark}
+\end{definition}
 
 \begin{lemma}
   \label{lemma-symmetric-strat}

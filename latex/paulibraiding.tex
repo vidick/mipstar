@@ -15,7 +15,136 @@
 
 \tableofcontents
 
+\section{Warmup: linearity testing}
 
+We recall a classical argument from the area of \emph{property testing}. In this area one is generally given \emph{query access} to an underlying object, and the goal is to determine a property of the object by making as few queries to it. An example would be where the object is a graph $G$ on a known vertex set $V = \{1,\ldots, n\}$, a query is a pair $(i,j)$ the answer to which is $1$ if $(i,j)$ is an edge in $G$ and $0$ otherwise, and the goal is to determine if $G$ is triangle-free. 
+
+Here we consider a different setting where the object is a function $f:\Z_2^n\to\{\pm1 \}$, a query is a point $x$ in the domain of $f$ the answer to which is the value $f(x)$, and the goal is to determine if $f$ is a linear function. Since there exist functions that are not linear yet differ from a linear function at a single point (e.g.\ $f(x)=0$ for all $x$ except $f((0,\ldots,0))=1$) we relax our goal to distinguishing the cases where $f$ is linear from $f$ being \emph{far} from linear, where the distance from linearity is measured by the Hamming distance to the closest linear function.\footnote{The Hamming distance between two functions with finite domain is the number of points in their domain at which they differ.} More precisely, we define a test whose acceptance probability is proportional to the distance of $f$ from linearity. This test is probabilistic and makes only three queries to $f$. It first appears in~\cite{blum1993self} and can be formulated as a two-player one-round game (Definition~\ref{definition-game}). We first present the game informally as a ``test'' played by the referee with two players.  
+
+\begin{quote}
+\textbf{BLR linearity test:}
+\begin{itemize}
+\item[(a)] The referee selects $x,y\in\Z_2^n$ uniformly at random. He sends the pair $(x_1,x_2)$ to one player, and either $x_1$, $x_2$, or $x_1+x_2$ (chosen uniformly at random) to the other. 
+\item[(b)] The first player replies with two values in $(a_1,a_2)\in \{\pm 1\}^2$, and the second player with a single value in $b\in \{\pm 1\}$. The referee accepts if and only if the player's answers $((a_1,a_2),b)$ satisfy the natural consistency constraint, e.g. $b=a_1a_2$ in case the questions were $(x_1,x_2)$ and $x_1+x_2$. 
+\end{itemize}
+\end{quote}
+
+Formally, one may define a game $\game_{BLR}$ by setting $\cal{X}=\cal{Y} = \Z_2^n \sqcup Z_2^n \times Z_2^n$, $\cal{A}=\cal{B} = \{\pm 1\}\sqcup \{\pm 1\}^2$, $\mu$ the uniform distribution on 
+\begin{align*}
+\big\{(x_1,(x_1,x_2)),&(x_2,(x_1,x_2)),(x_1+x_2,(x_1,x_2)),\\
+& ((x_1,x_2),x_1),((x_1,x_2),x_2),((x_1,x_2),x_1+x_2):\, x_1,x_2\in\Z_2^n\big\}\;,
+\end{align*}
+and $D$ to the obvious function, e.g. $D((x_1,x_2),x_1),(a_1,a_2),b)=1_{{a_1=b}}$, etc. Observe that the game is symmetric according to Definition~\ref{definition-symmetric-games}. It can be shown that to any (classical or quantum) strategy that succeeds with high probability in the game can be associated a related symmetric strategy that also succeeds with high probability (see Lemma~\ref{lemma-symmetric-strat} for the argument in the case of tensor product strategies). Since this section is expository we directly restrict our attention to the case of players who both apply the same strategy.
+
+Informally, Blum et al.'s result states that any symmetric classical deterministic strategy, which we model as a pair of functions $(f,f')$ where $f:\Z_2^n \to \{\pm 1\}$ and $g:\Z_2^n\times \Z_2^n \to \{\pm 1\}^2$, for the players in the linearity test which succeeds with high probability must be such that the function $f$ is close to linear (and $g$ is close to $(f,f)$). In this section we give a self-contained ``matrix-valued'' extension of the BLR result, that follows almost directly from the usual Fourier-analytic proof but will  help clarify the extension to the non-abelian case given in the following section. 
+
+\subsection{Matrix-valued strategies}
+
+With an eye towards the ``quantum'' analysis to come let us consider an broader set of strategies than the classical strategies $(f,f')$ considered above, which we'll refer to as ``matrix-valued'' strategies. This section is meant for readers familiar with the classical fourier-analytic analysis of the BLR test, as an initial step towards the quantum analysis presented next. Readers with background in quantum information and nonlocal games may wish to skip the section and the next to proceed directly to Section~\ref{section-paulibraiding-group}. 
+
+A natural matrix-valued analogue of a function $f:\Z_2^n \to \{\pm 1\}$ is $F:\Z_2^n \to O_d(\C)$, where $O_d(\C)$ is the set of $d\times d$ Hermitian matrices that square to identity (equivalently, have all eigenvalues in $\{\pm 1\}$); these matrices are called ``observables'' in quantum mechanics. Similarly, we may generalize a function  $f':\Z_2^n \times \Z_2^n \to \{\pm 1 \} \times \{\pm 1\}$ to a function  $F':\Z_2^n \times \Z_2^n \to O_d(\C) \times O_d(\C)$. Here we'll impose an additional requirement: any pair $(B,C)$ in the range of $F'$ should be such that $B$ and $C$ commute. The latter condition is important so that we can make sense of the function as a strategy for the provers: we should be able to ascribe a probability distribution on outcomes $(a,(b,c))$ to any query $(x,(y,z))$ sent to the players. This is achieved by defining 
+\begin{equation}\label{eq:matrixprob}
+\Pr\big((F(x), F'(y,z))=(a,(b,c))\big)\,=\,\frac{1}{d}\,\mathrm{Tr}\big( F(x)^aF'(y,z)_1^b F'(y,z)_2^c\big),
+\end{equation}
+where for any observable $O$ we denote $O^{+1}$ and $O^{-1}$ the projections on the $+1$ and $-1$ eigenspaces of $O$, respectively (so $O=O^{+1}-O^{-1}$ and $O^{+1}+O^{-1}=I$) and we use the indexing notation $(a,b)_1=a$ and $(a,b)_2=b$. The condition that $F'(y,z)_1$ and $F'(y,z)_2$ commute ensures that this expression is always non-negative; moreover it is easy to check that for all $(x,(y,z))$ it specifies a well-defined probability distribution on $\{\pm 1\}\times (\{\pm1\}\times \{\pm1\})$ . Observe also that in case $d=1$ we recover the classical deterministic case, for which with our notation $f(x)^a = 1_{f(x)=a}$. If all $F(x)$ and $F'(y,z)$ are simultaneously diagonal matrices we recover the general classical (probabilistic) case, with the role of $\Omega$ (the shared randomness) played by an indexing set for the rows of the matrices (hence the normalization of $1/d$; we will see later how to incorporate the use of non-uniform weights). 
+
+With these notions in place we establish the following simple lemma, which states the only consequence of the BLR test we will need. 
+
+\begin{lemma}\label{lem:blr-test}
+Let $n$ be an integer, $\eps\geq 0$, and $F:\Z_2^n\to O_d(\C)$ and $F':\Z_2^n \times \Z_2^n  \to O_d(\C)\times O_d(\C)$ a matrix strategy for the BLR test, such that players determining their answers according to this strategy (specifically, according to \eqref{eq:matrixprob}) succeed in the test with probability at least $1-\eps$. Then
+$$
+\E_{x,y\in \Z_2^n}\,\frac{1}{d}\, \Re\,\mathrm{Tr}\big( F(x)F(y)F(x+y)\big) \,\geq\, 1-O(\eps).
+$$
+\end{lemma}
+
+Introducing a normalized inner product $\langle A,B\rangle_f = d^{-1} \mathrm{Tr}(AB^\dagger)$ on the space of $d\times d$ matrices with complex entries (as usual in quantum information the $^\dagger$ designates the conjugate-transpose), the conclusion of the lemma is that $\E_{x,y\in \Z_2^n} \langle F(x)F(y),\,F(x+y)\rangle_f \,=\, 1-O(\eps)$.
+
+\begin{proof}
+Success with probability $1-\eps$ in the test implies the three conditions
+\begin{eqnarray*}
+&&\E_{x,y\in \Z_2^n} \, \langle F'(x,y)_1,F(x)\rangle_f \,\geq\, 1-3\eps,\\
+&&\E_{x,y\in \Z_2^n} \, \langle F'(x,y)_2,F(y)\rangle_f \,\geq\, 1-3\eps,\\
+&&\E_{x,y\in \Z_2^n} \, \langle F'(x,y)_1F'(x,y)_2,F(x+y)\rangle_f \,\geq\, 1-3\eps.
+\end{eqnarray*}
+To conclude, use the triangle inequality as
+\begin{eqnarray*}
+&\E_{x,y\in \Z_2^n} & \big\|F(x)F(y)-F(x+y) \big\|_f^2 \\
+& &\qquad\leq \,3\Big(\E_{x,y\in \Z_2^n} \, \big\|(F(x)-F'(x,y)_1)F(y) \big\|_f^2\\
+&& \qquad\qquad + \E_{x,y\in \Z_2^n} \, \big\|(F(y)-F'(x,y)_2)F'(x,y)_1 \big\|_f^2\\
+&&\qquad\qquad+\E_{x,y\in \Z_2^n} \, \big\|F'(x,y)_1F'(x,y)_2-F(x+y) \big\|_f^2\Big),
+\end{eqnarray*}
+where $\|A\|_f^2 = \langle A,A\rangle_f$ denotes the dimension-normalized Frobenius norm. 
+Expanding each squared norm and using the preceding conditions and $F(x)^2=1$ for all $x$ proves the lemma. 
+\end{proof}
+
+\subsection{The BLR theorem for matrix-valued strategies}
+
+Before stating a BLR theorem for matrix-valued strategies we need to define what it means for such a function $G: \Z_2^n \to O_d(\C)$ to be \emph{linear}. Consider first the case of ``probabilistic functions'', which we define as those $G$ such that all $G(x)$ are diagonal in the same basis. Any such $G$ whose every diagonal entry is of the form $\chi_{S}(x) = (-1)^{S \cdot x}$ for some $S\in\{0,1\}^n$ \emph{which may depend on the row/column number} will pass the BLR test. This shows that we cannot hope to force $G$ to be a single linear function, we must allow ``mixtures''. Formally, call $G$ linear if $G(x) = \sum_S \chi_S(x) P_S$ for some decomposition $\{P_S\}$ of the identity, i.e. the $P_S$ are pairwsie orthogonal projections such that $\sum_S P_S=I$. Note that this indeed captures the probabilistic case; in fact, up to a basis change it is essentially equivalent to it. Thus the following may come as a surprise.  
+
+\begin{theorem}\label{thm:blr}
+Let $n$ be an integer, $\eps\geq 0$, and $F:\Z_2^n \to O_d(\C)$ such that
+\begin{equation}\label{eq:approx-linear}
+\E_{x,y\in \Z_2^n} \, \frac{1}{d}\,\Re\,\langle F(x)F(y),F(x+y)\rangle_f \,\geq\, 1-\eps.
+\end{equation}
+ Then there exists a $d'\geq d$, an isometry $V:\C^d\to\C^{d'}$, and a linear $G:\Z_2^n \to O_{d'}(\C)$ such that 
+$$\E_{x\in\Z_2^n} \,\big\| F(x) - V^* G(x)V\big\|_f^2 \,\leq\, 2\,\eps.$$
+\end{theorem}
+
+Note the role of $V$ here, and the lack of control on $d'$ (more on both aspects later). Even if $F$ is a ``deterministic function'' $f$, i.e.\ $d=1$, the function $G$ returned by the theorem may be matrix-valued. In this case the isometry $V$ is simply a unit vector $v\in \C^{d'}$, and expanding out the squared norm in the conclusion of the theorem yields the equivalent conclusion 
+$$\sum_S (v^\dagger P_S v)\,\Big(\E_{x}  f(x)\, \chi_S(x) \Big)  \,\geq\, 1-\eps,$$ 
+where we expanded $G(x) = \sum_S \chi_S(x) P_S$ using our definition of a linear matrix-valued function. Note that $\{ v^\dagger P_S v\}$ defines a probability distribution on $\{0,1\}^n$. Thus by an averaging argument there must exist an $S$ such that $f(x)=\chi_S(x)$ for a fraction at least $1-\eps/2$ of all $x\in\Z_2^n$: the usual conclusion of the BLR theorem is recovered. 
+
+\begin{proof}
+The proof of the theorem follows the classic \href{http://ieeexplore.ieee.org/document/556674/}{Fourier-analytic proof} of Bellare et al.
+ Our first step is to define the isometry $V$. For a vector $u\in \C^d$, define 
+$$V u  = \sum_S \hat{F}(S) u \otimes e_S \in \C^d \otimes \C^{2^n},$$
+where $\hat{F}(S) = \E_{x} \chi_S(x) F(x)$ is the matrix-valued Fourier coefficient of $F$ at $S$ and $\{e_S\}_{S\in\{0,1\}^n}$ an arbitrary orthonormal basis of $\C^{2^n}$. An easily verified extension of Parseval's formula shows $\sum_S \hat{F}(S)^2 = I$ (recall $F(x)^2=I$ for all $x$), so that $V^\dagger V = I$: $V$ is indeed an isometry. 
+
+Next, define the linear ``probabilistic function'' $G$ by $G(x) =  \sum_S \chi_S(x) P_S$, where $P_S = I \otimes e_Se_S^\dagger$ forms a partition of identity. We can evaluate
+\begin{eqnarray*}
+&\E_{x} \,\frac{1}{d}\,\langle F(x),V^\dagger G(x)V \rangle_f &= \E_{x} \sum_{S}\,\frac{1}{d}\,\langle  F(x),\, \chi_S(x) \hat{F}(S)^2 \rangle_f \\
+&&= \E_{x,y} \,\frac{1}{d}\,\langle F(x+y),\,F(x)F(y) \rangle_f,
+\end{eqnarray*}
+where the last equality follows by expanding the Fourier coefficients and noticing the appropriate cancellation. Together with \eqref{eq:approx-linear}, this proves the theorem. 
+\end{proof}
+
+We comment on the relation between this proof and the usual argument. The main observation in  Bellare et al.'s proof  is that approximate linearity, expressed by \eqref{eq:approx-linear}, implies a lower bound on the sum of the \emph{cubes} of the Fourier coefficients of $f$. Together with Parseval's formula, this bound implies the existence of a large Fourier coefficient, which identifies a close-by linear function. 
+
+The proof we gave decouples the argument. Its first step, the construction of the isometry $V$ depends on $F$, but does not use anything regarding approximate linearity. It only uses Parseval's formula to argue that the isometry is well-defined. A noteworthy feature of this step is that the function $G$ on the extended space is always well-defined as well: given a function $F$, it is always possible to consider the linear matrix-valued function which ``samples $S$ according to $\hat{F}(S)^2$'' and then returns $\chi_S(x)$. The second step of the proof evaluates the correlation of $F$ with the ``pull-back'' of $G$, and observes that this correlation is precisely our measure of ``approximate linearity'' of $F$, concluding the proof  without having had to explicitly notice that there existed a large Fourier coefficient. 
+
+\subsection{The group-theoretic perspective}
+\label{section-paulibraiding-group}
+
+Let's re-interpret the proof we just gave using group-theoretic language. A linear function $g: \Z_2^n\to\{\pm 1\}$ is, by definition, a mapping which respects the additive group structure on  $\Z_2^n$, namely it is a representation. Since $G=(\Z_2^n,+)$ is an abelian group, it has $|G|=2^n$ irreducible $1$-dimensional representations, given by the characters $\chi_S$. As such, the linear  function defined in the proof of Theorem \ref{thm:blr} is nothing but a list of all irreducible representations of $G$. 
+
+The condition \eqref{eq:approx-linear} derived in the proof of the theorem can be interpreted as the condition that $F$ is an ``approximate representation'' of $G$. Let's make this a general definition. For $d$-dimensional matrices  $A,B$ and $\sigma$ such that $\sigma$ is positive semidefinite, write 
+$$\langle A,B\rangle_\sigma = \mathrm{Tr}(AB^\dagger \sigma)\;.$$
+The following definition considers arbitrary finite groups (not necessarily abelian). 
+
+\begin{definition}
+Given a finite group $G$, an integer $d\geq 1$, $\eps\geq 0$, and a $d$-dimensional positive semidefinite matrix $\sigma$ with trace $1$, an $(\eps,\sigma)$-representation of $G$ is a function $f: G \to U_d(\C)$, the unitary group of $d\times d$ matrices, such that 
+\begin{equation}\label{eq:gh-condition}
+\E_{x,y\in G} \,\Re\big(\big\langle f(x)^\dagger f(y) ,f(x^{-1}y) \big\rangle_\sigma\big) \,\geq\, 1-\eps,
+\end{equation} 
+%and
+%\begin{equation}\label{eq:gh-com}
+%\E_{x\in G} \,\mathrm{Tr}\big( \big(f(x)\sqrt{\sigma}-\sqrt{\sigma}f(x)\big)\big(f(x)\sqrt{\sigma}-\sqrt{\sigma}f(x)\big)^*\big)\,\leq\, 2\,\eps,
+%\end{equation}
+where the expectation is taken under the uniform distribution over $G$.
+\end{definition}
+
+\begin{remark}
+The condition \eqref{eq:gh-condition} in the definition is very closely related to Gowers's $U^2$ norm
+$$\|f\|_{U^2}^4 \,=\, \E_{xy^{-1}=zw^{-1}}\, \big\langle f(x)f(y)^\dagger ,f(z)f(w)^\dagger \big\rangle_\sigma.$$
+While a large Gowers norm implies closeness to an affine function, we are interested in testing linear functions, and the condition \eqref{eq:gh-condition} will arise naturally from our calculations in the next section. 
+\end{remark}
+
+%The second condition \eqref{eq:gh-com} in the definition establishes a form of approximate commutation between the $f(x)$ and $\sqrt{\sigma}$. A simple case to keep in mind is when $\sigma = d^{-1} I_d$, in which case the condition is automatically satisfied. Although it would have been natural to restrict the definition to $\sigma = d^{-1}Id$, the more general definition will be needed for the application to entanglement testing that I will discuss later on. Towards this let me already  record an equivalent formulation of the condition. Write the singular value decomposition $\sigma = \sum_i \lambda_i u_iu_i^*$, and let $\psi = \sum_i \sqrt{\lambda_i} u_i \otimes u_i$. In quantum information the vector $\psi$ is called a \emph{purification} of $\sigma$, and $\sigma$ is called the \emph{reduced density matrix} associated to $\psi$. With this notation, it is a simple calculation to verify that \eqref{eq:gh-com} is equivalent to 
+%\begin{equation}\label{eq:gh-com-2}
+%\E_{x\in G}\, \psi^* \big( f(x) \otimes \overline{f(x)} \big) \psi \,\geq\,1-\eps.
+%\end{equation}
+If  $G=(\Z_2^n,+)$, the product $xy^{-1}$ should be written additively as $x-y=x+y$, so that the condition \eqref{eq:approx-linear} is precisely that $F$ is an $(\eps,\sigma)$-representation of $G$, where  $\sigma = d^{-1}I$. 
+Theorem \ref{thm:blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. In the next section we make the words in quotes precise and generalize the result to the case of arbitrary finite groups.  
 
 
 
