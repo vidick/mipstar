@@ -16,6 +16,7 @@
 \tableofcontents
 
 \section{Warmup: linearity testing}
+\label{section-linearity-testing}
 
 We recall a classical argument from the area of \emph{property testing}. In this area one is generally given \emph{query access} to an underlying object, and the goal is to determine a property of the object by making as few queries to it. An example would be where the object is a graph $G$ on a known vertex set $V = \{1,\ldots, n\}$, a query is a pair $(i,j)$ the answer to which is $1$ if $(i,j)$ is an edge in $G$ and $0$ otherwise, and the goal is to determine if $G$ is triangle-free. 
 
@@ -39,6 +40,7 @@ and $D$ to the obvious function, e.g. $D((x_1,x_2),x_1),(a_1,a_2),b)=1_{{a_1=b}}
 Informally, Blum et al.'s result states that any symmetric classical deterministic strategy, which we model as a pair of functions $(f,f')$ where $f:\Z_2^n \to \{\pm 1\}$ and $g:\Z_2^n\times \Z_2^n \to \{\pm 1\}^2$, for the players in the linearity test which succeeds with high probability must be such that the function $f$ is close to linear (and $g$ is close to $(f,f)$). In this section we give a self-contained ``matrix-valued'' extension of the BLR result, that follows almost directly from the usual Fourier-analytic proof but will  help clarify the extension to the non-abelian case given in the following section. 
 
 \subsection{Matrix-valued strategies}
+\label{subsection-matrix-val-strat}
 
 With an eye towards the ``quantum'' analysis to come let us consider an broader set of strategies than the classical strategies $(f,f')$ considered above, which we'll refer to as ``matrix-valued'' strategies. This section is meant for readers familiar with the classical fourier-analytic analysis of the BLR test, as an initial step towards the quantum analysis presented next. Readers with background in quantum information and nonlocal games may wish to skip the section and the next to proceed directly to Section \ref{subsection-paulibraiding-group}. 
 
@@ -78,6 +80,7 @@ Expanding each squared norm and using the preceding conditions and $F(x)^2=1$ fo
 \end{proof}
 
 \subsection{The BLR theorem for matrix-valued strategies}
+\label{subsection-blr-theorem-matrix-val-strat}
 
 Before stating a BLR theorem for matrix-valued strategies we need to define what it means for such a function $G: \Z_2^n \to O_d(\C)$ to be \emph{linear}. Consider first the case of ``probabilistic functions'', which we define as those $G$ such that all $G(x)$ are diagonal in the same basis. Any such $G$ whose every diagonal entry is of the form $\chi_{S}(x) = (-1)^{S \cdot x}$ for some $S\in\{0,1\}^n$ \emph{which may depend on the row/column number} will pass the BLR test. This shows that we cannot hope to force $G$ to be a single linear function, we must allow ``mixtures''. Formally, call $G$ linear if $G(x) = \sum_S \chi_S(x) P_S$ for some decomposition $\{P_S\}$ of the identity, i.e. the $P_S$ are pairwsie orthogonal projections such that $\sum_S P_S=I$. Note that this indeed captures the probabilistic case; in fact, up to a basis change it is essentially equivalent to it. Thus the following may come as a surprise.  
 
