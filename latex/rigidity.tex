@@ -93,145 +93,145 @@ There are many possible notions of approximate group representation. Traditional
 Gowers and Hatami~\cite{gowers2017inverse} showed that in the case of Definition~\ref{def:approx-rep}, approximate group representations can always be ``rounded'' to a nearby exact representation.\footnote{We are barely scratching the surface of a growing theory of ``stability'' for group homomorphisms; see e.g.~\cite{becker2020stability} for an introduction and discussion of related notions.} 
 We state and prove a slightly more general, but quantitatively weaker, variant of the Gowers-Hatami result.
 
-\begin{theorem}[Gowers-Hatami]
-\label{thm:gh}
-Let $G$ be a finite group, $\eps\geq 0$, and $f:G\to U_d(\C)$ an $(\eps,\sigma)$-representation of $G$. Then there exists a $d'\geq d$, an isometry $V:\C^d\to \C^{d'}$, and a representation $g:G\to U_{d'}(\C)$ such that 
-$$\Es{x\in G}\, \big\| f(x) - V^*g(x)V \big\|_\sigma^2\, \leq\, 2\,\eps.$$ 
-\end{theorem}
+% \begin{theorem}[Gowers-Hatami]
+% \label{thm:gh}
+% Let $G$ be a finite group, $\eps\geq 0$, and $f:G\to U_d(\C)$ an $(\eps,\sigma)$-representation of $G$. Then there exists a $d'\geq d$, an isometry $V:\C^d\to \C^{d'}$, and a representation $g:G\to U_{d'}(\C)$ such that 
+% $$\Es{x\in G}\, \big\| f(x) - V^*g(x)V \big\|_\sigma^2\, \leq\, 2\,\eps.$$ 
+% \end{theorem}
 
-Gowers and Hatami limit themselves to the case of $\sigma = d^{-1}I_d$, which corresponds to the dimension-normalized Frobenius norm. In this scenario they in addition obtain a tight control of the dimension $d'$, and show that one can always take $d'\ = (1+O(\eps))d$ in the theorem. We will see a much shorter proof than theirs (the proof is implicit in their argument) that does not seem to allow to recover this estimate. The extension to general $\sigma$, however, will be necessary for our purposes.
+% Gowers and Hatami limit themselves to the case of $\sigma = d^{-1}I_d$, which corresponds to the dimension-normalized Frobenius norm. In this scenario they in addition obtain a tight control of the dimension $d'$, and show that one can always take $d'\ = (1+O(\eps))d$ in the theorem. We will see a much shorter proof than theirs (the proof is implicit in their argument) that does not seem to allow to recover this estimate. The extension to general $\sigma$, however, will be necessary for our purposes.
 
-Note that  Theorem \ref{thm:gh} does not in general hold  with $d'=d$. The reason is that it is possible for $G$ to have an approximate representation in some dimension $d$, but no exact representation of the same dimension: to obtain an example of this, take any group $G$ that has all non-trivial irreducible representations of large enough dimension, and create an approximate representation in e.g. dimension one less by ``cutting off'' one row and column from an exact representation. For sufficiently ``smooth'' $\sigma$ (no disproportionately large singular values) the dimension normalization induced by the norm $\|\cdot\|_\sigma$ will make this barely  noticeable, but it will be impossible to ``round'' the approximate representation obtained to an exact one without modifying the dimension. 
+% Note that  Theorem \ref{thm:gh} does not in general hold  with $d'=d$. The reason is that it is possible for $G$ to have an approximate representation in some dimension $d$, but no exact representation of the same dimension: to obtain an example of this, take any group $G$ that has all non-trivial irreducible representations of large enough dimension, and create an approximate representation in e.g. dimension one less by ``cutting off'' one row and column from an exact representation. For sufficiently ``smooth'' $\sigma$ (no disproportionately large singular values) the dimension normalization induced by the norm $\|\cdot\|_\sigma$ will make this barely  noticeable, but it will be impossible to ``round'' the approximate representation obtained to an exact one without modifying the dimension. 
 
-\begin{example}
-\label{ex:wh-3}
-Continuing with Example~\ref{ex:wh-1} we consider the example of $G= \mP$. In Example~\ref{ex:wh-1} we observed that a qubit $(\ket{\psi},X,Z)$ can be used to specify a $(0,\sigma)$ representation $f$ of $\mP$ such that moreover $f(-1)=-\Id$. We now check that the converse holds: for any $(0,\sigma)$-representation of $\mP$ for invertible $\sigma$, if $X=f(\sigma_X)$ and $Z=f(\sigma_Z)$ then using~\eqref{eq:gh-condition-2}, taking $x=y=\sigma_X$ and $x=y=\sigma_Z$ it follows that $X^2 = Z^2=f(1)=\Id$, and taking $x=\sigma_X$ and $y=\sigma_Z$ we get that $XZ=f(\sigma_X \sigma_Z)$ while 
-\[ZX=f(\sigma_Z\sigma_X)=f(-\sigma_X\sigma_Z)=f(-1)f(\sigma_X\sigma_Z)\;,\]
-where the second equality uses that the Pauli anti-commute and the last equality again uses~\eqref{eq:gh-condition-2}. Thus if $f(-1)=-\Id$ then 
- $\{X,Z\}=0$, so the $(0,\sigma)$-representation $f$ specifies a qubit and in particular Lemma~\ref{lem:qubit-2-rigid} on the structure of a qubit applies. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$. 
-\footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
-\end{example}
+% \begin{example}
+% \label{ex:wh-3}
+% Continuing with Example~\ref{ex:wh-1} we consider the example of $G= \mP$. In Example~\ref{ex:wh-1} we observed that a qubit $(\ket{\psi},X,Z)$ can be used to specify a $(0,\sigma)$ representation $f$ of $\mP$ such that moreover $f(-1)=-\Id$. We now check that the converse holds: for any $(0,\sigma)$-representation of $\mP$ for invertible $\sigma$, if $X=f(\sigma_X)$ and $Z=f(\sigma_Z)$ then using~\eqref{eq:gh-condition-2}, taking $x=y=\sigma_X$ and $x=y=\sigma_Z$ it follows that $X^2 = Z^2=f(1)=\Id$, and taking $x=\sigma_X$ and $y=\sigma_Z$ we get that $XZ=f(\sigma_X \sigma_Z)$ while 
+% \[ZX=f(\sigma_Z\sigma_X)=f(-\sigma_X\sigma_Z)=f(-1)f(\sigma_X\sigma_Z)\;,\]
+% where the second equality uses that the Pauli anti-commute and the last equality again uses~\eqref{eq:gh-condition-2}. Thus if $f(-1)=-\Id$ then 
+%  $\{X,Z\}=0$, so the $(0,\sigma)$-representation $f$ specifies a qubit and in particular Lemma~\ref{lem:qubit-2-rigid} on the structure of a qubit applies. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$. 
+% \footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
+% \end{example}
 
-\begin{exercise}
-Using Exercise~\ref{ex:wh-2} and Example~\ref{ex:wh-3}, show that Theorem~\ref{thm:gh} for the case where $G=\mP$ implies Exercise~\ref{ex:approx-qubit}. 
-\end{exercise}
+% \begin{exercise}
+% Using Exercise~\ref{ex:wh-2} and Example~\ref{ex:wh-3}, show that Theorem~\ref{thm:gh} for the case where $G=\mP$ implies Exercise~\ref{ex:approx-qubit}. 
+% \end{exercise}
 
-\begin{exercise}
-Show Theorem~\ref{thm:gh} for the case where $G=\mP$. \emph{[Hint: Adapt the proof ``by calculation''
-of Proposition~\ref{prop:explicit-iso} to take into account $\eps$-approximations.]}
-\end{exercise}
+% \begin{exercise}
+% Show Theorem~\ref{thm:gh} for the case where $G=\mP$. \emph{[Hint: Adapt the proof ``by calculation''
+% of Proposition~\ref{prop:explicit-iso} to take into account $\eps$-approximations.]}
+% \end{exercise}
 
-The main ingredient for the proof of Theorem~\ref{thm:gh} is an appropriate notion of Fourier transform over non-abelian groups. Given an irreducible representation $\rho: G \to U_{d_\rho}(\C)$, define 
-\begin{equation}\label{eq:fourier}
- \hat{f}(\rho) \,=\, \Es{x\in G} \,f(x) \otimes \overline{\rho(x)}.
-\end{equation}
-In case $G$ is abelian, we always have $d_\rho=1$, the tensor product is a product, and \eqref{eq:fourier} reduces to the usual definition of Fourier coefficient. The only properties we will need of irreducible representations is that they satisfy the relation
-\begin{equation}
-\label{eq:ortho}
-\sum_\rho \,d_\rho\,\mathrm{Tr}(\rho(x)) \,=\, |G|\delta_{xe}\;,
-\end{equation}
-for any $x\in G$. Note that plugging in $x=e$ (the identity element in $G$) yields $\sum_\rho d_\rho^2= |G|$. 
+% The main ingredient for the proof of Theorem~\ref{thm:gh} is an appropriate notion of Fourier transform over non-abelian groups. Given an irreducible representation $\rho: G \to U_{d_\rho}(\C)$, define 
+% \begin{equation}\label{eq:fourier}
+%  \hat{f}(\rho) \,=\, \Es{x\in G} \,f(x) \otimes \overline{\rho(x)}.
+% \end{equation}
+% In case $G$ is abelian, we always have $d_\rho=1$, the tensor product is a product, and \eqref{eq:fourier} reduces to the usual definition of Fourier coefficient. The only properties we will need of irreducible representations is that they satisfy the relation
+% \begin{equation}
+% \label{eq:ortho}
+% \sum_\rho \,d_\rho\,\mathrm{Tr}(\rho(x)) \,=\, |G|\delta_{xe}\;,
+% \end{equation}
+% for any $x\in G$. Note that plugging in $x=e$ (the identity element in $G$) yields $\sum_\rho d_\rho^2= |G|$. 
 
-\begin{proof}[Proof of Theorem \ref{thm:gh}]
-Our first step is to define an isometry $V:\C^d \to \C^d \otimes (\oplus_\rho \C^{d_\rho} \otimes \C^{d_\rho})$ by
-$$ V :\;u \in \C^d \,\mapsto\, \bigoplus_\rho \,d_\rho^{1/2} \sum_{i=1}^{d_\rho} \,\big(\hat{f}(\rho) (u\otimes e_i)\big) \otimes e_i,$$
-where the direct sum ranges over all irreducible representations $\rho$ of $G$ and $\{e_i\}$ is the canonical basis.\footnote{Observe that this expression directly generalizes~\eqref{eq:explicit-isometry}.}
-Note what $V$ does: it ``embeds'' any vector $u\in \C^d$ into a direct sum, over irreducible representations $\rho$, of a $d$-dimensional vector of $d_\rho\times d_\rho$ matrices. Each (matrix) entry of this vector can be thought of as the Fourier coefficient of the corresponding entry of the vector $f(x)u$ associated with $\rho$. 
-The fact that $V$ is an isometry follows from the appropriate extension of Parseval's formula:  
-\begin{eqnarray*}
-& V^* V &= \sum_\rho d_\rho \sum_i (I\otimes e_i^*) \hat{f}(\rho)^*\hat{f}(\rho) (I\otimes e_i)\\
-&&= \Es{x,y}\,  f(x)^*f(y) \sum_\rho d_\rho \sum_i  (e_i^* \rho(x)^T \overline{\rho(y)} e_i)\\
-&&= \sum_\rho \frac{d_\rho^2}{|G|}I = I,
-\end{eqnarray*}
-where for the second line we used the definition \eqref{eq:fourier} of $\hat{f}(\rho)$ and  for the third we used \eqref{eq:ortho} and the fact that $f$ takes values in the unitary group.
+% \begin{proof}[Proof of Theorem \ref{thm:gh}]
+% Our first step is to define an isometry $V:\C^d \to \C^d \otimes (\oplus_\rho \C^{d_\rho} \otimes \C^{d_\rho})$ by
+% $$ V :\;u \in \C^d \,\mapsto\, \bigoplus_\rho \,d_\rho^{1/2} \sum_{i=1}^{d_\rho} \,\big(\hat{f}(\rho) (u\otimes e_i)\big) \otimes e_i,$$
+% where the direct sum ranges over all irreducible representations $\rho$ of $G$ and $\{e_i\}$ is the canonical basis.\footnote{Observe that this expression directly generalizes~\eqref{eq:explicit-isometry}.}
+% Note what $V$ does: it ``embeds'' any vector $u\in \C^d$ into a direct sum, over irreducible representations $\rho$, of a $d$-dimensional vector of $d_\rho\times d_\rho$ matrices. Each (matrix) entry of this vector can be thought of as the Fourier coefficient of the corresponding entry of the vector $f(x)u$ associated with $\rho$. 
+% The fact that $V$ is an isometry follows from the appropriate extension of Parseval's formula:  
+% \begin{eqnarray*}
+% & V^* V &= \sum_\rho d_\rho \sum_i (I\otimes e_i^*) \hat{f}(\rho)^*\hat{f}(\rho) (I\otimes e_i)\\
+% &&= \Es{x,y}\,  f(x)^*f(y) \sum_\rho d_\rho \sum_i  (e_i^* \rho(x)^T \overline{\rho(y)} e_i)\\
+% &&= \sum_\rho \frac{d_\rho^2}{|G|}I = I,
+% \end{eqnarray*}
+% where for the second line we used the definition \eqref{eq:fourier} of $\hat{f}(\rho)$ and  for the third we used \eqref{eq:ortho} and the fact that $f$ takes values in the unitary group.
 
-Next define
-$$g(x) = \bigoplus_\rho \,\big(I_d \otimes I_{d_\rho} \otimes \rho(x)\big), $$
-a direct sum over all irreducible representations of $G$ (hence itself a representation). Lets' first compute the ``pull-back'' of $g$ by $V$: following a similar calculation as above, for any $x\in G$, 
-\begin{eqnarray*}
-& V^*g(x) V  &=  \sum_{\rho}  d_\rho \sum_{i,j} (I\otimes e_i^*)\hat{f}(\rho)^* \hat{f}(\rho)(I\otimes e_j) \otimes e_i^* \rho(x) e_j ) \\
-&& =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \sum_{i,j} (e_i^* \rho(z)^T \overline{\rho(y)} e_j) \big( e_i^* \rho(x) e_j \big) \\
-&& =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z)^T \overline{\rho(y)}  {\rho(x)^T} \big) \\
-&& =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z^{-1}y x^{-1}) \big) \\
-&& =  \Es{z}\,  f(z)^*f(zx) , 
-\end{eqnarray*}
-where the last equality uses \eqref{eq:ortho}.
-It then follows that 
-\begin{eqnarray*}
-&\Es{x}\, \big\langle f(x), V^*g(x) V \big\rangle_\sigma &=  \Es{x,z} \mathrm{Tr}\big( f(x) f(zx)^* f(z)\sigma\big).
-\end{eqnarray*}  
-This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approximate representation and proves the theorem. 
-\end{proof}
+% Next define
+% $$g(x) = \bigoplus_\rho \,\big(I_d \otimes I_{d_\rho} \otimes \rho(x)\big), $$
+% a direct sum over all irreducible representations of $G$ (hence itself a representation). Lets' first compute the ``pull-back'' of $g$ by $V$: following a similar calculation as above, for any $x\in G$, 
+% \begin{eqnarray*}
+% & V^*g(x) V  &=  \sum_{\rho}  d_\rho \sum_{i,j} (I\otimes e_i^*)\hat{f}(\rho)^* \hat{f}(\rho)(I\otimes e_j) \otimes e_i^* \rho(x) e_j ) \\
+% && =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \sum_{i,j} (e_i^* \rho(z)^T \overline{\rho(y)} e_j) \big( e_i^* \rho(x) e_j \big) \\
+% && =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z)^T \overline{\rho(y)}  {\rho(x)^T} \big) \\
+% && =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z^{-1}y x^{-1}) \big) \\
+% && =  \Es{z}\,  f(z)^*f(zx) , 
+% \end{eqnarray*}
+% where the last equality uses \eqref{eq:ortho}.
+% It then follows that 
+% \begin{eqnarray*}
+% &\Es{x}\, \big\langle f(x), V^*g(x) V \big\rangle_\sigma &=  \Es{x,z} \mathrm{Tr}\big( f(x) f(zx)^* f(z)\sigma\big).
+% \end{eqnarray*}  
+% This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approximate representation and proves the theorem. 
+% \end{proof}
 
 
-\section{Rigidity for the Magic Square game}
-\label{section-msrigid}
+% \section{Rigidity for the Magic Square game}
+% \label{section-msrigid}
 
-Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game and showed that any perfect strategy must ``have a qubit''. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{thm:gh} we can extend our earlier result to the case of approximate strategies with very little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
+% Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game and showed that any perfect strategy must ``have a qubit''. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{thm:gh} we can extend our earlier result to the case of approximate strategies with very little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
 
-\begin{theorem}
-\label{thm:rigid-ms}
-Let $\eps>0$, and suppose that a strategy for the players  in the Magic Square game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $B_1,\ldots,B_9$ for Bob succeeds with probability $1-\eps$, for some $\eps \geq 0$. Then $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit. Moreover, there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
-\begin{equation}
-\label{eq:chsh-state}
-\big\| V_A \otimes V_B \ket{\psi} - \ket{\phi^+} \otimes \ket{\psi'} \big\| = O(\sqrt{\eps}) \;,
-\end{equation}
-and 
-\begin{equation}
-\label{eq:chsh-alice}
-\big\|( V_A \otimes V_B)( \Id \otimes B_2 )\ket{\psi} - (\sigma_Z \otimes \Id) \ket{\phi^+} \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
-\end{equation}
-and a similar relation holds with $B_2$ replaced by $B_4$ and $\sigma_Z$ replaced by $\sigma_X$. 
-\end{theorem}
+% \begin{theorem}
+% \label{thm:rigid-ms}
+% Let $\eps>0$, and suppose that a strategy for the players  in the Magic Square game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $B_1,\ldots,B_9$ for Bob succeeds with probability $1-\eps$, for some $\eps \geq 0$. Then $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit. Moreover, there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+% \begin{equation}
+% \label{eq:chsh-state}
+% \big\| V_A \otimes V_B \ket{\psi} - \ket{\phi^+} \otimes \ket{\psi'} \big\| = O(\sqrt{\eps}) \;,
+% \end{equation}
+% and 
+% \begin{equation}
+% \label{eq:chsh-alice}
+% \big\|( V_A \otimes V_B)( \Id \otimes B_2 )\ket{\psi} - (\sigma_Z \otimes \Id) \ket{\phi^+} \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
+% \end{equation}
+% and a similar relation holds with $B_2$ replaced by $B_4$ and $\sigma_Z$ replaced by $\sigma_X$. 
+% \end{theorem}
 
-Note that this is a slightly weaker variant of Theorem~\ref{thm:ms-robust} that we stated without proof, because it only characterizes a single qubit of the strategy, instead of two for the case of Theorem~\ref{thm:ms-robust}. This will suffice for our purposes. 
+% Note that this is a slightly weaker variant of Theorem~\ref{thm:ms-robust} that we stated without proof, because it only characterizes a single qubit of the strategy, instead of two for the case of Theorem~\ref{thm:ms-robust}. This will suffice for our purposes. 
 
-\begin{proof}
-For the first step of the proof we follow the proof of Claim~\ref{claim:ms-ac}, except that all equalities must be made approximate equalities. 
-Assume without loss of generality that Alice's strategy is specified by six $4$-outcomes projective measurements $\{A^i_{a_1,a_2,a_3}\}$, where $a_1,a_2,a_3\in\{\pm 1\}$ range over the four possible assignments that satisfy the constraint associated with the $i$-th row $(i\in \{1,2,3\})$ or $(i-3)$-th column ($i\in \{4,5,6\}$). (We can assume that Alice always returns a valid assignment because she knows that she will lose if not, so we do not even need to include a symbol for such evidently wrong answers in the game.)
+% \begin{proof}
+% For the first step of the proof we follow the proof of Claim~\ref{claim:ms-ac}, except that all equalities must be made approximate equalities. 
+% Assume without loss of generality that Alice's strategy is specified by six $4$-outcomes projective measurements $\{A^i_{a_1,a_2,a_3}\}$, where $a_1,a_2,a_3\in\{\pm 1\}$ range over the four possible assignments that satisfy the constraint associated with the $i$-th row $(i\in \{1,2,3\})$ or $(i-3)$-th column ($i\in \{4,5,6\}$). (We can assume that Alice always returns a valid assignment because she knows that she will lose if not, so we do not even need to include a symbol for such evidently wrong answers in the game.)
 
-For any $i\in\{1,\ldots,9\}$, in addition to Bob's observable $B_i$ associated with question $i$ we define two observables from Alice's strategy, obtained by recording her answer associated to entry $i$ when she is asked the unique row containing $i$ --- call this observable $C_i$ --- or the unique column containing $i$ --- call this observable $C'_i$. Formally, $C_1 = \sum_{a_1,a_2,a_3\in\{\pm 1\}}a_1 A^1_{a_1,a_2,a_3}$, and similar relations can be used to define each $C_i$ and $C'_i$. Due to the parity constraints enforced on Alice's answers it is always the case that $C_1C_2C_3=+\Id,\ldots,C_3C_6C_9=-\Id$.
+% For any $i\in\{1,\ldots,9\}$, in addition to Bob's observable $B_i$ associated with question $i$ we define two observables from Alice's strategy, obtained by recording her answer associated to entry $i$ when she is asked the unique row containing $i$ --- call this observable $C_i$ --- or the unique column containing $i$ --- call this observable $C'_i$. Formally, $C_1 = \sum_{a_1,a_2,a_3\in\{\pm 1\}}a_1 A^1_{a_1,a_2,a_3}$, and similar relations can be used to define each $C_i$ and $C'_i$. Due to the parity constraints enforced on Alice's answers it is always the case that $C_1C_2C_3=+\Id,\ldots,C_3C_6C_9=-\Id$.
  
-By definition, success of the strategy in the game implies $18$ equations of the form 
-\begin{equation}
-\label{eq:ms-bc-1}
- \bra{\psi} C_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\qquad\text{and}\qquad \bra{\psi} C'_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\;,
-\end{equation}
-for all $i\in \{1,\ldots,9\}$. Indeed, each such equation represents the probability that the players return valid answers, conditioned on each of the $18$ possible pairs of questions in the game. These relations allow us to mimic the proof of Claim~\ref{claim:ms-ac}, as follows: 
-\begin{align*}
-B_2 B_4 \ket{\psi} & \approx C_4 \otimes B_2 \ket{\psi}\\
-&= C_5 C_6 \otimes B_2 \ket{\psi}\\
-&\approx C_5 C_6 C_2 \otimes \Id \ket{\psi}\\
-&= C_5 C_6 C_3 C_1 \otimes \Id \ket{\psi}\\
-&\approx C_5C_6C_3 \otimes B_1 \ket{\psi}\\
-&\approx C_5C_6\otimes B_1 B_3 \ket{\psi}\\
-&\approx C_5C'_6\otimes B_1 B_3 \ket{\psi}\\
-&\approx C_5C'_6 C'_3\otimes B_1  \ket{\psi}\\
-&=  C_5C'_9\otimes B_1  \ket{\psi}\;,
-\end{align*}
-where here we use the notation $\ket{u}\approx \ket{v}$ to mean $\|\ket{u} - \ket{v}\|^2 = O(\eps)$. Here, each of the approximations is obtained by bounding the squared norm of the difference using the Cauchy-Scharz inequality and the required relation; for example, for the first approximation we write
-\begin{align*}
- \big\|(\Id \otimes B_2 B_4 - C_4 \otimes B_2)\ket{\psi}\big\|^2
-&= \big\|(\Id \otimes B_2)(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\
-&= \big\|(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\ 
-&= 2 - 2 \bra{\psi} B_4 \otimes C_4 \ket{\psi} \\
-& \leq 36\eps\;,
-\end{align*}
-where the derivation uses that $B_2,B_4$ and $C_4$ are Hermitian and square to identity. 
-Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, it follows that $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit.
+% By definition, success of the strategy in the game implies $18$ equations of the form 
+% \begin{equation}
+% \label{eq:ms-bc-1}
+%  \bra{\psi} C_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\qquad\text{and}\qquad \bra{\psi} C'_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\;,
+% \end{equation}
+% for all $i\in \{1,\ldots,9\}$. Indeed, each such equation represents the probability that the players return valid answers, conditioned on each of the $18$ possible pairs of questions in the game. These relations allow us to mimic the proof of Claim~\ref{claim:ms-ac}, as follows: 
+% \begin{align*}
+% B_2 B_4 \ket{\psi} & \approx C_4 \otimes B_2 \ket{\psi}\\
+% &= C_5 C_6 \otimes B_2 \ket{\psi}\\
+% &\approx C_5 C_6 C_2 \otimes \Id \ket{\psi}\\
+% &= C_5 C_6 C_3 C_1 \otimes \Id \ket{\psi}\\
+% &\approx C_5C_6C_3 \otimes B_1 \ket{\psi}\\
+% &\approx C_5C_6\otimes B_1 B_3 \ket{\psi}\\
+% &\approx C_5C'_6\otimes B_1 B_3 \ket{\psi}\\
+% &\approx C_5C'_6 C'_3\otimes B_1  \ket{\psi}\\
+% &=  C_5C'_9\otimes B_1  \ket{\psi}\;,
+% \end{align*}
+% where here we use the notation $\ket{u}\approx \ket{v}$ to mean $\|\ket{u} - \ket{v}\|^2 = O(\eps)$. Here, each of the approximations is obtained by bounding the squared norm of the difference using the Cauchy-Scharz inequality and the required relation; for example, for the first approximation we write
+% \begin{align*}
+%  \big\|(\Id \otimes B_2 B_4 - C_4 \otimes B_2)\ket{\psi}\big\|^2
+% &= \big\|(\Id \otimes B_2)(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\
+% &= \big\|(\Id\otimes B_4 - C_4 \otimes \Id)\ket{\psi}\big\|^2\\ 
+% &= 2 - 2 \bra{\psi} B_4 \otimes C_4 \ket{\psi} \\
+% & \leq 36\eps\;,
+% \end{align*}
+% where the derivation uses that $B_2,B_4$ and $C_4$ are Hermitian and square to identity. 
+% Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, it follows that $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit.
  
-As already observed in Exercise~\ref{ex:wh-2}, it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
-$$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_Z)=\pm B_2,\quad\quad f(\pm\sigma_X)=\pm B_4,\quad f(\pm\sigma_X\sigma_Z) = \pm B_4B_2\;.$$
-Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
+% As already observed in Exercise~\ref{ex:wh-2}, it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
+% $$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_Z)=\pm B_2,\quad\quad f(\pm\sigma_X)=\pm B_4,\quad f(\pm\sigma_X\sigma_Z) = \pm B_4B_2\;.$$
+% Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
 
-Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{ex:wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eqref{eq:chsh-alice}. 
+% Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{ex:wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eqref{eq:chsh-alice}. 
 
-To conclude~\eqref{eq:chsh-state} we observe that the relations~\eqref{eq:ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{thm:gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
-\[ \ket{\psi'} = V_\reg{A} \otimes V_\reg{B} \ket{\psi} \in (\C^2 \otimes \mH_\reg{A}')\otimes (\C^2 \otimes \mH_\reg{B}') \]
-we see from~\eqref{eq:ms-bc-1} and~\eqref{eq:chsh-alice} that 
-\[\big| \bra{\psi} \big(\sigma_X \otimes \sigma_X \otimes \Id_{\reg{A}'\reg{B}'} + \sigma_Z \otimes \sigma_Z \otimes \Id_{\reg{A}'\reg{B}'} \big) \ket{\psi}\big| \geq 1-O({\eps})\;.\]
-To conclude note that $\frac{1}{2}(\sigma_X \otimes \sigma_X + \sigma_Z \otimes \sigma_Z )$ is an observable with a single eigenvalue $1$, with associated eigenvector $\ket{\phi^+}$, and all other eigenvalues equal to $0$ or $-1$. 
-\end{proof}
+% To conclude~\eqref{eq:chsh-state} we observe that the relations~\eqref{eq:ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{thm:gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
+% \[ \ket{\psi'} = V_\reg{A} \otimes V_\reg{B} \ket{\psi} \in (\C^2 \otimes \mH_\reg{A}')\otimes (\C^2 \otimes \mH_\reg{B}') \]
+% we see from~\eqref{eq:ms-bc-1} and~\eqref{eq:chsh-alice} that 
+% \[\big| \bra{\psi} \big(\sigma_X \otimes \sigma_X \otimes \Id_{\reg{A}'\reg{B}'} + \sigma_Z \otimes \sigma_Z \otimes \Id_{\reg{A}'\reg{B}'} \big) \ket{\psi}\big| \geq 1-O({\eps})\;.\]
+% To conclude note that $\frac{1}{2}(\sigma_X \otimes \sigma_X + \sigma_Z \otimes \sigma_Z )$ is an observable with a single eigenvalue $1$, with associated eigenvector $\ket{\phi^+}$, and all other eigenvalues equal to $0$ or $-1$. 
+% \end{proof}
 
 
 
