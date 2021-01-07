@@ -81,7 +81,7 @@ Expanding each squared norm and using the preceding conditions and $F(x)^2=1$ fo
 
 Before stating a BLR theorem for matrix-valued strategies we need to define what it means for such a function $G: \Z_2^n \to O_d(\C)$ to be \emph{linear}. Consider first the case of ``probabilistic functions'', which we define as those $G$ such that all $G(x)$ are diagonal in the same basis. Any such $G$ whose every diagonal entry is of the form $\chi_{S}(x) = (-1)^{S \cdot x}$ for some $S\in\{0,1\}^n$ \emph{which may depend on the row/column number} will pass the BLR test. This shows that we cannot hope to force $G$ to be a single linear function, we must allow ``mixtures''. Formally, call $G$ linear if $G(x) = \sum_S \chi_S(x) P_S$ for some decomposition $\{P_S\}$ of the identity, i.e. the $P_S$ are pairwsie orthogonal projections such that $\sum_S P_S=I$. Note that this indeed captures the probabilistic case; in fact, up to a basis change it is essentially equivalent to it. Thus the following may come as a surprise.  
 
-\begin{theorem}\label{thm:blr}
+\begin{theorem}\label{theorem-blr}
 Let $n$ be an integer, $\eps\geq 0$, and $F:\Z_2^n \to O_d(\C)$ such that
 \begin{equation}\label{eq:approx-linear}
 \E_{x,y\in \Z_2^n} \, \frac{1}{d}\,\Re\,\langle F(x)F(y),F(x+y)\rangle_f \,\geq\, 1-\eps.
@@ -115,7 +115,7 @@ The proof we gave decouples the argument. Its first step, the construction of th
 \subsection{The group-theoretic perspective}
 \label{section-paulibraiding-group}
 
-Let's re-interpret the proof we just gave using group-theoretic language. A linear function $g: \Z_2^n\to\{\pm 1\}$ is, by definition, a mapping which respects the additive group structure on  $\Z_2^n$, namely it is a representation. Since $G=(\Z_2^n,+)$ is an abelian group, it has $|G|=2^n$ irreducible $1$-dimensional representations, given by the characters $\chi_S$. As such, the linear  function defined in the proof of Theorem \ref{thm:blr} is nothing but a list of all irreducible representations of $G$. 
+Let's re-interpret the proof we just gave using group-theoretic language. A linear function $g: \Z_2^n\to\{\pm 1\}$ is, by definition, a mapping which respects the additive group structure on  $\Z_2^n$, namely it is a representation. Since $G=(\Z_2^n,+)$ is an abelian group, it has $|G|=2^n$ irreducible $1$-dimensional representations, given by the characters $\chi_S$. As such, the linear  function defined in the proof of Theorem \ref{theorem-blr} is nothing but a list of all irreducible representations of $G$. 
 
 The condition \eqref{eq:approx-linear} derived in the proof of the theorem can be interpreted as the condition that $F$ is an ``approximate representation'' of $G$. Let's make this a general definition. For $d$-dimensional matrices  $A,B$ and $\sigma$ such that $\sigma$ is positive semidefinite, write 
 $$\langle A,B\rangle_\sigma = \mathrm{Tr}(AB^\dagger \sigma)\;.$$
@@ -144,7 +144,7 @@ While a large Gowers norm implies closeness to an affine function, we are intere
 %\E_{x\in G}\, \psi^* \big( f(x) \otimes \overline{f(x)} \big) \psi \,\geq\,1-\eps.
 %\end{equation}
 If  $G=(\Z_2^n,+)$, the product $xy^{-1}$ should be written additively as $x-y=x+y$, so that the condition \eqref{eq:approx-linear} is precisely that $F$ is an $(\eps,\sigma)$-representation of $G$, where  $\sigma = d^{-1}I$. 
-Theorem \ref{thm:blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. In the next section we make the words in quotes precise and generalize the result to the case of arbitrary finite groups.  
+Theorem \ref{theorem-blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. In the next section we make the words in quotes precise and generalize the result to the case of arbitrary finite groups.  
 
 
 
