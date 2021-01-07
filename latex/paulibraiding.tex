@@ -6,7 +6,7 @@
 % \label{book-part-warmup}
 
 \title{Pauli braiding}
-\label{chapter-paulibraiding}
+\label{paulibraiding}
 
 \maketitle
 
@@ -113,7 +113,7 @@ We comment on the relation between this proof and the usual argument. The main o
 The proof we gave decouples the argument. Its first step, the construction of the isometry $V$ depends on $F$, but does not use anything regarding approximate linearity. It only uses Parseval's formula to argue that the isometry is well-defined. A noteworthy feature of this step is that the function $G$ on the extended space is always well-defined as well: given a function $F$, it is always possible to consider the linear matrix-valued function which ``samples $S$ according to $\hat{F}(S)^2$'' and then returns $\chi_S(x)$. The second step of the proof evaluates the correlation of $F$ with the ``pull-back'' of $G$, and observes that this correlation is precisely our measure of ``approximate linearity'' of $F$, concluding the proof  without having had to explicitly notice that there existed a large Fourier coefficient. 
 
 \subsection{The group-theoretic perspective}
-\label{section-paulibraiding-group}
+\label{subsection-paulibraiding-group}
 
 Let's re-interpret the proof we just gave using group-theoretic language. A linear function $g: \Z_2^n\to\{\pm 1\}$ is, by definition, a mapping which respects the additive group structure on  $\Z_2^n$, namely it is a representation. Since $G=(\Z_2^n,+)$ is an abelian group, it has $|G|=2^n$ irreducible $1$-dimensional representations, given by the characters $\chi_S$. As such, the linear  function defined in the proof of Theorem \ref{theorem-blr} is nothing but a list of all irreducible representations of $G$. 
 
