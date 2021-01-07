@@ -1,9 +1,10 @@
 introduction.tex
 notation.tex
 nonlocalgames.tex
-blsgames.tex
 complexitytheory.tex
 operatoralgebras.tex
+rigidity.tex
+blsgames.tex
 paulibraiding.tex
 theargument.tex
 questionreduction.tex

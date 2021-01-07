@@ -117,36 +117,191 @@ The proof we gave decouples the argument. Its first step, the construction of th
 
 Let's re-interpret the proof we just gave using group-theoretic language. A linear function $g: \Z_2^n\to\{\pm 1\}$ is, by definition, a mapping which respects the additive group structure on  $\Z_2^n$, namely it is a representation. Since $G=(\Z_2^n,+)$ is an abelian group, it has $|G|=2^n$ irreducible $1$-dimensional representations, given by the characters $\chi_S$. As such, the linear  function defined in the proof of Theorem \ref{theorem-blr} is nothing but a list of all irreducible representations of $G$. 
 
-The condition \eqref{eq:approx-linear} derived in the proof of the theorem can be interpreted as the condition that $F$ is an ``approximate representation'' of $G$. Let's make this a general definition. For $d$-dimensional matrices  $A,B$ and $\sigma$ such that $\sigma$ is positive semidefinite, write 
-$$\langle A,B\rangle_\sigma = \mathrm{Tr}(AB^\dagger \sigma)\;.$$
-The following definition considers arbitrary finite groups (not necessarily abelian). 
+The condition \eqref{eq:approx-linear} derived in the proof of the theorem can be interpreted as the condition that $F$ is an ``approximate representation'' of $G$ in the sense of Definition~\ref{definition-approxrep}. Indeed if $G=(\Z_2^n,+)$ then the product $xy^{-1}$ should be written additively as $x-y=x+y$, so that the condition \eqref{eq:approx-linear} is precisely that $F$ is an $(\eps,\sigma)$-representation of $G$, where  $\sigma = d^{-1}I$. 
+Theorem \ref{theorem-blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. This is precisely the content of Theorem~\ref{theorem-gh}, and indeed the proof is the same.   
 
-\begin{definition}
-Given a finite group $G$, an integer $d\geq 1$, $\eps\geq 0$, and a $d$-dimensional positive semidefinite matrix $\sigma$ with trace $1$, an $(\eps,\sigma)$-representation of $G$ is a function $f: G \to U_d(\C)$, the unitary group of $d\times d$ matrices, such that 
-\begin{equation}\label{eq:gh-condition}
-\E_{x,y\in G} \,\Re\big(\big\langle f(x)^\dagger f(y) ,f(x^{-1}y) \big\rangle_\sigma\big) \,\geq\, 1-\eps,
-\end{equation} 
-%and
-%\begin{equation}\label{eq:gh-com}
-%\E_{x\in G} \,\mathrm{Tr}\big( \big(f(x)\sqrt{\sigma}-\sqrt{\sigma}f(x)\big)\big(f(x)\sqrt{\sigma}-\sqrt{\sigma}f(x)\big)^*\big)\,\leq\, 2\,\eps,
-%\end{equation}
-where the expectation is taken under the uniform distribution over $G$.
-\end{definition}
+\section{The Pauli Braiding Test}
 
-\begin{remark}
-The condition \eqref{eq:gh-condition} in the definition is very closely related to Gowers's $U^2$ norm
-$$\|f\|_{U^2}^4 \,=\, \E_{xy^{-1}=zw^{-1}}\, \big\langle f(x)f(y)^\dagger ,f(z)f(w)^\dagger \big\rangle_\sigma.$$
-While a large Gowers norm implies closeness to an affine function, we are interested in testing linear functions, and the condition \eqref{eq:gh-condition} will arise naturally from our calculations in the next section. 
-\end{remark}
+\subsection{The Weyl-Heisenberg group}
 
-%The second condition \eqref{eq:gh-com} in the definition establishes a form of approximate commutation between the $f(x)$ and $\sqrt{\sigma}$. A simple case to keep in mind is when $\sigma = d^{-1} I_d$, in which case the condition is automatically satisfied. Although it would have been natural to restrict the definition to $\sigma = d^{-1}Id$, the more general definition will be needed for the application to entanglement testing that I will discuss later on. Towards this let me already  record an equivalent formulation of the condition. Write the singular value decomposition $\sigma = \sum_i \lambda_i u_iu_i^*$, and let $\psi = \sum_i \sqrt{\lambda_i} u_i \otimes u_i$. In quantum information the vector $\psi$ is called a \emph{purification} of $\sigma$, and $\sigma$ is called the \emph{reduced density matrix} associated to $\psi$. With this notation, it is a simple calculation to verify that \eqref{eq:gh-com} is equivalent to 
-%\begin{equation}\label{eq:gh-com-2}
-%\E_{x\in G}\, \psi^* \big( f(x) \otimes \overline{f(x)} \big) \psi \,\geq\,1-\eps.
-%\end{equation}
-If  $G=(\Z_2^n,+)$, the product $xy^{-1}$ should be written additively as $x-y=x+y$, so that the condition \eqref{eq:approx-linear} is precisely that $F$ is an $(\eps,\sigma)$-representation of $G$, where  $\sigma = d^{-1}I$. 
-Theorem \ref{theorem-blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. In the next section we make the words in quotes precise and generalize the result to the case of arbitrary finite groups.  
+In quantum information we care a lot about the \href{https://en.wikipedia.org/wiki/Pauli_group}{Pauli group}. For our purposes it will be be sufficient (and much more convenient, allowing us to avoid some trouble with complex conjugation) to consider the Weyl-Heisenberg group $H$, or ``Pauli group modulo complex conjugation'', which is the $8$-element group $\{\pm \sigma_I,\pm \sigma_X,\pm \sigma_Z,\pm \sigma_W\}$ whose multiplication table matches that of the $2\times 2$ matrices 
+\begin{equation}\label{eq:def-pauli}
+ \sigma_X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix},\qquad \sigma_Z= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, 
+\end{equation}
+$\sigma_I = \sigma_X^2 = \sigma_Z^2$ and $\sigma_W=\sigma_X\sigma_Z=-\sigma_Z\sigma_X$. This group has four $1$-dimensional representations, uniquely specified by the image of $\sigma_X$ and $\sigma_Z$ in $\{\pm 1\}$, and a single irreducible $2$-dimensional representation, given by the matrices defined above. We can also consider the ``$n$-qubit Weyl-Heisenberg group'' $H^{(n)}$, the matrix group generated by $n$-fold tensor products of the $8$ matrices identified above. The irreducible representations of  $H^{(n)}$ are easily computed from those of $H$; for us the only thing that matters is that the only irreducible representation which satisfies $\rho(-I)=-\rho(I)$ has dimension $2^n$ and is given by the defining matrix representation (in fact, it is the only irreducible representation in dimension larger than $1$).
+
+With the upcoming application to entanglement testing in mind, 
+I will state a version of Theorem \ref{thm:gh} tailored to the group $H^{(n)}$ and a specific choice of presentation for the group relations. Towards this we first need to recall the notion of \emph{Schmidt decomposition} of a bipartite state (i.e. unit vector) $\psi \in \C^d \otimes \C^d$. The Schmidt decomposition states that any such vector can be written as 
+\begin{equation}\label{eq:schmidt}
+\psi \,=\, \sum_i \,\sqrt{\lambda_i}\, u_i \otimes v_i,
+\end{equation}
+ for some orthonomal bases $\{u_i\}$ and $\{v_i\}$ of $\C^d$ (the ``Schmidt vectors'') and non-negative coefficients $\sqrt{\lambda_i}$ (the ``Schmidt coefficients''). The decomposition can be obtained by ``reshaping'' $\psi = \sum_{i,j}  \psi_{i,j} e_i \otimes e_j$ into a $d\times d$ matrix $K=(\psi_{i,j})_{1\leq i,j\leq d}$ and performing the singular value decomposition. To $\psi$ we associate the (uniquely defined) positive semidefinite matrix
+\begin{equation}\label{eq:sigma}
+\sigma \,=\, KK^* \,=\, \sum_i \lambda_i\,u_iu_i^*\; ;
+\end{equation} note that $\sigma$ has trace $1$. The matrix $\sigma$ is called the \emph{reduced density} of $\psi$ (on the first system). 
+
+\begin{corollary}\label{cor:gh}
+Let $n,d$ be integer, $\eps \geq 0$, $\psi \in \C^d \otimes \C^d$ a unit vector, $\sigma$ the positive semidefinite matrix associated to $\psi$ as in \eqref{eq:sigma},  and $f: \{X,Z\}\times \{0,1\}^n \to U(\C^d)$. For $a,b\in\{0,1\}^n$ let $X(a)=f(X,a)$, $Z(b)=f(Z,b)$, and assume $X(a)^2=Z(b)^2=I_d$ for all $a,b$ (we call such operators, unitaries with eigenvalues in $\{\pm 1\}$, \emph{observables}). Suppose that the following inequalities hold: consistency
+\begin{equation}\label{eq:gh-cons}
+ \E_a \, \psi^* \big(X(a) \otimes X(a)\big) \psi \,\geq\,1-\eps,\qquad \E_b \, \psi^* \big(Z(b) \otimes Z(b) \big)\psi\,\geq\,1-\eps,
+\end{equation}
+linearity
+\begin{equation}\label{eq:gh-commute}
+ \E_{a,a'} \,\big\|X(a)X(a')-X(a+a')\big\|_\sigma^2 \leq \eps,\qquad\E_{b,b'}\, \big\|Z(b)Z(b')-Z(b+b')\big\|_\sigma^2 \leq \eps,
+\end{equation}
+and anti-commutation
+\begin{equation}\label{eq:gh-ac}
+ \E_{a,b} \,\big\| X(a)Z(b)-(-1)^{a\cdot b} X(a)Z(b)\big\|_\sigma^2\,\leq\,\eps.
+\end{equation}
+Then there exists a $d'\geq d$, an isometry $V:\C^d\to \C^{d'}$, and a representation $g:H^{(n)}\to U_{d'}(\C)$ such that $g(-I)=-I_{d'}$ and
+$$\E_{a,b}\, \big\| X(a)Z(b) - V^*g(\sigma_X(a)\sigma_Z(b))V \big\|_\sigma^2 \,=\, O(\eps).$$
+\end{corollary}
+
+Note that the conditions \eqref{eq:gh-commute} and \eqref{eq:gh-ac} in the corollary are very similar to the conditions required of an approximate representation of the group $H^{(n)}$; in fact it is easy to convince oneself that their exact analogue suffice to imply all the group relations. The reason for including only those relations is that they are the ones that it will be possible to test; see the next section for this. Condition \eqref{eq:gh-cons} is necessary to derive the conditions of Theorem \ref{thm:gh} from \eqref{eq:gh-commute} and \eqref{eq:gh-ac}, and is also testable; see the proof. 
 
 
+\begin{proof} 
+To apply Theorem \ref{thm:gh} we need to construct an $(\eps,\sigma)$-representation $f$ of the group $H^{(n)}$. Using that any element of $H^{(n)}$ has a unique representative of the form $\pm \sigma_X(a)\sigma_Z(b)$ for $a,b\in\{0,1\}^n$, we define $f(\pm \sigma_X(a)\sigma_Z(b)) = \pm X(a)Z(b)$. Next we need to verify \eqref{eq:gh-condition}. Let $x,y\in H^{(n)}$ be such that $x=\sigma_X(a_x)\sigma_Z(b_x)$ and $y=\sigma_X(a_y)\sigma_Z(b_y)$ for $n$-bit strings $(a_x,b_x)$ and $(a_y,b_y)$ respectively. Up to phase, we can exploit successive cancellations to decompose $(f(x)f(y)^*-f(xy^{-1}))\otimes I$ as
+\begin{eqnarray*}
+&&\big( X(a_x)Z(b_x)X(a_y)Z(b_y) -(-1)^{a_y\cdot b_x} X(a_x+a_y) Z(b_x+b_y)\big)\otimes I \\ 
+&&\qquad =  X(a_x)Z(b_x)X(a_y)\big (Z(b_y)\otimes I - I\otimes Z(b_y)\big)\\
+&& \qquad\qquad+ X(a_x)\big(Z(b_x)X(a_y) - (-1)^{a_y\cdot b_x} X(a_y)Z(b_x)\big)\otimes Z(b_y)\\
+&& \qquad\qquad+(-1)^{a_y\cdot b_x} \big( X(a_x)X(a_y)\otimes Z(b_y)\big) \big( Z(b_x)\otimes I - I\otimes Z(b_x)\big)\\
+&& \qquad\qquad+  (-1)^{a_y\cdot b_x}  \big( X(a_x)X(a_y)\otimes Z(b_y)Z(b_x) - X(a_x+a_y)\otimes Z(b_x+b_y)\big)\\
+&& \qquad\qquad+  (-1)^{a_y\cdot b_x} \big(  X(a_x+a_y)\otimes I \big)\big(I\otimes Z(b_x+b_y) - Z(b_x+b_y)\otimes I\big).
+\end{eqnarray*}
+(It is worth staring at this sequence of equations for a little bit. In particular, note the ``player-switching'' that takes place in the 2nd, 4th and 6th lines; this is used as a means to ``commute'' the appropriate unitaries, and is the reason for including \eqref{eq:gh-cons} among the assumptions of the corollary.)
+Evaluating each term on the vector $\psi$, taking the squared Euclidean norm, and then the expectation over uniformly random $a_x,a_y,b_x,b_y$, the inequality $\| AB\psi\| \leq \|A\|\|B\psi\|$ and the assumptions of the theorem let us bound the overlap of each term in the resulting summation by $O({\eps})$. Using $\| (A\otimes I) \psi\| = \|A\|_\sigma$ by definition, we obtain the bound
+$$ \E_{x,y}\,\big\|f(x)f(y)^* - f(xy^{-1})\big\|_\sigma^2 \,=\, O({\eps}).$$
+We are thus in a position to apply Theorem \ref{thm:gh}, which gives an isometry $V$ and exact representation $g$ such that
+\begin{equation}\label{eq:gi}
+\E_{a,b}\,\Big\|  X(a)Z(b)- \frac{1}{2}V^*\big( g(\sigma_X(a)\sigma_Z(b))  -  g(-\sigma_X(a)\sigma_Z(b))\big)V\Big\|_\sigma^2 \,=\, O({\eps}). 
+\end{equation}
+Using that $g$ is a representation, $g(-\sigma_X(a)\sigma_Z(b)) = g(-I)g(\sigma_X(a)\sigma_Z(b))$. It follows from \eqref{eq:gi} that $\|g(-I) + I \|_\sigma^2 = O({\eps})$, so we may restrict the range of $V$ to the subspace where $g(-I)=-I$ without introducing much additional error. 
+\end{proof}
+
+
+\subsection{A certificate for high-dimensional entanglement}
+
+
+Our discussion so far has barely touched upon the notion of entanglement. Recall the Schmidt decopmosition \eqref{eq:schmidt} of a unit vector $\psi \in \C^d\otimes \C^d$, and the associated reduced density matrix $\sigma$ defined in \eqref{eq:sigma}. The state $\psi$ is called \emph{entangled} if this matrix has rank larger than $1$; equivalently, if there is more than one non-zero coefficient $\lambda_i$ in \eqref{eq:schmidt}. The \emph{Schmidt rank} of $\psi$ is the rank of $\sigma$, the number of non-zero terms in \eqref{eq:schmidt}. It is a crude, but convenient, measure of entanglement; in particular it provides a lower bound on the local dimension $d$. A useful observation is that the Schmidt rank is invariant under local unitary operations: these may affect the Schmidt vectors $\{u_i\}$ and $\{v_i\}$, but not the number of non-zero terms. 
+
+
+
+Among all entangled states in dimension $d$, the \emph{maximally entangled state} $\phi_d$ is the one which maximizes entanglement entropy, defined as the Shannon entropy of the distribution induced by the squares of the Schmidt coefficients: 
+$$ \phi_d \,=\, \frac{1}{\sqrt{d}} \sum_{i=1}^d\, e_i\otimes e_i,$$
+with entropy $\log d$. 
+The following lemma gives a ``robust'' characterization of the maximally entangled state in dimension $d=2^n$ as the unique common eigenvalue-$1$ eigenvector of all operators of the form $\sigma_P \otimes \sigma_P$, where $\sigma_P$ ranges over the elements of the unique $2^n$-dimensional irreducible representation of the Weyl-Heisenberg group $H^{(n)}$, i.e. the Pauli matrices (taken modulo $\sqrt{-1}$).
+
+\begin{lemma}\label{lem:sr}
+Let $\eps\geq 0$, $n$ an integer, $d=2^n$, and $\psi\in \C^d \otimes \C^d$ a unit vector  such that 
+\begin{equation}\label{eq:lem-ass}
+ \E_{a,b}\, \psi^* \big(\sigma_X(a) \sigma_Z(b)\otimes \sigma_X(a) \sigma_Z(b) \big) \psi \geq 1-\eps.
+\end{equation}
+Then $|\psi^*\phi_{2^n}|^2 \geq 1-\eps$. In particular, $\psi$ has Schmidt rank at least $(1-\eps) 2^n$. 
+\end{lemma}
+
+\begin{proof}
+Consider the case $n=1$. The ``swap'' matrix 
+$$S = \frac{1}{4}\big(\sigma_I \otimes \sigma_I + \sigma_X \otimes \sigma_X + \sigma_Z \otimes \sigma_Z + \sigma_W \otimes \sigma_W\big)$$
+squares to identity and has a unique eigenvalue-$1$ eigenvector, the vector $\phi_2 = (e_1\otimes e_1 + e_2\otimes e_2)/\sqrt{2}$ (a.k.a. ``EPR pair''). Thus $\psi^* S \psi \geq 1-\eps$ implies $|\psi^* \phi|^2 \geq 1-\eps$. The same argument for general $n$ shows $|\psi^* \phi_{2^n}|^2 \geq 1-\eps$. Any unit vector $u$ of Schmidt rank at most $r$ satisfies $|u^* \phi_{2^n}|^2 \leq r2^{-n}$, concluding the proof. 
+\end{proof}
+
+Lemma \ref{lem:sr} provides an ``experimental road-map'' for establishing that a bipartite system is in a highly entangled state: 
+\begin{itemize}
+\item[(i)] Select a random $\sigma_P = \pm\sigma_X(a)\sigma_Z(b) \in H^{(n)}$;
+\item[(ii)] Measure both halves of $\psi$ using $\sigma_P$;
+\item[(iii)] Check that the outcomes agree.
+\end{itemize}
+To explain the connection between the above ``operational test'' and the lemma I should review what a measurement in quantum mechanics is. For our purposes it is enough to talk about binary measurements (i.e. measurements with two outcomes, $+1$ and $-1$). Any such measurement is specified by a pair of orthogonal projections, $M_+$ and $M_-$, on $\C^d$ such that $M_++M_- = I_d$. The probability of obtaining outcome $\pm$ when measuring $\psi$ is $\|M_\pm \psi\|^2$. We can represent a binary measurement succinctly through the \emph{observable} $M=M_+-M_-$. (In general, an observable is a Hermitian matrix which squares to identity.) It is then the case that if an observable $M$ is applied on the first half of a state $\psi\in\C^d\otimes\C^d$, and another observable $N$ is applied on the second half, then the probability of agreement, minus the probability of disagreement, between the outcomes obtained is precisely $\psi^*(M\otimes N)\psi$, a number which lies in $[-1,1]$. Thus the condition that the test described above accepts with probability $1-\eps$ when performed on a state $\psi$ is precisely equivalent to the assumption \eqref{eq:lem-ass} of Lemma \ref{lem:sr}. 
+
+Even though this provides a perfectly fine test for entanglement in principle, practitioners in the foundations of quantum mechanics know all too well that their opponents --- e.g. ``quantum-skeptics'' --- will not be satisfied with such an experiment. In particular, who is to guarantee that the measurement performed in step (ii) is really $\sigma_P\otimes\sigma_P$, as claimed? To the least, doesn't this already implicitly assume that the measured system has dimension $2^n$? 
+
+This is where the notion of \emph{device independence} comes in. Briefly, in this context the idea is to obtain the same conclusion (a certificate of high-dimensional entanglement) \emph{without} any assumption on the measurement performed: the only information to be trusted is classical data (statistics generated by the experiment), but not the operational details of the experiment itself. 
+
+This is where Corollary \ref{cor:gh} enters the picture. Reformulated in the present context, the corollary provides a means to \emph{verify} that arbitrary measurements ``all but behave'' as Pauli measurements, provided they generate the right statistics. To explain how this can be done we need to provide additional ``operational tests'' that can be used to certify  the assumptions of the corollary. 
+
+
+\subsection{Testing the Weyl-Heisenberg group relations}
+
+Corollary \ref{cor:gh} makes three assumptions about the observables $X(a)$ and $Z(b)$: that they satisfy approximate consistency \eqref{eq:gh-cons}, linearity \eqref{eq:gh-commute}, and anti-commutation \eqref{eq:gh-ac}. In this section I will describe two (somewhat well-known)  tests that allow to certify these relations based only on the fact that the measurements generate statistics which pass the tests. 
+
+\begin{quote}
+\textbf{Linearity test:}
+\begin{itemize}
+\item[(a)] The referee selects $W\in\{X,Z\}$ and $a,a'\in\{0,1\}^n$ uniformly at random. He sends $(W,a,a')$ to one player and $(W,a)$, $(W,a')$, or $(W,a+a')$ to the other. 
+\item[(b)] The first player replies with two bits, and the second with a single bit. The referee accepts if and only if the player's answers are consistent. 
+\end{itemize}
+\end{quote}
+
+As always in this note, the test treats both players simultaneously. As a result we can (and will) assume that the player's strategy is symmetric, and is specified by a permutation-invariant state $\psi\in \C^d \otimes \C^d$ and a measurement for each question: an observable $W(a)$ associated to questions of the form $(W,a)$, and a more complicated four-outcome measurement $\{W^{a,a'}\}$ associated with questions of the form $(W,a,a')$ (It will not be necessary to go into the details of the formalism for such measurements). 
+
+The linearity test described above is exactly identical to the BLR linearity test described earlier, but for the use of the basis label $W\in\{X,Z\}$. The lemma below is a direct analogue of Lemma \ref{lem:blr-test}, which extends the analysis to the setting of players sharing entanglement. The lemma was first introduced in a joint \href{http://ieeexplore.ieee.org/abstract/document/6375302/}{paper} with Ito, where we used an extension of the linearity test, Babai et al.'s multilinearity test, to show the inclusion of complexity classes NEXP$\subseteq$MIP$^*$.
+ 
+\begin{lemma}\label{lem:com}
+Suppose that a family of observables $\{W(a)\}$ for $W\in\{X,Z\}$ and $a\in\{0,1\}^n$, generates outcomes that succeed in the linearity test with probability $1-\eps$, when applied on a bipartite state $\psi\in\C^d\otimes \C^d$. Then the following hold: approximate consistency
+$$ \E_a \, \psi^* \big(X(a) \otimes X(a)\big) \psi \,=\,1-O(\eps),\qquad \E_b \, \psi^* \big(Z(b) \otimes Z(b) \big)\psi\,\geq\,1-O(\eps),$$ 
+and linearity 
+$$
+ \E_{a,a'} \,\big\|X(a)X(a')-X(a+a')\big\|_\sigma^2 = O(\eps),\qquad\E_{b,b'}\, \big\|Z(b)Z(b')-Z(b+b')\big\|_\sigma^2  \,=\, O({\eps}).$$
+\end{lemma}
+
+Testing anti-commutation is slightly more involved. We will achieve this by using a two-player game called the Magic Square game. This is a fascinating game, but just as for the linearity test I will treat it superficially and only recall the part of the analysis that is useful for us (see e.g. the \href{https://arxiv.org/abs/1512.02074}{paper} by Wu et al. for a description of the game and a proof of Lemma \ref{lem:ms} below). 
+
+\begin{lemma}[Magic Square]\label{lem:ms}
+The Magic Square game is a two-player game with nine possible questions (with binary answers) for one player and six possible questions (with two-bit answers) for the other player which has the following properties. The distribution on questions in the game is uniform. Two of the questions to the first player are labelled $X$ and $Z$ respectively. For any strategy for the players that succeeds in the game with probability at least $1-\eps$ using  a bipartite state $\psi\in\C^d\otimes \C^d$ and observables $X$ and $Z$ for questions $X$ and $Z$ respectively, it holds that 
+\begin{equation}\label{eq:ms-ac}
+\big\|\big( (XZ+ZX)\otimes I_d \big)\psi\big\|^2 \,=\, O\big(\sqrt{\eps}\big).
+\end{equation}
+Moreover, there exists a strategy which succeeds with probability $1$ in the game, using $\psi=\phi_4$ and Pauli observables $\sigma_X \otimes I_2$ and $\sigma_Z\otimes I_2$  for questions $X$ and $Z$ respectively. 
+\end{lemma}
+
+Based on the Magic Square game we devise the following ``anti-commutation test''. 
+
+\begin{quote}
+\textbf{Anti-commutation test:}
+\begin{itemize}
+\item[(a)] The referee selects $a,b\in\{0,1\}^n$ uniformly at random under the condition that $a\cdot b=1$. He plays the Magic Square game with both players, with the following modifications: if the question to the first player is $X$ or $Z$ he sends $(X,a)$ or $(Z,b)$ instead; in all other cases he sends the original label of the question in the Magic Square game together with both strings $a$ and $b$. 
+\item[(b)] Each player provides answers as in the Magic Square game. The referee accepts if and only if the player's answers would have been accepted in the game. 
+\end{itemize}
+\end{quote}
+
+Using Lemma \ref{lem:ms} it is straightforward to show the following. 
+
+\begin{lemma}\label{lem:ac}
+Suppose a strategy for the players succeeds in the anti-commutation test with probability at least $1-\eps$, when performed on a bipartite state $\psi \in \C^d \otimes \C^d$. Then the observables $X(a)$ and $Z(b)$ applied by the player upon receipt of questions $(X,a)$ and $(Z,b)$ respectively satisfy 
+\begin{equation}\label{eq:ac}
+ \E_{a,b:\,a\cdot b=1} \,\big\| X(a)Z(b)-(-1)^{a\cdot b} Z(b)X(a)\big\|_\sigma^2\,=\,O\big(\sqrt{\eps}\big).
+\end{equation}
+\end{lemma}
+
+\subsection{A robust test for high-dimensional entangled states}
+
+We are ready to state, and prove, our main theorem: a test for high-dimensional entanglement that is ``robust'', meaning that success probabilities that are a constant close to the optimal value suffice to certify that the underlying state is within a constant distance from the target state --- in this case, a tensor product of $n$ EPR pairs. Although arguably a direct ``quantization'' of the BLR result, this is the first test known which achieves constant robustness --- all previous $n$-qubit tests required success that is inverse polynomially (in $n$) close  to the optimum in order to provide any meaningful conclusion.
+
+\begin{quote}
+\textbf{$n$-qubit Pauli braiding test:}
+With probability $1/2$ each, 
+\begin{itemize}
+\item[(a)] Execute the linearity test.
+\item[(b)] Execute the anti-commutation test.
+%\item[(c)] Execute a consistency test: select $W\in\{X,Z\}$ and $a\in\{0,1\}^n$ uniformly at random. Send $(W,a)$ to both players and accept if and only if their answers match. 
+\end{itemize}
+\end{quote}
+
+\begin{theorem}
+Suppose that a family of observables $W(a)$, for $W\in\{X,Z\}$ and $a\in\{0,1\}^n$, and a state $\psi\in\C^d\otimes \C^d$, generate outcomes that pass the $n$-qubit Pauli braiding test with probability at least $1-\eps$. Then $d= (1-O(\sqrt{\eps}))2^n$.
+\end{theorem}
+
+As should be apparent from the proof it is possible to state a stronger conclusion for the theorem, which includes a characterization of the observables $W(a)$ and the state $\psi$ up to local isometries. For simplicity I only recorded the consequence on the dimension of $\psi$. 
+
+\begin{proof}
+Using Lemma \ref{lem:com} and Lemma \ref{lem:ac}, success with probability $1-\eps$ in the test implies that conditions \eqref{eq:gh-cons}, \eqref{eq:gh-commute} and \eqref{eq:gh-ac} in Corollary \ref{cor:gh} are all satisfied, up to error $O(\sqrt{\eps})$. (In fact, Lemma \ref{lem:ac} only implies \eqref{eq:gh-ac} for strings $a,b$ such that $a\cdot b=1$. The condition for string such that $a\cdot b=0$ follows from the other conditions.) The conclusion of the corollary is that there exists an isometry $V$ such that the observables $X(a)$ and $Z(b)$ satisfy 
+$$\E_{a,b}\, \big\| X(a)Z(b) - V^*g(\sigma_X(a)\sigma_Z(b))V \big\|_\sigma^2 \,=\, O(\sqrt{\eps}).$$
+Using again the consistency relations \eqref{eq:gh-cons} that follow from part (a) of the  test together with the above we get
+$$\E_{a,b}\, \psi^* (V\otimes V)^* \big(  \sigma_X(a)\sigma_Z(b)\otimes  \sigma_X(a)\sigma_Z(b)\big)(V\otimes V)\psi \,=\, 1-O(\sqrt{\eps}).$$
+Applying Lemma \ref{lem:sr}, $(V\otimes V)\psi$ has Schmidt rank at least $(1-O(\sqrt{\eps}))2^n$. But $V$ is a local isometry, which cannot increase the Schmidt rank. 
+\end{proof}
 
 \input{chapters}
 
