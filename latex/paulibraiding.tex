@@ -124,8 +124,10 @@ The condition \eqref{eq:approx-linear} derived in the proof of the theorem can b
 Theorem \ref{theorem-blr} can thus be reformulated as stating that for any $(\eps,\sigma)$-approximate representation of the abelian group $G=(\Z_2^n,+)$ there exists an isometry $V:\C^d \to \C^d\otimes \C^{2^n}$ and an exact representation $g$ of $G$ on $\C^d \otimes \C^{2^n}$ such that $f$ is well-approximated by the ``pull-back'' $V^\dagger V$ of $g$ to $\C^d$. This is precisely the content of Theorem~\ref{theorem-gh}, and indeed the proof is the same.   
 
 \section{The Pauli Braiding Test}
+\label{section-paulibraiding-test}
 
 \subsection{The Weyl-Heisenberg group}
+\label{subsection-weyl-heisenberg-group}
 
 In quantum information we care a lot about the \href{https://en.wikipedia.org/wiki/Pauli_group}{Pauli group}. For our purposes it will be be sufficient (and much more convenient, allowing us to avoid some trouble with complex conjugation) to consider the Weyl-Heisenberg group $H$, or ``Pauli group modulo complex conjugation'', which is the $8$-element group $\{\pm \sigma_I,\pm \sigma_X,\pm \sigma_Z,\pm \sigma_W\}$ whose multiplication table matches that of the $2\times 2$ matrices 
 \begin{equation}\label{eq:def-pauli}
@@ -185,7 +187,7 @@ Using that $g$ is a representation, $g(-\sigma_X(a)\sigma_Z(b)) = g(-I)g(\sigma_
 
 
 \subsection{A certificate for high-dimensional entanglement}
-
+\label{subsection-certificate-high-dim-entanglement}
 
 Our discussion so far has barely touched upon the notion of entanglement. Recall the Schmidt decopmosition \eqref{eq:schmidt} of a unit vector $\psi \in \C^d\otimes \C^d$, and the associated reduced density matrix $\sigma$ defined in \eqref{eq:sigma}. The state $\psi$ is called \emph{entangled} if this matrix has rank larger than $1$; equivalently, if there is more than one non-zero coefficient $\lambda_i$ in \eqref{eq:schmidt}. The \emph{Schmidt rank} of $\psi$ is the rank of $\sigma$, the number of non-zero terms in \eqref{eq:schmidt}. It is a crude, but convenient, measure of entanglement; in particular it provides a lower bound on the local dimension $d$. A useful observation is that the Schmidt rank is invariant under local unitary operations: these may affect the Schmidt vectors $\{u_i\}$ and $\{v_i\}$, but not the number of non-zero terms. 
 
@@ -226,6 +228,7 @@ This is where Corollary \ref{cor:gh} enters the picture. Reformulated in the pre
 
 
 \subsection{Testing the Weyl-Heisenberg group relations}
+\label{subsection-testing-weyl-heisenberg-group-relations}
 
 Corollary \ref{cor:gh} makes three assumptions about the observables $X(a)$ and $Z(b)$: that they satisfy approximate consistency \eqref{eq:gh-cons}, linearity \eqref{eq:gh-commute}, and anti-commutation \eqref{eq:gh-ac}. In this section I will describe two (somewhat well-known)  tests that allow to certify these relations based only on the fact that the measurements generate statistics which pass the tests. 
 
@@ -279,6 +282,7 @@ Suppose a strategy for the players succeeds in the anti-commutation test with pr
 \end{lemma}
 
 \subsection{A robust test for high-dimensional entangled states}
+\label{subsection-robust-test-high-dim-entangled-states}
 
 We are ready to state, and prove, our main theorem: a test for high-dimensional entanglement that is ``robust'', meaning that success probabilities that are a constant close to the optimal value suffice to certify that the underlying state is within a constant distance from the target state --- in this case, a tensor product of $n$ EPR pairs. Although arguably a direct ``quantization'' of the BLR result, this is the first test known which achieves constant robustness --- all previous $n$-qubit tests required success that is inverse polynomially (in $n$) close  to the optimum in order to provide any meaningful conclusion.
 
