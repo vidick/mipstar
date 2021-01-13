@@ -47,7 +47,7 @@ A strategy such that both players always return $0$ achieves value $\frac{3}{4}$
 \end{align}
 Here the key step is the last step, where we used that for $b_0,b_1 \in \{\pm 1\}$ exactly one of $b_0+b_1$ and $b_0-b_1$ must be $0$, and the other is $\pm 2$. 
 
-This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B_1\})$ achieves a success probability of $\cos^2 \frac{\pi}{8}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y\}$. Letting $A_x = A^x_0-A^x_1$ and  $B^y = B^y_0-B^y_1$ an analogous derivation to~\eref{equation-chsh-qval1} gives 
+This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B_1\})$ achieves a success probability of $\cos^2 \frac{\pi}{8}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y\}$. Letting $A_x = A^x_0-A^x_1$ and  $B^y = B^y_0-B^y_1$ an analogous derivation to~\eqref{rigidity-equation-chsh-qval1} gives 
 \begin{align*}
 \val(\game_\CHSH;\strategy) &=\frac{1}{2} + \frac{1}{8}\bra{\psi} A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 \ket{\psi}\;.
 \end{align*}
@@ -61,13 +61,13 @@ Here the second line follows by expanding all squares, using that each operator 
 \begin{equation}\label{equation-bellop-2}
 x+1=2
 \end{equation}
-Reference~\ref{equation-bellop-2}.
+Reference~\ref{rigidity-equation-bellop-2}.
 
 Finally, for the non-signaling value we observe that the family of distributions that for each pair of questions is uniform over all accepting answers is non-signaling. 
 \end{proof}
 
 
-The proof of Lemma~\ref{lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{lemm-rigid-chsh-exact}, generalized in Theorem~\ref{theorem-rigid-chsh} we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we greatly generalize later in Theorem~\ref{theorem-gh}. 
+The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemm-rigid-chsh-exact}, generalized in Theorem~\ref{rigidity-theorem-rigid-chsh} we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we greatly generalize later in Theorem~\ref{theorem-gh}. 
 
 \begin{lemma}\label{lemma-ac-exact}
 Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that $\Tr( (XZ+ZX)^2 \rho)=0$. Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
