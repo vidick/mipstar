@@ -101,18 +101,18 @@ Given a game, the most important quantity associated to it is the game \emph{val
 
 \begin{definition}[Tensor product value]
   \label{definition-tensor-value}
-	The \emph{tensor product value} of a tensor product strategy $\strategy =
+	The \emph{value} of a tensor product strategy $\strategy =
   (\ket{\psi}, A, B)$  with respect to a game $\game=(\cal{X}, \cal{Y}, \cal{A},
   \cal{B}, \mu, D)$ is defined as
   \begin{equation*}
-		\val^*(\game, \strategy) = \sum_{x,\, y,\, a,\, b} \, \mu(x,y)\, D(x,y,a,b)\,
+		\val(\game, \strategy) = \sum_{x,\, y,\, a,\, b} \, \mu(x,y)\, D(x,y,a,b)\,
     \bra{\psi} A^x_a \otimes B^y_b\, \ket{\psi}\;.
   \end{equation*}
 	For $v\in[0,1]$ we say that the strategy $\strategy$ \emph{passes (or wins)
     $\game$ with probability $v$ if} $\val^*(\game, \strategy) \geq v$.
   The \emph{tensor product value} of $\game$ is defined as
   \begin{equation*}
-		\val^*(\game) = \sup_\strategy \val^*(\game, \strategy)\;,
+		\val^*(\game) = \sup_\strategy \val(\game, \strategy)\;,
   \end{equation*}
 	where the supremum is taken over all tensor product strategies $\strategy$ for
   $\game$.
@@ -122,7 +122,7 @@ Given a game, the most important quantity associated to it is the game \emph{val
   \label{definition-classical-value}
 	The \emph{classical value} of a game $\game$ is defined as
   \begin{equation*}
-		\val(\game) = \sup_\strategy \val^*(\game, \strategy)\;,
+		\val(\game) = \sup_\strategy \val(\game, \strategy)\;,
   \end{equation*}
 	where the supremum is taken over all classical strategies $\strategy = (\rho,A,B)$ for
   $\game$.

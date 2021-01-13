@@ -32,7 +32,7 @@ The CHSH game is the game $\game_\CHSH$ such that $\mX = \mY = \mA = \mB = \{0,1
 The CHSH game is first considered in the Physics literature as a Bell inequality~\cite{clauser1969proposed}. It appears as a nonlocal game in~\cite{cleve2004consequences}. Its central role in the study of either type of object is justified by the fact that it is the simplest game, where simplicity is measured by question and answer alphabet sizes, whose classical and quantum values are separated. 
 
 \begin{lemma}\label{lemma-chsh-qval}
-The classical value $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)=\cos^2 \frac{\pi}{8}$. The non-signaling value $\val^{ns}(\CHSH)=1$. 
+The classical value $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)= \frac{1}{2} + \frac{1}{2\sqrt{2}}$. The non-signaling value $\val^{ns}(\CHSH)=1$. 
 \end{lemma}
 
 \begin{proof}
@@ -67,6 +67,95 @@ Finally, for the non-signaling value we observe that the family of distributions
 \end{proof}
 
 
+The proof of Lemma~\ref{lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{lemm-rigid-chsh-exact}, generalized in Theorem~\ref{theorem-rigid-chsh} we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we greatly generalize later in Theorem~\ref{theorem-gh}. 
+
+\begin{lemma}\label{lemma-ac-exact}
+Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that $\Tr( (XZ+ZX)^2 \rho)=0$. Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
+\[ VW\rho W^\dagger V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
+\end{lemma}
+
+\begin{proof}
+We first show the lemma in the case $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition'', which we restate as follows. 
+
+
+\begin{lemma}\label{lemma-cs-dec}
+Let $P,Q$ be projections on a separable Hilbert space $\mH$. Then there exists an orthogonal decomposition $\mH = \oplus_i \mS_i$ such that each $\mS_i$ is a $1$- or $2$-dimensional subspace that is stable by $P$ and $Q$. Furthermore, whenever $\mS_i$ is $2$-dimensional there is a basis for it in which $P$ and $Q$ take the form
+\begin{equation}\label{eq:pq-form}
+ P = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \qquad \text{and} \qquad Q = \begin{pmatrix} c^2 & cs \\ cs & s^2 \end{pmatrix}\;,
+\end{equation}
+ for some $c_i$ and $s_i$ that may depend on $\mS_i$.\footnote{For the case of $1$-dimensional subspaces, since $P$ and $Q$ are projections they are each either identically $0$ or identity in those subspaces.}
+\end{lemma} 
+
+There are many possible proofs for Lemma~\ref{lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs. See e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. 
+
+Applying the lemma to $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Using $XZ=-ZX$ it follows that there are no $1$-dimensional subspaces. In each two-dimensional subspace, necessarily $\Tr(X)=\Tr(Z)=0$ since otherwise one of them is a multiple of identity and commutes with the other. It follows that there exist a choice of basis $(\ket{e_{1,i}},\ket{e_{2,i}})$ for $\mS_i$ such that $Z = \sigma_Z$, and necessarily $X = u \sigma_X$ for some $u\in \{\pm 1\}$. If $u=-1$ then $\ket{e_{2,i}} \to - \ket{e_{2,i}}$ brings both operators to the desired form. 
+
+In case $\rho$ is not invertible we note that for each $1$-dimensional subspace $\mS_i$ it must be that $\Pi_i \rho \Pi_i$ where $\Pi_i$ is the projection on $\mS_i$, and for each two-dimensional subspace either $XZ+ZX=0$ or $\Pi_i \rho \Pi_i$ has full support, because $(XZ+ZX)^2$ is always a multiple of the identity. The isometry $U$ embeds in $\oplus \mS'_i$ where $\mS'_i$ is $\mS_i$ if $\mS_i$ is two dimensional, and $\mS_i \oplus \mS_i$ in case it is one-dimensional.
+\end{proof}
+
+
+
+
+
+
+
+\begin{lemma}\label{lemma-rigid-chsh-exact}
+Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy such that $\val(\game;\strategy)=\val^*(\game_\CHSH;\strategy)$. Then there exists isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_A:\mH_B \to \C^2 \otimes \mH'_B$ such that 
+\begin{equation}\label{equation-chsh-state-0}
+ V_A \otimes V_B \ket{\psi} \,=\, \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'}\;,
+\end{equation}
+for some state $\ket{\psi'} \in \mH'_A \otimes \mH'_B$,
+and 
+\begin{equation}\label{eq:chsh-alice}
+( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} \,=\, (\sigma_Z \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \;,
+\end{equation}
+and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_Z$ replaced by $\sigma_X$. Moreover, analogous relations hold for Bob's observables. 
+\end{lemma}
+
+
+\begin{proof}
+Fix a  projective tensor product strategy $\strategy = (\ket{\psi},A^x,B^y)$ such that $\val(\game;\strategy)=\val^{com}(\game_\CHSH;\strategy)$. Let $A_x = A^x_0-A^x_1$ and $B_y = B^y_0-B^y_1$ be observables associated with this strategy.
+
+Keeping in mind the proof of Lemma~\ref{lemma-chsh-qval}, the strategy is optimal if and only if 
+\[\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;,\]
+which immediately implies that $\|(A_1A_0-A_0A_1) \ket{\psi}\|=2$ hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$. The conclusion follows by applying Lemma~\ref{lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$. This yields the isometry $V_A$. A similar argument applies to the observables $B_0$ and $B_1$. 
+\end{proof}
+
+\begin{remark} Discuss the commuting case.
+\end{remark}
+
+
+
+Later in the chapter we show the following extension of Lemma~\ref{lemma-rigid-chsh-exact} to the case of near-optimal strategies: 
+
+
+\begin{theorem}\label{theorem-rigid-chsh}
+Let $\eps>0$, and suppose that a strategy for the players  in the CHSH game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $A_0,A_1$ for Alice and $B_0,B_1$ for Bob, achieves a bias at least $\sqrt{2}/2-\eps$ in the game. Then there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+\begin{equation}\label{eq:chsh-state}
+\big\| V_A \otimes V_B \ket{\psi} - \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'} \big\|^2 = O(\sqrt{\eps}) \;,
+\end{equation}
+and 
+\begin{equation}\label{eq:chsh-alice}
+\big\|( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} - (\sigma_X \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
+\end{equation}
+and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for Bob's observables. 
+\end{theorem}
+
+
+Furthermore, under the assumption that the strategy achieves a bias of at least $\sqrt{2}/2-\eps$ in the game, using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$, the left-hand side of~\eqref{eq:bellop}, when evaluated on $\ket{\psi}$, must be at least $8(1-\eps)^2$. Applying the Cauchy-Schwarz inequality it follows that both conditions
+$$\Tr((A_1A_0 + A_0A_1)^2\rho_A) = O({\eps})\qquad \text{and}\qquad \Tr((B_0B_1+B_1B_1)^2 \rho_B) = O({\eps})$$
+must hold, where $\rho_A$ and $\rho_B$ are the reduced density matrices of $\ket{\psi}$ on Alice and Bob respectively. 
+Using the notation introduced in Section~\ref{sec:approx-group}, this says that 
+\begin{equation}\label{eq:a-ac}
+\|A_0A_1 + A_1A_0\|_{\rho_A}^2 = O({\eps})\;,
+\end{equation}
+ i.e. $A_0$ and $A_1$ approximately commute. 
+
+Now here comes the key observation. Consider the $8$-element group $H$ generated by the Pauli matrices $\sigma_X$ and $\sigma_Z$, i.e. 
+$$H\,=\,\pm\big\{ \Id,\, \sigma_X,\,\sigma_Z,\, \sigma_X\sigma_Z\big\}\;.$$
+Then I claim that $A_0$ and $A_1$ induce an approximate representation of $H$, by setting 
+$$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_X)=\pm A_0,\quad\quad f(\pm\sigma_Z)=\pm A_1,\quad f(\pm\sigma_X\sigma_Z) = \pm A_0A_1\;.$$
+Note that this is a legal definition, since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{eq:a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. 
 
 [Show approximate rigidity directly --- cf. UCSD notes, and Cleve notes]
 
