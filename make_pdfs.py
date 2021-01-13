@@ -11,8 +11,8 @@ chapters.append('book.tex')
 
 for chapter in chapters:
     # PDF recipe: pdflatex x2 -> bibtex -> pdflatex x2
-    # pdflatex = subprocess.Popen(['latex', chapter], cwd='./pdfs')
-    # pdflatex.communicate()
+    pdflatex = subprocess.Popen(['pdflatex', chapter], cwd='./pdfs')
+    pdflatex.communicate()
     pdflatex = subprocess.Popen(['pdflatex', chapter], cwd='./pdfs')
     pdflatex.communicate()
     bibtex = subprocess.Popen(['bibtex', chapter[:-4]], cwd='./pdfs')
