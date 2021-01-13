@@ -80,6 +80,23 @@ Proceeding similarly to define $g^y$ one can verify that for all $(a,b)$,
 \[\Tr(A^x_a \otimes B^y_b \rho) = \int 1_{f^x(i,t)=a} 1_{g^y(i,t)=b}d(i,t)\;.\] 
 \end{remark}
 
+Commuting strategies extend tensor strategies. 
+
+\begin{definition}[Commuting strategies]
+  \label{definition-commutingstrategy}
+  A \emph{commuting strategy} $\strategy$ for a game $\game = (\cal{X},
+  \cal{Y}, \cal{A}, \cal{B}, \mu, D)$ is a tuple $(\rho, A, B)$ where
+  \begin{itemize}
+	\item $\rho$ is a density matrix in $\mH$ for separable Hilbert space $\mH$,
+	\item $A$ is a set $\{A^x\}$ such that for every $x \in \cal{X}$, $A^x =
+    \{A^x_a \}_{a \in \cal{A}}$ is a POVM over $\mH$, 
+	\item $B$ is a set $\{B^y\}$ such that for every $y \in \cal{Y}$, $B^y =
+    \{B^y_b \}_{b \in \cal{B}}$ is a POVM over $\mH$,
+		\item For all $(x,a)$ and $(b,y)$, $A^x_a$ commutes with $B^y_b$. 
+\end{itemize}
+\end{definition}
+
+
 Given a game, the most important quantity associated to it is the game \emph{value}. Informally, this represents the maximum success probability of players employing a certain kind of strategy in the game.  
 
 \begin{definition}[Tensor product value]
@@ -105,7 +122,7 @@ Given a game, the most important quantity associated to it is the game \emph{val
   \label{definition-classical-value}
 	The \emph{classical value} of a game $\game$ is defined as
   \begin{equation*}
-		\val^*(\game) = \sup_\strategy \val^*(\game, \strategy)\;,
+		\val(\game) = \sup_\strategy \val^*(\game, \strategy)\;,
   \end{equation*}
 	where the supremum is taken over all classical strategies $\strategy = (\rho,A,B)$ for
   $\game$.

@@ -17,6 +17,8 @@
 
 We give an introduction to the phenomenon of rigidity of a nonlocal game. Informally, this is the idea that for some nonlocal games $\game$ whenever a tensor product strategy $\strategy = (\ket{\psi},A,B)$ for $\game$ succeeds with probability $\val^*(G)$ or close to it the strategy must have a specific form; in particular, the state $\ket{\psi}$ may be required to be equivalent to a specific state under local unitaries and the operators $A^x_a$, $B^y_b$ may be required to satisfy certain algebraic relations. 
 
+\paragraph{Resources.} Cleve lecture notes. UCSD notes. 
+
 Before getting into the general theory we start with a concrete example: the CHSH game. 
 
 \section{The CHSH game}
@@ -26,6 +28,39 @@ Before getting into the general theory we start with a concrete example: the CHS
 \label{definition-chsh}
 The CHSH game is the game $\game_\CHSH$ such that $\mX = \mY = \mA = \mB = \{0,1\}$, $\mu$ is uniform on $\mX \times \mY$, and $D(x,y,a,b) = 1$ if $a\oplus b = x\wedge y$ and $0$ otherwise. 
 \end{definition}
+
+The CHSH game is first considered in the Physics literature as a Bell inequality~\cite{clauser1969proposed}. It appears as a nonlocal game in~\cite{cleve2004consequences}. Its central role in the study of either type of object is justified by the fact that it is the simplest game, where simplicity is measured by question and answer alphabet sizes, whose classical and quantum values are separated. 
+
+\begin{lemma}\label{lemma-chsh-qval}
+The classical value $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)=\cos^2 \frac{\pi}{8}$. The non-signaling value $\val^{ns}(\CHSH)=1$. 
+\end{lemma}
+
+\begin{proof}
+A strategy such that both players always return $0$ achieves value $\frac{3}{4}$. It is not hard to verify by enumeration that this is optimal. For a more instructive proof, fix a classical deterministic strategy $\strategy$ represented by $f,g:\{0,1\}\to\{0,1\}$. For $x,y\in\{0,1\}$ let $a_x = (-1)^{f(x)}$ and $b_y = (-1)^{g(y)}$. Then 
+\begin{align}
+\val(\game_\CHSH;\strategy) &= \Pr_{(x,y)\sim \mu} \big( f(x)\oplus g(y) = x\wedge y \big) \notag\\
+ &= \Pr_{(x,y)\sim \mu} \big( a_x b_y = (-1)^{x\wedge y} \big) \notag\\
+&= \frac{1}{4}\sum_{x,y\in\{0,1\}}\frac{1}{2}\big(1 + (-1)^{x\wedge y} a_x b_y\big)\notag\\
+&= \frac{1}{2} + \frac{1}{8}\big( a_0 b_0 + a_1 b_0 + a_0 b_1 - a_1 b_1 \big)\notag\\
+ &= \frac{1}{2} + \frac{1}{8}\big( a_0 (b_0 + b_1) + a_1 (b_0 -  b_1) \big)\notag\\
+&\leq \frac{1}{2} + \frac{1}{8} \cdot 2\,=\, \frac{3}{4}\;.\label{{equation-chsh-qval1}}
+\end{align}
+Here the key step is the last step, where we used that for $b_0,b_1 \in \{\pm 1\}$ exactly one of $b_0+b_1$ and $b_0-b_1$ must be $0$, and the other is $\pm 2$. 
+
+This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B_1\})$ achieves a success probability of $\cos^2 \frac{\pi}{8}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y\}$. Letting $A_x = A^x_0-A^x_1$ and  $B^y = B^y_0-B^y_1$ an analogous derivation to~\eqref{equation-chsh-qval1} gives 
+\begin{align}
+\val(\game_\CHSH;\strategy) &=\frac{1}{2} + \frac{1}{8}\bra{\psi} A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 \ket{\psi}\;.
+\end{align}
+The idea, due to Tsirelson~\cite{cirel1980quantum}, is to evaluate the square
+\begin{align}
+(A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 )^2 &=\big( (A_0+A_1) B_0 + (A_0-A_1) B_1 \big)^2\label{eq:bellop}\\
+&= 4\Id\otimes \Id + (A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\;.\notag
+\end{align}
+Here the second line follows by expanding all squares, using that each operator squares to identity, and $A$ and $B$ operators commute. The last term above has norm at most $8$, whcih shows that $A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 $ has norm at most $\sqrt{8}$; the claimed bound on the commuting value of the CHSH game  follows. 
+
+Finally, for the non-signaling value we observe that the family of distributions that for each pair of questions is uniform over all accepting answers is non-signaling. 
+\end{proof}
+
 
 
 [Show approximate rigidity directly --- cf. UCSD notes, and Cleve notes]
@@ -234,7 +269,8 @@ To conclude note that $\frac{1}{2}(\sigma_X \otimes \sigma_X + \sigma_Z \otimes 
 \end{proof}
 
 
-
+\section{Chapter notes}
+\label{section-rigidity-notes}
 
 
 
