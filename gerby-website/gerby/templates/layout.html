@@ -17,12 +17,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/print.css') }}">
 
-<!-- <script type="text/x-mathjax-config;executed=true">
+<script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ['tex2jax.js'],
     jax: ['input/TeX','output/HTML-CSS'],
     TeX: {
-      extensions: ['AMSmath.js', 'AMSsymbols.js', '/static/XyJax/extensions/TeX/xypic.js'],
+      extensions: ['AMSmath.js', 'AMSsymbols.js', '/static/xypic.js'],
       Macros: {
         linebreak: ["", 1, ""],
         },
@@ -33,17 +33,6 @@
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
     },
     'HTML-CSS': { scale: 100 }
-  });
-</script> -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
-    "HTML-CSS": {
-      styles: {".MathJax_Preview": {visibility: "hidden"}}
-    },
-    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
-    TeX: {extensions: ["AMSmath.js","AMSsymbols.js","/static/XyJax/extensions/TeX/xypic.js"]}
   });
 </script>
 
