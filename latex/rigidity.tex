@@ -81,7 +81,7 @@ The following diagram intuitively captures the situation described in Lemma~\ref
 \end{equation}
 
 \begin{proof}
-We first show the lemma in the case $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition'', which we restate as follows. 
+We first show the lemma in the case where $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition'', which we restate as follows. 
 
 
 \begin{lemma}\label{lemma-cs-dec}
@@ -89,50 +89,52 @@ Let $P,Q$ be projections on a separable Hilbert space $\mH$. Then there exists a
 \begin{equation}\label{eq:pq-form}
  P = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \qquad \text{and} \qquad Q = \begin{pmatrix} c^2 & cs \\ cs & s^2 \end{pmatrix}\;,
 \end{equation}
- for some $c_i$ and $s_i$ that may depend on $\mS_i$.\footnote{For the case of $1$-dimensional subspaces, since $P$ and $Q$ are projections they are each either identically $0$ or identity in those subspaces.}
+ for some $c$ and $s$ such that $c^2+s^2=1$ that may depend on $\mS_i$.\footnote{For the case of $1$-dimensional subspaces, since $P$ and $Q$ are projections they are each either identically $0$ or identity in those subspaces.}
 \end{lemma} 
 
 There are many possible proofs for Lemma~\ref{lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs. See e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. 
 
-Applying the lemma to $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Using $XZ=-ZX$ it follows that there are no $1$-dimensional subspaces. In each two-dimensional subspace, necessarily $\Tr(X)=\Tr(Z)=0$ since otherwise one of them is a multiple of identity and commutes with the other. It follows that there exist a choice of basis $(\ket{e_{1,i}},\ket{e_{2,i}})$ for $\mS_i$ such that $Z = \sigma_Z$, and necessarily $X = u \sigma_X$ for some $u\in \{\pm 1\}$. If $u=-1$ then $\ket{e_{2,i}} \to - \ket{e_{2,i}}$ brings both operators to the desired form. 
+Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible, the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $X$ and $Z$ the condition must hold in each of them. As a consequence there are no $1$-dimensional subspaces. Moreover in each two-dimensional subspace necessarily $\Tr(X)=\Tr(Z)=0$ since otherwise one of them is a multiple of the identity and commutes with the other. It follows that there exist a choice of basis $(\ket{e_{1,i}},\ket{e_{2,i}})$ for $\mS_i$ such that $Z = \sigma_Z$, and necessarily $X = u \sigma_X$ for some $u\in \{\pm 1\}$. If $u=-1$ then the unitary $\ket{e_{2,i}} \to - \ket{e_{2,i}}$ brings both operators to the desired form. 
 
-In case $\rho$ is not invertible we note that for each $1$-dimensional subspace $\mS_i$ it must be that $\Pi_i \rho \Pi_i$ where $\Pi_i$ is the projection on $\mS_i$, and for each two-dimensional subspace either $XZ+ZX=0$ or $\Pi_i \rho \Pi_i$ has full support, because $(XZ+ZX)^2$ is always a multiple of the identity. The isometry $U$ embeds in $\oplus \mS'_i$ where $\mS'_i$ is $\mS_i$ if $\mS_i$ is two dimensional, and $\mS_i \oplus \mS_i$ in case it is one-dimensional.
+In case $\rho$ is not invertible we note that for each $1$-dimensional subspace $\mS_i$ it must be that $\Pi_i \rho \Pi_i=0$, where $\Pi_i$ is the projection on $\mS_i$, and for each two-dimensional subspace since $(XZ+ZX)^2$ is always a multiple of the identity it is zero as soon as $\Pi_i\rho\Pi_i$ is nonzero. Let $\mI_1$ be the set of indices $i$ such that $\mS_i$ is $1$-dimensional, $\mI_2$ be such that $\mS_i$ is $2$-dimensional and $\Pi_i\rho\Pi_i= 0$, and $\mI_3$ the remaining indices. For any $i\in \mI_3$ there is a local rotation $V_i$ such that for $W\in\{X,Z\}$, $V_i \Pi_i W \Pi_i V_i^\dagger = \sigma_W$. For $i\in \mI_2$ we let $V_i = \Id$ and for $i\in \mI_1$ we let $V_i : \C^2 \to \C^2 \otimes \C^2$ be an arbitrary embedding. Using 
+\[W\rho W^\dagger \,=\, \sum_{i,j\in \mI_3} (\Pi_iW\Pi_i) \rho (\Pi_j W \Pi_j)^\dagger \]
+one can easily verify that $V = \oplus_i V_i$ is an isometry that satisfies the conclusion of the lemma. 
 \end{proof}
 
-
-
-
-
-
+We are ready to give a first statement of rigidity for the CHSH game, that applies to optimal tensor product strategies for the game. 
 
 \begin{lemma}\label{lemma-rigid-chsh-exact}
-Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy such that $\val(\game;\strategy)=\val^*(\game_\CHSH;\strategy)$. Then there exists isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_A:\mH_B \to \C^2 \otimes \mH'_B$ such that 
+Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy such that $\val(\game;\strategy)=\val^*(\game_\CHSH;\strategy)$. Then there exists isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_B:\mH_B \to \C^2 \otimes \mH'_B$ such that 
 \begin{equation}\label{equation-chsh-state-0}
  V_A \otimes V_B \ket{\psi} \,=\, \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'}\;,
 \end{equation}
 for some state $\ket{\psi'} \in \mH'_A \otimes \mH'_B$,
-and 
-\begin{equation}\label{eq:chsh-alice}
-( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} \,=\, (\sigma_Z \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \;,
+and letting $A_x$ and $B_y$ be observables associated with each party's question $x$ or $y$ we have
+\begin{equation}\label{equation-chsh-alice}
+( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} \,=\, (\sigma_Z \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'}  \;,
 \end{equation}
-and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_Z$ replaced by $\sigma_X$. Moreover, analogous relations hold for Bob's observables. 
+and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_Z$ replaced by $\sigma_X$. Moreover, analogous relations hold for Bob's observables $B_0$ and $B_1$ and the operators $H$ and $\sigma_Z H\sigma_Z$. 
 \end{lemma}
 
 
 \begin{proof}
 Fix a  projective tensor product strategy $\strategy = (\ket{\psi},A^x,B^y)$ such that $\val(\game;\strategy)=\val^{com}(\game_\CHSH;\strategy)$. Let $A_x = A^x_0-A^x_1$ and $B_y = B^y_0-B^y_1$ be observables associated with this strategy.
-
 Keeping in mind the proof of Lemma~\ref{lemma-chsh-qval}, the strategy is optimal if and only if 
-\[\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;,\]
-which immediately implies that $\|(A_1A_0-A_0A_1) \ket{\psi}\|=2$ hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$. The conclusion follows by applying Lemma~\ref{lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$. This yields the isometry $V_A$. A similar argument applies to the observables $B_0$ and $B_1$. 
+\begin{equation}\label{equation-exact-1}
+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;,
+\end{equation}
+which using the Cauchy-Scharz inequality immediately implies that 
+\[\|(A_1A_0-A_0A_1) \ket{\psi}\|=\|(B_0B_1-B_1B_0)\ket{\psi}\|=2\]
+hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$ and similarly $B_0B_1 \ket{\psi} = - B_1 B_0 \ket{\psi}$. Applying Lemma~\ref{rigidity-lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$ gives the isometry $V_A$. A similar argument applied to the observables $B_0$ and $B_1$ gives $V_B$. This shows~\eqref{rigidity-equation-chsh-alice}. Finally~\eqref{rigidity-equation-chsh-state-0} follows since the EPR pair is the only eigenstate of 
+\[ \big(\sigma_Z  + \sigma_X \big) \otimes H + \big(\sigma_Z - \sigma_X\big) \otimes \sigma_Z H \sigma_Z \,=\, \sqrt{2}\big( \sigma_Z \otimes \sigma_Z + \sigma_X \otimes \sigma_X \big)\]
+with largest eigenvalue $2\sqrt{2}$. 
 \end{proof}
 
 \begin{remark} Discuss the commuting case.
 \end{remark}
 
 
-
-Later in the chapter we show the following extension of Lemma~\ref{lemma-rigid-chsh-exact} to the case of near-optimal strategies: 
+In general it is essential for applications that a rigidity statement can be made ``robust'', in the sense that its conclusions extend smoothly to near-optimal strategies. For the case of the CHSH game we can show the following. 
 
 
 \begin{theorem}\label{theorem-rigid-chsh}
@@ -147,23 +149,8 @@ and
 and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for Bob's observables. 
 \end{theorem}
 
+It is possible to give an elementary proof of Theorem~\ref{rigidity-theorem-rigid-chsh} based on the use of Lemma~\ref{rigidity-lemma-cs-dec} and geometric arguments in two dimension; see e.g. the lecture notes at~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. We will give an a priori more complex proof, that generalizes much more easily to higher-dimensional rigidity statements such as in Chapther~\ref{chapter-paulibraiding}. Our proof makes use of the theory of stability for representations of finite groups. 
 
-Furthermore, under the assumption that the strategy achieves a bias of at least $\sqrt{2}/2-\eps$ in the game, using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$, the left-hand side of~\eqref{eq:bellop}, when evaluated on $\ket{\psi}$, must be at least $8(1-\eps)^2$. Applying the Cauchy-Schwarz inequality it follows that both conditions
-$$\Tr((A_1A_0 + A_0A_1)^2\rho_A) = O({\eps})\qquad \text{and}\qquad \Tr((B_0B_1+B_1B_1)^2 \rho_B) = O({\eps})$$
-must hold, where $\rho_A$ and $\rho_B$ are the reduced density matrices of $\ket{\psi}$ on Alice and Bob respectively. 
-Using the notation introduced in Section~\ref{sec:approx-group}, this says that 
-\begin{equation}\label{eq:a-ac}
-\|A_0A_1 + A_1A_0\|_{\rho_A}^2 = O({\eps})\;,
-\end{equation}
- i.e. $A_0$ and $A_1$ approximately commute. 
-
-Now here comes the key observation. Consider the $8$-element group $H$ generated by the Pauli matrices $\sigma_X$ and $\sigma_Z$, i.e. 
-$$H\,=\,\pm\big\{ \Id,\, \sigma_X,\,\sigma_Z,\, \sigma_X\sigma_Z\big\}\;.$$
-Then I claim that $A_0$ and $A_1$ induce an approximate representation of $H$, by setting 
-$$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_X)=\pm A_0,\quad\quad f(\pm\sigma_Z)=\pm A_1,\quad f(\pm\sigma_X\sigma_Z) = \pm A_0A_1\;.$$
-Note that this is a legal definition, since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{eq:a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. 
-
-[Show approximate rigidity directly --- cf. UCSD notes, and Cleve notes]
 
 \section{Stability}
 \label{section-stability}
@@ -229,7 +216,7 @@ Gowers and Hatami~\cite{gowers2017inverse} showed that in the case of Definition
 We state and prove a slightly more general, but quantitatively weaker, variant of the Gowers-Hatami result.
 
 \begin{theorem}[Gowers-Hatami]
-\label{thm:gh}
+\label{theorem-gh}
 Let $G$ be a finite group, $\eps\geq 0$, and $f:G\to U_d(\C)$ an $(\eps,\sigma)$-representation of $G$. Then there exists a $d'\geq d$, an isometry $V:\C^d\to \C^{d'}$, and a representation $g:G\to U_{d'}(\C)$ such that 
 $$\Es{x\in G}\, \big\| f(x) - V^*g(x)V \big\|_\sigma^2\, \leq\, 2\,\eps.$$ 
 \end{theorem}
@@ -267,7 +254,7 @@ In case $G$ is abelian, we always have $d_\rho=1$, the tensor product is a produ
 \end{equation}
 for any $x\in G$. Note that plugging in $x=e$ (the identity element in $G$) yields $\sum_\rho d_\rho^2= |G|$. 
 
-\begin{proof}[Proof of Theorem \ref{thm:gh}]
+\begin{proof}[Proof of Theorem \ref{rigidity-theorem-gh}]
 Our first step is to define an isometry $V:\C^d \to \C^d \otimes (\oplus_\rho \C^{d_\rho} \otimes \C^{d_\rho})$ by
 $$ V :\;u \in \C^d \,\mapsto\, \bigoplus_\rho \,d_\rho^{1/2} \sum_{i=1}^{d_\rho} \,\big(\hat{f}(\rho) (u\otimes e_i)\big) \otimes e_i,$$
 where the direct sum ranges over all irreducible representations $\rho$ of $G$ and $\{e_i\}$ is the canonical basis.\footnote{Observe that this expression directly generalizes~\eref{eq:explicit-isometry}.}
@@ -297,6 +284,31 @@ It then follows that
 \end{eqnarray*}  
 This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approximate representation and proves the theorem. 
 \end{proof}
+
+We end the section with the proof of Theorem~\ref{rigidity-theorem-rigid-chsh}.
+
+\begin{proof}[Proof of Theorem~\ref{rigidity-theorem-rigid-chsh}]
+We follow the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}. Using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$,
+Eq.\eqref{rigidity-equation-exact-1} is replaced by
+\[ \big|4+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \big|\,\geq\, 8(1-2\sqrt{2}\eps)^2\;.\]
+Applying the Cauchy-Schwarz inequality it follows that both conditions
+\[ \big\|(A_0A_1-A_1A_0)\ket{\psi}\big\| \geq 2-O(\eps) \qquad \text{and}\qquad\big\|(B_0B_1-B_1B_0)\ket{\psi}\big\| \geq 2-O(\eps)\]
+must be satisfied. Taking squares and using that $A_x$ and $B_y$ square to identity we deduce that 
+$$\Tr((A_1A_0 + A_0A_1)^2\rho_A) = O({\eps})\qquad \text{and}\qquad \Tr((B_0B_1+B_1B_1)^2 \rho_B) = O({\eps})$$
+must hold, where $\rho_A$ and $\rho_B$ are the reduced density matrices of $\ket{\psi}$ on Alice and Bob respectively. 
+Using the notation introduced in Section~\ref{sec:approx-group}, this says that 
+\begin{equation}\label{eq:a-ac}
+\|A_0A_1 + A_1A_0\|_{\rho_A}^2 = O({\eps})\;,
+\end{equation}
+ i.e. $A_0$ and $A_1$ approximately commute. 
+
+Now here comes the key observation. Consider the $8$-element group $H$ generated by the Pauli matrices $\sigma_X$ and $\sigma_Z$, i.e. 
+$$H\,=\,\pm\big\{ \Id,\, \sigma_X,\,\sigma_Z,\, \sigma_X\sigma_Z\big\}\;.$$
+Then I claim that $A_0$ and $A_1$ induce an approximate representation of $H$, by setting 
+$$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_X)=\pm A_0,\quad\quad f(\pm\sigma_Z)=\pm A_1,\quad f(\pm\sigma_X\sigma_Z) = \pm A_0A_1\;.$$
+Note that this is a legal definition, since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{eq:a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. 
+\end{proof}
+
 
 
 \section{Rigidity for the Magic Square game}
