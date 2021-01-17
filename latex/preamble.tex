@@ -22,6 +22,8 @@
 % Package for hypertext links:
 \usepackage{hyperref}
 
+\usepackage{tikz-cd}
+
 % For any local file, say "hello.tex" you want to link to please
 % use \externaldocument[hello-]{hello}
 \externaldocument[introduction-]{introduction}
@@ -69,6 +71,8 @@
 %% Macros
 
 % General
+
+\renewcommand{\eqref}[1]{(\ref{#1})}
 
 \newcommand{\eref}[1]{(\ref{#1})}
 
@@ -131,7 +135,7 @@
 % Games
 
 \newcommand{\game}{\mathfrak{G}}
-\newcommand{\strategy}{{S}}
+\newcommand{\strategy}{\mathcal{S}}
 \newcommand{\val}{\ensuremath{\mathrm{val}}}
 \newcommand{\Ent}{\mathcal{E}}
 \newcommand{\alice}{A}

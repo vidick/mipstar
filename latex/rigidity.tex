@@ -32,11 +32,11 @@ The CHSH game is the game $\game_\CHSH$ such that $\mX = \mY = \mA = \mB = \{0,1
 The CHSH game is first considered in the Physics literature as a Bell inequality~\cite{clauser1969proposed}. It appears as a nonlocal game in~\cite{cleve2004consequences}. Its central role in the study of either type of object is justified by the fact that it is the simplest game, where simplicity is measured by question and answer alphabet sizes, whose classical and quantum values are separated. 
 
 \begin{lemma}\label{lemma-chsh-qval}
-The classical value $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)= \frac{1}{2} + \frac{1}{2\sqrt{2}}$. The non-signaling value $\val^{ns}(\CHSH)=1$. 
+The classical value of the CHSH game is $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values are $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)= \frac{1}{2} + \frac{1}{2\sqrt{2}}$. The non-signaling value is $\val^{ns}(\CHSH)=1$. 
 \end{lemma}
 
 \begin{proof}
-A strategy such that both players always return $0$ achieves value $\frac{3}{4}$. It is not hard to verify by enumeration that this is optimal. For a more instructive proof, fix a classical deterministic strategy $\strategy$ represented by $f,g:\{0,1\}\to\{0,1\}$. For $x,y\in\{0,1\}$ let $a_x = (-1)^{f(x)}$ and $b_y = (-1)^{g(y)}$. Then 
+A strategy such that both players always return $0$ achieves value $\frac{3}{4}$. It is not hard to verify by enumeration that this is optimal. For a more instructive proof, fix a classical deterministic strategy $\strategy$, represented a pair of functions $f,g:\{0,1\}\to\{0,1\}$ that model each player's local question-to-answer map. For $x,y\in\{0,1\}$ let $a_x = (-1)^{f(x)}$ and $b_y = (-1)^{g(y)}$. Then 
 \begin{align}
 \val(\game_\CHSH;\strategy) &= \Pr_{(x,y)\sim \mu} \big( f(x)\oplus g(y) = x\wedge y \big) \label{equation-chsh-qval1}\\
  &= \Pr_{(x,y)\sim \mu} \big( a_x b_y = (-1)^{x\wedge y} \big) \notag\\
@@ -47,7 +47,7 @@ A strategy such that both players always return $0$ achieves value $\frac{3}{4}$
 \end{align}
 Here the key step is the last step, where we used that for $b_0,b_1 \in \{\pm 1\}$ exactly one of $b_0+b_1$ and $b_0-b_1$ must be $0$, and the other is $\pm 2$. 
 
-This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B_1\})$ achieves a success probability of $\cos^2 \frac{\pi}{8}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y\}$. Letting $A_x = A^x_0-A^x_1$ and  $B^y = B^y_0-B^y_1$ an analogous derivation to~\ref{rigidity-equation-chsh-qval1} gives 
+This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B^1\})$ achieves a success probability of $\frac{1}{2}+\frac{1}{2\sqrt{2}}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y)$. Letting $A_x = A^x_0-A^x_1$ and  $B_y = B^y_0-B^y_1$ an analogous derivation to~\eqref{rigidity-equation-chsh-qval1} gives 
 \begin{align*}
 \val(\game_\CHSH;\strategy) &=\frac{1}{2} + \frac{1}{8}\bra{\psi} A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 \ket{\psi}\;.
 \end{align*}
@@ -55,24 +55,30 @@ The idea, due to Tsirelson~\cite{cirel1980quantum}, is to evaluate the square
 \begin{align}
 (A_0 B_0 + A_0 B_1 + A_1 B_0 &- A_1 B_1 )^2\label{equation-bellop}\\
  &=\big( (A_0+A_1) B_0 + (A_0-A_1) B_1 \big)^2\notag\\
-&= 4\Id\otimes \Id + (A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\;.\notag
+&= 4\Id + (A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\;.\notag
 \end{align}
-Here the second line follows by expanding all squares, using that each operator squares to identity, and $A$ and $B$ operators commute. The last term above has norm at most $8$, whcih shows that $A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 $ has norm at most $\sqrt{8}$; the claimed bound on the commuting value of the CHSH game  follows. 
-\begin{equation}\label{equation-bellop-2}
-x+1=2
-\end{equation}
-Reference~\ref{rigidity-equation-bellop-2}.
+Here the second line follows by expanding all squares, using that each operator squares to identity, and that $A_x$ and $B_y$ commute for all $x,y$. The last term above has norm at most $8$, which shows that $A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 $ has norm at most $\sqrt{8}$; the claimed bound on the commuting value of the CHSH game  follows. 
 
-Finally, for the non-signaling value we observe that the family of distributions that for each pair of questions is uniform over all accepting answers is non-signaling. 
+Finally, for the non-signaling value we observe that the family of distributions $\{p(\cdot,\cdot|x,y)\}$ such that for each pair of questions $(x,y)$, $p(\cdot,\cdot|x,y)$ is uniform over all accepting answers to $(x,y)$ is non-signaling. 
 \end{proof}
 
 
-The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemm-rigid-chsh-exact}, generalized in Theorem~\ref{rigidity-theorem-rigid-chsh} we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we greatly generalize later in Theorem~\ref{theorem-gh}. 
+The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemma-rigid-chsh-exact} below (itself subsequently generalized in Theorem~\ref{rigidity-theorem-rigid-chsh}) we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we abstract and generalize  in Theorem~\ref{rigidity-theorem-gh} as a statement about representations of finite groups. 
 
 \begin{lemma}\label{lemma-ac-exact}
 Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that $\Tr( (XZ+ZX)^2 \rho)=0$. Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
 \[ VW\rho W^\dagger V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
 \end{lemma}
+
+The following diagram intuitively captures the situation described in Lemma~\ref{rigidity-lemma-ac-exact}. 
+
+\begin{equation}\label{diagram-one-qubit-b}
+\begin{tikzcd}
+\mH  \arrow{r}{V}  \arrow[swap]{dd}{\substack{Z \\[3mm] X}} &  \C^2 \otimes \mH' \arrow{dd}{\substack{\sigma_Z\otimes \Id\\[3mm] \sigma_X\otimes \Id}} \\
+&\\ 
+\mH  \arrow{r}{V} & \C^2 \otimes \mH'
+\end{tikzcd}
+\end{equation}
 
 \begin{proof}
 We first show the lemma in the case $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition'', which we restate as follows. 
