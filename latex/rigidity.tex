@@ -73,11 +73,13 @@ Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be 
 The following diagram intuitively captures the situation described in Lemma~\ref{rigidity-lemma-ac-exact}. 
 
 \begin{tikzcd}
-    a \arrow[r] & b
-\end{tikzcd}
+    \mH  \arrow{r}{V}  \arrow[swap]{dd}{\substack{Z \\[3mm] X}} &  \C^2 \otimes \mH' \arrow{dd}{\substack{\sigma_Z\otimes \Id\\[3mm] \sigma_X\otimes \Id}} \\
+    &\\ 
+    \mH  \arrow{r}{V} & \C^2 \otimes \mH'
+\end{tikzcd}    
 
-
-\begin{equation}\label{diagram-one-qubit-b}
+\begin{equation}
+\label{diagram-one-qubit-b}
 \begin{tikzcd}
 \mH  \arrow{r}{V}  \arrow[swap]{dd}{\substack{Z \\[3mm] X}} &  \C^2 \otimes \mH' \arrow{dd}{\substack{\sigma_Z\otimes \Id\\[3mm] \sigma_X\otimes \Id}} \\
 &\\ 
