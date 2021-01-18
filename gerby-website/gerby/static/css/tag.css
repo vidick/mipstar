@@ -286,13 +286,17 @@ ul#citations li {
 }
 
 button.clipboard {
+  border-color: #ccc;
+}
+
+/* button.clipboard {
   -webkit-appearance: none;
   background-color: white;
 }
 
 button.clipboard:hover {
   background-color: #f5f5dc;
-}
+} */
 
 ul + span.qed,
 ol + span.qed {
