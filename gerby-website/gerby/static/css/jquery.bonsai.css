@@ -24,13 +24,26 @@ li.has-children > .thumb:after {
   background: url('../images/caret-right-fill.svg') no-repeat;
   transition: transform 0.35s ease;
   transform-origin: .5em 50%;
+  transition: transform 0.35s ease;
+  transform-origin: .5em 50%;
+  content: "" !important;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 0.3rem;
 }
 
 li.has-children.expanded > .thumb:after {
   /* content: '▾'; */
-  background: url('../images/caret-down-fill.svg') no-repeat;
+  background: url('../images/caret-right-fill.svg') no-repeat;
+  transform: rotate(90deg);
   transition: transform 0.35s ease;
   transform-origin: .5em 50%;
+  content: "" !important;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 0.3rem;
 }
 
 li.collapsed > ol.bonsai {
