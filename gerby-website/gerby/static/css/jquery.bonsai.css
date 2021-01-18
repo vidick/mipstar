@@ -27,7 +27,7 @@ li .thumb {
 
 li.has-children>.thumb:after {
     /* content: '▸'; */
-    background: url('../images/chevron-down.svg') no-repeat;
+    background: url('../images/chevron-right.svg') no-repeat;
     transition: transform 0.35s ease;
     transform-origin: .5em 50%;
     transition: transform 0.35s ease;
