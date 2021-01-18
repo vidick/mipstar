@@ -5,7 +5,7 @@ ul.tree li {
 
 /* tweaks to jquery.bonsai.css */
 ul.tree li div.thumb {
-  padding: 1px 1rem 2px 0;
+  padding: 2px 1rem 2px 0;
 }
 
 div.expand-all i.separator {
@@ -23,12 +23,14 @@ div.expand-all a:hover {
 }
 
 div.expand-all a.all:before {
-  content: '▾▾ ';
+  /* content: '▾▾ '; */
+  background: url("../images/chevron-double-down.svg");
   white-space: pre;
 }
 
 div.expand-all a.none:before {
-  content: '▸▸  ';
+  /* content: '▸▸  '; */
+  background: url("../images/chevron-double-right.svg");
   white-space: pre;
 }
 
