@@ -1,57 +1,63 @@
 @charset "UTF-8";
 
-.bonsai,
-.bonsai > li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
+ul.tree li div.thumb {
+    padding: 2px 1rem 2px 0 !important;
 }
 
-.bonsai > li {
-  position: relative;
-  padding-left: 1.3em; /* padding for the thumb */
+.bonsai,
+.bonsai>li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.bonsai>li {
+    position: relative;
+    padding-left: 1.3em;
+    /* padding for the thumb */
 }
 
 li .thumb {
-  margin: -1px 0 0 -1em; /* negative margin into the padding of the li */
-  position: absolute;
-  cursor: pointer;
+    margin: -1px 0 0 -1em;
+    /* negative margin into the padding of the li */
+    position: absolute;
+    cursor: pointer;
 }
 
-li.has-children > .thumb:after {
-  /* content: '▸'; */
-  background: url('../images/caret-right-fill.svg') no-repeat;
-  transition: transform 0.35s ease;
-  transform-origin: .5em 50%;
-  transition: transform 0.35s ease;
-  transform-origin: .5em 50%;
-  content: "" !important;
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  margin-right: 0.3rem;
+li.has-children>.thumb:after {
+    /* content: '▸'; */
+    background: url('../images/caret-right-fill.svg') no-repeat;
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    content: "" !important;
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    margin-right: 0.3rem;
 }
 
-li.has-children.expanded > .thumb:after {
-  /* content: '▾'; */
-  background: url('../images/caret-right-fill.svg') no-repeat;
-  transform: rotate(90deg);
-  transition: transform 0.35s ease;
-  transform-origin: .5em 50%;
-  content: "" !important;
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  margin-right: 0.3rem;
+li.has-children.expanded>.thumb:after {
+    /* content: '▾'; */
+    background: url('../images/caret-right-fill.svg') no-repeat;
+    transform: rotate(90deg);
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    content: "" !important;
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    margin-right: 0.3rem;
 }
 
-li.collapsed > ol.bonsai {
-  height: 0;
-  overflow: hidden;
+li.collapsed>ol.bonsai {
+    height: 0;
+    overflow: hidden;
 }
 
 .bonsai .all,
 .bonsai .none {
-  cursor: pointer;
+    cursor: pointer;
 }
