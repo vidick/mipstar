@@ -20,11 +20,13 @@ li .thumb {
 }
 
 li.has-children > .thumb:after {
-  content: '▸';
+  /* content: '▸'; */
+  background: url('../images/caret-right-fill.svg');
 }
 
 li.has-children.expanded > .thumb:after {
-  content: '▾';
+  /* content: '▾'; */
+  background: url('../images/caret-down-fill.svg');
 }
 
 li.collapsed > ol.bonsai {
