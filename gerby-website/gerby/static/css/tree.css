@@ -26,13 +26,21 @@ div.expand-all a.all:before {
   /* content: '▾▾ '; */
   content: '';
   background: url("../images/chevron-double-down.svg");
-  white-space: pre;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.8rem;
+  /* white-space: pre; */
 }
 
 div.expand-all a.none:before {
   /* content: '▸▸  '; */
   content: '';
   background: url("../images/chevron-double-right.svg");
-  white-space: pre;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.8rem;
+  /* white-space: pre; */
 }
 
