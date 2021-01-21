@@ -84,7 +84,7 @@ with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
 
                     if label in tags.keys():
                         print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
-                        print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+                        print('\\reversemarginpar\\marginnote{\\textnormal{' + '}}', file=tagged_file) #tags[label] + '}}', file=tagged_file)
                         print(line, end='', file=tagged_file)
                         print(nextline, end='', file=tagged_file)
                         continue
@@ -100,5 +100,5 @@ with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
 
                 if label in tags.keys() and 'book-part' not in label and label != chapname:
                     print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
-                    print('\\reversemarginpar\\marginnote{\\textnormal{' + tags[label] + '}}', file=tagged_file)
+                    print('\\reversemarginpar\\marginnote{\\textnormal{' + '}}', file=tagged_file) # tags[label] + '}}', file=tagged_file)
             print(line, end='', file=tagged_file)
