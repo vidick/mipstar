@@ -312,6 +312,14 @@ ol+span.qed {
     border-radius: 10px;
 }
 
+.env-definition ul,
+.env-remark ul,
+.env-fact ul,
+.env-lemma ul,
+.env-theorem ul {
+    padding-inline-start: 30px;
+}
+
 .tex-section {
     font-size: 1.75rem !important;
 }
