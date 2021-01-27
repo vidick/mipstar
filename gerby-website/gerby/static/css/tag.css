@@ -320,6 +320,14 @@ ol+span.qed {
     padding-inline-start: 30px;
 }
 
+.env-definition *:last-child,
+.env-remark *:last-child,
+.env-fact *:last-child,
+.env-lemma *:last-child,
+.env-theorem *:last-child {
+    margin-bottom: 0;
+}
+
 .tex-section {
     font-size: 1.75rem !important;
 }
