@@ -320,6 +320,19 @@ ol+span.qed {
     padding-inline-start: 30px;
 }
 
+.env-definition ul,
+.env-remark ul,
+.env-fact ul,
+.env-lemma ul,
+.env-theorem ul,
+.env-definition ol,
+.env-remark ol,
+.env-fact ol,
+.env-lemma ol,
+.env-theorem ol {
+    margin-bottom: 0;
+}
+
 .env-definition *:last-child,
 .env-remark *:last-child,
 .env-fact *:last-child,
