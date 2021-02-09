@@ -183,7 +183,7 @@ def show_tag(tag):
     # place footnotes in the right margin, next to their corresponding paragraphs
     footnote_num_str = "<a href=\"#" + label + "\"><sup>" + str(number + 1) + "</sup></a>"
     insert_idx = html.find(footnote_num_str) + len(footnote_num_str)
-    html = html[:insert_idx] + "<span class=\"sidenote\">" + footnotes[number] + "</span>" + html[insert_idx:]
+    html = html[:insert_idx] + "<span class=\"sidenote\">" + footnotes[number].html + "</span>" + html[insert_idx:]
 
     # make the HTML pretty (and hide plasTeX id's)
     html = html.replace(label, "footnote-" + str(number + 1))
