@@ -358,8 +358,8 @@ ol+span.qed {
 }
 
 .sidenote:before {
-    counter-increment: sidenote-count;
-    content: counter(sidenote-count) " ";
+    counter-increment: sidenote;
+    content: counter(sidenote) " ";
     position: relative;
     top: -0.5em;
     font-size: 75%;
