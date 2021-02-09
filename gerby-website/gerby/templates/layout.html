@@ -100,53 +100,6 @@
 {% endif %}
 </nav>
 <div class="container-fluid bounded">
-  <!-- <div id="first-bar" class="row topbar inner-top top">
-    <header class="col">
-      <h1><a href="/">The MIP* project</a></h1>
-    </header>
-
-    <nav id="header">
-      <ul id="quicklinks">
-        <li><a href="/bibliography">bibliography</a>
-        <li><a href="#">blog</a>
-      </ul>
-
-      <form id="quicksearch" action="/search">
-        <span id="search-icon"><img src="/static/images/search.svg"></span>
-        <input type="search" name="query" size="16" placeholder="keywords or a tag"{% if index %} autofocus{% endif %} value="{{ query }}">
-      </form>
-    </nav>
-  </div>
-
-  <nav id="second-bar" class="row topbar sticky-top">
-    {% if self.breadcrumb() %}
-      <ul class="col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12" id="crumbs">
-        <li><a href="/browse">Table of contents</a></li>
-        {% block breadcrumb %}{% endblock %}
-      </ul>
-    {% endif %}
-
-    {% if self.hamburger() %}
-      <div class="col-1 col-sm-1 col-md-1" id="burger">
-        <input type="checkbox" id="burger-input"></input>
-
-        <label id="burger-icon" for="burger-input">
-          <span id="top-bun"></span>
-          <span id="meat"></span>
-          <span id="bottom-bun"></span>
-        </label>
-
-        <div id="burger-content">
-          {% block hamburger %}{% endblock %}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if self.tagline() %}
-      {% block tagline %}{% endblock %}
-    {% endif %}
-  </nav> -->
-
   <div class="row" id="content">
     <section id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       {% block body %}{% endblock %}
