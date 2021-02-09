@@ -425,6 +425,10 @@ label.toggle-off:active {
     margin: 0 !important;
 }
 
+#content {
+    padding: 0 10%;
+}
+
 .nav-widget {
     height: 100%;
 }
