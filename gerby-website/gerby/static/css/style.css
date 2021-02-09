@@ -243,9 +243,9 @@ nav#second-bar {
     z-index: 2000;
 }
 
-div#content {
+/* div#content {
     padding: calc(10rem / 14);
-}
+} */
 
 section#main {
     padding: 0;
