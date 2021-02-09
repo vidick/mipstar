@@ -307,7 +307,7 @@ ol+span.qed {
 .env-fact,
 .env-lemma,
 .env-theorem {
-    background-color: #f4f1de;
+    background-color: #f0f0f0;
     padding: 10px;
     border-radius: 10px;
 }
