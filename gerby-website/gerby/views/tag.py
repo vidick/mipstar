@@ -234,7 +234,7 @@ def show_tag(tag):
                     .join_from(Tag, Slogan, JOIN.LEFT_OUTER, attr="slogan")
                     .join_from(Tag, History, JOIN.LEFT_OUTER, attr="history")
                     .join_from(Tag, Reference, JOIN.LEFT_OUTER, attr="reference"))
-
+        print(str(tags))
         tree = combine(sorted(tags))
 
     # dealing with comments
