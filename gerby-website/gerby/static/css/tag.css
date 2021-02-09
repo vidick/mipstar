@@ -348,3 +348,19 @@ ol+span.qed {
 .tex-section:before {
     content: '§ ';
 }
+
+.sidenote {
+    float: right;
+    margin-right: -60%;
+    position: relative;
+    clear: right;
+    width: 50%;
+}
+
+.sidenote:before {
+    counter-increment: sidenote-count;
+    content: counter(sidenote-count) " ";
+    position: relative;
+    top: -0.5em;
+    font-size: 75%;
+}

@@ -172,18 +172,26 @@ def show_tag(tag):
   # handle footnotes: relabeling the labels to actual numbers
   pattern = re.compile("class=\"footnotemark\" href=\"#(a[0-9]+)\"")
   labels = pattern.findall(html)
+  footnotes = Footnote.select().where(Footnote.label << labels)
+  
   for number, label in enumerate(labels):
     old = re.search(r"id=\"" + label + "-mark\"><sup>([0-9]+)</sup>", html).group(1)
     html = html.replace(
         "id=\"" + label + "-mark\"><sup>" + old + "</sup>",
         "id=\"" + label + "-mark\"></a><a href=\"#" + label + "\"><sup>" + str(number + 1) + "</sup>")
+    
+    # place footnotes in the right margin, next to their corresponding paragraphs
+    footnote_num_str = "<a href=\"#" + label + "\"><sup>" + str(number + 1) + "</sup></a>"
+    insert_idx = html.find(footnote_num_str) + len(footnote_num_str)
+    html = html[:insert_idx] + "<span class=\"sidenote\">" + footnotes[number] + "</span>" + html[insert_idx:]
+
     # make the HTML pretty (and hide plasTeX id's)
     html = html.replace(label, "footnote-" + str(number + 1))
 
   # adding offset on the footnote marks in the text
   html = html.replace("class=\"footnotemark\"", "class=\"footnotemark footnote-offset\"")
 
-  footnotes = Footnote.select().where(Footnote.label << labels)
+  # footnotes = Footnote.select().where(Footnote.label << labels)
 
   tree = None
   # if it's a heading
