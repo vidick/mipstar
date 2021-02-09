@@ -355,6 +355,7 @@ ol+span.qed {
     position: relative;
     clear: right;
     width: 50%;
+    font-style: normal;
 }
 
 .sidenote:before {
