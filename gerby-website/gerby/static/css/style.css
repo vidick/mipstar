@@ -53,6 +53,7 @@ body {
 }
 
 div.bounded {
+    max-width: calc(1250rem / 14);
     /* max-width: calc(980rem / 14); */
 }
 
