@@ -51,7 +51,7 @@
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
             });
 
-            $("#lem-thm-form:checkbox").change(() => {
+            $("#lem-thm-toggle").click(() => {
                 console.log('hi');
                 if (this.checked) {
                     let items = $(".has-children ul").children();
