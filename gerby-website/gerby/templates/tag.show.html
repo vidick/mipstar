@@ -43,16 +43,17 @@
             </label>
         </form>
         <ul class="tree p-3 mb-3 rounded" id="tree">
-        {% for item in tree recursive %}
-          {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
-          {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
+            <h5>Contents</h5>
+            {% for item in tree recursive %}
+            {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
+            {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
 
-          {{ macros.badges(item) }}
+            {{ macros.badges(item) }}
 
-          {% if item.children %}
-            <ul>{{ loop(item.children) }}</ul>
-          {% endif %}
-        {% endfor %}
+            {% if item.children %}
+                <ul>{{ loop(item.children) }}</ul>
+            {% endif %}
+            {% endfor %}
         </ul>
 
         <script type="text/javascript">
