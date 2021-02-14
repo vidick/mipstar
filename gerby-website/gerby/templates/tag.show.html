@@ -61,6 +61,7 @@
             //     }
             // }
             $("#lem-thm-form:checkbox").change(() => {
+                console.log('hi');
                 if (this.checked) {
                     let items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
