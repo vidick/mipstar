@@ -60,8 +60,8 @@
                     }
                 }
             }
-            $("#lem-thm-toggle").change(() => {
-                if ($("#lem-thm-toggle:checked")) {
+            $("#lem-thm-form:checkbox").change(() => {
+                if (this.checked) {
                     let items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
@@ -80,7 +80,7 @@
     </script>
 
     {% if tree %}
-        <div class="form-check">
+        <div class="form-check" id="lem-thm-form">
             <input class="form-check-input" type="checkbox" value="" id="lem-thm-toggle" checked>
             <label class="form-check-label" for="flexCheckDefault">
                 Show only Lemmas and Theorems
