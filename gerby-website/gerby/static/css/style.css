@@ -433,3 +433,8 @@ label.toggle-off:active {
 .nav-widget {
     height: 100%;
 }
+
+#tree {
+    background-color: #EEE2DF;
+    display: inline-block;
+}

@@ -35,6 +35,51 @@
         <p class="history alert alert-secondary">{{ tag.history.html | safe }}
     {% endif %}
     
+    {% if tree %}
+        <form class="form-check" id="lem-thm-form">
+            <input class="form-check-input" type="checkbox" value="" id="lem-thm-toggle" checked>
+            <label class="form-check-label" for="flexCheckDefault">
+                Show only Lemmas and Theorems
+            </label>
+        </form>
+        <ul class="tree p-3 mb-3 rounded" id="tree">
+        {% for item in tree recursive %}
+          {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
+          {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
+
+          {{ macros.badges(item) }}
+
+          {% if item.children %}
+            <ul>{{ loop(item.children) }}</ul>
+          {% endif %}
+        {% endfor %}
+        </ul>
+
+        <script type="text/javascript">
+            $("ul.tree").bonsai({addExpandAll: true,});
+
+            var state = localStorage.getItem("bonsai-{{ tag.tag }}");
+            if (state !== null)
+                $("ul#tree").data("bonsai").restore(JSON.parse(state));
+
+            $("ul#tree").click(function() {
+                var bonsai = $(this).data("bonsai");
+                var state = bonsai.serialize();
+                localStorage.setItem("bonsai-{{ tag.tag }}", JSON.stringify(state));
+            });
+
+            // trigger the click event handler to save state even when clicking on the expand/collapse all links, which are outside ul#tree
+            $("div.expand-all").click(function() {
+                $("ul#tree").click();
+            });
+
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+            })
+        </script>
+    {% endif %}
+
+
     {{ html | safe }}
 
     <script type="text/javascript">
@@ -106,50 +151,6 @@
             }
         });
     </script>
-
-    {% if tree %}
-        <form class="form-check" id="lem-thm-form">
-            <input class="form-check-input" type="checkbox" value="" id="lem-thm-toggle" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-                Show only Lemmas and Theorems
-            </label>
-        </form>
-        <ul class="tree" id="tree">
-        {% for item in tree recursive %}
-          {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
-          {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
-
-          {{ macros.badges(item) }}
-
-          {% if item.children %}
-            <ul>{{ loop(item.children) }}</ul>
-          {% endif %}
-        {% endfor %}
-        </ul>
-
-        <script type="text/javascript">
-            $("ul.tree").bonsai({addExpandAll: true,});
-
-            var state = localStorage.getItem("bonsai-{{ tag.tag }}");
-            if (state !== null)
-                $("ul#tree").data("bonsai").restore(JSON.parse(state));
-
-            $("ul#tree").click(function() {
-                var bonsai = $(this).data("bonsai");
-                var state = bonsai.serialize();
-                localStorage.setItem("bonsai-{{ tag.tag }}", JSON.stringify(state));
-            });
-
-            // trigger the click event handler to save state even when clicking on the expand/collapse all links, which are outside ul#tree
-            $("div.expand-all").click(function() {
-                $("ul#tree").click();
-            });
-
-            $(function () {
-                $('[data-toggle="popover"]').popover()
-            })
-        </script>
-    {% endif %}
 </div>
 
 {% if commentsEnabled %}
