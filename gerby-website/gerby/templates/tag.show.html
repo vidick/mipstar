@@ -86,6 +86,10 @@
     {{ html | safe }}
 
     <script type="text/javascript">
+        function isLemThm(text) {
+            return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
+        }
+
         $(document).ready(function() {
             // move extras from parent element to after environment name and number
             $("article a[data-toggle]").each(function(index, element) {
@@ -104,7 +108,7 @@
                     let items = $("#tree").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (isLemThm(text)) {
                             $(items[i]).hide('fast');
                         }
                     }
@@ -112,7 +116,7 @@
                     items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (isLemThm(text)) {
                             $(items[i]).hide('fast');
                         }
                     }
@@ -120,7 +124,7 @@
                     let items = $("#tree").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (isLemThm(text)) {
                             $(items[i]).show('fast');
                         }
                     }
@@ -135,7 +139,7 @@
                 let items = $("#tree").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (isLemThm(text)) {
                             $(items[i]).hide('fast');
                         }
                     }
@@ -144,7 +148,7 @@
                 if (items.length) {
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (isLemThm(text)) {
                             $(items[i]).hide();
                         }
                     }
