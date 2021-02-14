@@ -438,3 +438,8 @@ label.toggle-off:active {
     background-color: #EEE2DF;
     display: inline-block;
 }
+
+.hide-chev::after {
+    content: '';
+    background: none;
+}
