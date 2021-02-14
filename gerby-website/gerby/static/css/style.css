@@ -434,7 +434,7 @@ label.toggle-off:active {
     height: 100%;
 }
 
-#tree {
+.tree-wrapper {
     background-color: #EEE2DF;
     display: inline-block;
 }
