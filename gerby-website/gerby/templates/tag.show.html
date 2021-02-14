@@ -53,26 +53,50 @@
 
             $("#lem-thm-toggle").click(() => {
                 if ($("#lem-thm-toggle:checked").length) {
-                    let items = $(".has-children ul").children();
+                    let items = $("#tree").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1) { //&& text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                            $(items[i]).hide('fast');
+                        }
+                    }
+
+                    items = $(".has-children ul").children();
+                    for (let i = 0; i < items.length; i++) {
+                        let text = $(items[i]).text();
+                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
                             $(items[i]).hide('fast');
                         }
                     }
                 } else {
-                    let items = $(".has-children ul").children();
+                    let items = $("#tree").children();
+                    for (let i = 0; i < items.length; i++) {
+                        let text = $(items[i]).text();
+                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                            $(items[i]).show('fast');
+                        }
+                    }
+
+                    items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
                         $(items[i]).show('fast');
                     }
                 }
             });
             if ($("#lem-thm-toggle:checked").length) {
-                let items = $(".has-children ul").children();
+                let items = $("#tree").children();
+                    for (let i = 0; i < items.length; i++) {
+                        let text = $(items[i]).text();
+                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                            $(items[i]).hide('fast');
+                        }
+                    }
+
+                items = $(".has-children ul").children();
                 if (items.length) {
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
-                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1) { //&& text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
+                        if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1) {
                             $(items[i]).hide();
                         }
                     }
