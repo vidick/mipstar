@@ -53,6 +53,7 @@
 
             $("#lem-thm-toggle").click(() => {
                 console.log('hiiii');
+                console.log($("#lem-thm-toggle:checked"));
                 if ($("#lem-thm-toggle:checked")) {
                     let items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
