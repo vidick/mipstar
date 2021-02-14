@@ -51,7 +51,7 @@
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
             });
             
-            if ($("#lem-thm-toggle").checked) {
+            if ($("#lem-thm-toggle:checked")) {
                 let items = $(".has-children ul").children();
                 for (let i = 0; i < items.length; i++) {
                     let text = $(items[i]).text();
@@ -61,7 +61,7 @@
                 }
             }
             $("#lem-thm-toggle").click(() => {
-                if (this.checked) {
+                if ($("#lem-thm-toggle:checked")) {
                     let items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
