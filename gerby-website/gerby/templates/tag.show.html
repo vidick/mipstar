@@ -81,12 +81,12 @@
     </script>
 
     {% if tree %}
-        <div class="form-check" id="lem-thm-form">
+        <form class="form-check" id="lem-thm-form">
             <input class="form-check-input" type="checkbox" value="" id="lem-thm-toggle" checked>
             <label class="form-check-label" for="flexCheckDefault">
                 Show only Lemmas and Theorems
             </label>
-        </div>
+        </form>
         <ul class="tree" id="tree">
         {% for item in tree recursive %}
           {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
