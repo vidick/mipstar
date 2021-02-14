@@ -50,16 +50,7 @@
             $("[data-toggle=popover]").on('shown.bs.popover', function () {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
             });
-            
-            if ($("#lem-thm-toggle:checked")) {
-                let items = $(".has-children ul").children();
-                for (let i = 0; i < items.length; i++) {
-                    let text = $(items[i]).text();
-                    if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1) {
-                        $(items[i]).hide();
-                    }
-                }
-            }
+
             $("#lem-thm-form:checkbox").change(() => {
                 console.log('hi');
                 if (this.checked) {
@@ -77,6 +68,15 @@
                     }
                 }
             });
+            if ($("#lem-thm-toggle:checked")) {
+                let items = $(".has-children ul").children();
+                for (let i = 0; i < items.length; i++) {
+                    let text = $(items[i]).text();
+                    if (text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1) {
+                        $(items[i]).hide();
+                    }
+                }
+            }
         });
     </script>
 
