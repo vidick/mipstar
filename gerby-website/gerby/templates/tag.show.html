@@ -60,7 +60,7 @@
                     }
                 }
             }
-            $("#lem-thm-toggle").click(() => {
+            $("#lem-thm-toggle").change(() => {
                 if ($("#lem-thm-toggle:checked")) {
                     let items = $(".has-children ul").children();
                     for (let i = 0; i < items.length; i++) {
