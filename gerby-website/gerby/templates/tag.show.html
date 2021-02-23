@@ -90,7 +90,7 @@
             return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
         }
 
-        function toggleChevrons() {
+        function toggleChevrons(childCounts) {
             let items = null;
             if ($("#lem-thm-toggle:checked").length) {
                 items = $('.has-children:visible');
@@ -103,7 +103,7 @@
             for (let item of items) {
                 if ($("#lem-thm-toggle:checked").length) {
                     console.log(item.id + ': ' + $(item).children('ul.bonsai').children(':hidden').length + ', ' + $(item).children('ul.bonsai').children().length);
-                    if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
+                    if (childCounts[item.id] == $(item).children('ul.bonsai').children().length) { //$(item).children('ul.bonsai').children(':hidden').length
                         // if ($("#lem-thm-toggle:checked").length) {
                         console.log('removing from ' + item.id);
                         $(item).removeClass('has-children');
@@ -134,46 +134,56 @@
 
             $("#lem-thm-toggle").click(() => {
                 let items = $("#tree").children();
-                for (let i = 0; i < items.length; i++) {
-                    let text = $(items[i]).text();
+                for (let item of items) {
+                    let text = $(item).text();
                     if (isLemThm(text)) {
                         if ($("#lem-thm-toggle:checked").length) {
-                            $(items[i]).hide('fast');
+                            $(item).hide('fast');
                         } else {
-                            $(items[i]).show('fast');
+                            $(item).show('fast');
                         }
                     }
                 }
 
+                childCounts = {}
                 items = $(".has-children ul").children();
-                for (let i = 0; i < items.length; i++) {
-                    let text = $(items[i]).text();
+                for (let item of items) {
+                    let text = $(item).text();
                     if (isLemThm(text)) {
                         if ($("#lem-thm-toggle:checked").length) {
-                            $(items[i]).hide()
+                            $(item).hide('fast');
+
+                            let parent = $(item).parent().parent().attr('id');
+                            if (parent) {
+                                if (parent in childCounts) {
+                                    childCounts[parent]++;
+                                } else {
+                                    childCounts[parent] = 1;
+                                }
+                            }
                         } else {
-                            $(items[i]).show('fast');
+                            $(item).show('fast');
                         }
                     }
                 }
                 
-                toggleChevrons();
+                toggleChevrons(childCounts);
             });
             if ($("#lem-thm-toggle:checked").length) {
                 let items = $("#tree").children();
-                    for (let i = 0; i < items.length; i++) {
-                        let text = $(items[i]).text();
+                    for (let item of items) {
+                        let text = $(item).text();
                         if (isLemThm(text)) {
-                            $(items[i]).hide('fast');
+                            $(item).hide('fast');
                         }
                     }
 
                 items = $(".has-children ul").children();
                 if (items.length) {
-                    for (let i = 0; i < items.length; i++) {
-                        let text = $(items[i]).text();
+                    for (let item of items) {
+                        let text = $(item).text();
                         if (isLemThm(text)) {
-                            $(items[i]).hide();
+                            $(item).hide();
                         }
                     }
                 } else {
