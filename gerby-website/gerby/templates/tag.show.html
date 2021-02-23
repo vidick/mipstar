@@ -99,16 +99,19 @@
             }
 
             for (let item of items) {
-                if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
-                    if ($("#lem-thm-toggle:checked").length) {
-                        console.log('removing from ' + item.id);
-                        $(item).removeClass('has-children');
-                        $(item).addClass('hidden-has-children');
-                    } else {
-                        console.log('adding to ' + item.id);
-                        $(item).addClass('has-children');
-                        $(item).removeClass('hidden-has-children');
+                if ($("#lem-thm-toggle:checked").length) {
+                    if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
+                        // if ($("#lem-thm-toggle:checked").length) {
+                            console.log('removing from ' + item.id);
+                            $(item).removeClass('has-children');
+                            $(item).addClass('hidden-has-children');
+                        // } else {
+                        // }
                     }
+                } else {
+                    console.log('adding to ' + item.id);
+                    $(item).addClass('has-children');
+                    $(item).removeClass('hidden-has-children');
                 }
             }
         }
