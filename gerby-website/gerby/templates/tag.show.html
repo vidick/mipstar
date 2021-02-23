@@ -117,6 +117,10 @@
             });
 
             $("#lem-thm-toggle").click(() => {
+                if (!$("#lem-thm-toggle:checked").length) {
+                    toggleChevrons();
+                }
+
                 let items = $("#tree").children();
                 for (let i = 0; i < items.length; i++) {
                     let text = $(items[i]).text();
@@ -140,8 +144,10 @@
                         }
                     }
                 }
-
-                toggleChevrons();
+                
+                if ($("#lem-thm-toggle:checked").length) {
+                    toggleChevrons();
+                }
             });
             if ($("#lem-thm-toggle:checked").length) {
                 let items = $("#tree").children();
