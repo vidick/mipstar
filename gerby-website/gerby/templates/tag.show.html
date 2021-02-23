@@ -102,8 +102,7 @@
 
             for (let item of items) {
                 if ($("#lem-thm-toggle:checked").length) {
-                    console.log($(item).children('ul.bonsai').children(':hidden').length);
-                    console.log($(item).children('ul.bonsai').children().length);
+                    console.log(item.id + ': ' + $(item).children('ul.bonsai').children(':hidden').length + ', ' + $(item).children('ul.bonsai').children().length);
                     if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
                         // if ($("#lem-thm-toggle:checked").length) {
                         console.log('removing from ' + item.id);
