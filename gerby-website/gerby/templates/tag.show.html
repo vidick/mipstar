@@ -103,6 +103,9 @@
             for (let item of items) {
                 if ($("#lem-thm-toggle:checked").length) {
                     console.log(item.id + ': ' + $(item).children('ul.bonsai').children(':hidden').length + ', ' + $(item).children('ul.bonsai').children().length);
+                    if (!(item.id in childCounts)) {
+                        continue
+                    }
                     if (childCounts[item.id] == $(item).children('ul.bonsai').children().length) { //$(item).children('ul.bonsai').children(':hidden').length
                         // if ($("#lem-thm-toggle:checked").length) {
                         console.log('removing from ' + item.id);
