@@ -104,36 +104,44 @@
             });
 
             $("#lem-thm-toggle").click(() => {
-                if ($("#lem-thm-toggle:checked").length) {
-                    let items = $("#tree").children();
+                // if ($("#lem-thm-toggle:checked").length) {
+                    let items = $("#tree").children().concat($(".has-children ul").children());
                     for (let i = 0; i < items.length; i++) {
                         let text = $(items[i]).text();
                         if (isLemThm(text)) {
-                            $(items[i]).hide('fast');
+                            if ($("#lem-thm-toggle:checked").length) {
+                                $(items[i]).hide('fast');
+                            } else {
+                                $(items[i]).show('fast');
+                            }
                         }
                     }
 
-                    items = $(".has-children ul").children();
-                    for (let i = 0; i < items.length; i++) {
-                        let text = $(items[i]).text();
-                        if (isLemThm(text)) {
-                            $(items[i]).hide('fast');
-                        }
-                    }
-                } else {
-                    let items = $("#tree").children();
-                    for (let i = 0; i < items.length; i++) {
-                        let text = $(items[i]).text();
-                        if (isLemThm(text)) {
-                            $(items[i]).show('fast');
-                        }
-                    }
+                    // items = $(".has-children ul").children();
+                    // for (let i = 0; i < items.length; i++) {
+                    //     let text = $(items[i]).text();
+                    //     if (isLemThm(text)) {
+                    //         if ($("#lem-thm-toggle:checked").length) {
+                    //             $(items[i]).hide('fast');
+                    //         } else {
+                    //             $(items[i]).show('fast');
+                    //         }
+                    //     }
+                    // }
+                // } else {
+                    // let items = $("#tree").children();
+                    // for (let i = 0; i < items.length; i++) {
+                    //     let text = $(items[i]).text();
+                    //     if (isLemThm(text)) {
+                    //         $(items[i]).show('fast');
+                    //     }
+                    // }
 
-                    items = $(".has-children ul").children();
-                    for (let i = 0; i < items.length; i++) {
-                        $(items[i]).show('fast');
-                    }
-                }
+                    // items = $(".has-children ul").children();
+                    // for (let i = 0; i < items.length; i++) {
+                    //     $(items[i]).show('fast');
+                    // }
+                // }
             });
             if ($("#lem-thm-toggle:checked").length) {
                 let items = $("#tree").children();
