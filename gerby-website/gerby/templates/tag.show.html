@@ -91,13 +91,21 @@
         }
 
         function toggleChevrons() {
-            let items = $('.has-children:visible');
+            let items = null;
+            if ($("#lem-thm-toggle:checked").length) {
+                items = $('.has-children:visible');
+            } else {
+                items = $('.hidden-has-children:visible');
+            }
+
             for (let item of items) {
                 if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
-                    if ($(item).hasClass('has-children')) {
+                    if ($("#lem-thm-toggle:checked").length) {
                         $(item).removeClass('has-children');
+                        $(item).addClass('hidden-has-children');
                     } else {
                         $(item).addClass('has-children');
+                        $(item).removeClass('hidden-has-children');
                     }
                 }
             }
