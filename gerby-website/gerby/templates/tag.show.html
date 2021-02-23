@@ -155,7 +155,10 @@
                     if (isLemThm(text)) {
                         if ($("#lem-thm-toggle:checked").length) {
                             if (i == items.length - 1) {
-                                $(items[i]).hide('fast', () => { console.log('hi'); toggleChevrons(); });
+                                $(items[i]).hide('fast', function () { 
+                                    console.log('hi');
+                                    toggleChevrons();
+                                });
                             } else {
                                 $(items[i]).hide('fast');
                             }
