@@ -105,7 +105,7 @@
                         $(item).removeClass('has-children');
                         $(item).addClass('hidden-has-children');
                     } else {
-                        console.log('adding from ' + item.id);
+                        console.log('adding to ' + item.id);
                         $(item).addClass('has-children');
                         $(item).removeClass('hidden-has-children');
                     }
@@ -127,9 +127,9 @@
             });
 
             $("#lem-thm-toggle").click(() => {
-                if (!$("#lem-thm-toggle:checked").length) {
-                    toggleChevrons();
-                }
+                // if (!$("#lem-thm-toggle:checked").length) {
+                //     toggleChevrons();
+                // }
 
                 let items = $("#tree").children();
                 for (let i = 0; i < items.length; i++) {
@@ -155,9 +155,9 @@
                     }
                 }
                 
-                if ($("#lem-thm-toggle:checked").length) {
+                // if ($("#lem-thm-toggle:checked").length) {
                     toggleChevrons();
-                }
+                // }
             });
             if ($("#lem-thm-toggle:checked").length) {
                 let items = $("#tree").children();
