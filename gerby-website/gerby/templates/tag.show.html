@@ -97,14 +97,16 @@
             } else {
                 items = $('.hidden-has-children:visible');
             }
+            
+            console.log(items);
 
             for (let item of items) {
                 if ($("#lem-thm-toggle:checked").length) {
                     if ($(item).children('ul.bonsai').children(':hidden').length == $(item).children('ul.bonsai').children().length) {
                         // if ($("#lem-thm-toggle:checked").length) {
-                            console.log('removing from ' + item.id);
-                            $(item).removeClass('has-children');
-                            $(item).addClass('hidden-has-children');
+                        console.log('removing from ' + item.id);
+                        $(item).removeClass('has-children');
+                        $(item).addClass('hidden-has-children');
                         // } else {
                         // }
                     }
