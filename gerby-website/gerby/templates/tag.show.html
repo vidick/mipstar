@@ -181,12 +181,22 @@
                         }
                     }
 
+                childCounts = {}
                 items = $(".has-children ul").children();
                 if (items.length) {
                     for (let item of items) {
                         let text = $(item).text();
                         if (isLemThm(text)) {
-                            $(item).hide();
+                            $(item).hide('fast');
+
+                            let parent = $(item).parent().parent().attr('id');
+                            if (parent) {
+                                if (parent in childCounts) {
+                                    childCounts[parent]++;
+                                } else {
+                                    childCounts[parent] = 1;
+                                }
+                            }
                         }
                     }
                 } else {
