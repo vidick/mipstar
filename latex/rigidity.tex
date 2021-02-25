@@ -15,28 +15,31 @@
 
 \tableofcontents
 
-We give an introduction to the phenomenon of rigidity of a nonlocal game. Informally, this is the idea that for some nonlocal games $\game$ whenever a tensor product strategy $\strategy = (\ket{\psi},A,B)$ for $\game$ succeeds with probability $\val^*(G)$ or close to it the strategy must have a specific form; in particular, the state $\ket{\psi}$ may be required to be equivalent to a specific state under local unitaries and the operators $A^x_a$, $B^y_b$ may be required to satisfy certain algebraic relations. 
+In previous chapters we have studied the classical and quantum value of some specific nonlocal games such as the CHSH game and the Magic Square game. In both cases we gave quantum strategies that achieves the quantum bound. In this chapter we discover the phenomenon of rigidity. Informally, this is the idea that for some nonlocal games $\game$ whenever a quantum strategy $\strategy = (\ket{\psi},A,B)$ for $\game$ succeeds with probability $\val^*(G)$ or close to it the strategy must have a specific form; in particular, the state $\ket{\psi}$ may be required to be equivalent to a specific state under local unitaries and the operators $A^x_a$, $B^y_b$ may be required to satisfy certain algebraic relations. 
 
-\paragraph{Resources.} Cleve lecture notes. UCSD notes. 
+This chapter is structured as follows. We start by studying a concrete example: the CHSH game. We then introduce a general theory of stability of groups that, in retrospect, ``explains'' rigidity for the CHSH game. We conclude by applying the theory to the case of the Magic Square game. 
 
-Before getting into the general theory we start with a concrete example: the CHSH game. 
+
+
 
 \section{The CHSH game}
 \label{section-chsh}
+
+%\tnote{This section kept rough since it might be moved to a preceding chapter}
 
 \begin{definition}
 \label{definition-chsh}
 The CHSH game is the game $\game_\CHSH$ such that $\mX = \mY = \mA = \mB = \{0,1\}$, $\mu$ is uniform on $\mX \times \mY$, and $D(x,y,a,b) = 1$ if $a\oplus b = x\wedge y$ and $0$ otherwise. 
 \end{definition}
 
-The CHSH game is first considered in the Physics literature as a Bell inequality~\cite{clauser1969proposed}. It appears as a nonlocal game in~\cite{cleve2004consequences}. Its central role in the study of either type of object is justified by the fact that it is the simplest game, where simplicity is measured by question and answer alphabet sizes, whose classical and quantum values are separated. 
+The CHSH game is first considered in the Physics literature as a Bell inequality~\cite{clauser1969proposed}. It appears as a nonlocal game in~\cite{cleve2004consequences}. Its central role is justified by the fact that it is the simplest game, where simplicity is measured by question and answer alphabet sizes, whose classical and quantum values are separated. 
 
 \begin{lemma}\label{lemma-chsh-qval}
 The classical value of the CHSH game is $\val(\game_\CHSH)=\frac{3}{4}$. The tensor product and commuting values are $\val^*(\game_\CHSH)=\val^c(\game_\CHSH)= \frac{1}{2} + \frac{1}{2\sqrt{2}}$. The non-signaling value is $\val^{ns}(\CHSH)=1$. 
 \end{lemma}
 
 \begin{proof}
-A strategy such that both players always return $0$ achieves value $\frac{3}{4}$. It is not hard to verify by enumeration that this is optimal. For a more instructive proof, fix a classical deterministic strategy $\strategy$, represented a pair of functions $f,g:\{0,1\}\to\{0,1\}$ that model each player's local question-to-answer map. For $x,y\in\{0,1\}$ let $a_x = (-1)^{f(x)}$ and $b_y = (-1)^{g(y)}$. Then 
+A strategy such that both players always return $0$ achieves value $\frac{3}{4}$. It is not hard to verify by enumeration that this is optimal. For a more instructive proof, fix a classical deterministic strategy $\strategy$ represented by a pair of functions $f,g:\{0,1\}\to\{0,1\}$ that model each player's local question-to-answer map. For $x,y\in\{0,1\}$ let $a_x = (-1)^{f(x)}$ and $b_y = (-1)^{g(y)}$. Then 
 \begin{align}
 \val(\game_\CHSH;\strategy) &= \Pr_{(x,y)\sim \mu} \big( f(x)\oplus g(y) = x\wedge y \big) \label{equation-chsh-qval1}\\
  &= \Pr_{(x,y)\sim \mu} \big( a_x b_y = (-1)^{x\wedge y} \big) \notag\\
@@ -63,11 +66,28 @@ Finally, for the non-signaling value we observe that the family of distributions
 \end{proof}
 
 
-The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemma-rigid-chsh-exact} below (itself subsequently generalized in Theorem~\ref{rigidity-theorem-rigid-chsh}) we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma, that we abstract and generalize  in Theorem~\ref{rigidity-theorem-gh} as a statement about representations of finite groups. 
+The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemma-rigid-chsh-exact} below (itself subsequently generalized in Theorem~\ref{rigidity-theorem-rigid-chsh}) we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma. The lemma is later abstracted and generalized  in Theorem~\ref{rigidity-theorem-gh} as a statement about representations of finite groups. 
+
+We start with a warm-up. 
+
+\begin{lemma}\label{lemma-ac-2}
+Let $X$ and $Z$ be binary observables on $\C^2$ such that $XZ=-ZX$. Then there is a unitary  $U:\C^2\to\C^2$ such that 
+ \[ U Z U^\dagger \,=\,\sigma_Z\qquad\text{and}\qquad  U X U^\dagger \,=\,\sigma_X\;.\]
+\end{lemma}
+
+\begin{proof}
+Since the identity commutes with all other operators, $X\neq \pm \Id$. Since the dimension of is $2$, $X$ must have eigenvalues $+1$ and $-1$ with multiplicity exactly $1$ each. Let $U_1$ be such that $U_1 Z U_1^\dagger = \sigma_Z$. Let $X'= U_1 X U_1^\dagger$. By writing it out explicitly, $X' \sigma_Z = -\sigma_Z X'$ implies that $X' = \begin{pmatrix} 0 & a \\ a^* & 0 \end{pmatrix}$ where using that $X'$ is an observable we must have $a\in \{\pm 1\}$. If $a=1$ then we can set $U=U_1$ and we are done. If $a=-1$ then $\sigma_Z X' \sigma_Z = \sigma_X$ and we set $U= U_1 \sigma_Z$. 
+\end{proof}
+
+Lemma~\ref{lemma-ac-2} shows that, in two dimensions, any pair of anti-commuting observables ``behaves'' as the Pauli $\sigma_Z$ and $\sigma_X$ matrices, in the sense that they are isomorphic under the same change of basis. This is perhaps not surprising, and it is also possible to give a simple geometric proof of the lemma. The next lemma is more surprising. It shows that even under two significant relaxations the conclusion of the preceding lemma remains ``morally'' true. The first relaxation is that we consider spaces of unbounded dimension. The second relaxation is that the anti-commutation is required in a somewhat weaker sense where it is only guaranteed to hold when measure against a certain density; see~\eqref{equation-ac-exact-1}. Nevertheless, the same conclusion as in Lemma~\ref{lemma-ac-2} can be obtained, with a small (and necessary) relaxation: the unitary $U$ is now an isometry $V$, i.e.\ an operator $V:\mH \to \mH'$ such that $V^\dagger V = \Id$.\footnote{This forces $\dim(\mH')\leq \dim(\mH)$ and the equality can be strict.}
 
 \begin{lemma}\label{lemma-ac-exact}
-Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that $\Tr( (XZ+ZX)^2 \rho)=0$. Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
-\[ VW\rho W^\dagger V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
+Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that 
+\begin{equation}\label{equation-ac-exact-1}
+\Tr\big( (XZ+ZX)^2 \rho\big)\,=\,0\;.
+\end{equation}
+Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
+\[ V \big( W\rho W^\dagger\big) V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
 \end{lemma}
 
 The following diagram intuitively captures the situation described in Lemma~\ref{rigidity-lemma-ac-exact}. 
@@ -80,12 +100,13 @@ The following diagram intuitively captures the situation described in Lemma~\ref
 % \mH  \arrow{r}{V} & \C^2 \otimes \mH'
 % \end{tikzcd}
 \xymatrix{
-F(x) \ar[r]^{t_x} \ar[d]_{F(\phi)} & G(x) \ar[d]^{G(\phi)} \\
-F(y) \ar[r]^{t_y} & G(y) }
+\mH \ar[r]^{V} \ar[d]_{Z}^X & \C^2\otimes \mH' \ar[d]^{\sigma_X\otimes\Id}_{\sigma_Z\otimes \Id} \\
+\mH \ar[r]^{V} &\C^2 \otimes \mH' }
 \end{equation}
 
+
 \begin{proof}
-We first show the lemma in the case where $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition'', which we restate as follows. 
+We first show the lemma in the case where $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition''), which we restate as follows. 
 
 
 \begin{lemma}\label{lemma-cs-dec}
@@ -381,6 +402,9 @@ To conclude note that $\frac{1}{2}(\sigma_X \otimes \sigma_X + \sigma_Z \otimes 
 
 \section{Chapter notes}
 \label{section-rigidity-notes}
+
+Different proofs of rigidity for the CHSH game and the Magic Square game can be found in the lecture notes by Cleve~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. 
+
 
 
 \input{chapters}
