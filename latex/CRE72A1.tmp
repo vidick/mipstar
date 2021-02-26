@@ -25,7 +25,7 @@ This chapter is structured as follows. We start by studying a concrete example: 
 \section{The CHSH game}
 \label{section-chsh}
 
-\tnote{This section kept rough since it might be moved to a preceding chapter}
+%\tnote{This section kept rough since it might be moved to a preceding chapter}
 
 \begin{definition}
 \label{definition-chsh}
@@ -79,14 +79,8 @@ Let $X$ and $Z$ be binary observables on $\C^2$ such that $XZ=-ZX$. Then there i
 Since the identity commutes with all other operators, $X\neq \pm \Id$. Since the dimension of is $2$, $X$ must have eigenvalues $+1$ and $-1$ with multiplicity exactly $1$ each. Let $U_1$ be such that $U_1 Z U_1^\dagger = \sigma_Z$. Let $X'= U_1 X U_1^\dagger$. By writing it out explicitly, $X' \sigma_Z = -\sigma_Z X'$ implies that $X' = \begin{pmatrix} 0 & a \\ a^* & 0 \end{pmatrix}$ where using that $X'$ is an observable we must have $a\in \{\pm 1\}$. If $a=1$ then we can set $U=U_1$ and we are done. If $a=-1$ then $\sigma_Z X' \sigma_Z = \sigma_X$ and we set $U= U_1 \sigma_Z$. 
 \end{proof}
 
-Lemma~\ref{rigidity-lemma-ac-2} shows that, in two dimensions, any pair of anti-commuting observables ``behaves'' as the Pauli $\sigma_Z$ and $\sigma_X$ matrices, in the sense that they are isomorphic under the same change of basis. This is perhaps not surprising, and it is also possible to give a simple geometric proof of the lemma. The next lemma is more surprising. It shows that even under two significant relaxations the conclusion of the preceding lemma remains ``morally'' true. The first relaxation is that we consider spaces of unbounded dimension. The second relaxation is that the anti-commutation is required in a somewhat weaker sense where it is only guaranteed to hold when measure against a certain density; see~\eqref{rigidity-equation-ac-exact-1}. Nevertheless, the same conclusion as in Lemma~\ref{rigidity-lemma-ac-2} can be obtained, with a small (and necessary) relaxation: the unitary $U$ is now an isometry $V$, i.e.\ an operator $V:\mH \to \mH'$ such that $V^\dagger V = \Id$.\footnote{This forces $\dim(\mH')\leq \dim(\mH)$, and the inequality can be strict.}
-
 \begin{lemma}\label{lemma-ac-exact}
-Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that 
-\begin{equation}\label{equation-ac-exact-1}
-\Tr\big( (XZ+ZX)^2 \rho\big)\,=\,0\;.
-\end{equation}
-Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
+Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that $\Tr( (XZ+ZX)^2 \rho)=0$. Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in\{X,Z\}$,
 \[ V \big( W\rho W^\dagger\big) V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
 \end{lemma}
 
@@ -104,77 +98,86 @@ The following diagram intuitively captures the situation described in Lemma~\ref
 \mH \ar[r]^{V} &\C^2 \otimes \mH' }
 \end{equation}
 
+The correct way to understand the lemma is that any pair of anti-commuting observables ``behaves'' as the Pauli $\sigma_Z$ and $\sigma_X$ matrices, in the sense that they are isomorphic under the same isomorphism. As will be clear from the proof this statement would be exactly true if $XZ=-XZ$ as operators 
 
 \begin{proof}
 We first show the lemma in the case where $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition''), which we restate as follows. 
 
 
 \begin{lemma}\label{lemma-cs-dec}
-Let $P,Q$ be projections on a finite-dimensional Hilbert space $\mH$. Then there exists an orthogonal decomposition $\mH = \oplus_i \mS_i$ such that each $\mS_i$ is a $1$- or $2$-dimensional subspace that is stable by $P$ and $Q$. Furthermore, whenever $\mS_i$ is $2$-dimensional there is a basis for it in which $P$ and $Q$ take the form
+Let $P,Q$ be projections on a separable Hilbert space $\mH$. Then there exists an orthogonal decomposition $\mH = \oplus_i \mS_i$ such that each $\mS_i$ is a $1$- or $2$-dimensional subspace that is stable by $P$ and $Q$. Furthermore, whenever $\mS_i$ is $2$-dimensional there is a basis for it in which $P$ and $Q$ take the form
 \begin{equation}\label{eq:pq-form}
  P = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \qquad \text{and} \qquad Q = \begin{pmatrix} c^2 & cs \\ cs & s^2 \end{pmatrix}\;,
 \end{equation}
  for some $c$ and $s$ such that $c^2+s^2=1$ that may depend on $\mS_i$.\footnote{For the case of $1$-dimensional subspaces, since $P$ and $Q$ are projections they are each either identically $0$ or identity in those subspaces.}
 \end{lemma} 
 
-There are multiple possible proofs for Lemma~\ref{rigidity-lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs, see e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. The lemma extends to the case of bounded projections on a separable Hilbert space, see e.g.~\cite[Theorem 1.1]{bottcher2010gentle}.
+There are many possible proofs for Lemma~\ref{lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs. See e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. 
 
-Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $P$ and $Q$ it is also stable by both $X$ and $Z$, and so the condition $XZ+ZX=0$ must hold when both operators are restricted to any $\mS_i$. Because $1$-dimensional operators always commute, there are no $1$-dimensional subspaces $\mS_i$. Applying Lemma~\ref{rigidity-lemma-ac-2} gives a unitary $U_i$ on $\mS_i$ such that $U_i W_{|\mS_i} U_i^\dagger = \sigma_W$ for $W\in \{X,Z\}$. The proof of the lemma is concluded by letting $V = \oplus_i U_i$. 
+Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible, the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $X$ and $Z$ the condition must hold in each of them. As a consequence there are no $1$-dimensional subspaces. Moreover in each two-dimensional subspace necessarily $\Tr(X)=\Tr(Z)=0$ since otherwise one of them is a multiple of the identity and commutes with the other. It follows that there exist a choice of basis $(\ket{e_{1,i}},\ket{e_{2,i}})$ for $\mS_i$ such that $Z = \sigma_Z$, and necessarily $X = u \sigma_X$ for some $u\in \{\pm 1\}$. If $u=-1$ then the unitary $\ket{e_{2,i}} \to - \ket{e_{2,i}}$ brings both operators to the desired form. 
 
-Using that  each $\mS_i$ is stable by both $X$ and $Z$ the condition $\Tr((XZ+ZX)^2\rho)=0$ implies 
-\[ \sum_i \,\Tr\big( (X_iZ_i+Z_iX_i)^2 \Pi_i \rho \Pi_i\big) \,=\,0\;,\]
-where $X_i$ and $Z_i$ denote the restriction of $X$ and $Z$ respectively to $\mS_i$ and $\Pi_i$ is the projection on $\mS_i$. It follows that whenever $\mS_i$ is $1$-dimensional then necessaruly $\Pi_i \rho \Pi_i=0$, since $(X_iZ_i+Z_iX_i)^2 = 4$ in that case. For a two-dimensional subspace $\mS_i$ we observe that $(X_iZ_i+Z_iX_i)^2$ is always a multiple of the identity, and so as soon as $\Pi_i\rho\Pi_i$ is nonzero this multiple must be zero. Let $\mI_1$ be the set of indices $i$ such that $\mS_i$ is $1$-dimensional, $\mI_2$ be such that $\mS_i$ is $2$-dimensional and $\Pi_i\rho\Pi_i= 0$, and $\mI_3$ the remaining indices. For any $i\in \mI_3$ following the previous argument there is a local unitary $U_i$ such that for $W\in\{X,Z\}$, $U_i W_i U_i^\dagger = \sigma_W$. For $i\in \mI_2$ we let $U_i = \Id$ and for $i\in \mI_1$ we let $U_i : \C \to \C^2 $ be an arbitrary embedding. Using 
-\[W\rho W^\dagger \,=\, \sum_{i,j\in \mI_3} W_i \rho W_j^\dagger \]
-one can easily verify that $V = \oplus_i U_i$ is an isometry that satisfies the conclusion of the lemma. 
+In case $\rho$ is not invertible we note that for each $1$-dimensional subspace $\mS_i$ it must be that $\Pi_i \rho \Pi_i=0$, where $\Pi_i$ is the projection on $\mS_i$, and for each two-dimensional subspace since $(XZ+ZX)^2$ is always a multiple of the identity it is zero as soon as $\Pi_i\rho\Pi_i$ is nonzero. Let $\mI_1$ be the set of indices $i$ such that $\mS_i$ is $1$-dimensional, $\mI_2$ be such that $\mS_i$ is $2$-dimensional and $\Pi_i\rho\Pi_i= 0$, and $\mI_3$ the remaining indices. For any $i\in \mI_3$ there is a local rotation $V_i$ such that for $W\in\{X,Z\}$, $V_i \Pi_i W \Pi_i V_i^\dagger = \sigma_W$. For $i\in \mI_2$ we let $V_i = \Id$ and for $i\in \mI_1$ we let $V_i : \C^2 \to \C^2 \otimes \C^2$ be an arbitrary embedding. Using 
+\[W\rho W^\dagger \,=\, \sum_{i,j\in \mI_3} (\Pi_iW\Pi_i) \rho (\Pi_j W \Pi_j)^\dagger \]
+one can easily verify that $V = \oplus_i V_i$ is an isometry that satisfies the conclusion of the lemma. 
 \end{proof}
 
-We are ready to give a first statement of rigidity for the CHSH game. The lemma characterizes all optimal quantum strategies in the game, up to local isometries. 
+We are ready to give a first statement of rigidity for the CHSH game, that applies to optimal tensor product strategies for the game. 
 
 \begin{lemma}\label{lemma-rigid-chsh-exact}
-Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy such that $\val(\game_\CHSH;\strategy)=\val^*(\game_\CHSH)$. Then there exists isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_B:\mH_B \to \C^2 \otimes \mH'_B$ such that 
+Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy such that $\val(\game;\strategy)=\val^*(\game_\CHSH;\strategy)$. Then there exists isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_B:\mH_B \to \C^2 \otimes \mH'_B$ such that 
 \begin{equation}\label{equation-chsh-state-0}
  V_A \otimes V_B \ket{\psi} \,=\, \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'}\;,
 \end{equation}
 for some state $\ket{\psi'} \in \mH'_A \otimes \mH'_B$,
 and letting $A_x$ and $B_y$ be observables associated with each party's question $x$ or $y$ we have
-\begin{equation}\label{equation-chsh-alice-0}
+\begin{equation}\label{equation-chsh-alice}
 ( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} \,=\, (\sigma_Z \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'}  \;,
 \end{equation}
 and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_Z$ replaced by $\sigma_X$. Moreover, analogous relations hold for Bob's observables $B_0$ and $B_1$ and the operators $H$ and $\sigma_Z H\sigma_Z$. 
 \end{lemma}
 
-We note that the restriction to projective strategies in the lemma is without loss of generality: given that the conclusion allows isometries, one may turn an arbitrary strategy in a projective one by using Naimark's theorem (Lemma~\ref{}), then apply the lemma, and combine Naimark's isometry with the one promised in the lemma to obtain the same conclusion for the general case. 
-
 
 \begin{proof}
-Fix a  projective tensor product strategy $\strategy = (\ket{\psi},A^x,B^y)$ such that $\val(\game;\strategy)=\val^{*}(\game_\CHSH;\strategy)$. Let $A_x = A^x_0-A^x_1$ and $B_y = B^y_0-B^y_1$ be observables associated with this strategy.
-Keeping in mind the proof of Lemma~\ref{rigidity-lemma-chsh-qval}, the strategy is optimal if and only if 
+Fix a  projective tensor product strategy $\strategy = (\ket{\psi},A^x,B^y)$ such that $\val(\game;\strategy)=\val^{com}(\game_\CHSH;\strategy)$. Let $A_x = A^x_0-A^x_1$ and $B_y = B^y_0-B^y_1$ be observables associated with this strategy.
+Keeping in mind the proof of Lemma~\ref{lemma-chsh-qval}, the strategy is optimal if and only if 
 \begin{equation}\label{equation-exact-1}
-\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;.
+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;,
 \end{equation}
-Using the Cauchy-Schwarz inequality this immediately implies that 
-\[\|(A_1A_0-A_0A_1) \ket{\psi}\|=\|(B_0B_1-B_1B_0)\ket{\psi}\|=2\;,\]
-hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$ and similarly $B_0B_1 \ket{\psi} = - B_1 B_0 \ket{\psi}$. Applying Lemma~\ref{rigidity-lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$ gives the isometry $V_A$ such that~\eqref{rigidity-equation-chsh-alice-0} holds. A similar argument applied to the observables $B_0$ and $B_1$ gives $V_B$. This shows~\eqref{rigidity-equation-chsh-alice}. Finally~\eqref{rigidity-equation-chsh-state-0} follows since the EPR pair is the only eigenstate of 
+which using the Cauchy-Scharz inequality immediately implies that 
+\[\|(A_1A_0-A_0A_1) \ket{\psi}\|=\|(B_0B_1-B_1B_0)\ket{\psi}\|=2\]
+hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$ and similarly $B_0B_1 \ket{\psi} = - B_1 B_0 \ket{\psi}$. Applying Lemma~\ref{rigidity-lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$ gives the isometry $V_A$. A similar argument applied to the observables $B_0$ and $B_1$ gives $V_B$. This shows~\eqref{rigidity-equation-chsh-alice}. Finally~\eqref{rigidity-equation-chsh-state-0} follows since the EPR pair is the only eigenstate of 
 \[ \big(\sigma_Z  + \sigma_X \big) \otimes H + \big(\sigma_Z - \sigma_X\big) \otimes \sigma_Z H \sigma_Z \,=\, \sqrt{2}\big( \sigma_Z \otimes \sigma_Z + \sigma_X \otimes \sigma_X \big)\]
 with largest eigenvalue $2\sqrt{2}$. 
 \end{proof}
 
-\begin{remark} Discuss the commuting case? Revisit in a later section? 
+\begin{remark} Discuss the commuting case.
 \end{remark}
 
 
-In general it is essential for applications that a rigidity statement can be made ``robust'', in the sense that its conclusions extend smoothly to near-optimal strategies. For the case of the CHSH game it is possible to show that whenever $\val(\game_\CHSH;\strategy)\geq\val^*(\game_\CHSH)-\eps$ for $\eps>0$ then the conclusions~\eqref{rigidity-equation-chsh-state-0} and~\eqref{rigidity-equation-chsh-alice-0} hold up to en error $O(\sqrt{\eps})$ in Euclidean norm. 
-It is possible to give an elementary proof of this based on the use of Lemma~\ref{rigidity-lemma-cs-dec} and geometric arguments in two dimension; see e.g. the lecture notes at~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. In Theorem~\ref{rigidity-theorem-rigid-chsh} below we give an a priori more complex proof that generalizes more easily to higher-dimensional rigidity statements such as in Chapter~\ref{paulibraiding}. The proof makes use of the theory of stability for representations of finite groups, which we introduce next. 
+In general it is essential for applications that a rigidity statement can be made ``robust'', in the sense that its conclusions extend smoothly to near-optimal strategies. For the case of the CHSH game we can show the following. 
 
 
+\begin{theorem}\label{theorem-rigid-chsh}
+Let $\eps>0$, and suppose that a strategy for the players  in the CHSH game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $A_0,A_1$ for Alice and $B_0,B_1$ for Bob, achieves a bias at least $\sqrt{2}/2-\eps$ in the game. Then there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+\begin{equation}\label{eq:chsh-state}
+\big\| V_A \otimes V_B \ket{\psi} - \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'} \big\|^2 = O(\sqrt{\eps}) \;,
+\end{equation}
+and 
+\begin{equation}\label{eq:chsh-alice}
+\big\|( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} - (\sigma_X \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
+\end{equation}
+and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for Bob's observables. 
+\end{theorem}
+
+It is possible to give an elementary proof of Theorem~\ref{rigidity-theorem-rigid-chsh} based on the use of Lemma~\ref{rigidity-lemma-cs-dec} and geometric arguments in two dimension; see e.g. the lecture notes at~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. We will give an a priori more complex proof, that generalizes much more easily to higher-dimensional rigidity statements such as in Chapther~\ref{paulibraiding}. Our proof makes use of the theory of stability for representations of finite groups. 
 
 
 \section{Stability}
 \label{section-stability}
 
-Our approach for showing rigidity of the CHSH game proceeds in three steps. First we use the game winning condition to deduce algebraic relations on operators derived from the players' strategy. This is analogous to the derivation of the relation $A_0A_1+A_1A_0=0$ in the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}, except that now the relation is approximate and the error is measured in a norm that is reminiscent of a dimension-normalized Frobenius norm, weighted by the state $\ket{\psi}$ that is part of the strategy. Second we observe that operators that exactly satisfy the relations have a particularly nice form (for the anticommutation relation this is provided by Lemma~\ref{rigidity-lemma-ac-2}), and moreover --this is the new part-- operators that approximately satisfy them must be close to operators having the nice form. Finally, we use the form obtained for the operators to derive conditions on $\ket{\psi}$. 
+Our approach for showing rigidity of the CHSH game, as stated in Theorem~\ref{rigidity-theorem-rigid-chsh}, proceeds in three steps. First we use the game winning condition to deduce algebraic relations on operators derived from the players' strategy. This is analogous to the derivation of the relation $A_0A_1+A_1A_0=0$ in the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}, except that now the relation is approximate and the error is measured in a norm that is reminiscent of a dimension-normalized Frobenius norm, weighted by the state $\ket{\psi}$ that is part of the strategy. Second we observe that operators that exactly satisfy the relations have a particularly nice form (for the setting of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}, they are isomorphic to a direct sum of copies of $\sigma_Z$ and $\sigma_X$ operators), and moreover --this is the new part-- operators that approximately satisfy them must be close to operators having the nice form. Finally, we use the form obtained for the operators to derive conditions on the state. 
 
-The second part of this approach can be interpreted as a \emph{stability} result for representations of the group generated by the Pauli $\sigma_Z$ and $\sigma_X$ matrices, for a specific notion of distance. In this section we investigate this notion of stability and prove a result of Gowers and Hatami which shows that all finite groups are stable under this notion. We state the results in general, even though for our purposes the only group to which we will apply it is the Weyl-Heisenberg group generated by $\sigma_X$ and $\sigma_Z$. Stability for this group  will give rigidity for the CHSH and Magic Square (Section~\ref{rigidity-section-msrigid}) games, and subsequently for $n$-fold tensor products of them which will give rigidity for the Pauli basis test (Chapter~\ref{paulibraiding}).
+The second part of this strategy can be interpreted as a \emph{stability} result for representations of the group generated by the Pauli $\sigma_Z$ and $\sigma_X$ matrices, for a specific notion of distance. In this section we investigate this notion of stability and prove a result of Gowers and Hatami which shows that all finite groups are stable under this notion. We state the results in general, even though for our purposes the only group to which we will apply it is the Weyl-Heisenberg group generated by $\sigma_X$ and $\sigma_Z$, which will give rigidity for the CHSH and Magic Square (Section~\ref{rigidity-section-msrigid}) games, and $n$-fold tensor products of it, which will give rigidity for the Pauli basis test (Chapter~\ref{paulibraiding}).
 
 
 \subsection{Approximate group representations}
@@ -201,7 +204,7 @@ Note that the condition~\eref{eq:gh-condition} is equivalent to
 \label{eq:gh-condition-2}
 \Es{x,y\in G} \, \big\| f(x^{-1}y) - f(x)^\dagger f(y) \big\|_\sigma^2 \,\leq\, 2\eps\;.
 \end{equation}
-Taking $\eps=0$ and $\sigma$ any invertible positive definite matrix we see that the case $\eps=0$ corresponds to an \emph{exact} representation of $G$. 
+Taking $\eps=0$ and $\sigma$ any invertible positive definite matrix, we see that the case $\eps=0$ corresponds to an \emph{exact} representation of $G$. 
 
 \begin{example}
 \label{example-wh-1}
@@ -213,7 +216,7 @@ Consider the Weyl-Heisenberg group $\mP$, which is the group generated by the Pa
 for all $a,b,c\in\{0,1\}$. It is immediate to verify that for all $(x,y)\in \mP$ we have $f(x)^*f(y)=f(x^{-1}y)$ and so~\eref{eq:gh-condition} holds with $\eps=0$ for any $\sigma$.
 \end{example}
 
-The following simple exercise asks you to generalize the preceding example to the approximate case. 
+The following simple and recommended exercise asks you to generalize the preceding example to the approximate case. 
 
 \begin{exercise}
 \label{ex:wh-2}
@@ -298,21 +301,9 @@ It then follows that
 This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approximate representation and proves the theorem. 
 \end{proof}
 
+We end the section with the proof of Theorem~\ref{rigidity-theorem-rigid-chsh}.
 
-
-\begin{theorem}\label{theorem-rigid-chsh}
-Let $\eps>0$, and suppose that a strategy for the players  in the CHSH game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $A_0,A_1$ for Alice and $B_0,B_1$ for Bob, achieves a bias at least $\sqrt{2}/2-\eps$ in the game. Then there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
-\begin{equation}\label{equation-chsh-state}
-\big\| V_A \otimes V_B \ket{\psi} - \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'} \big\|^2 = O(\sqrt{\eps}) \;,
-\end{equation}
-and 
-\begin{equation}\label{equation-chsh-alice}
-\big\|( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} - (\sigma_X \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
-\end{equation}
-and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for Bob's observables. 
-\end{theorem}
-
-\begin{proof}
+\begin{proof}[Proof of Theorem~\ref{rigidity-theorem-rigid-chsh}]
 We follow the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}. Using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$,
 Eq.\eqref{rigidity-equation-exact-1} is replaced by
 \[ \big|4+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \big|\,\geq\, 8(1-2\sqrt{2}\eps)^2\;.\]
