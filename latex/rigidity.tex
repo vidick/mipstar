@@ -136,7 +136,7 @@ Let $\strategy = (\ket{\psi},A^x,B^y)$ be a projective tensor product strategy s
  V_A \otimes V_B \ket{\psi} \,=\, \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'}\;,
 \end{equation}
 for some state $\ket{\psi'} \in \mH'_A \otimes \mH'_B$,
-and letting $A_x$ and $B_y$ be observables associated with each party's question $x$ or $y$ we have
+and letting $A_x$ and $B_y$ be observables associated with each player's question $x$ or $y$ we have
 \begin{equation}\label{equation-chsh-alice-0}
 ( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} \,=\, (\sigma_Z \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'}  \;,
 \end{equation}
@@ -248,8 +248,7 @@ Note that  Theorem \ref{rigidity-theorem-gh} does not in general hold  with $d'=
 Continuing with Example~\ref{rigidity-example-wh-1} we consider the example of $G= \mP$. In Example~\ref{rigidity-example-wh-1} we observed that any pair of observables $(X,Z)$ such that $\{X,Z\}=0$ can be used to specify a $(0,\sigma)$ representation $f$ of $\mP$ such that moreover $f(-1)=-\Id$. We now check that the converse holds: for any $(0,\sigma)$-representation of $\mP$ for invertible $\sigma$, if $X=f(\sigma_X)$ and $Z=f(\sigma_Z)$ then using~\eref{equation-gh-condition-2}, taking $x=y=\sigma_X$ and $x=y=\sigma_Z$ it follows that $X^2 = Z^2=f(1)=\Id$, and taking $x=\sigma_X$ and $y=\sigma_Z$ we get that $XZ=f(\sigma_X \sigma_Z)$ while 
 \[ZX=f(\sigma_Z\sigma_X)=f(-\sigma_X\sigma_Z)=f(-1)f(\sigma_X\sigma_Z)\;,\]
 where the second equality uses that the Pauli anti-commute and the last equality again uses~\eref{equation-gh-condition-2}. Thus if $f(-1)=-\Id$ then 
- $\{X,Z\}=0$. In particular Lemma~\ref{rigidity-lemma-ac-exact} applies, and it is not hard to check from the proof that here $V$ can be guaranteed to be unitary. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$. 
-\footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
+ $\{X,Z\}=0$. In particular Lemma~\ref{rigidity-lemma-ac-exact} applies, and it is not hard to check from the proof that here $V$ can be guaranteed to be unitary. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$.\footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
 \end{example}
 
 \begin{exercise}
@@ -278,7 +277,7 @@ The fact that $V$ is an isometry follows from the appropriate extension of Parse
 &&= \Es{x,y}\,  f(x)^*f(y) \sum_\rho d_\rho \sum_i  (e_i^* \rho(x)^T \overline{\rho(y)} e_i)\\
 &&= \sum_\rho \frac{d_\rho^2}{|G|}I = I,
 \end{eqnarray*}
-where for the second line we used the definition \eref{equation-fourier} of $\hat{f}(\rho)$ and  for the third we used \eref{equation-ortho} and the fact that $f$ takes values in the unitary group.
+where for the second line we used the definition \eref{rigidity-equation-fourier} of $\hat{f}(\rho)$ and  for the third we used \eref{rigidity-equation-ortho} and the fact that $f$ takes values in the unitary group.
 
 Next define
 $$g(x) = \bigoplus_\rho \,\big(I_d \otimes I_{d_\rho} \otimes \rho(x)\big), $$
@@ -290,31 +289,35 @@ a direct sum over all irreducible representations of $G$ (hence itself a represe
 && =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z^{-1}y x^{-1}) \big) \\
 && =  \Es{z}\,  f(z)^*f(zx) , 
 \end{eqnarray*}
-where the last equality uses \eref{equation-ortho}.
+where the last equality uses \eref{rigidity-equation-ortho}.
 It then follows that 
 \begin{eqnarray*}
-&\Es{x}\, \big\langle f(x), V^*g(x) V \big\rangle_\sigma &=  \Es{x,z} \mathrm{Tr}\big( f(x) f(zx)^* f(z)\sigma\big).
+\Es{x}\, \big\langle f(x), V^*g(x) V \big\rangle_\sigma &=  \Es{x,z} \mathrm{Tr}\big( f(x) f(zx)^* f(z)\sigma\big).
 \end{eqnarray*}  
 This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approximate representation and proves the theorem. 
 \end{proof}
 
 
+\subsection{Rigidity for the CHSH game}
+\label{subsection-chsh-rigid}
+
+We end with our first application of Theorem~\ref{rigidity-theorem-gh}, to a rigid extension of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}.
 
 \begin{theorem}\label{theorem-rigid-chsh}
-Let $\eps>0$, and suppose that a strategy for the players  in the CHSH game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $A_0,A_1$ for Alice and $B_0,B_1$ for Bob, achieves a bias at least $\sqrt{2}/2-\eps$ in the game. Then there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+Let $\eps>0$ and $\strategy = (\ket{\psi},A^x,B^y)$ a projective tensor product strategy such that $\val(\game_\CHSH;\strategy)\geq\val^*(\game_\CHSH)-\eps$. Then there are local isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_B:\mH_B \to \C^2 \otimes \mH'_B$  such that 
 \begin{equation}\label{equation-chsh-state}
 \big\| V_A \otimes V_B \ket{\psi} - \frac{1}{\sqrt{2}}\big(\ket{00}+\ket{11}\big) \otimes \ket{\psi'} \big\|^2 = O(\sqrt{\eps}) \;,
 \end{equation}
-and 
+for some $\ket{\psi'}\in \mH_A'\otimes \mH_B'$, and letting $A_x$ and $B_y$ be observables associated with each player's question $x$ or $y$ we have
 \begin{equation}\label{equation-chsh-alice}
 \big\|( V_A \otimes V_B)( A_0 \otimes \Id )\ket{\psi} - (\sigma_X \otimes \Id)\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}) \otimes \ket{\psi'} \big\| \,=\, O\big(\sqrt{\eps}\big)\;,
 \end{equation}
-and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for Bob's observables. 
+and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replaced by $\sigma_Z$. Moreover, analogous relations hold for the second player's observables. 
 \end{theorem}
 
 \begin{proof}
 We follow the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}. Using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$,
-Eq.\eqref{rigidity-equation-exact-1} is replaced by
+Eq.~\eqref{rigidity-equation-exact-1} is replaced by
 \[ \big|4+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \big|\,\geq\, 8(1-2\sqrt{2}\eps)^2\;.\]
 Applying the Cauchy-Schwarz inequality it follows that both conditions
 \[ \big\|(A_0A_1-A_1A_0)\ket{\psi}\big\| \geq 2-O(\eps) \qquad \text{and}\qquad\big\|(B_0B_1-B_1B_0)\ket{\psi}\big\| \geq 2-O(\eps)\]
@@ -325,9 +328,7 @@ Using the notation introduced in Section~\ref{rigidity-section-approxrep} this s
 \begin{equation}\label{rigidity-equation-a-ac}
 \|A_0A_1 + A_1A_0\|_{\rho_A}^2 = O({\eps})\;,
 \end{equation}
- i.e. $A_0$ and $A_1$ approximately commute. 
-
-Now here comes the key observation. By setting 
+ i.e. $A_0$ and $A_1$ approximately commute. Now the key observation is that by setting 
 $$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_X)=\pm A_0,\quad\quad f(\pm\sigma_Z)=\pm A_1,\quad f(\pm\sigma_X\sigma_Z) = \pm A_0A_1\;,$$
 we have created an approximate representation of the group $\mP$ introduced in Example~\ref{rigidity-example-wh-1}. Indeed, first note that $f$ is well-defined and ranges in the uniaries since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{rigidity-equation-a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{rigidity-theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. The conclusion of the theorem implies the conclusion of Theorem~\ref{rigidity-theorem-rigid-chsh}.
 \end{proof}
@@ -337,11 +338,13 @@ we have created an approximate representation of the group $\mP$ introduced in E
 \section{Rigidity for the Magic Square game}
 \label{section-msrigid}
 
-Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game and showed that any perfect strategy must ``have a qubit''. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{thm:gh} we can extend our earlier result to the case of approximate strategies with very little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
+%\tnote{This section assumes some prereqs about the magic square game, and the details of it should be updated once that section is up}
+
+Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{rigidity-theorem-gh} we can extend our earlier result to the case of approximate strategies with little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
 
 \begin{theorem}
-\label{thm:rigid-ms}
-Let $\eps>0$, and suppose that a strategy for the players  in the Magic Square game, using  a bipartite state $\ket{\psi}\in\C^d\otimes \C^d$ and observables $B_1,\ldots,B_9$ for Bob succeeds with probability $1-\eps$, for some $\eps \geq 0$. Then $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit. Moreover, there are local isometries $V_A,V_B:\C^d \to \C^2 \otimes \C^{d'}$ such that 
+\label{theorem-rigid-ms}
+Let $\eps>0$, and suppose that a strategy for the players  in the Magic Square game, using  a bipartite state $\ket{\psi}\in\mH_A\otimes \mH_B$ and observables $B_1,\ldots,B_9$ for Bob succeeds with probability $1-\eps$, for some $\eps \geq 0$. Then there are local isometries $V_A:\mH_A\to \C^2 \otimes \mH_A'$ and $V_B:\mH_B\to \C^2 \otimes \mH_B'$ such that 
 \begin{equation}
 \label{equation-chsh-state}
 \big\| V_A \otimes V_B \ket{\psi} - \ket{\phi^+} \otimes \ket{\psi'} \big\| = O(\sqrt{\eps}) \;,
@@ -354,10 +357,9 @@ and
 and a similar relation holds with $B_2$ replaced by $B_4$ and $\sigma_Z$ replaced by $\sigma_X$. 
 \end{theorem}
 
-Note that this is a slightly weaker variant of Theorem~\ref{thm:ms-robust} that we stated without proof, because it only characterizes a single qubit of the strategy, instead of two for the case of Theorem~\ref{thm:ms-robust}. This will suffice for our purposes. 
+We note that it is possible to show a somewhat stronger version of the theorem, which shows that, just as the honest strategy, any approximately optimal strategy must make use of \emph{two} EPR pairs, and not just one. The extension can be shown using similar arguments. We won't need it here and we refer to~\cite{coladangelo2017robust} for details.  
 
 \begin{proof}
-For the first step of the proof we follow the proof of Claim~\ref{claim:ms-ac}, except that all equalities must be made approximate equalities. 
 Assume without loss of generality that Alice's strategy is specified by six $4$-outcomes projective measurements $\{A^i_{a_1,a_2,a_3}\}$, where $a_1,a_2,a_3\in\{\pm 1\}$ range over the four possible assignments that satisfy the constraint associated with the $i$-th row $(i\in \{1,2,3\})$ or $(i-3)$-th column ($i\in \{4,5,6\}$). (We can assume that Alice always returns a valid assignment because she knows that she will lose if not, so we do not even need to include a symbol for such evidently wrong answers in the game.)
 
 For any $i\in\{1,\ldots,9\}$, in addition to Bob's observable $B_i$ associated with question $i$ we define two observables from Alice's strategy, obtained by recording her answer associated to entry $i$ when she is asked the unique row containing $i$ --- call this observable $C_i$ --- or the unique column containing $i$ --- call this observable $C'_i$. Formally, $C_1 = \sum_{a_1,a_2,a_3\in\{\pm 1\}}a_1 A^1_{a_1,a_2,a_3}$, and similar relations can be used to define each $C_i$ and $C'_i$. Due to the parity constraints enforced on Alice's answers it is always the case that $C_1C_2C_3=+\Id,\ldots,C_3C_6C_9=-\Id$.
@@ -367,7 +369,7 @@ By definition, success of the strategy in the game implies $18$ equations of the
 \label{equation-ms-bc-1}
  \bra{\psi} C_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\qquad\text{and}\qquad \bra{\psi} C'_i \otimes B_i \ket{\psi} \,\geq \, 1-18\eps\;,
 \end{equation}
-for all $i\in \{1,\ldots,9\}$. Indeed, each such equation represents the probability that the players return valid answers, conditioned on each of the $18$ possible pairs of questions in the game. These relations allow us to mimic the proof of Claim~\ref{claim:ms-ac}, as follows: 
+for all $i\in \{1,\ldots,9\}$. Indeed, each such equation represents the probability that the players return valid answers, conditioned on each of the $18$ possible pairs of questions in the game. These relations allow us to show the following sequence of approximations
 \begin{align*}
 B_2 B_4 \ket{\psi} & \approx C_4 \otimes B_2 \ket{\psi}\\
 &= C_5 C_6 \otimes B_2 \ket{\psi}\\
@@ -388,15 +390,15 @@ where here we use the notation $\ket{u}\approx \ket{v}$ to mean $\|\ket{u} - \ke
 & \leq 36\eps\;,
 \end{align*}
 where the derivation uses that $B_2,B_4$ and $C_4$ are Hermitian and square to identity. 
-Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, it follows that $(\ket{\psi},B_2,B_4)$ is an $O(\sqrt{\eps})$-approximate qubit.
- 
-As already observed in Exercise~\ref{ex:wh-2}, it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
+Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, we arrive at the relation
+\[B_2B_4 \ket{\psi} \approx -B_4B_2 \ket{\psi}\;.\]
+As already observed in Exercise~\ref{rigidity-exercise-wh-2} it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
 $$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_Z)=\pm B_2,\quad\quad f(\pm\sigma_X)=\pm B_4,\quad f(\pm\sigma_X\sigma_Z) = \pm B_4B_2\;.$$
-Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{thm:gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
+Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{rigidity-theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
 
-Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{ex:wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eref{equation-chsh-alice}. 
+Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{rigidity-example-wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eref{rigidity-equation-chsh-alice}. 
 
-To conclude~\eref{equation-chsh-state} we observe that the relations~\eref{equation-ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{thm:gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
+To conclude~\eref{rigidity-equation-chsh-state} we observe that the relations~\eref{rigidity-equation-ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{rigidity-theorme-gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
 \[ \ket{\psi'} = V_\reg{A} \otimes V_\reg{B} \ket{\psi} \in (\C^2 \otimes \mH_\reg{A}')\otimes (\C^2 \otimes \mH_\reg{B}') \]
 we see from~\eref{equation-ms-bc-1} and~\eref{equation-chsh-alice} that 
 \[\big| \bra{\psi} \big(\sigma_X \otimes \sigma_X \otimes \Id_{\reg{A}'\reg{B}'} + \sigma_Z \otimes \sigma_Z \otimes \Id_{\reg{A}'\reg{B}'} \big) \ket{\psi}\big| \geq 1-O({\eps})\;.\]

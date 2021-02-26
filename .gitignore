@@ -32,3 +32,5 @@ tags
 *.pdf
 
 *.tmp
+
+*.synctex(busy)
