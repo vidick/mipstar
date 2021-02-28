@@ -188,8 +188,10 @@ def show_tag(tag):
     footnotes = Footnote.select().where(Footnote.label << labels)
 
     for number, label in enumerate(labels):
-        old = re.search(r"id=\"" + label +
-                        "-mark\"><sup>([0-9]+)</sup>", html).group(1)
+        print(html)
+        print()
+        print(label)
+        old = re.search(r"id=\"" + label + "-mark\"><sup>([0-9]+)</sup>", html).group(1)
         html = html.replace(
             "id=\"" + label + "-mark\"><sup>" + old + "</sup>",
             "id=\"" + label + "-mark\"></a><a href=\"#" + label + "\"><sup>" + str(number + 1) + "</sup>")
