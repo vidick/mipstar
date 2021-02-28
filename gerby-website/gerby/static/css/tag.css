@@ -312,17 +312,23 @@ ol+span.qed {
 .env-remark,
 .env-fact,
 .env-lemma,
-.env-theorem {
+.env-theorem,
+.env-exercise {
     background-color: #f0f0f0;
     padding: 10px;
     border-radius: 10px;
+}
+
+.env-exercise {
+    background-color: #d9edf7;
 }
 
 .env-definition ul,
 .env-remark ul,
 .env-fact ul,
 .env-lemma ul,
-.env-theorem ul {
+.env-theorem ul,
+.env-exercise ul {
     padding-inline-start: 30px;
 }
 
@@ -331,11 +337,13 @@ ol+span.qed {
 .env-fact ul,
 .env-lemma ul,
 .env-theorem ul,
+.env-exercise ul,
 .env-definition ol,
 .env-remark ol,
 .env-fact ol,
 .env-lemma ol,
-.env-theorem ol {
+.env-theorem ol,
+.env-exercise ol {
     margin-bottom: 0;
 }
 
@@ -343,7 +351,8 @@ ol+span.qed {
 .env-remark *:last-child,
 .env-fact *:last-child,
 .env-lemma *:last-child,
-.env-theorem *:last-child {
+.env-theorem *:last-child,
+.env-exercise *:last-child {
     margin-bottom: 0;
 }
 
