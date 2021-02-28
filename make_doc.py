@@ -33,8 +33,8 @@ with open('latex/make_doc.tex', 'w') as doc:
                 line = line.replace('\\displaylimits', '')
             if line.find('\\textsc{') >= 0:
                 line = line.replace('\\textsc{', '{')
-            if line.find('\textcolor{blue}') >= 0:
-                line = line.replace('\textcolor{blue}', '')
+            if line.find('\\textcolor{blue}') >= 0:
+                line = line.replace('\\textcolor{blue}', '')
 
             print(line, end='', file=doc)
 
