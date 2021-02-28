@@ -50,7 +50,7 @@ A strategy such that both players always return $0$ achieves value $\frac{3}{4}$
 \end{align}
 Here the key step is the last step, where we used that for $b_0,b_1 \in \{\pm 1\}$ exactly one of $b_0+b_1$ and $b_0-b_1$ must be $0$, and the other is $\pm 2$. 
 
-This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B^1\})$ achieves a success probability of $\frac{1}{2}+\frac{1}{2\sqrt{2}}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y)$. Letting $A_x = A^x_0-A^x_1$ and  $B_y = B^y_0-B^y_1$ an analogous derivation to~\eqref{rigidity-equation-chsh-qval1} gives 
+This shows that $\val(\game_\CHSH)=\frac{3}{4}$. We now extend the argument to the quantum case. First we let the reader verify that if $\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})$ is an EPR pair, $A^0, A^1$ measurements in the eigenbases of $\sigma_Z,\sigma_X$ respectively and $B^0,B^1$ measurements in the eigenbases of $H$ and $\sigma_Z H \sigma_Z$ then the strategy $(\ket{\psi},\{A^0,A^1\},\{B^0,B^1\})$ achieves a success probability of $\frac{1}{2}+\frac{1}{2\sqrt{2}}$ in the game. To show a matching upper bound, fix any projective strategy $(\ket{\psi}, A^x,B^y)$. Letting $A_x = A^x_0-A^x_1$ and  $B_y = B^y_0-B^y_1$ an analogous derivation to~\eqref{equation-chsh-qval1} gives 
 \begin{align*}
 \val(\game_\CHSH;\strategy) &=\frac{1}{2} + \frac{1}{8}\bra{\psi} A_0 B_0 + A_0 B_1 + A_1 B_0 - A_1 B_1 \ket{\psi}\;.
 \end{align*}
@@ -66,7 +66,7 @@ Finally, for the non-signaling value we observe that the family of distributions
 \end{proof}
 
 
-The proof of Lemma~\ref{rigidity-lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{rigidity-lemma-rigid-chsh-exact} below (itself subsequently generalized in Theorem~\ref{rigidity-theorem-rigid-chsh}) we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma. The lemma is later abstracted and generalized  in Theorem~\ref{rigidity-theorem-gh} as a statement about representations of finite groups. 
+The proof of Lemma~\ref{lemma-chsh-qval} identifies a specific quantum tensor product strategy which achieves a value of $\frac{1}{2} + \frac{1}{2\sqrt{2}}$ in the CHSH game. The phenomenon of \emph{rigidity} for a nonlocal game is that optimal, or even near-optimal, strategies are virtually unique. In Lemma~\ref{lemma-rigid-chsh-exact} below (itself subsequently generalized in Theorem~\ref{theorem-rigid-chsh}) we show this for the CHSH game. Before showing the lemma we establish a simple geometric lemma. The lemma is later abstracted and generalized  in Theorem~\ref{theorem-gh} as a statement about representations of finite groups. 
 
 We start with a warm-up. 
 
@@ -79,7 +79,7 @@ Let $X$ and $Z$ be binary observables on $\C^2$ such that $XZ=-ZX$. Then there i
 Since the identity commutes with all other operators, $X\neq \pm \Id$. Since the dimension of is $2$, $X$ must have eigenvalues $+1$ and $-1$ with multiplicity exactly $1$ each. Let $U_1$ be such that $U_1 Z U_1^\dagger = \sigma_Z$. Let $X'= U_1 X U_1^\dagger$. By writing it out explicitly, $X' \sigma_Z = -\sigma_Z X'$ implies that $X' = \begin{pmatrix} 0 & a \\ a^* & 0 \end{pmatrix}$ where using that $X'$ is an observable we must have $a\in \{\pm 1\}$. If $a=1$ then we can set $U=U_1$ and we are done. If $a=-1$ then $\sigma_Z X' \sigma_Z = \sigma_X$ and we set $U= U_1 \sigma_Z$. 
 \end{proof}
 
-Lemma~\ref{rigidity-lemma-ac-2} shows that, in two dimensions, any pair of anti-commuting observables ``behaves'' as the Pauli $\sigma_Z$ and $\sigma_X$ matrices, in the sense that they are isomorphic under the same change of basis. This is perhaps not surprising, and it is also possible to give a simple geometric proof of the lemma. The next lemma is more surprising. It shows that even under two significant relaxations the conclusion of the preceding lemma remains ``morally'' true. The first relaxation is that we consider spaces of unbounded dimension. The second relaxation is that the anti-commutation is required in a somewhat weaker sense where it is only guaranteed to hold when measure against a certain density; see~\eqref{rigidity-equation-ac-exact-1}. Nevertheless, the same conclusion as in Lemma~\ref{rigidity-lemma-ac-2} can be obtained, with a small (and necessary) relaxation: the unitary $U$ is now an isometry $V$, i.e.\ an operator $V:\mH \to \mH'$ such that $V^\dagger V = \Id$.\footnote{This forces $\dim(\mH')\leq \dim(\mH)$, and the inequality can be strict.}
+Lemma~\ref{lemma-ac-2} shows that, in two dimensions, any pair of anti-commuting observables ``behaves'' as the Pauli $\sigma_Z$ and $\sigma_X$ matrices, in the sense that they are isomorphic under the same change of basis. This is perhaps not surprising, and it is also possible to give a simple geometric proof of the lemma. The next lemma is more surprising. It shows that even under two significant relaxations the conclusion of the preceding lemma remains ``morally'' true. The first relaxation is that we consider spaces of unbounded dimension. The second relaxation is that the anti-commutation is required in a somewhat weaker sense where it is only guaranteed to hold when measure against a certain density; see~\eqref{equation-ac-exact-1}. Nevertheless, the same conclusion as in Lemma~\ref{lemma-ac-2} can be obtained, with a small (and necessary) relaxation: the unitary $U$ is now an isometry $V$, i.e.\ an operator $V:\mH \to \mH'$ such that $V^\dagger V = \Id$.\footnote{This forces $\dim(\mH')\leq \dim(\mH)$, and the inequality can be strict.}
 
 \begin{lemma}\label{lemma-ac-exact}
 Let $\rho$ be a density matrix on a separable Hilbert space $\mH$. Let $X,Z$ be binary observables on $\mH$ such that 
@@ -90,7 +90,7 @@ Then there exists an isometry $V: \mH \to \C^2 \otimes \mH'$ such that for $W\in
 \[ V \big( W\rho W^\dagger\big) V^\dagger \,=\, (\sigma_X \otimes \Id)V\rho V^\dagger (\sigma_X \otimes \Id)^\dagger\;.\]
 \end{lemma}
 
-The following diagram intuitively captures the situation described in Lemma~\ref{rigidity-lemma-ac-exact}. 
+The following diagram intuitively captures the situation described in Lemma~\ref{lemma-ac-exact}. 
 
 \begin{equation}
 \label{diagram-one-qubit-b}
@@ -117,9 +117,9 @@ Let $P,Q$ be projections on a finite-dimensional Hilbert space $\mH$. Then there
  for some $c$ and $s$ such that $c^2+s^2=1$ that may depend on $\mS_i$.\footnote{For the case of $1$-dimensional subspaces, since $P$ and $Q$ are projections they are each either identically $0$ or identity in those subspaces.}
 \end{lemma} 
 
-There are multiple possible proofs for Lemma~\ref{rigidity-lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs, see e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. The lemma extends to the case of bounded projections on a separable Hilbert space, see e.g.~\cite[Theorem 1.1]{bottcher2010gentle}.
+There are multiple possible proofs for Lemma~\ref{lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs, see e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. The lemma extends to the case of bounded projections on a separable Hilbert space, see e.g.~\cite[Theorem 1.1]{bottcher2010gentle}.
 
-Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $P$ and $Q$ it is also stable by both $X$ and $Z$, and so the condition $XZ+ZX=0$ must hold when both operators are restricted to any $\mS_i$. Because $1$-dimensional operators always commute, there are no $1$-dimensional subspaces $\mS_i$. Applying Lemma~\ref{rigidity-lemma-ac-2} gives a unitary $U_i$ on $\mS_i$ such that $U_i W_{|\mS_i} U_i^\dagger = \sigma_W$ for $W\in \{X,Z\}$. The proof of the lemma is concluded by letting $V = \oplus_i U_i$. 
+Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $P$ and $Q$ it is also stable by both $X$ and $Z$, and so the condition $XZ+ZX=0$ must hold when both operators are restricted to any $\mS_i$. Because $1$-dimensional operators always commute, there are no $1$-dimensional subspaces $\mS_i$. Applying Lemma~\ref{lemma-ac-2} gives a unitary $U_i$ on $\mS_i$ such that $U_i W_{|\mS_i} U_i^\dagger = \sigma_W$ for $W\in \{X,Z\}$. The proof of the lemma is concluded by letting $V = \oplus_i U_i$. 
 
 Using that  each $\mS_i$ is stable by both $X$ and $Z$ the condition $\Tr((XZ+ZX)^2\rho)=0$ implies 
 \[ \sum_i \,\Tr\big( (X_iZ_i+Z_iX_i)^2 \Pi_i \rho \Pi_i\big) \,=\,0\;,\]
@@ -148,13 +148,13 @@ We note that the restriction to projective strategies in the lemma is without lo
 
 \begin{proof}
 Fix a  projective tensor product strategy $\strategy = (\ket{\psi},A^x,B^y)$ such that $\val(\game;\strategy)=\val^{*}(\game_\CHSH;\strategy)$. Let $A_x = A^x_0-A^x_1$ and $B_y = B^y_0-B^y_1$ be observables associated with this strategy.
-Keeping in mind the proof of Lemma~\ref{rigidity-lemma-chsh-qval}, the strategy is optimal if and only if 
+Keeping in mind the proof of Lemma~\ref{lemma-chsh-qval}, the strategy is optimal if and only if 
 \begin{equation}\label{equation-exact-1}
 \bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \,=\, 4\;.
 \end{equation}
 Using the Cauchy-Schwarz inequality this immediately implies that 
 \[\|(A_1A_0-A_0A_1) \ket{\psi}\|=\|(B_0B_1-B_1B_0)\ket{\psi}\|=2\;,\]
-hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$ and similarly $B_0B_1 \ket{\psi} = - B_1 B_0 \ket{\psi}$. Applying Lemma~\ref{rigidity-lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$ gives the isometry $V_A$ such that~\eqref{rigidity-equation-chsh-alice-0} holds. A similar argument applied to the observables $B_0$ and $B_1$ gives $V_B$. This shows~\eqref{rigidity-equation-chsh-alice}. Finally~\eqref{rigidity-equation-chsh-state-0} follows since the EPR pair is the only eigenstate of 
+hence $A_0A_1 \ket{\psi} = - A_1 A_0 \ket{\psi}$ and similarly $B_0B_1 \ket{\psi} = - B_1 B_0 \ket{\psi}$. Applying Lemma~\ref{lemma-ac-exact} to the reduced density $\rho_A$ of $\ket{\psi}$ on $\mH_A$ together with $A_0$ and $A_1$ gives the isometry $V_A$ such that~\eqref{equation-chsh-alice-0} holds. A similar argument applied to the observables $B_0$ and $B_1$ gives $V_B$. This shows~\eqref{equation-chsh-alice}. Finally~\eqref{equation-chsh-state-0} follows since the EPR pair is the only eigenstate of 
 \[ \big(\sigma_Z  + \sigma_X \big) \otimes H + \big(\sigma_Z - \sigma_X\big) \otimes \sigma_Z H \sigma_Z \,=\, \sqrt{2}\big( \sigma_Z \otimes \sigma_Z + \sigma_X \otimes \sigma_X \big)\]
 with largest eigenvalue $2\sqrt{2}$. 
 \end{proof}
@@ -163,8 +163,8 @@ with largest eigenvalue $2\sqrt{2}$.
 \end{remark}
 
 
-In general it is essential for applications that a rigidity statement can be made ``robust'', in the sense that its conclusions extend smoothly to near-optimal strategies. For the case of the CHSH game it is possible to show that whenever $\val(\game_\CHSH;\strategy)\geq\val^*(\game_\CHSH)-\eps$ for $\eps>0$ then the conclusions~\eqref{rigidity-equation-chsh-state-0} and~\eqref{rigidity-equation-chsh-alice-0} hold up to en error $O(\sqrt{\eps})$ in Euclidean norm. 
-It is possible to give an elementary proof of this based on the use of Lemma~\ref{rigidity-lemma-cs-dec} and geometric arguments in two dimension; see e.g. the lecture notes at~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. In Theorem~\ref{rigidity-theorem-rigid-chsh} below we give an a priori more complex proof that generalizes more easily to higher-dimensional rigidity statements such as in Chapter~\ref{paulibraiding}. The proof makes use of the theory of stability for representations of finite groups, which we introduce next. 
+In general it is essential for applications that a rigidity statement can be made ``robust'', in the sense that its conclusions extend smoothly to near-optimal strategies. For the case of the CHSH game it is possible to show that whenever $\val(\game_\CHSH;\strategy)\geq\val^*(\game_\CHSH)-\eps$ for $\eps>0$ then the conclusions~\eqref{equation-chsh-state-0} and~\eqref{equation-chsh-alice-0} hold up to en error $O(\sqrt{\eps})$ in Euclidean norm. 
+It is possible to give an elementary proof of this based on the use of Lemma~\ref{lemma-cs-dec} and geometric arguments in two dimension; see e.g. the lecture notes at~\url{http://cleve.iqc.uwaterloo.ca/styled-22/index.html}. In Theorem~\ref{theorem-rigid-chsh} below we give an a priori more complex proof that generalizes more easily to higher-dimensional rigidity statements such as in Chapter~\ref{paulibraiding}. The proof makes use of the theory of stability for representations of finite groups, which we introduce next. 
 
 
 
@@ -172,9 +172,9 @@ It is possible to give an elementary proof of this based on the use of Lemma~\re
 \section{Stability}
 \label{section-stability}
 
-Our approach for showing rigidity of the CHSH game proceeds in three steps. First we use the game winning condition to deduce algebraic relations on operators derived from the players' strategy. This is analogous to the derivation of the relation $A_0A_1+A_1A_0=0$ in the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}, except that now the relation is approximate and the error is measured in a norm that is reminiscent of a dimension-normalized Frobenius norm, weighted by the state $\ket{\psi}$ that is part of the strategy. Second we observe that operators that exactly satisfy the relations have a particularly nice form (for the anticommutation relation this is provided by Lemma~\ref{rigidity-lemma-ac-2}), and moreover --this is the new part-- operators that approximately satisfy them must be close to operators having the nice form. Finally, we use the form obtained for the operators to derive conditions on $\ket{\psi}$. 
+Our approach for showing rigidity of the CHSH game proceeds in three steps. First we use the game winning condition to deduce algebraic relations on operators derived from the players' strategy. This is analogous to the derivation of the relation $A_0A_1+A_1A_0=0$ in the proof of Lemma~\ref{lemma-rigid-chsh-exact}, except that now the relation is approximate and the error is measured in a norm that is reminiscent of a dimension-normalized Frobenius norm, weighted by the state $\ket{\psi}$ that is part of the strategy. Second we observe that operators that exactly satisfy the relations have a particularly nice form (for the anticommutation relation this is provided by Lemma~\ref{lemma-ac-2}), and moreover --this is the new part-- operators that approximately satisfy them must be close to operators having the nice form. Finally, we use the form obtained for the operators to derive conditions on $\ket{\psi}$. 
 
-The second part of this approach can be interpreted as a \emph{stability} result for representations of the group generated by the Pauli $\sigma_Z$ and $\sigma_X$ matrices, for a specific notion of distance. In this section we investigate this notion of stability and prove a result of Gowers and Hatami which shows that all finite groups are stable under this notion. We state the results in general, even though for our purposes the only group to which we will apply it is the Weyl-Heisenberg group generated by $\sigma_X$ and $\sigma_Z$. Stability for this group  will give rigidity for the CHSH and Magic Square (Section~\ref{rigidity-section-msrigid}) games, and subsequently for $n$-fold tensor products of them which will give rigidity for the Pauli basis test (Chapter~\ref{paulibraiding}).
+The second part of this approach can be interpreted as a \emph{stability} result for representations of the group generated by the Pauli $\sigma_Z$ and $\sigma_X$ matrices, for a specific notion of distance. In this section we investigate this notion of stability and prove a result of Gowers and Hatami which shows that all finite groups are stable under this notion. We state the results in general, even though for our purposes the only group to which we will apply it is the Weyl-Heisenberg group generated by $\sigma_X$ and $\sigma_Z$. Stability for this group  will give rigidity for the CHSH and Magic Square (Section~\ref{section-msrigid}) games, and subsequently for $n$-fold tensor products of them which will give rigidity for the Pauli basis test (Chapter~\ref{paulibraiding}).
 
 
 \subsection{Approximate group representations}
@@ -210,7 +210,7 @@ Consider the Weyl-Heisenberg group $\mP$, which is the group generated by the Pa
 \label{equation-def-rep-pauli}
  f\big((-1)^c \sigma_X^a \sigma_Z^b\big) \,=\, (-1)^c X^a Z^b\;,
 \end{equation}
-for all $a,b,c\in\{0,1\}$. It is immediate to verify that for all $(x,y)\in \mP$ we have $f(x)^*f(y)=f(x^{-1}y)$ and so~\eref{rigidity-equation-gh-condition} holds with $\eps=0$ for any $\sigma$.
+for all $a,b,c\in\{0,1\}$. It is immediate to verify that for all $(x,y)\in \mP$ we have $f(x)^*f(y)=f(x^{-1}y)$ and so~\eref{equation-gh-condition} holds with $\eps=0$ for any $\sigma$.
 \end{example}
 
 The following simple exercise asks you to generalize the preceding example to the approximate case. 
@@ -221,7 +221,7 @@ Let $(\ket{\psi},X,Z)$ be such that $\|\{X,Z\}\ket{\psi}\|\leq \eps$. Define $f:
 \end{exercise}
 
 \begin{remark}
-The condition \eqref{rigidity-equation-gh-condition} in Definition~\ref{rigidity-definition-approx-rep} is very closely related to Gowers' $U^2$ norm
+The condition \eqref{equation-gh-condition} in Definition~\ref{definition-approx-rep} is very closely related to Gowers' $U^2$ norm
 $$\|f\|_{U^2}^4 \,=\, \Es{xy^{-1}=zw^{-1}}\, \big\langle f(x)f(y)^* ,f(z)f(w)^* \big\rangle_\sigma.$$
 While a large Gowers norm implies closeness to an affine function, we are interested in testing homomorphisms, and the condition \eref{equation-gh-condition} will arise naturally from our calculations in the next section. 
 \end{remark}
@@ -229,8 +229,8 @@ While a large Gowers norm implies closeness to an affine function, we are intere
 \subsection{The Gowers-Hatami theorem}
 \label{subsection-gowers-hatami-theorem}
 
-There are many possible notions of approximate group representation. Traditionally the most frequently considered one replaces the norm in Definition~\ref{rigidity-definition-approx-rep} by the operator norm. An inconvenience of that variant is that in general approximate representations are not always close to exact representations (see, for example, the famous problem on ``approximately commuting'' versus ``nearly commuting'' operators). In contrast 
-Gowers and Hatami~\cite{gowers2017inverse} showed that in the case of Definition~\ref{rigidity-definition-approx-rep}, approximate group representations can always be ``rounded'' to a nearby exact representation.\footnote{We are barely scratching the surface of a growing theory of ``stability'' for group homomorphisms; see e.g.~\cite{becker2020stability} for an introduction and discussion of related notions.} 
+There are many possible notions of approximate group representation. Traditionally the most frequently considered one replaces the norm in Definition~\ref{definition-approx-rep} by the operator norm. An inconvenience of that variant is that in general approximate representations are not always close to exact representations (see, for example, the famous problem on ``approximately commuting'' versus ``nearly commuting'' operators). In contrast 
+Gowers and Hatami~\cite{gowers2017inverse} showed that in the case of Definition~\ref{definition-approx-rep}, approximate group representations can always be ``rounded'' to a nearby exact representation.\footnote{We are barely scratching the surface of a growing theory of ``stability'' for group homomorphisms; see e.g.~\cite{becker2020stability} for an introduction and discussion of related notions.} 
 We state and prove a slightly more general, but quantitatively weaker, variant of the Gowers-Hatami result.
 
 \begin{theorem}[Gowers-Hatami]
@@ -241,21 +241,21 @@ $$\Es{x\in G}\, \big\| f(x) - V^*g(x)V \big\|_\sigma^2\, \leq\, 2\,\eps.$$
 
 Gowers and Hatami limit themselves to the case of $\sigma = d^{-1}I_d$, which corresponds to the dimension-normalized Frobenius norm. In this scenario they in addition obtain a tight control of the dimension $d'$, and show that one can always take $d'\ = (1+O(\eps))d$ in the theorem. We will see a much shorter proof than theirs (the proof is implicit in their argument) that does not seem to allow to recover this estimate. The extension to general $\sigma$, however, will be necessary for our purposes.
 
-Note that  Theorem \ref{rigidity-theorem-gh} does not in general hold  with $d'=d$. The reason is that it is possible for $G$ to have an approximate representation in some dimension $d$, but no exact representation of the same dimension: to obtain an example of this, take any group $G$ that has all non-trivial irreducible representations of large enough dimension, and create an approximate representation in e.g.\ dimension one less by ``cutting off'' one row and column from an exact representation. For sufficiently ``smooth'' $\sigma$ (no disproportionately large singular values) the dimension normalization induced by the norm $\|\cdot\|_\sigma$ will make this barely  noticeable, but it will be impossible to ``round'' the approximate representation obtained to an exact one without modifying the dimension. 
+Note that  Theorem \ref{theorem-gh} does not in general hold  with $d'=d$. The reason is that it is possible for $G$ to have an approximate representation in some dimension $d$, but no exact representation of the same dimension: to obtain an example of this, take any group $G$ that has all non-trivial irreducible representations of large enough dimension, and create an approximate representation in e.g.\ dimension one less by ``cutting off'' one row and column from an exact representation. For sufficiently ``smooth'' $\sigma$ (no disproportionately large singular values) the dimension normalization induced by the norm $\|\cdot\|_\sigma$ will make this barely  noticeable, but it will be impossible to ``round'' the approximate representation obtained to an exact one without modifying the dimension. 
 
 \begin{example}
 \label{example-wh-3}
-Continuing with Example~\ref{rigidity-example-wh-1} we consider the example of $G= \mP$. In Example~\ref{rigidity-example-wh-1} we observed that any pair of observables $(X,Z)$ such that $\{X,Z\}=0$ can be used to specify a $(0,\sigma)$ representation $f$ of $\mP$ such that moreover $f(-1)=-\Id$. We now check that the converse holds: for any $(0,\sigma)$-representation of $\mP$ for invertible $\sigma$, if $X=f(\sigma_X)$ and $Z=f(\sigma_Z)$ then using~\eref{equation-gh-condition-2}, taking $x=y=\sigma_X$ and $x=y=\sigma_Z$ it follows that $X^2 = Z^2=f(1)=\Id$, and taking $x=\sigma_X$ and $y=\sigma_Z$ we get that $XZ=f(\sigma_X \sigma_Z)$ while 
+Continuing with Example~\ref{example-wh-1} we consider the example of $G= \mP$. In Example~\ref{example-wh-1} we observed that any pair of observables $(X,Z)$ such that $\{X,Z\}=0$ can be used to specify a $(0,\sigma)$ representation $f$ of $\mP$ such that moreover $f(-1)=-\Id$. We now check that the converse holds: for any $(0,\sigma)$-representation of $\mP$ for invertible $\sigma$, if $X=f(\sigma_X)$ and $Z=f(\sigma_Z)$ then using~\eref{equation-gh-condition-2}, taking $x=y=\sigma_X$ and $x=y=\sigma_Z$ it follows that $X^2 = Z^2=f(1)=\Id$, and taking $x=\sigma_X$ and $y=\sigma_Z$ we get that $XZ=f(\sigma_X \sigma_Z)$ while 
 \[ZX=f(\sigma_Z\sigma_X)=f(-\sigma_X\sigma_Z)=f(-1)f(\sigma_X\sigma_Z)\;,\]
 where the second equality uses that the Pauli anti-commute and the last equality again uses~\eref{equation-gh-condition-2}. Thus if $f(-1)=-\Id$ then 
- $\{X,Z\}=0$. In particular Lemma~\ref{rigidity-lemma-ac-exact} applies, and it is not hard to check from the proof that here $V$ can be guaranteed to be unitary. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$.\footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
+ $\{X,Z\}=0$. In particular Lemma~\ref{lemma-ac-exact} applies, and it is not hard to check from the proof that here $V$ can be guaranteed to be unitary. As a result, we have shown that there exists a single  representation of $\mP$ such that $f(-1)=-\Id$, and that it is given by the Pauli matrices in dimension $2$.\footnote{The condition $f(-1)=-\Id$ is necessary, as there are four $1$-dimensional representations of $\mP$: all combinations $f(\sigma_X)=\pm 1$ and $f(\sigma_Z)=\pm 1$. We have found the right number of irreps: $1\cdot 2^2 + 4\cdot 1 = 8 = |\mP|$.}
 \end{example}
 
 \begin{exercise}
-Use Lemma~\ref{rigidity-lemma-ac-2} to show Theorem~\ref{rigidity-theorem-gh} for the case where $G=\mP$. 
+Use Lemma~\ref{lemma-ac-2} to show Theorem~\ref{theorem-gh} for the case where $G=\mP$. 
 \end{exercise}
 
-The main ingredient for the proof of Theorem~\ref{rigidity-theorem-gh} is an appropriate notion of Fourier transform over non-abelian groups. Given an irreducible representation $\rho: G \to U_{d_\rho}(\C)$, define 
+The main ingredient for the proof of Theorem~\ref{theorem-gh} is an appropriate notion of Fourier transform over non-abelian groups. Given an irreducible representation $\rho: G \to U_{d_\rho}(\C)$, define 
 \begin{equation}\label{equation-fourier}
  \hat{f}(\rho) \,=\, \Es{x\in G} \,f(x) \otimes \overline{\rho(x)}.
 \end{equation}
@@ -266,7 +266,7 @@ In case $G$ is abelian, we always have $d_\rho=1$, the tensor product is a produ
 \end{equation}
 for any $x\in G$. Note that plugging in $x=e$ (the identity element in $G$) yields $\sum_\rho d_\rho^2= |G|$. 
 
-\begin{proof}[Proof of Theorem \ref{rigidity-theorem-gh}]
+\begin{proof}[Proof of Theorem \ref{theorem-gh}]
 Our first step is to define an isometry $V:\C^d \to \C^d \otimes (\oplus_\rho \C^{d_\rho} \otimes \C^{d_\rho})$ by
 $$ V :\;u \in \C^d \,\mapsto\, \bigoplus_\rho \,d_\rho^{1/2} \sum_{i=1}^{d_\rho} \,\big(\hat{f}(\rho) (u\otimes e_i)\big) \otimes e_i,$$
 where the direct sum ranges over all irreducible representations $\rho$ of $G$ and $\{e_i\}$ is the canonical basis.\footnote{Observe that this expression directly generalizes~\eref{equation-explicit-isometry}.}
@@ -277,7 +277,7 @@ The fact that $V$ is an isometry follows from the appropriate extension of Parse
 &&= \Es{x,y}\,  f(x)^*f(y) \sum_\rho d_\rho \sum_i  (e_i^* \rho(x)^T \overline{\rho(y)} e_i)\\
 &&= \sum_\rho \frac{d_\rho^2}{|G|}I = I,
 \end{eqnarray*}
-where for the second line we used the definition \eref{rigidity-equation-fourier} of $\hat{f}(\rho)$ and  for the third we used \eref{rigidity-equation-ortho} and the fact that $f$ takes values in the unitary group.
+where for the second line we used the definition \eref{equation-fourier} of $\hat{f}(\rho)$ and  for the third we used \eref{equation-ortho} and the fact that $f$ takes values in the unitary group.
 
 Next define
 $$g(x) = \bigoplus_\rho \,\big(I_d \otimes I_{d_\rho} \otimes \rho(x)\big), $$
@@ -289,7 +289,7 @@ a direct sum over all irreducible representations of $G$ (hence itself a represe
 && =  \Es{z,y}\,  f(z)^*f(y)  \sum_{\rho}  d_\rho \mathrm{Tr}\big( \rho(z^{-1}y x^{-1}) \big) \\
 && =  \Es{z}\,  f(z)^*f(zx) , 
 \end{eqnarray*}
-where the last equality uses \eref{rigidity-equation-ortho}.
+where the last equality uses \eref{equation-ortho}.
 It then follows that 
 \begin{eqnarray*}
 \Es{x}\, \big\langle f(x), V^*g(x) V \big\rangle_\sigma &=  \Es{x,z} \mathrm{Tr}\big( f(x) f(zx)^* f(z)\sigma\big).
@@ -301,7 +301,7 @@ This relates correlation of $f$ with $V^*gV$ to the quality of $f$ as an approxi
 \subsection{Rigidity for the CHSH game}
 \label{subsection-chsh-rigid}
 
-We end with our first application of Theorem~\ref{rigidity-theorem-gh}, to a rigid extension of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}.
+We end with our first application of Theorem~\ref{theorem-gh}, to a rigid extension of Lemma~\ref{lemma-rigid-chsh-exact}.
 
 \begin{theorem}\label{theorem-rigid-chsh}
 Let $\eps>0$ and $\strategy = (\ket{\psi},A^x,B^y)$ a projective tensor product strategy such that $\val(\game_\CHSH;\strategy)\geq\val^*(\game_\CHSH)-\eps$. Then there are local isometries $V_A:\mH_A \to \C^2 \otimes \mH'_A$ and $V_B:\mH_B \to \C^2 \otimes \mH'_B$  such that 
@@ -316,21 +316,21 @@ and a similar relation holds with $A_0$ replaced by $A_1$ and $\sigma_X$ replace
 \end{theorem}
 
 \begin{proof}
-We follow the proof of Lemma~\ref{rigidity-lemma-rigid-chsh-exact}. Using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$,
-Eq.~\eqref{rigidity-equation-exact-1} is replaced by
+We follow the proof of Lemma~\ref{lemma-rigid-chsh-exact}. Using $|\bra{\psi}X\ket{\psi}|^2 \leq \bra{\psi}XX^*\ket{\psi}$ for any Hermitian $X$,
+Eq.~\eqref{equation-exact-1} is replaced by
 \[ \big|4+\bra{\psi}(A_1A_0-A_0A_1) (B_0B_1-B_1B_0)\ket{\psi} \big|\,\geq\, 8(1-2\sqrt{2}\eps)^2\;.\]
 Applying the Cauchy-Schwarz inequality it follows that both conditions
 \[ \big\|(A_0A_1-A_1A_0)\ket{\psi}\big\| \geq 2-O(\eps) \qquad \text{and}\qquad\big\|(B_0B_1-B_1B_0)\ket{\psi}\big\| \geq 2-O(\eps)\]
 must be satisfied. Taking squares and using that $A_x$ and $B_y$ square to identity we deduce that 
 $$\Tr((A_1A_0 + A_0A_1)^2\rho_A) = O({\eps})\qquad \text{and}\qquad \Tr((B_0B_1+B_1B_1)^2 \rho_B) = O({\eps})$$
 must hold, where $\rho_A$ and $\rho_B$ are the reduced density matrices of $\ket{\psi}$ on Alice and Bob respectively. 
-Using the notation introduced in Section~\ref{rigidity-section-approxrep} this says that 
-\begin{equation}\label{rigidity-equation-a-ac}
+Using the notation introduced in Section~\ref{section-approxrep} this says that 
+\begin{equation}\label{equation-a-ac}
 \|A_0A_1 + A_1A_0\|_{\rho_A}^2 = O({\eps})\;,
 \end{equation}
  i.e. $A_0$ and $A_1$ approximately commute. Now the key observation is that by setting 
 $$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_X)=\pm A_0,\quad\quad f(\pm\sigma_Z)=\pm A_1,\quad f(\pm\sigma_X\sigma_Z) = \pm A_0A_1\;,$$
-we have created an approximate representation of the group $\mP$ introduced in Example~\ref{rigidity-example-wh-1}. Indeed, first note that $f$ is well-defined and ranges in the uniaries since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{rigidity-equation-a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{rigidity-theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. The conclusion of the theorem implies the conclusion of Theorem~\ref{rigidity-theorem-rigid-chsh}.
+we have created an approximate representation of the group $\mP$ introduced in Example~\ref{example-wh-1}. Indeed, first note that $f$ is well-defined and ranges in the uniaries since $A_0$, $A_1$, and $A_0A_1$ are all unitary. Moreover, using only~\eqref{equation-a-ac} and the fact that $A_0$ and $A_1$ are observables, it is immediate to verify that the conditions of Theorem~\ref{theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_A)$-representation of $H$. The conclusion of the theorem implies the conclusion of Theorem~\ref{theorem-rigid-chsh}.
 \end{proof}
 
 
@@ -340,7 +340,7 @@ we have created an approximate representation of the group $\mP$ introduced in E
 
 %\tnote{This section assumes some prereqs about the magic square game, and the details of it should be updated once that section is up}
 
-Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{rigidity-theorem-gh} we can extend our earlier result to the case of approximate strategies with little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
+Recall the Magic Square game from Section~\ref{section-msgame}. In Lemma~\ref{lemma-msperfect} we analyzed perfect strategies in this game. Remembering the proof, we had seen that Bob's observables in a perfect strategy must form an operator solution to the underlying system of equations, and that any such operator solution must contain two anti-commuting observables. Using Theorem~\ref{theorem-gh} we can extend our earlier result to the case of approximate strategies with little extra work. (This was first shown in~\cite{wu2016device} using a more direct proof.)
 
 \begin{theorem}
 \label{theorem-rigid-ms}
@@ -392,13 +392,13 @@ where here we use the notation $\ket{u}\approx \ket{v}$ to mean $\|\ket{u} - \ke
 where the derivation uses that $B_2,B_4$ and $C_4$ are Hermitian and square to identity. 
 Using a similar chain of approximations starting from $B_4 B_2 \ket{\psi}$, we arrive at the relation
 \[B_2B_4 \ket{\psi} \approx -B_4B_2 \ket{\psi}\;.\]
-As already observed in Exercise~\ref{rigidity-exercise-wh-2} it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
+As already observed in Exercise~\ref{exercise-wh-2} it follows that $B_2$ and $B_4$ induce an approximate representation of $\mP$ by setting 
 $$ f(\pm \Id)=\pm\Id,\quad f(\pm\sigma_Z)=\pm B_2,\quad\quad f(\pm\sigma_X)=\pm B_4,\quad f(\pm\sigma_X\sigma_Z) = \pm B_4B_2\;.$$
-Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{rigidity-theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
+Note that this is a legal definition, since $B_2$, $B_4$, and $B_2B_4$ are all unitary. Moreover, using only the approximate anti-commutation and the fact that $B_2$ and $B_4$ are observables it is immediate to verify that the conditions of Theorem~\ref{theorem-gh} are satisfied, i.e. $f$ is an $(O({\eps}),\rho_\reg{B})$-representation of $\mP$, where $\rho_\reg{B}$ denotes the reduced density of $\ket{\psi}$ on $\mH_\reg{B}$.  
 
-Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{rigidity-example-wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eref{rigidity-equation-chsh-alice}. 
+Applying the theorem, there must exist an exact representation $g$ of $\mP$ to which $f$ is close. However, as we saw in Example~\ref{example-wh-3} the representation theory of $\mP$ is not complicated. It has four $1$-dimensional irreducible representations, but all of them map $-\Id$ to $1$, so they cannot be close to $f$. Since any representation is a direct sum of irreducible representations, and all irreducible representations of $\mP$ are far from $f$, $g$ must be a direct sum of multiple copies of the unique irreducible $2$-dimensional representation of $\mP$, which is precisely given by the Pauli matrices, together with possibly a small (relative to the total dimension) number of $1$-dimensional relations. Ignoring the presence of such representations for simplicity,\footnote{To account for them we would select the ``corner'' of the range of the isometry $V$ that includes only copies of the $2$-dimensional irrep; this is a simple technicality.} $g(\sigma_Z) = \sigma_Z \otimes \Id$ and $g(\sigma_X) = \sigma_X \otimes \Id$, which gives~\eref{equation-chsh-alice}. 
 
-To conclude~\eref{rigidity-equation-chsh-state} we observe that the relations~\eref{rigidity-equation-ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{rigidity-theorme-gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
+To conclude~\eref{equation-chsh-state} we observe that the relations~\eref{equation-ms-bc-1} imply that also $(\rho_\reg{A},C_2,C_4)$ is an $O(\sqrt{\eps})$-approximate qubit. This allows us to define an approximate representation of $\mP$ on $\mH_\reg{A}$, and apply Theorem~\ref{theorem-gh} again to obtain on isometry $V_\reg{A}$ which maps $(\rho_\reg{A},C_2,C_4)$ close to an exact qubit. Letting 
 \[ \ket{\psi'} = V_\reg{A} \otimes V_\reg{B} \ket{\psi} \in (\C^2 \otimes \mH_\reg{A}')\otimes (\C^2 \otimes \mH_\reg{B}') \]
 we see from~\eref{equation-ms-bc-1} and~\eref{equation-chsh-alice} that 
 \[\big| \bra{\psi} \big(\sigma_X \otimes \sigma_X \otimes \Id_{\reg{A}'\reg{B}'} + \sigma_Z \otimes \sigma_Z \otimes \Id_{\reg{A}'\reg{B}'} \big) \ket{\psi}\big| \geq 1-O({\eps})\;.\]

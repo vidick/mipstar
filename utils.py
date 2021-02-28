@@ -9,10 +9,8 @@ def extract_label(line):
     return label
 
 def extract_ref(line, refType):
-    """Return the \\ref or \\eqref on the given line"""
-    target = '\\ref{'
-    if refType == 'eqref':
-        target = '\\eqref{'
+    """Return the \\ref or \\eqref or \\eref on the given line"""
+    target = '\\' + refType + '{'
 
     start = line.find(target)
     for i in range(start, len(line)):

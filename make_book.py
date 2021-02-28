@@ -61,6 +61,10 @@ with open('latex/make_book.tex', 'w') as doc:
                     ref = extract_ref(line, 'eqref')
                     if ref.split('-')[0] not in chapter_names:
                         line = line.replace('\\eqref{', '\\eqref{' + chapname + '-')
+                if line.find('\\eref{') >= 0:
+                    ref = extract_ref(line, 'eref')
+                    if ref.split('-')[0] not in chapter_names:
+                        line = line.replace('\\eref{', '\\eref{' + chapname + '-')
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:
