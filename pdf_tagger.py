@@ -31,7 +31,7 @@ for i, chapter in enumerate(chapters):
                     #     first_section = False
                     nextline = next(tex_file)
                     if nextline.find('\\label{') >= 0:
-                        label = extract_label(nextline, chapname)
+                        label = extract_label(nextline)
                         if label != chapname and 'book-part' not in label:
                             label = chapname + '-' + label
 
@@ -52,7 +52,7 @@ for i, chapter in enumerate(chapters):
                     continue
                 # if label present on line, add margin note to side and hypertarget
                 if line.find('\\label{') >= 0:
-                    label = extract_label(line, chapname)
+                    label = extract_label(line)
                     if label != chapname and 'book-part' not in label:
                         label = chapname + '-' + label
 
@@ -80,7 +80,7 @@ with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
             if line.find('\\section{') == 0:
                 nextline = next(tex_file)
                 if nextline.find('\\label{') >= 0:
-                    label = extract_label(nextline, chapname)
+                    label = extract_label(nextline)
 
                     if label in tags.keys():
                         print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)
@@ -96,7 +96,7 @@ with open(os.path.join('pdfs', 'book.tex'), 'w') as tagged_file:
             # if label present on line, add margin note to side and hypertarget;
             # skip tagging parts
             if line.find('\\label{') >= 0:
-                label = extract_label(line, chapname)
+                label = extract_label(line)
 
                 if label in tags.keys() and 'book-part' not in label and label != chapname:
                     print('\\hypertarget{' + tags[label] + '}{}', file=tagged_file)

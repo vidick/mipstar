@@ -60,9 +60,17 @@ with open('latex/make_doc.tex', 'w') as doc:
                 if line.find('\\maketitle') == 0:
                     continue
                 if line.find('\\label{') >= 0:
-                    label = extract_label(line, chapname)
+                    label = extract_label(line)
                     if label != chapname and 'book-part' not in label:
                         line = line.replace('\\label{', '\\label{' + chapname + '-')
+                if line.find('\\ref{') >= 0:
+                    ref = extract_ref(line, 'ref')
+                    if ref.split('-')[0] not in chapter_names:
+                        line = line.replace('\\ref{', '\\ref{' + chapname + '-')
+                if line.find('\\eqref{') >= 0:
+                    ref = extract_ref(line, 'eqref')
+                    if ref.split('-')[0] not in chapter_names:
+                        line = line.replace('\\eqref{', '\\eqref{' + chapname + '-')
                 if line.find('\\tableofcontents') == 0:
                     continue
                 if line.find('\\input{chapters}') == 0:

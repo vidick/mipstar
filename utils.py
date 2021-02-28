@@ -1,15 +1,25 @@
 """Common functions used in scripts."""
-def extract_label(line, chapname):
+def extract_label(line):
     """Return the \\label on the given line"""
     start = line.find('\\label{')
     for i in range(start, len(line)):
         if line[i] == '}':
             label = line[start + 7 : i]
             break
-    # if label != chapname:
-    #     label = chapname + '-' + label
     return label
 
+def extract_ref(line, refType):
+    """Return the \\ref or \\eqref on the given line"""
+    target = '\\ref{'
+    if refType == 'eqref':
+        target = '\\eqref{'
+
+    start = line.find(target)
+    for i in range(start, len(line)):
+        if line[i] == '}':
+            ref = line[start + len(target) : i]
+            break
+    return ref
 
 def get_chapters():
     """Retrieves all chapter names and their corresponding .tex files."""

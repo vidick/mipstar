@@ -50,7 +50,7 @@ with open('latex/make_book.tex', 'w') as doc:
                 if line.find('\\maketitle') == 0:
                     continue
                 if line.find('\\label{') >= 0:
-                    label = extract_label(line, chapname)
+                    label = extract_label(line)
                     if label != chapname and 'book-part' not in label:
                         line = line.replace('\\label{', '\\label{' + chapname + '-')
                 if line.find('\\tableofcontents') == 0:
