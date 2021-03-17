@@ -27,7 +27,7 @@
             <i class="bi bi-arrow-left-circle"></i>
             Previous {{ neighbours[0].type }}
         </a>
-        <a class="btn btn-secondary {% if neighbours[1] %} disabled {% endif %}" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
+        <a class="btn btn-secondary {% if not neighbours[1] %} disabled {% endif %}" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
             <i class="bi bi-arrow-right-circle"></i>
             Next {{ neighbours[1].type }}
         </a>
