@@ -22,22 +22,24 @@
 {% endblock %}
 
 {% block pagenav %}
-    {% if neighbours[0] %}
-        <a class="btn btn-secondary mr-3" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
-            <i class="bi bi-arrow-left-circle"></i>
-             Previous {{ neighbours[0].type }}
+    <div class="page-nav-wrapper w-100">
+        {% if neighbours[0] %}
+            <a class="btn btn-secondary mr-3" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
+                <i class="bi bi-arrow-left-circle"></i>
+                Previous {{ neighbours[0].type }}
+            </a>
+        {% endif %}
+        {% if neighbours[1] %}
+            <a class="btn btn-secondary" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
+                <i class="bi bi-arrow-right-circle"></i>
+                Next {{ neighbours[1].type }}
+            </a>
+        {% endif %}
+        <a class="btn btn-secondary-outline float-right" href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">
+            <i class="bi bi-eye"></i>
+            View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf
         </a>
-    {% endif %}
-    {% if neighbours[1] %}
-        <a class="btn btn-secondary" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
-            <i class="bi bi-arrow-right-circle"></i>
-             Next {{ neighbours[1].type }}
-        </a>
-    {% endif %}
-    <a class="btn btn-secondary-outline" href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">
-        <i class="bi bi-eye"></i>
-         View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf
-    </a>
+    </div>
 {% endblock %}
 
 {% block body %}
