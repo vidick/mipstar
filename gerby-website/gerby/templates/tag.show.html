@@ -23,7 +23,7 @@
 
 {% block pagenav %}
     {% if neighbours[0] %}
-        <a class="btn btn-secondary" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
+        <a class="btn btn-secondary mr-3" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
             <i class="bi bi-arrow-left-circle"></i>
              Previous {{ neighbours[0].type }}
         </a>
@@ -34,6 +34,10 @@
              Next {{ neighbours[1].type }}
         </a>
     {% endif %}
+    <a class="btn btn-secondary-outline" href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">
+        <i class="bi bi-eye"></i>
+         View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf
+    </a>
 {% endblock %}
 
 {% block body %}
