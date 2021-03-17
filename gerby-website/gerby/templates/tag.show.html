@@ -21,6 +21,11 @@
   {{ macros.tagHamburger(tag, neighbours, "", dependencies) }}
 {% endblock %}
 
+{% block pagenav %}
+    <a class="btn btn-secondary"><i class="bi bi-arrow-left-circle"></i>Previous</a>
+    <a class="btn btn-secondary"><i class="bi bi-arrow-right-circle"></i>Next</a>
+{% endblock %}
+
 {% block body %}
 <div class="html" id="tag">
     {% if tag.slogan %}

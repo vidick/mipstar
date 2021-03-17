@@ -97,9 +97,7 @@
     </div>
 {% endif %}
 
-{% if self.neighbours() %}
-    <h5>test</h5>
-{% endif %}
+{% block pagenav %}{% endblock %}
 
 {% if self.tagline() %}
     {% block tagline %}{% endblock %}
