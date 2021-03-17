@@ -23,12 +23,10 @@
 
 {% block pagenav %}
     <div class="page-nav-wrapper w-100 mt-2">
-        {% if neighbours[0] %}
-            <a class="btn btn-secondary mr-3" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
+            <a class="btn btn-secondary mr-2 {% if neighbours[0] %} disabled {% endif %}" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
                 <i class="bi bi-arrow-left-circle"></i>
                 Previous {{ neighbours[0].type }}
             </a>
-        {% endif %}
         {% if neighbours[1] %}
             <a class="btn btn-secondary" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
                 <i class="bi bi-arrow-right-circle"></i>
