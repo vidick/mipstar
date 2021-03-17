@@ -104,10 +104,9 @@ The following diagram intuitively captures the situation described in Lemma~\ref
 \mH \ar[r]^{V} &\C^2 \otimes \mH' }
 \end{equation}
 
-
-\begin{proof}
+\begin{proof}[Proof of Lemma~\ref{lemma-ac-exact}]
 We first show the lemma in the case where $\rho$ is invertible. The proof is based on Jordan's lemma (also known as the ``CS decomposition''), which we restate as follows. 
-
+The proof of Lemma~\ref{lemma-ac-exact} makes use of Jordan's lemma (also known as the ``CS decomposition''), which we restate as follows. 
 
 \begin{lemma}\label{lemma-cs-dec}
 Let $P,Q$ be projections on a finite-dimensional Hilbert space $\mH$. Then there exists an orthogonal decomposition $\mH = \oplus_i \mS_i$ such that each $\mS_i$ is a $1$- or $2$-dimensional subspace that is stable by $P$ and $Q$. Furthermore, whenever $\mS_i$ is $2$-dimensional there is a basis for it in which $P$ and $Q$ take the form
@@ -119,7 +118,7 @@ Let $P,Q$ be projections on a finite-dimensional Hilbert space $\mH$. Then there
 
 There are multiple possible proofs for Lemma~\ref{lemma-cs-dec}. One possibility is to diagonalize the operator $R=P+Q$ and observe that eigenvectors come in pairs, see e.g.~\url{https://cims.nyu.edu/~regev/teaching/quantum_fall_2005/ln/qma.pdf}. The lemma extends to the case of bounded projections on a separable Hilbert space, see e.g.~\cite[Theorem 1.1]{bottcher2010gentle}.
 
-Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $P$ and $Q$ it is also stable by both $X$ and $Z$, and so the condition $XZ+ZX=0$ must hold when both operators are restricted to any $\mS_i$. Because $1$-dimensional operators always commute, there are no $1$-dimensional subspaces $\mS_i$. Applying Lemma~\ref{lemma-ac-2} gives a unitary $U_i$ on $\mS_i$ such that $U_i W_{|\mS_i} U_i^\dagger = \sigma_W$ for $W\in \{X,Z\}$. The proof of the lemma is concluded by letting $V = \oplus_i U_i$. 
+Applying the lemma to the projections $P = \frac{1}{2}(Z+\Id)$ and $Q = \frac{1}{2}(X+\Id)$ yields a decomposition $\mH = \oplus_i \mS_i$. Since we assumed that $\rho$ is invertible the condition $\Tr((XZ+ZX)^2\rho)$ implies $XZ+ZX=0$. Since each $\mS_i$ is stable by both $P$ and $Q$ it is also stable by both $X$ and $Z$, and so the condition $XZ+ZX=0$ must hold when both operators are restricted to any $\mS_i$. Because $1$-dimensional operators always commute, there are no $1$-dimensional subspaces $\mS_i$. Applying Lemma~\ref{lemma-ac-2} gives a unitary $U_i$ on $\mS_i$ such that $U_i W_{|\mS_i} U_i^\dagger = \sigma_W$ for $W\in \{X,Z\}$. The proof of the lemma is concluded by letting $V = \oplus_i U_i$.
 
 Using that  each $\mS_i$ is stable by both $X$ and $Z$ the condition $\Tr((XZ+ZX)^2\rho)=0$ implies 
 \[ \sum_i \,\Tr\big( (X_iZ_i+Z_iX_i)^2 \Pi_i \rho \Pi_i\big) \,=\,0\;,\]
