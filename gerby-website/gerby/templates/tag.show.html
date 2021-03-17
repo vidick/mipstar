@@ -22,8 +22,18 @@
 {% endblock %}
 
 {% block pagenav %}
-    <a class="btn btn-secondary"><i class="bi bi-arrow-left-circle"></i>Previous</a>
-    <a class="btn btn-secondary"><i class="bi bi-arrow-right-circle"></i>Next</a>
+    {% if neighbours[0] %}
+        <a class="btn btn-secondary" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
+            <i class="bi bi-arrow-left-circle"></i>
+             Previous {{ neighbours[0].type }}
+        </a>
+    {% endif %}
+    {% if neighbours[1] %}
+        <a class="btn btn-secondary" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
+            <i class="bi bi-arrow-right-circle"></i>
+             Next {{ neighbours[1].type }}
+        </a>
+    {% endif %}
 {% endblock %}
 
 {% block body %}
