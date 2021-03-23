@@ -243,10 +243,11 @@
             // },
         };
 
-        $('.page-preview').popover().hover((e) => {
-            // e.preventDefault();
-            // $(this).velocity('transition.slideUpIn')
-        })
+        $('.page-preview').popover(options)
+        // .hover((e) => {
+        //     // e.preventDefault();
+        //     // $(this).velocity('transition.slideUpIn')
+        // })
 
         // render mathematics in popovers
         $("[data-toggle=preview]").on('shown.bs.popover', function () {
