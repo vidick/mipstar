@@ -10,7 +10,7 @@ def find_ref_doc(tag, root, files):
             
             char_count = 0
             i = 0
-            while char_count < 250:
+            while char_count < 250 and i < len(all_text):
                 content += all_text[i]
                 char_count += len(all_text[i])
                 i += 1
