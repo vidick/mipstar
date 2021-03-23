@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.css" integrity="sha384-U1uEPfU2/stCtBJ6oZS4XLX35g0MD+BZTTskUun0Vhv64RLEaTUXtcpxGScTbkUP" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.min.js" integrity="sha384-ZKch/OmPYYZT/9GpxSgMqUIDdBjwYYuJ3+CfQytRQElwdBsCMJkEmcsynJlFlsCS" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/2.0.6/velocity.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/2.0.6/velocity.ui.min.js"></script>
 {% endblock %}
 
 {% block breadcrumb %}
@@ -102,8 +105,6 @@
 
     {{ html | safe }}
     
-    <script src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"></script>
     <script type="text/javascript">
         function isLemThm(text) {
             return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
