@@ -85,6 +85,10 @@ if out or any('No such file or directory' in msg for msg in err) or args.force:
 
         log_outputs(log, [], stderr.readlines())
 
+    log.info('  Adding page previews')
+    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 add_previews.py')
+    log_outputs(log, stdout.readlines(), stderr.readlines())
+
     log.info('  Deleting old database file')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && rm tags.sqlite')
     log_outputs(log, stdout.readlines(), stderr.readlines())

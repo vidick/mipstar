@@ -101,7 +101,8 @@
 
 
     {{ html | safe }}
-
+    
+    <script src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"></script>
     <script type="text/javascript">
         function isLemThm(text) {
             return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
@@ -216,6 +217,38 @@
 
                 toggleChevrons(childCounts);
             }
+        });
+
+        let options = {
+            placement: (context, source) => {
+                let position = $(source).position();
+
+                if (position.left > 515) {
+                    return "left";
+                }
+
+                if (position.left < 515) {
+                    return "right";
+                }
+
+                if (position.top < 110){
+                    return "bottom";
+                }
+
+                return "top";
+            },
+            trigger: "hover",
+            animation: false,
+        };
+
+        $('.page-preview').popover().hover((e) => {
+            e.preventDefault();
+            $(this).next().velocity('transition.slideUpIn')
+        })
+
+        // render mathematics in popovers
+        $("[data-toggle=preview]").on('shown.bs.popover', function () {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
         });
     </script>
 </div>
