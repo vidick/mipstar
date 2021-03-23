@@ -29,5 +29,6 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                         ref['data-content'] = content
                         ref['class'] = 'page-preview'
                         ref['data-animation'] = 'false'
+                        ref['data-toggle'] = 'preview'
             with open(os.path.join(root, file), 'w') as f:
                 f.write(str(doc))
