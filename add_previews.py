@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import glob, os
+import os
 
 def find_ref_doc(tag, root, files):
     for file in files:
@@ -24,7 +24,7 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
             refs = doc.select('p a[data-tag]')
             for ref in refs:
                 if ref['data-tag']:
-                    content = find_ref_doc(ref['data-tag'], files)
+                    content = find_ref_doc(ref['data-tag'], root, files)
                     if content:
                         ref['data-content'] = content
                         ref['class'] = 'page-preview'

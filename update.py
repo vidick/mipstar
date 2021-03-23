@@ -66,7 +66,7 @@ if out or any('No such file or directory' in msg for msg in err) or args.force:
 
     log_outputs(log, stdout.readlines(), stderr.readlines())
 
-    if not args.nopdf or args.force:
+    if not args.nopdf or (args.force and not args.nopdf):
         log.info('  Making book.tex')
         stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 make_book.py')
         log_outputs(log, stdout.readlines(), stderr.readlines())
