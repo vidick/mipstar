@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import glob, os
 
-def find_ref_doc(tag, files):
+def find_ref_doc(tag, root, files):
     for file in files:
         if tag in file.split('-'):
-            preview = BeautifulSoup(open(file), 'lxml')
+            preview = BeautifulSoup(open(os.path.join(root, file)), 'lxml')
             all_text = preview.findAll(text=True)
             content = ''
             
@@ -20,7 +20,7 @@ def find_ref_doc(tag, files):
 for root, dirs, files in os.walk('./latex/make_doc/'):
     for file in files:
         if file.endswith('.tag'):
-            doc = BeautifulSoup(open(file), 'lxml')
+            doc = BeautifulSoup(open(os.path.join(root, file)), 'lxml')
             refs = doc.select('p a[data-tag]')
             for ref in refs:
                 if ref['data-tag']:
@@ -28,5 +28,5 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                     if content:
                         ref['data-content'] = content
                         ref['class'] = 'page-preview'
-            with open(file, 'w') as f:
+            with open(os.path.join(root, file), 'w') as f:
                 f.write(str(doc))
