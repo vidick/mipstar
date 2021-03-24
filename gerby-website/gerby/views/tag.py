@@ -149,6 +149,9 @@ def show_tag(tag):
     if tag.type in headings:
         html = tag.html
 
+        print('asfasdfasf:::::')
+        print(html)
+
         # if we are below the cutoff: generate all data below it too
         if headings.index(tag.type) >= headings.index(gerby.configuration.UNIT):
             tags = Tag.select().where(Tag.ref.startswith(tag.ref + "."), Tag.type << headings)
