@@ -266,6 +266,9 @@ def show_tag(tag):
     else:
         filename = tag.label.split("-" + tag.type)[0]
 
+    print('hi::::::')
+    print(html)
+
     return render_template("tag.show.html",
                            tag=tag,
                            breadcrumb=breadcrumb,
