@@ -32,4 +32,4 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                         ref['data-toggle'] = 'preview'
             print(os.path.join(root, file[:-4] + '-new.html'))
             with open(os.path.join(root, file[:-4] + '-new.html'), 'w') as f:
-                f.write(str(doc.prettify()))
+                f.write(str(doc))
