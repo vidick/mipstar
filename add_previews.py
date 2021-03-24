@@ -30,5 +30,6 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                         ref['class'] = 'page-preview'
                         ref['data-animation'] = 'false'
                         ref['data-toggle'] = 'preview'
+            print(os.path.join(root, file[-3] + '-new.html'))
             with open(os.path.join(root, file[-3] + '-new.html'), 'w') as f:
                 f.write(str(doc.prettify()))
