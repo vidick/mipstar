@@ -21,6 +21,7 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
     for file in files:
         if file.endswith('.tag'):
             doc = BeautifulSoup(open(os.path.join(root, file)), 'lxml')
+            doc = doc.prettify()
             refs = doc.select('p a[data-tag]')
             for ref in refs:
                 if ref['data-tag']:
