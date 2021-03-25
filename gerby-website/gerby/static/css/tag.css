@@ -409,4 +409,5 @@ div.preview-body {
     transition: opacity ease-in-out 0.5s;
     background-color: #E9D3FF;
     z-index: 1000;
+    overflow: hidden;
 }

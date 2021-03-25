@@ -105,7 +105,7 @@
 
     {{ html | safe }}
     
-    <div class="preview-body rounded p-2"></div>
+    <div class="preview-body rounded p-2 shadow-sm"></div>
     <script type="text/javascript">
         function isLemThm(text) {
             return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
@@ -264,7 +264,8 @@
                 'top': $(this).position().top,
                 'left': pos + $(this).position().left,
                 'width': Math.min($(window).width() - pos, 300) + 'px',
-                'opacity': 1
+                'opacity': 1,
+                'display': 'block'
             });
 
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.preview-body").html()]);
@@ -276,7 +277,8 @@
             });
             $('.preview-body').text('');
             $('.preview-body').css({
-                'opacity': 0
+                'opacity': 0,
+                'display': 'none'
             });
         });
     </script>
