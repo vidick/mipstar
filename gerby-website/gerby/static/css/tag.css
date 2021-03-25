@@ -386,7 +386,7 @@ a.page-preview {
     position: relative;
 }
 
-a.highlight {
+:root {
     --underline-width: 0px;
 }
 
