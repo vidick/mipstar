@@ -254,7 +254,7 @@
         //     MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
         // });
         $('a.page-preview').hover(function () {
-            $(this).attr('data-width', ($('#main').position().left + $('#main').width()) + 'px');
+            $(this).attr('data-width', Math.round($('#main').position().left + $('#main').width()) + 'px');
             $(this).toggleClass('highlight');
         });
     </script>
