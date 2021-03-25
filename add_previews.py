@@ -29,7 +29,7 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                     if content:
                         pass
                         # ref['data-content'] = 'test'
-                        # ref['class'] = 'page-preview'
+                        ref['class'] = 'page-preview'
                         # ref['data-animation'] = 'false'
                         # ref['data-toggle'] = 'preview'
             # print(os.path.join(root, file[:-4] + '-new.html'))
