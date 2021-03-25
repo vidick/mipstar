@@ -400,5 +400,5 @@ a.highlight:after {
     top: 100%;
     left: -4px;
     pointer-events: none;
-    z-index: 100000;
+    transition: all 0.5s;
 }
