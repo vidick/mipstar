@@ -261,7 +261,8 @@
                 '--underline-visibility': 1
             });
 
-            $('body').append(`<div class="preview-body">${$(this).attr('data-content')}</div>`).css({
+            $('body').append(`<div class="preview-body">${$(this).attr('data-content')}</div>`);
+            $('.preview-body').css({
                 'position': 'absolute',
                 'top': $(this).position().top,
                 'left': pos
