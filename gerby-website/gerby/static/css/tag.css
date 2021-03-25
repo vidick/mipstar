@@ -386,10 +386,11 @@ a.page-preview {
     position: relative;
 }
 
-a.page-preview.highlight {
+a.highlight {
     --underline-width: 0px;
 }
-a.page-preview.highlight:after {
+
+a.highlight:after {
     content: '';
     position: absolute;
     width: var(--underline-width);
