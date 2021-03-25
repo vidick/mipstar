@@ -382,7 +382,7 @@ ol+span.qed {
     font-size: 75%;
 }
 
-.page-preview .highlight::after {
+.page-preview.highlight::after {
     content: '';
     position: absolute;
     width: 600px;
