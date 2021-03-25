@@ -255,7 +255,7 @@
         // });
         $('a.page-preview').hover(function () {
             $(this).toggleClass('highlight');
-            $(':root').css('--underline-width', Math.round($('#main').position().left + $('#main').width()) + 'px');
+            $(':root').css('--underline-width', Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 'px');
         });
     </script>
 </div>
