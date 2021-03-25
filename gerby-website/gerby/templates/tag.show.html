@@ -243,16 +243,18 @@
             // },
         };
 
-        $('.page-preview').popover(options)
+        // $('.page-preview').popover(options)
         // .hover((e) => {
         //     // e.preventDefault();
         //     // $(this).velocity('transition.slideUpIn')
         // })
 
         // render mathematics in popovers
-        $("[data-toggle=preview]").on('shown.bs.popover', function () {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
-        });
+        // $("[data-toggle=preview]").on('shown.bs.popover', function () {
+        //     MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
+        // });
+
+        $('.page-preview').hover((e) => { $(this).addClass('highlight'); }, (e) => { $(this).removeClass('highlight'); });
     </script>
 </div>
 
