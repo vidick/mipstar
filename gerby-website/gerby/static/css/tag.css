@@ -407,4 +407,5 @@ a.highlight:after {
 
 div.preview-body {
     transition: opacity ease-in-out 0.5s;
+    background-color: #E9D3FF;
 }
