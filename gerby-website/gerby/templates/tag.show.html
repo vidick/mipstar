@@ -105,6 +105,7 @@
 
     {{ html | safe }}
     
+    <div class="preview-body"></div>
     <script type="text/javascript">
         function isLemThm(text) {
             return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
@@ -261,17 +262,22 @@
                 '--underline-visibility': 1
             });
 
-            $('body').append(`<div class="preview-body">${$(this).attr('data-content')}</div>`);
+            $('.preview-body').text($(this).attr('data-content'));
             $('.preview-body').css({
                 'position': 'absolute',
                 'top': $(this).position().top,
-                'left': pos
+                'left': pos,
+                'opacity': 1
             });
         }, function () {
             $(this).removeClass('highlight');
             $(':root').css({
                 '--underline-width': 0,
                 '--underline-visibility': 0
+            });
+            $('.preview-body').text('');
+            $('.preview-body').css({
+                'opacity': 0
             });
         });
     </script>

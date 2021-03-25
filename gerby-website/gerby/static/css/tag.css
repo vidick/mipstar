@@ -404,3 +404,7 @@ a.highlight:after {
     pointer-events: none;
     transition: opacity ease-in-out 0.5s;
 }
+
+div.preview-body {
+    transition: opacity ease-in-out 0.5s;
+}
