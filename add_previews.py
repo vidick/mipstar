@@ -28,7 +28,7 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                     content = find_ref_doc(ref['data-tag'], root, files)
                     if content:
                         # pass
-                        # ref['data-content'] = 'test'
+                        ref['data-content'] = content
                         ref['class'] = 'page-preview'
                         ref['data-animation'] = 'false'
                         # ref['data-toggle'] = 'preview'
