@@ -3,7 +3,7 @@ import os
 
 def find_ref_doc(tag, root, files):
     for file in files:
-        if tag in file.split('-'):
+        if tag in file.split('-') and file.endswith('.tag'):
             preview = BeautifulSoup(open(os.path.join(root, file)), 'lxml')
             all_text = preview.findAll(text=True)
             content = ''
