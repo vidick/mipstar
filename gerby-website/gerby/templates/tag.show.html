@@ -254,10 +254,16 @@
         //     MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
         // });
         $('a.page-preview').hover(function () {
-            $(this).toggleClass('highlight');
+            $(this).addClass('highlight');
             $(':root').css({
-                '--underline-width': Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 'px', 
+                '--underline-width': Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 'px',
                 '--underline-visibility': 1
+            });
+        }, function () {
+            $(this).removeClass('highlight');
+            $(':root').css({
+                '--underline-width': 0,
+                '--underline-visibility': 0
             });
         });
     </script>
