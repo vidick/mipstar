@@ -255,9 +255,16 @@
         // });
         $('a.page-preview').hover(function () {
             $(this).addClass('highlight');
+            let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left);
             $(':root').css({
-                '--underline-width': Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 'px',
+                '--underline-width': pos + 'px',
                 '--underline-visibility': 1
+            });
+
+            $('body').append(`<div class="preview-body">${$(this).attr('data-content')}</div>`).css({
+                'position': 'absolute',
+                'top': $(this).position().top,
+                'left': pos
             });
         }, function () {
             $(this).removeClass('highlight');
