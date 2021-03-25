@@ -267,6 +267,7 @@
                 'position': 'absolute',
                 'top': $(this).position().top,
                 'left': pos + $(this).position().left,
+                'max-width': $(window).width() - pos + $(this).position().left,
                 'opacity': 1
             });
         }, function () {
