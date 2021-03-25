@@ -411,4 +411,5 @@ div.preview-body {
     background-color: #E9D3FF;
     z-index: 1000;
     overflow: hidden;
+    padding: 0;
 }
