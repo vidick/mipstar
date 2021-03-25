@@ -137,7 +137,7 @@
         }
 
         $(document).ready(function() {
-            $('.page-preview').hover((e) => { $(this).addClass('highlight'); }, (e) => { $(this).removeClass('highlight'); });
+            $('.page-preview').hover(() => { $(this).addClass('highlight'); }, () => { $(this).removeClass('highlight'); });
             // move extras from parent element to after environment name and number
             $("article a[data-toggle]").each(function(index, element) {
                 $(element).insertAfter(($(element).parent().find("a.environment-identifier")));
