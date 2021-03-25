@@ -30,8 +30,8 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                         # pass
                         # ref['data-content'] = 'test'
                         ref['class'] = 'page-preview'
-                        # ref['data-animation'] = 'false'
-                        ref['data-toggle'] = 'preview'
+                        ref['data-animation'] = 'false'
+                        # ref['data-toggle'] = 'preview'
             # print(os.path.join(root, file[:-4] + '-new.html'))
             # with open(os.path.join(root, file[:-4] + '-new.html'), 'w') as f:
             with open(os.path.join(root, file), 'w') as f:
