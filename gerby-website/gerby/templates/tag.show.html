@@ -137,7 +137,6 @@
         }
 
         $(document).ready(function() {
-            $('.page-preview').hover(() => { $(this).addClass('highlight'); }, () => { $(this).removeClass('highlight'); });
             // move extras from parent element to after environment name and number
             $("article a[data-toggle]").each(function(index, element) {
                 $(element).insertAfter(($(element).parent().find("a.environment-identifier")));
@@ -254,6 +253,9 @@
         // $("[data-toggle=preview]").on('shown.bs.popover', function () {
         //     MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
         // });
+        $('a.page-preview').hover(function () {
+            $(this).toggleClass('highlight');
+        });
     </script>
 </div>
 
