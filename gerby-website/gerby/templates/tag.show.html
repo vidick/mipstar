@@ -266,7 +266,7 @@
             $('.preview-body').css({
                 'position': 'absolute',
                 'top': $(this).position().top,
-                'left': pos,
+                'left': pos + $(this).position().left,
                 'opacity': 1
             });
         }, function () {
