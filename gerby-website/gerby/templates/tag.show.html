@@ -223,7 +223,7 @@
 
         $('a.page-preview').hover(function () {
             $(this).addClass('highlight');
-            let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left);
+            let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
             $(':root').css({
                 '--underline-width': pos + 'px',
                 '--underline-visibility': 1
