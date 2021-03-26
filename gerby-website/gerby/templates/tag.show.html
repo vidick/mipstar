@@ -106,7 +106,6 @@
     {{ html | safe }}
     
     <div class="preview-body rounded shadow">
-        <p></p>
     </div>
     <script type="text/javascript">
         function isLemThm(text) {
@@ -232,7 +231,7 @@
                 '--underline-visibility': 1
             });
 
-            $('.preview-body p').text($(this).attr('data-content'));
+            $('.preview-body').text($(this).attr('data-content'));
             $('.preview-body').css({
                 'position': 'absolute',
                 'top': $(this).position().top,
@@ -249,7 +248,7 @@
                 '--underline-width': 0,
                 '--underline-visibility': 0
             });
-            $('.preview-body p').text('');
+            $('.preview-body').text('');
             $('.preview-body').css({
                 'opacity': 0,
                 'padding': 0
