@@ -226,7 +226,7 @@
             let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
             let topOffset = Math.round($('#first-bar').height() + $('#second-bar').height());
             $(':root').css({
-                '--underline-width': ($(this).position().left + 50) + 'px',
+                '--underline-width': ($('#main').width() - $(this).position().left + 50) + 'px',
                 '--underline-visibility': 1
             });
 
