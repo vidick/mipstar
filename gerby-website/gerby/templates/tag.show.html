@@ -224,6 +224,7 @@
         $('a.page-preview').hover(function () {
             $(this).addClass('highlight');
             let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
+            let topOffset = Math.round($('#first-bar').height() + $('#second-bar').height());
             $(':root').css({
                 '--underline-width': pos + 'px',
                 '--underline-visibility': 1
@@ -232,8 +233,8 @@
             $('.preview-body').text($(this).attr('data-content'));
             $('.preview-body').css({
                 'position': 'absolute',
-                'top': $(this).position().top,
-                'left': pos + $(this).position().left,
+                'top': ($(this).position().top + topOffset) + 'px',
+                'left': (pos + $(this).position().left) + 'px',
                 'width': Math.min($(window).width() - pos, 300) + 'px',
                 'opacity': 1,
                 'padding': '0.5rem'
