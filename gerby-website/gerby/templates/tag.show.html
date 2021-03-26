@@ -224,34 +224,6 @@
             }
         });
 
-        let options = {
-            placement: 'top',
-            trigger: 'hover'
-            // placement: (context, source) => {
-            //     let position = $(source).position();
-
-            //     if (position.left > 515) {
-            //         return "left";
-            //     }
-
-            //     if (position.left < 515) {
-            //         return "right";
-            //     }
-
-            //     if (position.top < 110){
-            //         return "bottom";
-            //     }
-
-            //     return "top";
-            // },
-        };
-
-        // $('.page-preview').popover(options)
-        // .hover((e) => {
-        //     // e.preventDefault();
-        //     // $(this).velocity('transition.slideUpIn')
-        // })
-
         $('a.page-preview').hover(function () {
             $(this).addClass('highlight');
             let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) - 50;
