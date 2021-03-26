@@ -403,7 +403,6 @@ a.highlight:after {
     left: -4px;
     pointer-events: none;
     transition: opacity ease-in-out 0.5s;
-    z-index: -1;
 }
 
 div.preview-body {
