@@ -235,7 +235,7 @@
                 'position': 'absolute',
                 'top': ($(this).position().top + topOffset) + 'px',
                 'left': (pos + $(this).position().left) + 'px',
-                'width': Math.min($(window).width() - pos, 300) + 'px',
+                'width': ($(window).width() - ($('#main').position().left + $('#main').width())) + 'px',
                 'opacity': 1,
                 'padding': '0.5rem'
             });
