@@ -22,7 +22,8 @@ log.setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(description='Pull changes from GitHub and update mipstar.net.')
 parser.add_argument('-np', '--nopdf', help='skip PDF generation step', action='store_true')
-parser.add_argument('-f', '--force', help='force tag, database, and PDF regeneration', action='store_true')
+parser.add_argument('-f', '--force', help='force tag and database regeneration', action='store_true')
+parser.add_argument('-skpp', '--skippreview', help='skip page preview generation', action='store_true')
 args = parser.parse_args()
 
 # diff = subprocess.Popen(['git', 'diff', 'master:document.tex', '--', 'document.tex'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='/root/mipstar/')
@@ -87,9 +88,12 @@ if out or any('No such file or directory' in msg for msg in err) or args.force:
     else:
         log.info('  Skipping PDF generation')
 
-    log.info('  Adding page previews')
-    stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 add_previews.py')
-    log_outputs(log, stdout.readlines(), stderr.readlines())
+    if not args.skippreview:
+        log.info('  Adding page previews')
+        stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar && python3 add_previews.py')
+        log_outputs(log, stdout.readlines(), stderr.readlines())
+    else:
+        log.info('  Skipping page preview generation')
 
     log.info('  Deleting old database file')
     stdin, stdout, stderr = ssh.exec_command('cd /root/mipstar/gerby-website/gerby/tools && rm tags.sqlite')
