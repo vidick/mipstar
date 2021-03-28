@@ -29,8 +29,14 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
         if file.endswith('.tag'):
             doc = BeautifulSoup(open(os.path.join(root, file)), 'lxml')
             refs = doc.select('p a[data-tag]')
+            span_refs = doc.select('span.equation-label a[data-tag]')
+
+            intersect = set(refs) & set(span_refs)
+
             for ref in refs:
-                if ref['data-tag']:
+                # make sure current reference link has a data-tag and
+                # is not an equation label
+                if ref['data-tag'] and ref not in intersect:
                     content = find_ref_doc(ref['data-tag'], root, files)
                     if content:
                         ref['data-content'] = content
