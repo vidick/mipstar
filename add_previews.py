@@ -11,8 +11,12 @@ def find_ref_doc(tag, root, files):
             char_count = 0
             i = 0
             while char_count < 250 and i < len(all_text):
-                all_text[i] = all_text[i].replace('\\label{', '{')
-                
+                label_pos = all_text[i].find('\\label{')
+                while label_pos != -1:
+                    end_brace_pos = all_text[i].find('}', label_pos)
+                    all_text[i] = all_text[i][:label_pos] + all_text[i][end_brace_pos + 1:]
+                    label_pos = all_text[i].find('\\label{')
+
                 content += all_text[i]
                 char_count += len(all_text[i])
                 i += 1
