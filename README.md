@@ -1,3 +1,3 @@
-This repository documents a minimal working example for using Gerby. The main steps in doing so are documented in the file `.travis.yml`.
+# The MIP* Project
 
-For more information, see [Gerby project](https://gerby-project.github.io).
+This is the official repository of the MIP* Project website, based on the Gerby Project. For more information on the Gerby Project, see [Gerby project](https://gerby-project.github.io).
