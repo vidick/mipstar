@@ -21,8 +21,8 @@ def find_ref_doc(tag, root, files):
                 char_count += len(all_text[i])
                 i += 1
             content = content.replace('\n', ' ')
-            return content
-    return ''
+            return (content, i == len(all_text))
+    return ('', False)
 
 for root, dirs, files in os.walk('./latex/make_doc/'):
     for file in files:
@@ -37,9 +37,11 @@ for root, dirs, files in os.walk('./latex/make_doc/'):
                 # make sure current reference link has a data-tag and
                 # is not an equation label
                 if ref['data-tag'] and (ref.parent.name != 'span' or 'equation-label' not in ref.parent['class']):
-                    content = find_ref_doc(ref['data-tag'], root, files)
+                    content, shortened = find_ref_doc(ref['data-tag'], root, files)
                     if content:
                         ref['data-content'] = content
+                        if shortened:
+                            ref['data-shortened'] = '[...]'
                         ref['class'] = 'page-preview'
 
             with open(os.path.join(root, file), 'w') as f:

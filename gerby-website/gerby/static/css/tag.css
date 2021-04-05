@@ -413,6 +413,11 @@ div.preview-body {
     padding: 0;
 }
 
+div.preview-body:after {
+    content: attr(data-shortened);
+    font-style: italic;
+}
+
 .shadow {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
