@@ -413,11 +413,6 @@ div.preview-body {
     padding: 0;
 }
 
-div.preview-body:before {
-    content: '(Preview)';
-    font-style: italic;
-}
-
 div.preview-body:after {
     content: attr(data-shortened);
     font-style: italic;
