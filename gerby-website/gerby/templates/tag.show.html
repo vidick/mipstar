@@ -235,7 +235,7 @@
             $('.preview-body').attr('data-shortened', $(this).attr('data-shortened'));
             $('.preview-body').css({
                 'position': 'absolute',
-                'top': $(this).getBoundingClientRect().top + 'px',//($(this).position().top + topOffset) + 'px',
+                'top': $(this)[0].getBoundingClientRect().top + 'px',//($(this).position().top + topOffset) + 'px',
                 'left': (pos + $(this).position().left) + 'px',
                 'width': ($(window).width() - ($('#main').position().left + $('#main').width()) - 75) + 'px',
                 'opacity': 1,
