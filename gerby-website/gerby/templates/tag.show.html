@@ -225,6 +225,7 @@
             $(this).addClass('highlight');
             let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
             let topOffset = Math.round($('#first-bar').height() + $('#second-bar').height());
+
             $(':root').css({
                 '--underline-width': ($('#main').width() - $(this).position().left + 50) + 'px',
                 '--underline-visibility': 1
@@ -234,7 +235,7 @@
             $('.preview-body').attr('data-shortened', $(this).attr('data-shortened'));
             $('.preview-body').css({
                 'position': 'absolute',
-                'top': ($(this).position().top + topOffset) + 'px',
+                'top': $(this).getBoundingClientRect().top + 'px',//($(this).position().top + topOffset) + 'px',
                 'left': (pos + $(this).position().left) + 'px',
                 'width': ($(window).width() - ($('#main').position().left + $('#main').width()) - 75) + 'px',
                 'opacity': 1,
