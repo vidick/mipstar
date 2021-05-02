@@ -244,23 +244,17 @@
 
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.preview-body").html()]);
         }, function () {
-            const outerThis = $(this)
-            // $(this).removeClass('highlight');
-            // $(':root').css({
-            //     '--underline-width': 0,
-            //     '--underline-visibility': 0
-            // });
-            // $('.preview-body').text('');
-            // $('.preview-body').attr('data-shortened', '');
-            $('.preview-body').fadeOut('fast', function () {
-                outerThis.removeClass('highlight');
-                $(':root').css({
-                    '--underline-width': 0,
-                    '--underline-visibility': 0
-                });
-                $('.preview-body').text('');
-                $('.preview-body').attr('data-shortened', '');
-            })
+            $(this).removeClass('highlight');
+            $(':root').css({
+                '--underline-width': 0,
+                '--underline-visibility': 0
+            });
+            $('.preview-body').text('');
+            $('.preview-body').attr('data-shortened', '');
+            $('.preview-body').css({
+                'opacity': 0,
+                'padding': 0
+            });
         });
     </script>
 </div>
