@@ -416,6 +416,7 @@ div.preview-body {
 div.preview-body:after {
     content: attr(data-shortened);
     font-style: italic;
+    text-align: center;
 }
 
 .shadow {
