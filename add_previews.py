@@ -21,8 +21,12 @@ def find_ref_doc(tag, root, files):
                 char_count += len(all_text[i])
                 i += 1
             content = content.replace('\n', ' ')
-            print('extra text: ' + str(all_text[i:]))
-            return (content, i != len(all_text))
+            is_whitespace = False
+            for word in all_text[i:]:
+                if word.isspace():
+                    is_whitespace = True
+                    break
+            return (content, i != len(all_text) and not is_whitespace)
     return ('', False)
 
 for root, dirs, files in os.walk('./latex/make_doc/'):
