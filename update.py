@@ -8,6 +8,16 @@ import paramiko
 from progress.spinner import Spinner
 from utils import get_chapters, log_outputs
 
+def restore_previous(ssh):
+    _, stdout, stderr = ssh.exec_command('cd /root/mipstar && cat backup')
+    if stderr:
+        return
+    
+    back_num = int(stdout)
+    log.info('  Restoring previous stable commit')
+    _, stdout, stderr = ssh.exec_command(f'cd /root/mipstar && git reset --hard HEAD~{back_num + 1}')
+    log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
+
 load_dotenv()
 AUTH = str(os.getenv('AUTH'))
 
