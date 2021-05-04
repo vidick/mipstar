@@ -21,6 +21,7 @@ def find_ref_doc(tag, root, files):
                 char_count += len(all_text[i])
                 i += 1
             content = content.replace('\n', ' ')
+            print('extra text: ' + all_text[i:])
             return (content, i != len(all_text))
     return ('', False)
 
