@@ -21,10 +21,11 @@ def find_ref_doc(tag, root, files):
                 char_count += len(all_text[i])
                 i += 1
             # content = content.replace('\n', ' ')
-            is_only_whitespace = False
+            is_only_whitespace = True
             for word in all_text[i:]:
-                is_only_whitespace = word.isspace()
-                
+                if not word.isspace():
+                    is_only_whitespace = False
+                    break
             return (content, i != len(all_text) and not is_only_whitespace)
     return ('', False)
 
