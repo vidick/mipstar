@@ -20,7 +20,7 @@ def find_ref_doc(tag, root, files):
                 content += all_text[i]
                 char_count += len(all_text[i])
                 i += 1
-            # content = content.replace('\n', ' ')
+            content = content.replace('\n', ' ')
             is_only_whitespace = True
             for word in all_text[i:]:
                 if not word.isspace():
