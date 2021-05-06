@@ -24,8 +24,11 @@ log.setLevel(logging.INFO)
 def check_errors(keywords, output):
     """Check if outputs returned any errors/exceptions."""
     for word in keywords:
-        if word in output:
-            return True
+        for line in output:
+            if 'ERROR: Could not load package "book"' in line:
+                continue
+            if word in line:
+                return True
     return False
 
 
@@ -33,14 +36,14 @@ def log_outputs(logger, out, err, prepend_out='', prepend_err=''):
     """Log output and error messages to console."""
     if out:
         combined = ''.join(out)
-        if check_errors(['ERROR', 'Error'], combined):
-            raise RuntimeError('Error rendering website')
         logger.info(prepend_out + combined)
+        if check_errors(['ERROR', 'Error'], out):
+            raise RuntimeError('Error rendering website')
     if err:
         combined = ''.join(err)
-        if check_errors(['ERROR', 'Error'], combined):
-            raise RuntimeError('Error rendering website')
         logger.info(prepend_err + combined)
+        if check_errors(['ERROR', 'Error'], err):
+            raise RuntimeError('Error rendering website')
 
 
 def update_website(pull_latest):
@@ -137,6 +140,11 @@ def update_website(pull_latest):
     else:
         log.info('  No diff found')
 
+    if pull_latest:
+        log.info('  Update backup file')
+        _, stdout, stderr = ssh.exec_command(
+            f'cd /root/mipstar && git rev-parse --short HEAD > backup')
+
     log.info('  Requesting service restart')
     stdin, stdout, stderr = ssh.exec_command('sudo systemctl restart mipstar')
     stdin.write(AUTH + '\n')
@@ -147,18 +155,20 @@ def update_website(pull_latest):
 
 def restore_previous():
     _, stdout, stderr = ssh.exec_command('cd /root/mipstar && cat backup')
-    if stderr:
+    if stderr.readlines():
+        log.info('  Error reading backup file')
+        log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
         return
 
-    back_num = int(stdout.readline())
+    backup_hash = str(stdout.readline()).strip()
     log.info('  Restoring previous stable commit')
     _, stdout, stderr = ssh.exec_command(
-        f'cd /root/mipstar && git reset --hard HEAD~{back_num + 1}')
+        f'cd /root/mipstar && git reset --hard {backup_hash}')
     log_outputs(log, stdout.readlines(), stderr.readlines(), '\n', '\n')
 
-    log.info('  Update backup')
-    _, stdout, stderr = ssh.exec_command(
-        f'cd /root/mipstar && echo {back_num + 1} > backup')
+    # log.info('  Update backup file')
+    # _, stdout, stderr = ssh.exec_command(
+    #     f'cd /root/mipstar && echo {backup_hash} > backup')
 
     update_website(pull_latest=False)
 
