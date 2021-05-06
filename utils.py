@@ -1,4 +1,6 @@
 """Common functions used in scripts."""
+
+
 def extract_label(line):
     """Return the \\label on the given line"""
     start = line.find('\\label{')
@@ -27,11 +29,3 @@ def get_chapters():
     chapsfile.close()
 
     return chapters_noext, chapters
-
-
-def log_outputs(logger, out, err, prepend_out='', prepend_err=''):
-    """Log output and error messages to console."""
-    if out:
-        logger.info(prepend_out + ''.join(out))
-    if err:
-        logger.info(prepend_err + ''.join(err))
