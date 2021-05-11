@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      AUTH: ${{ secrets.AUTH }}
     strategy:
       matrix:
         python-version: [3.8]
@@ -34,7 +36,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
+    - name: Run update.py
+      run: |
+        python update.py
 #     # Steps represent a sequence of tasks that will be executed as part of the job
 #     steps:
 #       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
