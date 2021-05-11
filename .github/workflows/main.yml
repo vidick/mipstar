@@ -22,6 +22,8 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
+    env:
+      AUTH: ${{ secrets.AUTH }}
 
     steps:
     - uses: actions/checkout@v2
