@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.min.js" integrity="sha384-ZKch/OmPYYZT/9GpxSgMqUIDdBjwYYuJ3+CfQytRQElwdBsCMJkEmcsynJlFlsCS" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 {% endblock %}
 
 {% block breadcrumb %}
@@ -272,8 +273,8 @@
         });
     </script>
 
-    <div class="modal fade" id="citationModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal" id="citationModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="citationModalLabel">Cite Tag {{ tag.tag }}</h5>
@@ -293,7 +294,6 @@
                               <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                           </svg>
                           </button>
-                          <!-- <button class="clipboard" data-clipboard-target="#cite-tag-link"><img src="/static/images/clippy.svg"></button> -->
                           <code id="cite-tag-link">\cite[\href{https://mipstar.net/tag/{{ tag.tag }}}{Tag {{ tag.tag }}}]{mipstar}</code>
                       </li>
                       <li>
