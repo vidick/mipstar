@@ -26,7 +26,7 @@
 {% block pagenav %}
     <script>
         function handleCitation() {
-            axios.post('/cite')
+            axios.post('/{{ tag }}/cite')
             .then((res) => {
                 console.log(res.data)
             }, (err) => {
