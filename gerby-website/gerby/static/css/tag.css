@@ -423,6 +423,10 @@ div.preview-body:after {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
 
+.modal-open, .modal {
+    padding-right: 0px !important;
+}
+
 /* .page-nav-wrapper {
     display: flex;
     flex-direction: column;
