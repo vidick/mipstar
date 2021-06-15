@@ -422,3 +422,15 @@ div.preview-body:after {
 .shadow {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
+
+/* .page-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.page-nav-wrapper .citeBtn, .page-nav-wrapper .downloadBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+} */
