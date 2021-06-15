@@ -427,6 +427,10 @@ div.preview-body:after {
     padding-right: 0px !important;
 }
 
+.modal-header {
+    border-bottom: none;
+}
+
 /* .page-nav-wrapper {
     display: flex;
     flex-direction: column;
