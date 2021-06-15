@@ -278,7 +278,8 @@ def show_tag(tag):
                            comments=comments,
                            filename=filename,
                            parentComments=parentComments,
-                           depth=gerby.configuration.DEPTH)
+                           depth=gerby.configuration.DEPTH,
+                           time=datetime.datetime.utcnow())
 
 
 @app.route("/tag/<string:tag>/cite", methods=['POST'])
