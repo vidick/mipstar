@@ -281,24 +281,33 @@ def show_tag(tag):
                            depth=gerby.configuration.DEPTH)
 
 
-@app.route("/tag/<string:tag>/cite")
-def show_citation(tag):
+@app.route("/tag/<string:tag>/cite", methods=['POST'])
+def send_citation_info(tag):
     if not isTag(tag):
-        return render_template("tag.invalid.html", tag=tag)
+        return {doesExist: False, tag: tag}
 
     try:
         tag = Tag.get(Tag.tag == tag.upper())
     except Tag.DoesNotExist:
-        return render_template("tag.notfound.html", tag=tag), 404
+        return {doesExist: False, tag: tag}
+    return {doesExist: True, tag: tag}
+# def show_citation(tag):
+#     if not isTag(tag):
+#         return render_template("tag.invalid.html", tag=tag)
 
-    breadcrumb = getBreadcrumb(tag)
-    neighbours = getNeighbours(tag)
+#     try:
+#         tag = Tag.get(Tag.tag == tag.upper())
+#     except Tag.DoesNotExist:
+#         return render_template("tag.notfound.html", tag=tag), 404
 
-    return render_template("tag.citation.html",
-                           tag=tag,
-                           breadcrumb=breadcrumb,
-                           neighbours=neighbours,
-                           time=datetime.datetime.utcnow())
+#     breadcrumb = getBreadcrumb(tag)
+#     neighbours = getNeighbours(tag)
+
+#     return render_template("tag.citation.html",
+#                            tag=tag,
+#                            breadcrumb=breadcrumb,
+#                            neighbours=neighbours,
+#                            time=datetime.datetime.utcnow())
 
 
 @app.route("/tag/<string:tag>/statistics")
