@@ -29,10 +29,15 @@
         function handleCitation() {
             axios.post('/tag/{{ tag }}/cite')
             .then((res) => {
-                console.log(res.data)
-                $('#citationModal').modal('show')
+                // console.log(res.data)
+                let doesExist = res.data.doesExist
+                if (doesExist)
+                    $('#citationModal').modal('show')
+                else
+                    $('#citationErrorModal').modal('show')
             }, (err) => {
                 console.error(err)
+                $('#citationErrorModal').modal('show')
             })
         }
     </script>
@@ -334,6 +339,21 @@
                     year         = {% raw %}{{% endraw %}{{ time.year }}},
                   }</code></pre>
                     <p>You can also consider using the <code>@online</code> type in BibLaTeX, changing the the <code>howpublished</code> to <code>url</code>. Another neat trick in BibLaTeX is the <code>shorthand</code> field, which you could set to <code>MIP*</code>.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="citationErrorModal" tabindex="-1" aria-labelledby="citationErrorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Citation Error</span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>There was an error citing this tag. Either the tag does not exist or is invalid.</p>
                 </div>
             </div>
         </div>
