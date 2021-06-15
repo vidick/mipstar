@@ -24,6 +24,16 @@
 {% endblock %}
 
 {% block pagenav %}
+    <script>
+        function handleCitation() {
+            axios.post('/cite')
+            .then((res) => {
+                console.log(res.data)
+            }, (err) => {
+                console.error(err)
+            })
+        }
+    </script>
     <div class="page-nav-wrapper w-100 mt-2">
         <a class="btn btn-secondary mr-2 {% if not neighbours[0] %} disabled {% endif %}" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
             <i class="bi bi-arrow-left-circle"></i>
@@ -102,15 +112,6 @@
             $(function () {
                 $('[data-toggle="popover"]').popover()
             })
-
-            function handleCitation() {
-                axios.post('/cite')
-                .then((res) => {
-                    console.log(res.data)
-                }, (err) => {
-                    console.error(err)
-                })
-            }
         </script>
     {% endif %}
 
