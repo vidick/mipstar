@@ -273,7 +273,7 @@
         });
     </script>
 
-    <div class="modal fade" id="citationModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -334,10 +334,6 @@
                     year         = {% raw %}{{% endraw %}{{ time.year }}},
                   }</code></pre>
                     <p>You can also consider using the <code>@online</code> type in BibLaTeX, changing the the <code>howpublished</code> to <code>url</code>. Another neat trick in BibLaTeX is the <code>shorthand</code> field, which you could set to <code>MIP*</code>.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
                 </div>
             </div>
         </div>
