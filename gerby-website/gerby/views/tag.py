@@ -284,13 +284,13 @@ def show_tag(tag):
 @app.route("/tag/<string:tag>/cite", methods=['POST'])
 def send_citation_info(tag):
     if not isTag(tag):
-        return {doesExist: False, tag: tag}
+        return {'doesExist': False, 'tag': tag}
 
     try:
         tag = Tag.get(Tag.tag == tag.upper())
     except Tag.DoesNotExist:
-        return {doesExist: False, tag: tag}
-    return {doesExist: True, tag: tag}
+        return {'doesExist': False, 'tag': tag}
+    return {'doesExist': True, 'tag': tag}
 # def show_citation(tag):
 #     if not isTag(tag):
 #         return render_template("tag.invalid.html", tag=tag)
