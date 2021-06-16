@@ -471,7 +471,7 @@ label.toggle-off:active {
   flex-direction: row;
   justify-content: center;
   margin: 15px 0;
-  column-gap: 10px;
+  column-gap: 20px;
 }
 
 .pill-link {
