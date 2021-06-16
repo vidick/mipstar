@@ -64,8 +64,9 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
-  color: #0d1cb4;
+  /* text-decoration: underline; */
+  /* color: #0d1cb4; */
+  color: #1d5cb4;
 }
 
 ul#crumbs {
