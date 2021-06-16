@@ -107,11 +107,20 @@ def show_index():
   for comment in comments:
     comment.tag = Tag.get(Tag.tag == comment.tag)
 
+    parts = None
+    if Tag.select().where(Tag.type == "part").exists():
+      chapters = Part.select()
+      parts = Tag.select().join(Part, on=Part.part).order_by(Tag.ref).distinct()
+
+      for part in parts:
+        part.chapters = sorted([chapter.chapter for chapter in chapters if chapter.part.tag == part.tag])
+
   return render_template(
       "index.html",
       updates=updates,
       statistics=get_statistics(),
       comments=comments,
+      parts=parts
       )
 
 

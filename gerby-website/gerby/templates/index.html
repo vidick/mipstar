@@ -15,6 +15,50 @@
     <li id="index-comments"><a href="/recent-comments">comments<img src="/static/images/chat-right-text.svg"></a>
     <li id="index-changes"><a href="/recent-changes"><img src="/static/images/file-earmark-diff.svg">recent changes</a>
   </ul>
+
+  <h2>Table of contents</h2>
+
+  <ul id="toc" class="tree">
+    {% for part in parts %}
+      <li id="{{ part.tag }}" class="expanded">
+        <a class="header-offset" id="{{ part.label }}"></a>
+        <strong><a href="/tag/{{ part.tag }}">Part <span data-tag="{{ part.tag }}">{{ part.ref }}</span></a>: {{ part.name }}</strong>
+
+        {#
+        {% set filename = part.label.split("-part-")[1] %}
+        <a href="/download/part-{{ filename }}.pdf" target="_blank" class="pdf-link">pdf</a>
+        #}
+
+        <ul>
+          {% for chapter in part.chapters %}
+            <li><p><a href="/tag/{{ chapter.tag }}">Chapter <span data-tag="{{ chapter.tag }}">{{ chapter.ref }}</span></a>: {{ chapter.name }}
+            {% set filename = chapter.label.split("-section-")[0] %}</p>
+            <a href="/download/{{ filename }}.pdf" target="_blank" class="pdf-link">pdf</a>
+          {% endfor %}
+        </ul>
+        <hr class="my-1">
+    {% endfor %}
+  </ul>
+  <script type="text/javascript">
+    $("ul.tree").bonsai({
+      addExpandAll: true,
+    });
+
+    var state = localStorage.getItem("bonsai-toc");
+    if (state !== null) {
+      $("ul#toc").data("bonsai").restore(JSON.parse(state));
+    }
+
+    $("ul#toc").click(function() {
+      var bonsai = $(this).data("bonsai");
+      var state = bonsai.serialize();
+      localStorage.setItem("bonsai-toc", JSON.stringify(state));
+    });
+
+    $("div.expand-all").click(function() {
+      $("ul#toc").click();
+    });
+  </script>
 {% endblock %}
 
 {% block tagline %}
