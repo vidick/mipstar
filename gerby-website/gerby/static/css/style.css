@@ -64,10 +64,13 @@ a {
 }
 
 a:hover {
-  /* text-decoration: underline; */
-  /* color: #0d1cb4; */
+  text-decoration: underline;
   color: #1d5cb4;
-  text-decoration: none !important;
+  /* color: #0d1cb4; */
+}
+
+#index-logo:hover {
+    text-decoration: none;
 }
 
 ul#crumbs {
