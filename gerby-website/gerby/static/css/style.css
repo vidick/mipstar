@@ -443,3 +443,17 @@ label.toggle-off:active {
     content: '';
     background: none;
 }
+
+.quick-link {
+    padding: 1em 1.6em;
+    font-size: 100%;
+}
+
+.quick-link a {
+    color: #ffffff;
+}
+
+.quick-link a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
