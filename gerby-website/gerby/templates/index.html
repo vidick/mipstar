@@ -11,6 +11,19 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.min.js" integrity="sha384-ZKch/OmPYYZT/9GpxSgMqUIDdBjwYYuJ3+CfQytRQElwdBsCMJkEmcsynJlFlsCS" crossorigin="anonymous"></script>
 {% endblock %}
 
+{% block outerbody %}
+<div class="pill-links-container">
+  <span class="badge badge-pill badge-secondary pill-link"><a href="#toc">Table of Contents</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="/about">About</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="/search">Search</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="#">Blog</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="/bibliography">Bibliography</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="https://github.com/vidick/mipstar">GitHub</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="/recent-comments">Comments</a></span>
+  <span class="badge badge-pill badge-secondary pill-link"><a href="/recent-changes">Recent Changes</a></span>
+</div>
+{% endblock %}
+
 {% block body %}
   <!-- <ul id="index-select">
     <li id="index-browse"><a href="/browse">table of contents<img src="/static/images/list-ol.svg"></a>
@@ -22,17 +35,6 @@
     <li id="index-comments"><a href="/recent-comments">comments<img src="/static/images/chat-right-text.svg"></a>
     <li id="index-changes"><a href="/recent-changes"><img src="/static/images/file-earmark-diff.svg">recent changes</a>
   </ul> -->
-  <div class="quick-links-container">
-    <span class="badge badge-pill badge-secondary quick-link"><a href="#toc">Table of Contents</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="/about">About</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="/search">Search</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="#">Blog</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="/bibliography">Bibliography</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="https://github.com/vidick/mipstar">GitHub</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="/recent-comments">Comments</a></span>
-    <span class="badge badge-pill badge-secondary quick-link"><a href="/recent-changes">Recent Changes</a></span>
-  </div>
-
   <h2>Table of contents</h2>
   <ul id="toc" class="tree">
     {% for part in parts %}
