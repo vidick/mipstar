@@ -22,9 +22,18 @@
     <li id="index-comments"><a href="/recent-comments">comments<img src="/static/images/chat-right-text.svg"></a>
     <li id="index-changes"><a href="/recent-changes"><img src="/static/images/file-earmark-diff.svg">recent changes</a>
   </ul> -->
+  <div class="quick-links-container">
+    <span class="badge badge-pill badge-secondary"><a href="#toc">Table of Contents</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="/about">About</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="/search">Search</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="#">Blog</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="/bibliography">Bibliography</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="https://github.com/vidick/mipstar">GitHub</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="/recent-comments">Comments</a></span>
+    <span class="badge badge-pill badge-secondary"><a href="/recent-changes">Recent Changes</a></span>
+  </div>
 
   <h2>Table of contents</h2>
-
   <ul id="toc" class="tree">
     {% for part in parts %}
       <li id="{{ part.tag }}" class="expanded">
