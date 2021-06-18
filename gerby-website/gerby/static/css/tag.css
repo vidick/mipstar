@@ -424,21 +424,14 @@ div.preview-body:after {
 }
 
 .modal-open, .modal {
-    padding-right: 0px !important;
+    padding-right: 0 !important;
+}
+
+.modal-open #second-bar {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
 }
 
 .modal-header {
     border-bottom: none;
 }
-
-/* .page-nav-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.page-nav-wrapper .citeBtn, .page-nav-wrapper .downloadBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-} */
