@@ -428,7 +428,7 @@ div.preview-body:after {
 }
 
 .modal-open #second-bar {
-    padding-right: 0 !important;
+    padding-right: calc(10rem / 14) !important;
     margin-right: 0 !important;
 }
 
