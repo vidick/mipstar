@@ -483,6 +483,7 @@ label.toggle-off:active {
 
 .pill-link:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .pill-link i {
