@@ -408,7 +408,7 @@
 
     <p>All contributions are licensed under the <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>.
 
-    <form name="comment" id="comment-form" action="/post-comment" method="post">
+    <form name="comment" id="comment-form">
       <label for="name">Name<sup>*</sup>:</label>
       <input type="text" name="name" id="name" required><br>
 
@@ -490,7 +490,7 @@
       <!--<p>This <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">captcha</abbr> seems more appropriate than the usual illegible gibberish, right?<br>-->
       <label for="check">Tag:</label>
       <input type="text" name="check" id="check" required autocomplete="off">
-      <button type="submit" class="btn btn-primary">Post comment</button>
+      <button type="submit" class="btn btn-primary" id="post-comment-btn">Post comment</button>
       <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
 
       <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p>
@@ -512,6 +512,10 @@
                   }
               }
           });
+
+          $('#post-comment-btn').on('submit', function (event) {
+            console.log($('form#comment-form').serialize())
+          })
       </script>
     </form>
 </section>
