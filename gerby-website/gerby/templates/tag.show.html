@@ -513,7 +513,7 @@
               }
           });
 
-          $('#post-comment-btn').on('submit', function (event) {
+          $('form#comment-form').submit(function (event) {
             event.preventDefault()
             console.log($('form#comment-form').serialize())
           })
