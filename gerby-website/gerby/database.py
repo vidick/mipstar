@@ -169,6 +169,7 @@ class BookStatistic(BaseModel):
 # comments
 class Comment(CommentBaseModel):
   id = PrimaryKeyField()
+  parent_id = IntegerField(default=id)
   tag = TextField(Tag)
   author = TextField()
   site = TextField(null=True)
