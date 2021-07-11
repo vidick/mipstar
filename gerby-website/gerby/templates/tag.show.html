@@ -514,6 +514,7 @@
           });
 
           $('#post-comment-btn').on('submit', function (event) {
+            event.preventDefault()
             console.log($('form#comment-form').serialize())
           })
       </script>
