@@ -2,11 +2,11 @@ section#comments {
 }
 
 section#comments blockquote {
-  margin: 0 calc(20rem / 14);
+  margin: 0 1.5rem;
 }
 
 form#comment-form label {
-  width: calc(80rem / 14);
+  width: 5.7rem;
   text-align: right;
 }
 
