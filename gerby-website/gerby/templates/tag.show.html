@@ -548,7 +548,7 @@
                 delay: 1000,
                 uniqueId: `reply-comment-{{ tag.tag }}-${parentId}`,
             },
-            element: $(`#reply-comment-${parentId}`)[0],
+            element: $(`#reply-comment-textarea-${parentId}`)[0],
             forceSync: true,
             insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
             placeholder: "You can type your comment here, use the preview option to see what it will look like.",
