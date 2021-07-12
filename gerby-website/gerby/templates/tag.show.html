@@ -358,6 +358,29 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="captchaModal" tabindex="-1" aria-labelledby="captchaModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Please verify that you are not a bot</span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p>
+                    <!--<p>This <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">captcha</abbr> seems more appropriate than the usual illegible gibberish, right?<br>-->
+                    <label for="check">Tag:</label>
+                    <input type="text" name="check" id="check" required autocomplete="off">
+                    <button type="submit" class="btn btn-primary" id="post-comment-btn">Post comment</button>
+                    <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
+              
+                    <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p>              
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% if commentsEnabled %}
@@ -470,14 +493,17 @@
           // it's a bit silly to use HTML5 validation for this, as bots can figure that out
           // also save the author information to localStorage
           easymde.element.form.addEventListener("submit", function(event) {
-              if ($("#check").val() != $("#hidden-tag").val()) {
-                  // explain captcha
-                  $("#captcha-message").toggle();
+              event.preventDefault()
+              $('#captchaModal').modal('show')
 
-                  // stop submit
-                  event.preventDefault();
-                  return false;
-              }
+            //   if ($("#check").val() != $("#hidden-tag").val()) {
+            //       // explain captcha
+            //       $("#captcha-message").toggle();
+
+            //       // stop submit
+            //       event.preventDefault();
+            //       return false;
+            //   }
 
               // save author information
               localStorage.setItem("name", $("input#name").val());
@@ -486,14 +512,14 @@
           });
       </script>
 
-      <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p>
+      <!-- <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p> -->
       <!--<p>This <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">captcha</abbr> seems more appropriate than the usual illegible gibberish, right?<br>-->
-      <label for="check">Tag:</label>
+      <!-- <label for="check">Tag:</label>
       <input type="text" name="check" id="check" required autocomplete="off">
       <button type="submit" class="btn btn-primary" id="post-comment-btn">Post comment</button>
       <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
 
-      <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p>
+      <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p> -->
     </form>
 </section>
 <script type="text/javascript">
@@ -591,6 +617,9 @@
             // it's a bit silly to use HTML5 validation for this, as bots can figure that out
             // also save the author information to localStorage
             easymde.element.form.addEventListener("submit", function(event) {
+                event.preventDefault()
+                $('#captchaModal').modal('show')
+
                 // if ($("#check").val() != $("#hidden-tag").val()) {
                 //     // explain captcha
                 //     $("#captcha-message").toggle();
