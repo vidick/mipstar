@@ -542,6 +542,71 @@
             </form>
         </div>`;
         $(event.target).parent().append(replyTemplate)
+        var easymde = new EasyMDE({
+            autosave: {
+                enabled: true,
+                delay: 1000,
+                uniqueId: `reply-comment-{{ tag.tag }}-${parentId}`,
+            },
+            element: $(`#reply-comment-${parentId}`)[0],
+            forceSync: true,
+            insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
+            placeholder: "You can type your comment here, use the preview option to see what it will look like.",
+            previewRender: function(plaintext, preview) {
+                // deal with references
+                plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
+                // deal with \[\] getting replaced to []
+                plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
+                plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
+
+                output = this.parent.markdown(plaintext);
+
+                setTimeout(function() {
+                    preview.innerHTML = output;
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                }, 0);
+
+                return "";
+            },
+            spellChecker: false,
+            status: false,
+            toolbar: [
+                "link", {name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd"}, {name: "block", action: EasyMDE.drawImage, className: "fa fa-square"}, "|",
+                "bold", "italic", "|",
+                "ordered-list", "unordered-list", "|",
+                "preview"
+                ],
+            });
+
+            // make sure to show tags, not numbers
+            var tagToggleHappened = false; // only do this once to not annoy the user too much
+            easymde.codemirror.on("change", function() {
+                // if data-tag elements do not have tag attribute we need to make tags visible
+                if (!$("*[data-tag]").hasClass("tag") && !tagToggleHappened)
+                    $("section#meta input.toggle").bootstrapToggle("toggle");
+                tagToggleHappened = true;
+            });
+
+            // prevent form submit when the captcha isn't correct
+            // it's a bit silly to use HTML5 validation for this, as bots can figure that out
+            // also save the author information to localStorage
+            easymde.element.form.addEventListener("submit", function(event) {
+                // if ($("#check").val() != $("#hidden-tag").val()) {
+                //     // explain captcha
+                //     $("#captcha-message").toggle();
+
+                //     // stop submit
+                //     event.preventDefault();
+                //     return false;
+                // }
+
+                // save author information
+                localStorage.setItem("name", $(`input#reply-name-${parentId}`).val());
+                localStorage.setItem("mail", $(`input#reply-mail-${parentId}`).val());
+                localStorage.setItem("site", $(`input#reply-site-${parentId}`).val());
+            });
+
+
       // axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: $(event.target).attr('data-parent-id')})
     })
 </script>
