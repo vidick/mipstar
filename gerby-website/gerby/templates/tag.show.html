@@ -378,9 +378,9 @@
         </header>
 
         <blockquote>{{ comment.comment | safe }}</blockquote>
-        <blockquote>{{ comment.parent_id }}</blockquote>
+        <!-- <blockquote>{{ comment.parent_id }}</blockquote> -->
         <div class="ml-4">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary post-reply-btn" data-parent-id="{{ comment.id }}">
                 <i class="bi bi-reply"></i>
                 Reply
             </button>
@@ -494,32 +494,125 @@
       <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
 
       <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p>
-
-      <script type="text/javascript">
-          // enter in captcha fields causes \ref to appear (?!)
-          $("input#check").on("keypress", function(e) {
-              if (e.which == 13) {
-                  // always stop the event
-                  e.preventDefault();
-
-                  // perform clientside check as for actual submit
-                  if ($("#check").val() != $("#hidden-tag").val()) {
-                      // explain captcha
-                      $("#captcha-message").toggle();
-                  }
-                  else {
-                      $("form#comment-form").submit();
-                  }
-              }
-          });
-
-          $('form#comment-form').submit(function (event) {
-            event.preventDefault()
-            console.log($('form#comment-form').serialize())
-          })
-      </script>
     </form>
 </section>
+<script type="text/javascript">
+    // enter in captcha fields causes \ref to appear (?!)
+    $("input#check").on("keypress", function(e) {
+        if (e.which == 13) {
+            // always stop the event
+            e.preventDefault();
+
+            // perform clientside check as for actual submit
+            if ($("#check").val() != $("#hidden-tag").val()) {
+                // explain captcha
+                $("#captcha-message").toggle();
+            }
+            else {
+              //   $("form#comment-form").submit();
+              axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: -1})
+            }
+        }
+    });
+
+    $('form#comment-form').submit(function (event) {
+      event.preventDefault()
+      // console.log($('form#comment-form').serialize())
+      axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: -1})
+    })
+
+    $('.post-reply-btn').on('click', function (event) {
+        $(event.target).attr('disabled', true)
+        const parentId = $(event.target).attr('data-parent-id')
+        const replyTemplate = `<h2>Post a reply</h2>
+            <p>Your email address will not be published. Required fields are marked.
+            <p>In your comment you can use <a href="/markdown">Markdown</a> and LaTeX style mathematics (enclose it like <code>$\pi$</code>). A preview option is available if you wish to see how it works out (just click on the eye in the toolbar).
+            <noscript><p>Unfortunately JavaScript is disabled in your browser, so the comment preview function will not work.</p></noscript>
+
+            <p>All contributions are licensed under the <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>.
+
+            <form name="comment" class="reply-comment-form">
+                <label for="name">Name<sup>*</sup>:</label>
+                <input type="text" name="name" id="reply-name-${parentId}" required><br>
+
+                <label for="mail">E-mail<sup>*</sup>:</label>
+                <input type="email" name="mail" id="reply-mail-${parentId}" required><br>
+
+                <label for="site">Site:</label>
+                <input type="url" name="site" id="reply-site-${parentId}"><br>
+
+                <label>Comment:</label>
+                <textarea name="comment" id="reply-comment-textarea-${parentId}" cols="80" rows="10" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                <script type="text/javascript">
+                    var easymde = new EasyMDE({
+                    autosave: {
+                        enabled: true,
+                        delay: 1000,
+                        uniqueId: "reply-comment-{{ tag.tag }}-${parentId}",
+                    },
+                    element: $("#reply-comment-${parentId}")[0],
+                    forceSync: true,
+                    insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
+                    placeholder: "You can type your comment here, use the preview option to see what it will look like.",
+                    previewRender: function(plaintext, preview) {
+                        // deal with references
+                        plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
+                        // deal with \[\] getting replaced to []
+                        plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
+                        plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
+
+                        output = this.parent.markdown(plaintext);
+
+                        setTimeout(function() {
+                            preview.innerHTML = output;
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                        }, 0);
+
+                        return "";
+                    },
+                    spellChecker: false,
+                    status: false,
+                    toolbar: [
+                        "link", {name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd"}, {name: "block", action: EasyMDE.drawImage, className: "fa fa-square"}, "|",
+                        "bold", "italic", "|",
+                        "ordered-list", "unordered-list", "|",
+                        "preview"
+                        ],
+                    });
+
+                    // make sure to show tags, not numbers
+                    var tagToggleHappened = false; // only do this once to not annoy the user too much
+                    easymde.codemirror.on("change", function() {
+                        // if data-tag elements do not have tag attribute we need to make tags visible
+                        if (!$("*[data-tag]").hasClass("tag") && !tagToggleHappened)
+                            $("section#meta input.toggle").bootstrapToggle("toggle");
+                        tagToggleHappened = true;
+                    });
+
+                    // prevent form submit when the captcha isn't correct
+                    // it's a bit silly to use HTML5 validation for this, as bots can figure that out
+                    // also save the author information to localStorage
+                    easymde.element.form.addEventListener("submit", function(event) {
+                        if ($("#check").val() != $("#hidden-tag").val()) {
+                            // explain captcha
+                            $("#captcha-message").toggle();
+
+                            // stop submit
+                            event.preventDefault();
+                            return false;
+                        }
+
+                        // save author information
+                        localStorage.setItem("name", $("input#reply-name-${parentId}").val());
+                        localStorage.setItem("mail", $("input#reply-mail-${parentId}").val());
+                        localStorage.setItem("site", $("input#reply-site-${parentId}").val());
+                    });
+                </script>
+            </form>`
+        $(event.target).parent().append(replyTemplate)
+      // axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: $(event.target).attr('data-parent-id')})
+    })
+</script>
 
 {% endif %}
 
