@@ -597,6 +597,9 @@
             const replyFormData = $('#captchaModal').attr('data-reply-form')
             console.log('other place: ' + replyFormData)
             axios.post('/post-comment', { formData: replyFormData ? replyFormData : $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id') })
+                .then((res) => {
+                    console.log(res.data)
+                })
         })
 
         $('.add-reply-btn').on('click', function (event) {
