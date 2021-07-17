@@ -671,10 +671,10 @@
             // also save the author information to localStorage
             easymde.element.form.addEventListener("submit", function (event) {
                 event.preventDefault()
-                $('#captchaModal').attr('data-parent-id', $(event.target).attr('data-parent-id'))
+                console.log($(event.target))
 
-                console.log($(event.target).parent())
-                $('#captchaModal').attr('data-reply-form', $(event.target).parent().serialize())
+                $('#captchaModal').attr('data-parent-id', $(event.target).parent().attr('data-parent-id'))
+                $('#captchaModal').attr('data-reply-form', $(event.target).serialize())
                 $('#captchaModal').modal('show')
 
                 // save author information
