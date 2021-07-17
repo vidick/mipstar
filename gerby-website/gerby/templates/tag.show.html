@@ -565,8 +565,8 @@
                 <input type="url" name="site" id="reply-site-${parentId}"><br>
                 <label>Comment:</label>
                 <textarea name="comment" id="reply-comment-textarea-${parentId}" data-parent-id="${parentId}" cols="80" rows="10" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                <button type="submit" class="btn btn-primary post-reply-btn">Post Reply</button>
             </form>
-            <button type="submit" class="btn btn-primary post-reply-btn">Post Reply</button>
         </div>`;
         $(event.target).parent().append(replyTemplate)
         var easymde = new EasyMDE({
