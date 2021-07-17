@@ -1,56 +1,66 @@
 {% extends "layout.html" %}
 
-{% block title %}{{ tag.type | capitalize }} {{ tag.ref }} ({{ tag.tag }}){% if tag.name and "<" not in tag.name %}: {{ tag.name }}{% endif %}{% endblock %}
-
-{% block head %}
-    <script type="text/javascript" src="/static/js/toggle.js"></script>
+{% block title %}{{ tag.type | capitalize }} {{ tag.ref }} ({{ tag.tag }}){% if tag.name and "<" not in tag.name %}: {{
+    tag.name }}{% endif %}{% endblock %} {% block head %} <script type="text/javascript" src="/static/js/toggle.js">
+    </script>
     <script type="text/javascript" src="/static/js/comments.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/easymde@2.0.1/dist/easymde.min.css" integrity="sha384-IRbzB9px0sfIx90vkN+geaX3F4LVcg/M+k5vmVkfjs5TnRX3MIhGS8Ma06ALKVYp" crossorigin="anonymous">
-    <script src="https://unpkg.com/easymde@2.0.1/dist/easymde.min.js" integrity="sha384-v06sb0t0ToY1YRtVlfD/GCGpIZ/QHYyeH2Gzjvr0ZJI62/50DIzT8XRgQ6JvptVu" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/easymde@2.0.1/dist/easymde.min.css"
+        integrity="sha384-IRbzB9px0sfIx90vkN+geaX3F4LVcg/M+k5vmVkfjs5TnRX3MIhGS8Ma06ALKVYp" crossorigin="anonymous">
+    <script src="https://unpkg.com/easymde@2.0.1/dist/easymde.min.js"
+        integrity="sha384-v06sb0t0ToY1YRtVlfD/GCGpIZ/QHYyeH2Gzjvr0ZJI62/50DIzT8XRgQ6JvptVu"
+        crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.css" integrity="sha384-U1uEPfU2/stCtBJ6oZS4XLX35g0MD+BZTTskUun0Vhv64RLEaTUXtcpxGScTbkUP" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.min.js" integrity="sha384-ZKch/OmPYYZT/9GpxSgMqUIDdBjwYYuJ3+CfQytRQElwdBsCMJkEmcsynJlFlsCS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.css"
+        integrity="sha384-U1uEPfU2/stCtBJ6oZS4XLX35g0MD+BZTTskUun0Vhv64RLEaTUXtcpxGScTbkUP" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-bonsai@2.1.2/jquery.bonsai.min.js"
+        integrity="sha384-ZKch/OmPYYZT/9GpxSgMqUIDdBjwYYuJ3+CfQytRQElwdBsCMJkEmcsynJlFlsCS"
+        crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-{% endblock %}
+    {% endblock %}
 
-{% block breadcrumb %}
-  {{ macros.breadcrumb(breadcrumb) }}
-{% endblock %}
+    {% block breadcrumb %}
+    {{ macros.breadcrumb(breadcrumb) }}
+    {% endblock %}
 
-{% block hamburger %}
-  {{ macros.tagHamburger(tag, neighbours, "", dependencies) }}
-{% endblock %}
+    {% block hamburger %}
+    {{ macros.tagHamburger(tag, neighbours, "", dependencies) }}
+    {% endblock %}
 
-{% block pagenav %}
+    {% block pagenav %}
     <script>
         function handleCitation() {
             axios.post('/tag/{{ tag }}/cite')
-            .then((res) => {
-                // console.log(res.data)
-                let doesExist = res.data.doesExist
-                if (doesExist)
-                    $('#citationModal').modal('show')
-                else
+                .then((res) => {
+                    // console.log(res.data)
+                    let doesExist = res.data.doesExist
+                    if (doesExist)
+                        $('#citationModal').modal('show')
+                    else
+                        $('#citationErrorModal').modal('show')
+                }, (err) => {
+                    console.error(err)
                     $('#citationErrorModal').modal('show')
-            }, (err) => {
-                console.error(err)
-                $('#citationErrorModal').modal('show')
-            })
+                })
         }
     </script>
     <div class="page-nav-wrapper w-100 mt-2">
-        <a class="btn btn-secondary mr-2 {% if not neighbours[0] %} disabled {% endif %}" href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
+        <a class="btn btn-secondary mr-2 {% if not neighbours[0] %} disabled {% endif %}"
+            href="/tag/{{ neighbours[0].tag }}{{ modifier }}">
             <i class="bi bi-arrow-left-circle"></i>
             Previous {{ neighbours[0].type }}
         </a>
-        <a class="btn btn-secondary {% if not neighbours[1] %} disabled {% endif %}" href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
+        <a class="btn btn-secondary {% if not neighbours[1] %} disabled {% endif %}"
+            href="/tag/{{ neighbours[1].tag }}{{ modifier }}">
             Next {{ neighbours[1].type }}
             <i class="bi bi-arrow-right-circle"></i>
         </a>
-        <a class="btn btn-secondary-outline float-right downloadBtn" href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">
+        <a class="btn btn-secondary-outline float-right downloadBtn"
+            href="/download/{{ filename }}.pdf#nameddest={{ tag.tag }}" target="_blank">
             <i class="bi bi-eye"></i>
             View {{ tag.type | capitalize }} <span data-tag="{{ tag.tag }}">{{ tag.ref }}</span> as pdf
         </a>
@@ -59,23 +69,23 @@
             Cite
         </button>
     </div>
-{% endblock %}
+    {% endblock %}
 
-{% block body %}
-<div class="html" id="tag">
-    {% if tag.slogan %}
+    {% block body %}
+    <div class="html" id="tag">
+        {% if tag.slogan %}
         <p class="slogan alert alert-primary"><strong>{{ tag.slogan.html | safe }}</strong>
-    {% endif %}
+            {% endif %}
 
-    {% if tag.reference %}
+            {% if tag.reference %}
         <p class="reference alert alert-info">{{ tag.reference.html | safe }}
-    {% endif %}
+            {% endif %}
 
-    {% if tag.history %}
+            {% if tag.history %}
         <p class="history alert alert-secondary">{{ tag.history.html | safe }}
-    {% endif %}
-    
-    {% if tree %}
+            {% endif %}
+
+            {% if tree %}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="lem-thm-toggle" checked>
             <label class="form-check-label" for="lem-thm-toggle">
@@ -86,33 +96,35 @@
             <h5>Contents</h5>
             <ul class="tree" id="tree">
                 {% for item in tree recursive %}
-                {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">{% endif %}
-                {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
+                {% if loop.depth <= depth %}<li class="expanded" id="{{ item.tag }}">{% else %}<li id="{{ item.tag }}">
+                        {% endif %}
+                        {{ item.type | capitalize }} <a href="/tag/{{ item.tag }}" data-tag="{{ item.tag }}">{{ item.ref
+                            }}</a>{% if item.name %}: {{ item.name | safe }}{% endif %}
 
-                {{ macros.badges(item) }}
+                        {{ macros.badges(item) }}
 
-                {% if item.children %}
-                    <ul>{{ loop(item.children) }}</ul>
-                {% endif %}
-                {% endfor %}
+                        {% if item.children %}
+                        <ul>{{ loop(item.children) }}</ul>
+                        {% endif %}
+                        {% endfor %}
             </ul>
         </div>
 
         <script type="text/javascript">
-            $("ul.tree").bonsai({addExpandAll: true,});
+            $("ul.tree").bonsai({ addExpandAll: true, });
 
             var state = localStorage.getItem("bonsai-{{ tag.tag }}");
             if (state !== null)
                 $("ul#tree").data("bonsai").restore(JSON.parse(state));
 
-            $("ul#tree").click(function() {
+            $("ul#tree").click(function () {
                 var bonsai = $(this).data("bonsai");
                 var state = bonsai.serialize();
                 localStorage.setItem("bonsai-{{ tag.tag }}", JSON.stringify(state));
             });
 
             // trigger the click event handler to save state even when clicking on the expand/collapse all links, which are outside ul#tree
-            $("div.expand-all").click(function() {
+            $("div.expand-all").click(function () {
                 $("ul#tree").click();
             });
 
@@ -120,94 +132,94 @@
                 $('[data-toggle="popover"]').popover()
             })
         </script>
-    {% endif %}
+        {% endif %}
 
 
-    {{ html | safe }}
-    
-    <script type="text/javascript">
-        function isLemThm(text) {
-            return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
-        }
+        {{ html | safe }}
 
-        function toggleChevrons(childCounts) {
-            let items = null;
-            if ($("#lem-thm-toggle:checked").length) {
-                items = $('.has-children:visible');
-            } else {
-                items = $('.hidden-has-children:visible');
+        <script type="text/javascript">
+            function isLemThm(text) {
+                return text.indexOf('Lemma') == -1 && text.indexOf('Theorem') == -1 && text.indexOf('section') == -1 && text.indexOf('Section') == -1 && text.indexOf('Corollary') == -1;
             }
 
-            for (let item of items) {
+            function toggleChevrons(childCounts) {
+                let items = null;
                 if ($("#lem-thm-toggle:checked").length) {
-                    if (!(item.id in childCounts)) {
-                        continue
-                    }
-                    if (childCounts[item.id] == $(item).children('ul.bonsai').children().length) {
-                        // console.log('removing from ' + item.id);
-                        $(item).removeClass('has-children');
-                        $(item).addClass('hidden-has-children');
-                    }
+                    items = $('.has-children:visible');
                 } else {
-                    // console.log('adding to ' + item.id);
-                    $(item).addClass('has-children');
-                    $(item).removeClass('hidden-has-children');
+                    items = $('.hidden-has-children:visible');
+                }
+
+                for (let item of items) {
+                    if ($("#lem-thm-toggle:checked").length) {
+                        if (!(item.id in childCounts)) {
+                            continue
+                        }
+                        if (childCounts[item.id] == $(item).children('ul.bonsai').children().length) {
+                            // console.log('removing from ' + item.id);
+                            $(item).removeClass('has-children');
+                            $(item).addClass('hidden-has-children');
+                        }
+                    } else {
+                        // console.log('adding to ' + item.id);
+                        $(item).addClass('has-children');
+                        $(item).removeClass('hidden-has-children');
+                    }
                 }
             }
-        }
 
-        $(document).ready(function() {
-            // move extras from parent element to after environment name and number
-            $("article a[data-toggle]").each(function(index, element) {
-                $(element).insertAfter(($(element).parent().find("a.environment-identifier")));
-            });
+            $(document).ready(function () {
+                // move extras from parent element to after environment name and number
+                $("article a[data-toggle]").each(function (index, element) {
+                    $(element).insertAfter(($(element).parent().find("a.environment-identifier")));
+                });
 
-            $('article a[data-toggle="popover"]').popover()
+                $('article a[data-toggle="popover"]').popover()
 
-            // render mathematics in popovers
-            $("[data-toggle=popover]").on('shown.bs.popover', function () {
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
-            });
+                // render mathematics in popovers
+                $("[data-toggle=popover]").on('shown.bs.popover', function () {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.popover-body").html()]);
+                });
 
-            $("#lem-thm-toggle").click(() => {
-                let items = $("#tree").children();
-                for (let item of items) {
-                    let text = $(item).text();
-                    if (isLemThm(text)) {
-                        if ($("#lem-thm-toggle:checked").length) {
-                            $(item).hide('fast');
-                        } else {
-                            $(item).show('fast');
-                        }
-                    }
-                }
-
-                childCounts = {}
-                items = $(".has-children ul").children();
-                for (let item of items) {
-                    let text = $(item).text();
-                    if (isLemThm(text)) {
-                        if ($("#lem-thm-toggle:checked").length) {
-                            $(item).hide('fast');
-
-                            let parent = $(item).parent().parent().attr('id');
-                            if (parent) {
-                                if (parent in childCounts) {
-                                    childCounts[parent]++;
-                                } else {
-                                    childCounts[parent] = 1;
-                                }
+                $("#lem-thm-toggle").click(() => {
+                    let items = $("#tree").children();
+                    for (let item of items) {
+                        let text = $(item).text();
+                        if (isLemThm(text)) {
+                            if ($("#lem-thm-toggle:checked").length) {
+                                $(item).hide('fast');
+                            } else {
+                                $(item).show('fast');
                             }
-                        } else {
-                            $(item).show('fast');
                         }
                     }
-                }
-                
-                toggleChevrons(childCounts);
-            });
-            if ($("#lem-thm-toggle:checked").length) {
-                let items = $("#tree").children();
+
+                    childCounts = {}
+                    items = $(".has-children ul").children();
+                    for (let item of items) {
+                        let text = $(item).text();
+                        if (isLemThm(text)) {
+                            if ($("#lem-thm-toggle:checked").length) {
+                                $(item).hide('fast');
+
+                                let parent = $(item).parent().parent().attr('id');
+                                if (parent) {
+                                    if (parent in childCounts) {
+                                        childCounts[parent]++;
+                                    } else {
+                                        childCounts[parent] = 1;
+                                    }
+                                }
+                            } else {
+                                $(item).show('fast');
+                            }
+                        }
+                    }
+
+                    toggleChevrons(childCounts);
+                });
+                if ($("#lem-thm-toggle:checked").length) {
+                    let items = $("#tree").children();
                     for (let item of items) {
                         let text = $(item).text();
                         if (isLemThm(text)) {
@@ -215,342 +227,380 @@
                         }
                     }
 
-                childCounts = {}
-                items = $(".has-children ul").children();
-                if (items.length) {
-                    for (let item of items) {
-                        let text = $(item).text();
-                        if (isLemThm(text)) {
-                            $(item).hide('fast');
+                    childCounts = {}
+                    items = $(".has-children ul").children();
+                    if (items.length) {
+                        for (let item of items) {
+                            let text = $(item).text();
+                            if (isLemThm(text)) {
+                                $(item).hide('fast');
 
-                            let parent = $(item).parent().parent().attr('id');
-                            if (parent) {
-                                if (parent in childCounts) {
-                                    childCounts[parent]++;
-                                } else {
-                                    childCounts[parent] = 1;
+                                let parent = $(item).parent().parent().attr('id');
+                                if (parent) {
+                                    if (parent in childCounts) {
+                                        childCounts[parent]++;
+                                    } else {
+                                        childCounts[parent] = 1;
+                                    }
                                 }
                             }
                         }
+                    } else {
+                        $("#lem-thm-toggle").attr("disabled", true);
                     }
-                } else {
-                    $("#lem-thm-toggle").attr("disabled", true);
+
+                    toggleChevrons(childCounts);
                 }
-
-                toggleChevrons(childCounts);
-            }
-        });
-
-        $('a.page-preview').hover(function () {
-            $(this).addClass('highlight');
-            let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
-            let topOffset = Math.round($('#first-bar').height() + $('#second-bar').height());
-
-            $(':root').css({
-                '--underline-width': ($('#main').width() - $(this).position().left + 50) + 'px',
-                '--underline-visibility': 1
             });
 
-            $('.preview-body').text($(this).attr('data-content'));
-            $('.preview-body').attr('data-shortened', $(this).attr('data-shortened'));
-            $('.preview-body').css({
-                'position': 'absolute',
-                'top': ($(this)[0].getBoundingClientRect().top + window.scrollY) + 'px',//($(this).position().top + topOffset) + 'px',
-                'left': (pos + $(this).position().left) + 'px',
-                'width': ($(window).width() - ($('#main').position().left + $('#main').width()) - 75) + 'px',
-                'opacity': 1,
-                'padding': '0.5rem'
-            });
+            $('a.page-preview').hover(function () {
+                $(this).addClass('highlight');
+                let pos = Math.round($('#main').position().left + $('#main').width() - $(this).position().left) + 50;
+                let topOffset = Math.round($('#first-bar').height() + $('#second-bar').height());
 
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.preview-body").html()]);
-        }, function () {
-            $(this).removeClass('highlight');
-            $(':root').css({
-                '--underline-width': 0,
-                '--underline-visibility': 0
-            });
-            $('.preview-body').text('');
-            $('.preview-body').attr('data-shortened', '');
-            $('.preview-body').css({
-                'opacity': 0,
-                'padding': 0
-            });
-        });
-    </script>
+                $(':root').css({
+                    '--underline-width': ($('#main').width() - $(this).position().left + 50) + 'px',
+                    '--underline-visibility': 1
+                });
 
-    <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">How to cite tag <span class="tag">{{ tag.tag }}</span></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>You can use one of the following citations in your LaTeX code.
-                    <ul id="citations">
-                      <li>
-                          <button class="btn btn-light clipboard" data-clipboard-target="#cite-tag-link">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                          </svg>
-                          </button>
-                          <code id="cite-tag-link">\cite[\href{https://mipstar.net/tag/{{ tag.tag }}}{Tag {{ tag.tag }}}]{mipstar}</code>
-                      </li>
-                      <li>
-                          <button class="btn btn-light clipboard" data-clipboard-target="#cite-type-link">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                          </svg>  
-                          </button>
-                          <code id="cite-type-link">\cite[\href{https://mipstar.net/tag/{{ tag.tag }}}{% raw %}{{% endraw %}{{ tag.type | capitalize }} {{ tag.tag }}{% raw %}}{% endraw %}]{mipstar}</code>
-                      </li>
-                      <li>
-                          <button class="btn btn-light clipboard" data-clipboard-target="#link-tag">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                          </svg>  
-                          </button>
-                          <code id="link-tag">\href{https://mipstar.net/tag/{{ tag.tag }}}{Tag {{ tag.tag }}}</code>
-                      </li>
-                      <li>
-                          <button class="btn btn-light clipboard" data-clipboard-target="#link-type">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                          </svg>
-                          </button>
-                          <code id="link-type">\href{https://mipstar.net/tag/{{ tag.tag }}}{% raw %}{{% endraw %}{{ tag.type | capitalize }} {{ tag.tag }}}</code>
-                      </li>
-                    </ul>
-                    <script type="text/javascript">
-                      new ClipboardJS(".btn");
-                    </script>
-                  
-                    <p>You can use the following in your BibTeX file.
-                    <pre><code>@misc{mipstar,
+                $('.preview-body').text($(this).attr('data-content'));
+                $('.preview-body').attr('data-shortened', $(this).attr('data-shortened'));
+                $('.preview-body').css({
+                    'position': 'absolute',
+                    'top': ($(this)[0].getBoundingClientRect().top + window.scrollY) + 'px',//($(this).position().top + topOffset) + 'px',
+                    'left': (pos + $(this).position().left) + 'px',
+                    'width': ($(window).width() - ($('#main').position().left + $('#main').width()) - 75) + 'px',
+                    'opacity': 1,
+                    'padding': '0.5rem'
+                });
+
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("div.preview-body").html()]);
+            }, function () {
+                $(this).removeClass('highlight');
+                $(':root').css({
+                    '--underline-width': 0,
+                    '--underline-visibility': 0
+                });
+                $('.preview-body').text('');
+                $('.preview-body').attr('data-shortened', '');
+                $('.preview-body').css({
+                    'opacity': 0,
+                    'padding': 0
+                });
+            });
+        </script>
+
+        <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">How to cite tag <span class="tag">{{ tag.tag }}</span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can use one of the following citations in your LaTeX code.
+                        <ul id="citations">
+                            <li>
+                                <button class="btn btn-light clipboard" data-clipboard-target="#cite-tag-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                        <path
+                                            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                    </svg>
+                                </button>
+                                <code
+                                    id="cite-tag-link">\cite[\href{https://mipstar.net/tag/{{ tag.tag }}}{Tag {{ tag.tag }}}]{mipstar}</code>
+                            </li>
+                            <li>
+                                <button class="btn btn-light clipboard" data-clipboard-target="#cite-type-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                        <path
+                                            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                    </svg>
+                                </button>
+                                <code
+                                    id="cite-type-link">\cite[\href{https://mipstar.net/tag/{{ tag.tag }}}{% raw %}{{% endraw %}{{ tag.type | capitalize }} {{ tag.tag }}{% raw %}}{% endraw %}]{mipstar}</code>
+                            </li>
+                            <li>
+                                <button class="btn btn-light clipboard" data-clipboard-target="#link-tag">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                        <path
+                                            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                    </svg>
+                                </button>
+                                <code
+                                    id="link-tag">\href{https://mipstar.net/tag/{{ tag.tag }}}{Tag {{ tag.tag }}}</code>
+                            </li>
+                            <li>
+                                <button class="btn btn-light clipboard" data-clipboard-target="#link-type">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                        <path
+                                            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                    </svg>
+                                </button>
+                                <code
+                                    id="link-type">\href{https://mipstar.net/tag/{{ tag.tag }}}{% raw %}{{% endraw %}{{ tag.type | capitalize }} {{ tag.tag }}}</code>
+                            </li>
+                        </ul>
+                        <script type="text/javascript">
+                            new ClipboardJS(".btn");
+                        </script>
+
+                        <p>You can use the following in your BibTeX file.
+                        <pre><code>@misc{mipstar,
     author       = {The {MIP* authors}},
     title        = {MIP*},
     howpublished = {\url{https://mipstar.net}},
     year         = {% raw %}{{% endraw %}{{ time.year }}},
 }</code></pre>
-                    <p>You can also consider using the <code>@online</code> type in BibLaTeX, changing the the <code>howpublished</code> to <code>url</code>. Another neat trick in BibLaTeX is the <code>shorthand</code> field, which you could set to <code>MIP*</code>.
+                        <p>You can also consider using the <code>@online</code> type in BibLaTeX, changing the the
+                            <code>howpublished</code> to <code>url</code>. Another neat trick in BibLaTeX is the
+                            <code>shorthand</code> field, which you could set to <code>MIP*</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="citationErrorModal" tabindex="-1" aria-labelledby="citationErrorModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Citation Error</span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>There was an error citing this tag. Either the tag does not exist or is invalid.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="captchaModal" tabindex="-1" aria-labelledby="captchaModalLabel" aria-hidden="true"
+            data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Please verify that you are not a bot</span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="captcha-verify-form">
+                            <p>In order to prevent bots from posting comments, we would like you to prove that you are
+                                human. You can do this by <em>filling in the name of the current tag</em> in the
+                                following input field. As a reminder, this is tag <span class="tag">{{ tag.tag
+                                    }}</span>. Beware of the difference between the letter&nbsp;'<span
+                                    class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p>
+                            <label for="check">Tag:</label>
+                            <input type="text" name="check" id="check" required autocomplete="off">
+                            <button type="submit" class="btn btn-primary" id="post-verify-btn">Verify</button>
+                            <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
+
+                            <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The
+                                tag you filled in for the captcha is wrong. You need to write <span class="tag">{{
+                                    tag.tag }}</span>, in case you are confused.</p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="citationErrorModal" tabindex="-1" aria-labelledby="citationErrorModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Citation Error</span></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>There was an error citing this tag. Either the tag does not exist or is invalid.</p>
-                </div>
+
+    {% if commentsEnabled %}
+    <hr>
+
+    <section id="comments">
+        <h2>Comments ({{ comments | length }})</h2>
+
+        {% for comment in comments %}
+        <a id="comment-{{ comment.id }}" class="header-offset"></a>
+        <article>
+            <header>
+                <p><a href="/tag/{{ tag.tag }}#comment-{{ comment.id }}">Comment #{{ comment.id }}</a>
+                    by
+                    {% if comment.site %}<cite><a href="{{ comment.site }}" rel="author">{{ comment.author }}</a></cite>
+                    {% else %}<cite>{{ comment.author }}</cite>{% endif %}
+                    on <time datetime="{{ comment.date }}">{{ comment.date.strftime("%B %d, %Y at %H:%M %Z") }}</time>
+            </header>
+
+            <blockquote>{{ comment.comment | safe }}</blockquote>
+            <!-- <blockquote>{{ comment.parent_id }}</blockquote> -->
+            <div class="ml-4">
+                <button type="button" class="btn btn-primary add-reply-btn" data-parent-id="{{ comment.id }}">
+                    <i class="bi bi-reply"></i>
+                    Reply
+                </button>
             </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="captchaModal" tabindex="-1" aria-labelledby="captchaModalLabel" aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Please verify that you are not a bot</span></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p>
-                    <label for="check">Tag:</label>
-                    <input type="text" name="check" id="check" required autocomplete="off">
-                    <button type="submit" class="btn btn-primary" id="post-verify-btn">Verify</button>
-                    <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
-              
-                    <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p>              
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% if commentsEnabled %}
-<hr>
-
-<section id="comments">
-    <h2>Comments ({{ comments | length }})</h2>
-
-    {% for comment in comments %}
-      <a id="comment-{{ comment.id }}" class="header-offset"></a>
-      <article>
-        <header>
-          <p><a href="/tag/{{ tag.tag }}#comment-{{ comment.id }}">Comment #{{ comment.id }}</a>
-          by
-          {% if comment.site %}<cite><a href="{{ comment.site }}" rel="author">{{ comment.author }}</a></cite>
-          {% else %}<cite>{{ comment.author }}</cite>{% endif %}
-          on <time datetime="{{ comment.date }}">{{ comment.date.strftime("%B %d, %Y at %H:%M %Z") }}</time>
-        </header>
-
-        <blockquote>{{ comment.comment | safe }}</blockquote>
-        <!-- <blockquote>{{ comment.parent_id }}</blockquote> -->
-        <div class="ml-4">
-            <button type="button" class="btn btn-primary add-reply-btn" data-parent-id="{{ comment.id }}">
-                <i class="bi bi-reply"></i>
-                Reply
-            </button>
-        </div>
-      </article>
-    {% endfor %}
-
-    {% if parentComments %}
-      <p>There are also:
-      <ul>
-        {% for parent in parentComments %}
-          <li>{{ parent[1] }} comment(s) on {{ parent[0].type | capitalize }} <a href="/tag/{{ parent[0].tag }}#comments" data-tag="{{ parent[0].tag }}">{{ parent[0].ref }}</a>{% if parent[0].name %}: {{ parent[0].name | safe }}{% endif %}
+        </article>
         {% endfor %}
-      </ul>
-    {% endif %}
-</section>
 
-<hr>
+        {% if parentComments %}
+        <p>There are also:
+        <ul>
+            {% for parent in parentComments %}
+            <li>{{ parent[1] }} comment(s) on {{ parent[0].type | capitalize }} <a
+                    href="/tag/{{ parent[0].tag }}#comments" data-tag="{{ parent[0].tag }}">{{ parent[0].ref }}</a>{% if
+                parent[0].name %}: {{ parent[0].name | safe }}{% endif %}
+                {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
 
-<section id="post-comment">
-    <h2>Post a comment</h2>
-    <p>Your email address will not be published. Required fields are marked.
-    <p>In your comment you can use <a href="/markdown">Markdown</a> and LaTeX style mathematics (enclose it like <code>$\pi$</code>). A preview option is available if you wish to see how it works out (just click on the eye in the toolbar).
-    <noscript><p>Unfortunately JavaScript is disabled in your browser, so the comment preview function will not work.</p></noscript>
+    <hr>
 
-    <p>All contributions are licensed under the <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>.
+    <section id="post-comment">
+        <h2>Post a comment</h2>
+        <p>Your email address will not be published. Required fields are marked.
+        <p>In your comment you can use <a href="/markdown">Markdown</a> and LaTeX style mathematics (enclose it like
+            <code>$\pi$</code>). A preview option is available if you wish to see how it works out (just click on the
+            eye in the toolbar).
+            <noscript>
+                <p>Unfortunately JavaScript is disabled in your browser, so the comment preview function will not work.
+                </p>
+            </noscript>
 
-    <form name="comment" id="comment-form">
-      <label for="name">Name<sup>*</sup>:</label>
-      <input type="text" name="name" id="name" required><br>
+        <p>All contributions are licensed under the <a
+                href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>.
 
-      <label for="mail">E-mail<sup>*</sup>:</label>
-      <input type="email" name="mail" id="mail" required><br>
+        <form name="comment" id="comment-form">
+            <label for="name">Name<sup>*</sup>:</label>
+            <input type="text" name="name" id="name" required><br>
 
-      <label for="site">Site:</label>
-      <input type="url" name="site" id="site"><br>
+            <label for="mail">E-mail<sup>*</sup>:</label>
+            <input type="email" name="mail" id="mail" required><br>
 
-      <label>Comment:</label>
-      <textarea name="comment" id="comment-textarea" cols="80" rows="10" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-      <script type="text/javascript">
-          var easymde = new EasyMDE({
-          autosave: {
-              enabled: true,
-              delay: 1000,
-              uniqueId: "comment-{{ tag.tag }}",
-          },
-          element: $("#comment")[0],
-          forceSync: true,
-          insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
-          placeholder: "You can type your comment here, use the preview option to see what it will look like.",
-          previewRender: function(plaintext, preview) {
-              // deal with references
-              plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
-              // deal with \[\] getting replaced to []
-              plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
-              plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
+            <label for="site">Site:</label>
+            <input type="url" name="site" id="site"><br>
 
-              output = this.parent.markdown(plaintext);
+            <label>Comment:</label>
+            <textarea name="comment" id="comment-textarea" cols="80" rows="10" autocomplete="off" autocorrect="off"
+                autocapitalize="off" spellcheck="false"></textarea>
+            <script type="text/javascript">
+                var easymde = new EasyMDE({
+                    autosave: {
+                        enabled: true,
+                        delay: 1000,
+                        uniqueId: "comment-{{ tag.tag }}",
+                    },
+                    element: $("#comment")[0],
+                    forceSync: true,
+                    insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
+                    placeholder: "You can type your comment here, use the preview option to see what it will look like.",
+                    previewRender: function (plaintext, preview) {
+                        // deal with references
+                        plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
+                        // deal with \[\] getting replaced to []
+                        plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
+                        plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
 
-              setTimeout(function() {
-                  preview.innerHTML = output;
-                  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-              }, 0);
+                        output = this.parent.markdown(plaintext);
 
-              return "";
-          },
-          spellChecker: false,
-          status: false,
-          toolbar: [
-              "link", {name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd"}, {name: "block", action: EasyMDE.drawImage, className: "fa fa-square"}, "|",
-              "bold", "italic", "|",
-              "ordered-list", "unordered-list", "|",
-              "preview"
-              ],
-          });
+                        setTimeout(function () {
+                            preview.innerHTML = output;
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                        }, 0);
 
-          // make sure to show tags, not numbers
-          var tagToggleHappened = false; // only do this once to not annoy the user too much
-          easymde.codemirror.on("change", function() {
-              // if data-tag elements do not have tag attribute we need to make tags visible
-              if (!$("*[data-tag]").hasClass("tag") && !tagToggleHappened)
-                  $("section#meta input.toggle").bootstrapToggle("toggle");
-              tagToggleHappened = true;
-          });
+                        return "";
+                    },
+                    spellChecker: false,
+                    status: false,
+                    toolbar: [
+                        "link", { name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd" }, { name: "block", action: EasyMDE.drawImage, className: "fa fa-square" }, "|",
+                        "bold", "italic", "|",
+                        "ordered-list", "unordered-list", "|",
+                        "preview"
+                    ],
+                });
 
-          // prevent form submit when the captcha isn't correct
-          // it's a bit silly to use HTML5 validation for this, as bots can figure that out
-          // also save the author information to localStorage
-          easymde.element.form.addEventListener("submit", function(event) {
-              event.preventDefault()
-              $('#captchaModal').attr('data-parent-id', -1)
-              $('#captchaModal').modal('show')
+                // make sure to show tags, not numbers
+                var tagToggleHappened = false; // only do this once to not annoy the user too much
+                easymde.codemirror.on("change", function () {
+                    // if data-tag elements do not have tag attribute we need to make tags visible
+                    if (!$("*[data-tag]").hasClass("tag") && !tagToggleHappened)
+                        $("section#meta input.toggle").bootstrapToggle("toggle");
+                    tagToggleHappened = true;
+                });
 
-            //   if ($("#check").val() != $("#hidden-tag").val()) {
-            //       // explain captcha
-            //       $("#captcha-message").toggle();
+                // prevent form submit when the captcha isn't correct
+                // it's a bit silly to use HTML5 validation for this, as bots can figure that out
+                // also save the author information to localStorage
+                easymde.element.form.addEventListener("submit", function (event) {
+                    event.preventDefault()
+                    $('#captchaModal').attr('data-parent-id', -1)
+                    $('#captchaModal').modal('show')
 
-            //       // stop submit
-            //       event.preventDefault();
-            //       return false;
-            //   }
+                    // save author information
+                    localStorage.setItem("name", $("input#name").val());
+                    localStorage.setItem("mail", $("input#mail").val());
+                    localStorage.setItem("site", $("input#site").val());
+                });
+            </script>
 
-              // save author information
-              localStorage.setItem("name", $("input#name").val());
-              localStorage.setItem("mail", $("input#mail").val());
-              localStorage.setItem("site", $("input#site").val());
-          });
-      </script>
-
-      <!-- <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p> -->
-      <!--<p>This <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">captcha</abbr> seems more appropriate than the usual illegible gibberish, right?<br>-->
-      <!-- <label for="check">Tag:</label>
+            <!-- <p>In order to prevent bots from posting comments, we would like you to prove that you are human. You can do this by <em>filling in the name of the current tag</em> in the following input field. As a reminder, this is tag <span class="tag">{{ tag.tag }}</span>. Beware of the difference between the letter&nbsp;'<span class="tag">O</span>' and the digit&nbsp;'<span class="tag">0</span>'.</p> -->
+            <!--<p>This <abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart">captcha</abbr> seems more appropriate than the usual illegible gibberish, right?<br>-->
+            <!-- <label for="check">Tag:</label>
       <input type="text" name="check" id="check" required autocomplete="off"> -->
-      <button type="submit" class="btn btn-primary mt-3" id="post-comment-btn">Post comment</button>
-      <!-- <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
+            <button type="submit" class="btn btn-primary mt-3" id="post-comment-btn">Post comment</button>
+            <!-- <input type="hidden" name="tag" id="hidden-tag" value="{{ tag.tag }}"><br>
 
       <p id="captcha-message" style="display: none" class="alert alert-warning" role="alert">The tag you filled in for the captcha is wrong. You need to write <span class="tag">{{ tag.tag }}</span>, in case you are confused.</p> -->
-    </form>
-</section>
-<script type="text/javascript">
-    // enter in captcha fields causes \ref to appear (?!)
-    $("input#check").on("keypress", function(e) {
-        if (e.which == 13) {
-            // always stop the event
-            e.preventDefault();
+        </form>
+    </section>
+    <script type="text/javascript">
+        // enter in captcha fields causes \ref to appear (?!)
+        $("input#check").on("keypress", function (e) {
+            if (e.which == 13) {
+                // always stop the event
+                e.preventDefault();
 
-            // perform clientside check as for actual submit
+                // perform clientside check as for actual submit
+                if ($("#check").val() != $("#hidden-tag").val()) {
+                    // explain captcha
+                    $("#captcha-message").toggle();
+                }
+                else {
+                    //   $("form#comment-form").submit();
+                    const replyFormData = $('#captchaModal').attr('data-reply-form')
+                    console.log(replyFormData)
+                    axios.post('/post-comment', { formData: replyFormData ? replyFormData : $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id') })
+                }
+            }
+        });
+
+        $("#captcha-verify-form").submit(function (event) {
+            e.preventDefault()
             if ($("#check").val() != $("#hidden-tag").val()) {
                 // explain captcha
                 $("#captcha-message").toggle();
-            }
-            else {
-              //   $("form#comment-form").submit();
-              axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id')})
-            }
-        }
-    });
 
-    // $('form#comment-form').submit(function (event) {
-    //   event.preventDefault()
-    //   // console.log($('form#comment-form').serialize())
-    //   axios.post('/post-comment', {formData: $('form#comment-form').serialize(), parentId: -1})
-    // })
+                // stop submit
+                return false;
+            }
 
-    $('.add-reply-btn').on('click', function (event) {
-        $(event.target).attr('disabled', true)
-        const parentId = $(event.target).attr('data-parent-id')
-        const replyTemplate = `<div class="py-3" data-parent-id=${parentId}>
+            axios.post('/post-comment', { formData: $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id') })
+        })
+
+        $('.add-reply-btn').on('click', function (event) {
+            $(event.target).attr('disabled', true)
+            const parentId = $(event.target).attr('data-parent-id')
+            const replyTemplate = `<div class="py-3" data-parent-id=${parentId}>
             <h2>Post a reply</h2>
             <p>Your email address will not be published. Required fields are marked.
             <p>In your comment you can use <a href="/markdown">Markdown</a> and LaTeX style mathematics (enclose it like <code>$\pi$</code>). A preview option is available if you wish to see how it works out (just click on the eye in the toolbar).
@@ -565,49 +615,49 @@
                 <input type="url" name="site" id="reply-site-${parentId}"><br>
                 <label>Comment:</label>
                 <textarea name="comment" id="reply-comment-textarea-${parentId}" data-parent-id="${parentId}" cols="80" rows="10" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-                <button type="submit" class="btn btn-primary post-reply-btn">Post Reply</button>
+                <button type="submit" class="btn btn-primary post-reply-btn mt-3">Post Reply</button>
             </form>
         </div>`;
-        $(event.target).parent().append(replyTemplate)
-        var easymde = new EasyMDE({
-            autosave: {
-                enabled: true,
-                delay: 1000,
-                uniqueId: `reply-comment-{{ tag.tag }}-${parentId}`,
-            },
-            element: $(`#reply-comment-textarea-${parentId}`)[0],
-            forceSync: true,
-            insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
-            placeholder: "You can type your comment here, use the preview option to see what it will look like.",
-            previewRender: function(plaintext, preview) {
-                // deal with references
-                plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
-                // deal with \[\] getting replaced to []
-                plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
-                plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
+            $(event.target).parent().append(replyTemplate)
+            var easymde = new EasyMDE({
+                autosave: {
+                    enabled: true,
+                    delay: 1000,
+                    uniqueId: `reply-comment-{{ tag.tag }}-${parentId}`,
+                },
+                element: $(`#reply-comment-textarea-${parentId}`)[0],
+                forceSync: true,
+                insertTexts: { link: ["\\ref{", "}"], table: ["$", "$"], image: ["\\begin{equation}\n", "\n\\end{equation}\n"] }, // we hack into these insertion methods, I couldn't figure out how to write your own...
+                placeholder: "You can type your comment here, use the preview option to see what it will look like.",
+                previewRender: function (plaintext, preview) {
+                    // deal with references
+                    plaintext = plaintext.replace(/\\ref\{([0-9A-Z]{4})\}/g, "<span class=\"tag\">[$1](/tag/$1)</span>");
+                    // deal with \[\] getting replaced to []
+                    plaintext = plaintext.replace(/\\\[/g, "\\begin{equation}");
+                    plaintext = plaintext.replace(/\\\]/g, "\\end{equation}");
 
-                output = this.parent.markdown(plaintext);
+                    output = this.parent.markdown(plaintext);
 
-                setTimeout(function() {
-                    preview.innerHTML = output;
-                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                }, 0);
+                    setTimeout(function () {
+                        preview.innerHTML = output;
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                    }, 0);
 
-                return "";
-            },
-            spellChecker: false,
-            status: false,
-            toolbar: [
-                "link", {name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd"}, {name: "block", action: EasyMDE.drawImage, className: "fa fa-square"}, "|",
-                "bold", "italic", "|",
-                "ordered-list", "unordered-list", "|",
-                "preview"
+                    return "";
+                },
+                spellChecker: false,
+                status: false,
+                toolbar: [
+                    "link", { name: "inline", action: EasyMDE.drawTable, className: "fa fa-usd" }, { name: "block", action: EasyMDE.drawImage, className: "fa fa-square" }, "|",
+                    "bold", "italic", "|",
+                    "ordered-list", "unordered-list", "|",
+                    "preview"
                 ],
             });
 
             // make sure to show tags, not numbers
             var tagToggleHappened = false; // only do this once to not annoy the user too much
-            easymde.codemirror.on("change", function() {
+            easymde.codemirror.on("change", function () {
                 // if data-tag elements do not have tag attribute we need to make tags visible
                 if (!$("*[data-tag]").hasClass("tag") && !tagToggleHappened)
                     $("section#meta input.toggle").bootstrapToggle("toggle");
@@ -617,37 +667,30 @@
             // prevent form submit when the captcha isn't correct
             // it's a bit silly to use HTML5 validation for this, as bots can figure that out
             // also save the author information to localStorage
-            easymde.element.form.addEventListener("submit", function(event) {
+            easymde.element.form.addEventListener("submit", function (event) {
                 event.preventDefault()
                 $('#captchaModal').attr('data-parent-id', $(event.target).attr('data-parent-id'))
+                $('#captchaModal').attr('data-reply-form', $(event.target).parent().serialize())
                 $('#captchaModal').modal('show')
-
-                // if ($("#check").val() != $("#hidden-tag").val()) {
-                //     // explain captcha
-                //     $("#captcha-message").toggle();
-
-                //     // stop submit
-                //     event.preventDefault();
-                //     return false;
-                // }
 
                 // save author information
                 localStorage.setItem("name", $(`input#reply-name-${parentId}`).val());
                 localStorage.setItem("mail", $(`input#reply-mail-${parentId}`).val());
                 localStorage.setItem("site", $(`input#reply-site-${parentId}`).val());
             });
-        $('.reply-comment-form').submit(function (event) {
-            event.preventDefault()
-            $('#captchaModal').attr('data-parent-id', $(event.target).parent().attr('data-parent-id'))
-            $('#captchaModal').modal('show')
+
+            // $('.reply-comment-form').submit(function (event) {
+            //     event.preventDefault()
+            //     $('#captchaModal').attr('data-parent-id', $(event.target).parent().attr('data-parent-id'))
+            //     $('#captchaModal').modal('show')
+            // })
         })
-    })
-</script>
+    </script>
 
-{% endif %}
+    {% endif %}
 
-{% endblock %}
+    {% endblock %}
 
-{% block sidebar %}
-  {{ macros.tagSidebar(tag, neighbours, "", dependencies, filename) }}
-{% endblock %}
+    {% block sidebar %}
+    {{ macros.tagSidebar(tag, neighbours, "", dependencies, filename) }}
+    {% endblock %}
