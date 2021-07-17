@@ -594,7 +594,9 @@
                 return false;
             }
 
-            axios.post('/post-comment', { formData: $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id') })
+            const replyFormData = $('#captchaModal').attr('data-reply-form')
+            console.log('other place: ' + replyFormData)
+            axios.post('/post-comment', { formData: replyFormData ? replyFormData : $('form#comment-form').serialize(), parentId: $('#captchaModal').attr('data-parent-id') })
         })
 
         $('.add-reply-btn').on('click', function (event) {
@@ -670,6 +672,8 @@
             easymde.element.form.addEventListener("submit", function (event) {
                 event.preventDefault()
                 $('#captchaModal').attr('data-parent-id', $(event.target).attr('data-parent-id'))
+
+                console.log($(event.target).parent())
                 $('#captchaModal').attr('data-reply-form', $(event.target).parent().serialize())
                 $('#captchaModal').modal('show')
 
