@@ -9,6 +9,7 @@ import validators
 
 @app.route("/post-comment", methods=["POST"])
 def post_comment():
+    print(request.json)
     return {'test': True, 'request_data': request.json}
     # tag = request.headers["Referer"].split("/")[-1]
 
