@@ -500,5 +500,5 @@ label.toggle-off:active {
 }
 
 .no-icon {
-  background: none;
+  background-image: none !important;
 }
