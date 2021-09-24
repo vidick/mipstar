@@ -486,8 +486,12 @@ label.toggle-off:active {
     cursor: pointer;
 }
 
-.pill-link i {
+.pill-link i, .pill-link img {
     margin-right: 5px;
+}
+
+.pill-link img {
+  height: 16px;
 }
 
 .pill-link a {
