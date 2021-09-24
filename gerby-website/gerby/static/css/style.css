@@ -498,3 +498,7 @@ label.toggle-off:active {
   color: #ffffff;
   text-decoration: none;
 }
+
+.no-icon {
+  background: none;
+}
